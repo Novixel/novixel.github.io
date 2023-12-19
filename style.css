@@ -1,0 +1,88 @@
+/* Dark mode styles & extras*/
+
+/* Global styles */
+body {
+    text-align: center;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.5s ease;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #333;
+    color: #f0f0f0;
+}
+body.dark-mode .tab {
+    border-color: #666;
+    background-color: #444;
+}
+body.dark-mode .tab button {
+    color: #f0f0f0;
+}
+body.dark-mode .tab button:hover {
+    background-color: #555;
+}
+body.dark-mode .tab button.active {
+    background-color: #666;
+}
+body.dark-mode .tabcontent {
+    border-color: #666;
+    background-color: #444;
+    color: #f0f0f0;
+}
+body.dark-mode h1 {
+    color: #f0f0f0;
+    text-shadow: 1px 1px 1px #000;
+}
+
+/* Header styles */
+h1 {
+    color: #333;
+    text-shadow: 1px 1px 1px #999;
+}
+
+/* Paragraph styles */
+p {
+    color: #666;
+    font-size: 1.2em;
+}
+
+/* Links styles */
+a {
+    color: #00FF00; /* Change this to your desired color */
+}
+a:hover {
+    color: #0026ff; /* Change this to your desired hover color */
+}
+
+/* Tab styles */
+.tab {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+.tab button:hover {
+    background-color: #ddd;
+}
+.tab button.active {
+    background-color: #ccc;
+}
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}

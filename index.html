@@ -2,81 +2,8 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
     <title>My Home Page</title>
-    <style>
-        body {
-            text-align: center;
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
-            transition: background-color 0.5s ease;
-        }
-        body.dark-mode {
-            background-color: #333;
-            color: #f0f0f0;
-        }
-        body.dark-mode .tab {
-            border-color: #666;
-            background-color: #444;
-        }
-        body.dark-mode .tab button {
-            color: #f0f0f0;
-        }
-        body.dark-mode .tab button:hover {
-            background-color: #555;
-        }
-        body.dark-mode .tab button.active {
-            background-color: #666;
-        }
-        body.dark-mode .tabcontent {
-            border-color: #666;
-            background-color: #444;
-            color: #f0f0f0;
-        }
-        body.dark-mode h1 {
-            color: #f0f0f0;
-            text-shadow: 1px 1px 1px #000;
-        }
-
-        h1 {
-            color: #333;
-            text-shadow: 1px 1px 1px #999;
-        }
-
-        p {
-            color: #666;
-            font-size: 1.2em;
-        }
-        /* Tab styles */
-        .tab {
-            display: flex;
-            justify-content: center;
-            overflow: hidden;
-            border: 1px solid #ccc;
-            background-color: #f1f1f1;
-        }
-        .tab button {
-            background-color: inherit;
-            float: left;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 14px 16px;
-            transition: 0.3s;
-            font-size: 17px;
-        }
-        .tab button:hover {
-            background-color: #ddd;
-        }
-        .tab button.active {
-            background-color: #ccc;
-        }
-        .tabcontent {
-            display: none;
-            padding: 6px 12px;
-            border: 1px solid #ccc;
-            border-top: none;
-        }
-    </style>
 </head>
 <body>
     <h1>Welcome to My Home Page!</h1>
@@ -86,6 +13,7 @@
         <button class="tablinks" onclick="openTab(event, 'About')">About Me</button>
         <button class="tablinks" onclick="openTab(event, 'Skills')">My Skills</button>
     </div>
+    <div class="space"></div>
     <div id="Home" class="tabcontent">
         <h2>Home</h2>
         <p>Welcome to my home page!</p>
@@ -98,6 +26,9 @@
         <h2>My Skills</h2>
         <p>I am proficient in HTML, CSS, and JavaScript.</p>
     </div>
+
+    <div class="footer">
+        <p>Created by <a href="https://www.Novixel.ca/">Novixel</a></p>
     <script src="script.js"></script>
 </body>
 </html>
