@@ -8,27 +8,49 @@ body {
     transition: background-color 0.5s ease;
 }
 
+.container {
+    width: 60%; /* Adjust the value as needed */
+    margin: 0 auto;
+}
+
+.Services {
+    display: flex;
+    justify-content: space-between;
+}
+/* Service styles */
+.Service {
+    flex: 1;
+    margin: 0 10px; /* Adjust as needed */
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 0px;
+}
+
 /* Dark mode styles */
 body.dark-mode {
-    background-color: #333;
+    background-color: #0f0f0f;
     color: #f0f0f0;
 }
 body.dark-mode .tab {
     border-color: #666;
-    background-color: #444;
+    background-color: #0f0f0f;
 }
 body.dark-mode .tab button {
     color: #f0f0f0;
+    border: 1px solid #666;
 }
 body.dark-mode .tab button:hover {
-    background-color: #555;
+    background-color: #666;
 }
 body.dark-mode .tab button.active {
-    background-color: #666;
+    background-color: #4e4e4e;
 }
 body.dark-mode .tabcontent {
     border-color: #666;
-    background-color: #444;
+    background-color: #0f0f0f;
     color: #f0f0f0;
 }
 body.dark-mode h1 {
@@ -40,6 +62,7 @@ body.dark-mode h1 {
 h1 {
     color: #333;
     text-shadow: 1px 1px 1px #999;
+    margin-top: 0px;
 }
 
 /* Paragraph styles */
@@ -50,10 +73,14 @@ p {
 
 /* Links styles */
 a {
-    color: #00FF00; /* Change this to your desired color */
+    color: #00ac00; /* Change this to your desired color */
 }
 a:hover {
     color: #0026ff; /* Change this to your desired hover color */
+}
+
+.social-link {
+    margin: 0 10px; /* Adjust the value as needed */
 }
 
 /* Tab styles */
@@ -61,13 +88,13 @@ a:hover {
     display: flex;
     justify-content: center;
     overflow: hidden;
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
     background-color: #f1f1f1;
 }
 .tab button {
     background-color: inherit;
     float: left;
-    border: none;
+    border: 1px solid #d3d3d3;
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
@@ -75,14 +102,24 @@ a:hover {
     font-size: 17px;
 }
 .tab button:hover {
-    background-color: #ddd;
+    background-color: #d3d3d3;
 }
 .tab button.active {
-    background-color: #ccc;
+    background-color: #d3d3d3;
 }
 .tabcontent {
     display: none;
-    padding: 6px 12px;
+    padding: 1% 20%;
     border: 1px solid #ccc;
     border-top: none;
+}
+
+/* Separator styles */
+.separator {
+    border: none;
+    height: 1px;
+    background-color: #33333300; /* Change this to your desired color */
+}
+.separator.dark-mode {
+    background-color: #96969600; /* Change this to your desired color */
 }

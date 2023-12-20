@@ -3,32 +3,70 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <title>My Home Page</title>
+    <title>Novixel</title>
 </head>
 <body>
-    <h1>Welcome to My Home Page!</h1>
-    <button class="fas fa-moon" onclick="toggleDarkMode(event)"></button>
-    <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'Home')">Home</button>
-        <button class="tablinks" onclick="openTab(event, 'About')">About Me</button>
-        <button class="tablinks" onclick="openTab(event, 'Skills')">My Skills</button>
-    </div>
-    <div class="space"></div>
-    <div id="Home" class="tabcontent">
-        <h2>Home</h2>
-        <p>Welcome to my home page!</p>
-    </div>
-    <div id="About" class="tabcontent">
-        <h2>About Me</h2>
-        <p>I am a web developer with a passion for coding and design.</p>
-    </div>
-    <div id="Skills" class="tabcontent">
-        <h2>My Skills</h2>
-        <p>I am proficient in HTML, CSS, and JavaScript.</p>
-    </div>
+    <div class="container">
+        <img src="\Novixel-icon-Trans1.png" alt="Novixel Logo" class="logo">
+        <h1>Find Your Solution</h1>
+        <button class="fas fa-moon" onclick="toggleDarkMode(event)"></button>
+        <hr class="separator">
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'Home')">Home</button>
+            <button class="tablinks" onclick="openTab(event, 'About')">About Me</button>
+            <button class="tablinks" onclick="openTab(event, 'Skills')">My Skills</button>
+        </div>
+        
+        <div id="Home" class="tabcontent">
+            <h2>Home</h2>
+            <p>Welcome to my homepage! Exciting content is on the horizon, so stay tuned for some amazing updates.</p>
+        </div>
 
-    <div class="footer">
-        <p>Created by <a href="https://www.Novixel.ca/">Novixel</a></p>
-    <script src="script.js"></script>
+        <div id="About" class="tabcontent">
+            <h2>About Me</h2>
+            <p>Hello, world! I'm Tristan, a devoted software developer driven by a fervent passion for coding, cryptocurrency, the fascinating world of AI, and the aromatic wonders of coffee. Join me on this exciting journey, where innovation and creativity converge.</p>
+        </div>
+        
+        <div id="Skills" class="tabcontent">
+            <h2>My Skills</h2>
+            <p>I specialize in Python for software development, 
+                utilizing it as the cornerstone of my coding projects. 
+                Alongside this, I have proficiency in HTML, CSS, and JavaScript. 
+                In the realm of IT support, I bring expertise to ensure seamless operations and effective troubleshooting. 
+                Complementing these technical skills, my versatile set also extends to customer service, 
+                where I excel in fostering positive interactions and creating meaningful connections.</p>
+        </div>
+
+        <div class=ServicesContainer>
+            <hr class="separator">
+            <div class="Services">
+                <div class="Service">
+                    <h3>Software Development</h3>
+                    <p>Looking for a custom program? I've got you covered. Specializing in Python, I'm also well-versed in C#, C++, HTML, CSS, and JavaScript, among other languages. Let's bring your ideas to life with tailored solutions.</p>
+                </div>
+                <div class="Service">
+                    <h3>IT Support</h3>
+                    <p>Facing computer issues? I'm here to assist. With expertise in Windows, Raspberry Pi OS, and macOS, I bring tailored solutions to ensure your computing experience is smooth and problem-free</p>
+                </div>
+                <div class="Service">
+                    <h3>Customer Service</h3>
+                    <p>Seeking someone to talk to? Count on me for a supportive conversation. With a background in customer service and a knack for creating meaningful connections, I'm here to provide the assistance and understanding you're looking for.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="footer">
+            <hr class="separator">
+            <a class="social-link" href="https://instagram.com/novixel"><i class="fab fa-instagram"></i></a>
+            <a class="social-link" href="https://x.com/OfficialNovixel"><i class="fab fa-twitter"></i></a>
+            <a class="social-link" href="https://www.youtube.com/c/Novixel"><i class="fab fa-youtube"></i></a>
+            
+            <p><a href="https://www.Novixel.ca/">Novixel</a></p>
+        </div>
+        
+        
+        <script src="script.js"></script>
+    </div>
 </body>
 </html>
