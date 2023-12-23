@@ -25,6 +25,7 @@ function toggleDarkMode(event) {
 }
 document.getElementById('darkModeSwitch').addEventListener('click', toggleDarkMode);
 
+
 function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
 

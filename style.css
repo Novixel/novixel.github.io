@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-    width: 60%; /* Adjust the value as needed */
+    width: 60%; 
     margin: 0 auto;
 }
 
@@ -17,10 +17,20 @@ body {
     display: flex;
     justify-content: space-between;
 }
-/* Service styles */
+
 .Service {
-    flex: 1;
-    margin: 0 10px; /* Adjust as needed */
+    width: 30%; /* Adjust as needed */
+}
+
+@media screen and (max-width: 720px) {
+    .Services {
+        flex-direction: column;
+        align-items: center;
+    }
+    .Service {
+        width: 100%;
+        margin-bottom: 20px; /* Adjust as needed */
+    }
 }
 
 .logo {
