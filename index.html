@@ -8,14 +8,17 @@
 </head>
 <body>
     <div class="container">
-        <img src="\Novixel-icon-Trans1.png" alt="Novixel Logo" class="logo">
+        <img src="\Novixel-icon-Trans1.png" alt="Novixel Logo" class="logo" href="https://www.Novixel.ca/">
         <h1>Find Your Solution</h1>
         <button class="fas fa-moon" onclick="toggleDarkMode(event)"></button>
+        <button class="fas fa-bars" onclick="incrementCounter(event)"></button>
+        <label id="counterLabel">0</label>
         <hr class="separator">
         <div class="tab">
             <button class="tablinks" onclick="openTab(event, 'Home')">Home</button>
             <button class="tablinks" onclick="openTab(event, 'About')">About Me</button>
             <button class="tablinks" onclick="openTab(event, 'Skills')">My Skills</button>
+            <button class="tablinks" onclick="openTab(event, 'Blog')">My Blog</button>
         </div>
         
         <div id="Home" class="tabcontent">
@@ -34,8 +37,15 @@
                 utilizing it as the cornerstone of my coding projects. 
                 Alongside this, I have proficiency in HTML, CSS, and JavaScript. 
                 In the realm of IT support, I bring expertise to ensure seamless operations and effective troubleshooting. 
-                Complementing these technical skills, my versatile set also extends to customer service, 
+                Complementing these technical skills, my versatile set also extends to customer relations, 
                 where I excel in fostering positive interactions and creating meaningful connections.</p>
+        </div>
+
+        <div id="Blog" class="tabcontent">
+            <h2>My Blog</h2>
+            <p>Stay tuned for my upcoming blog, where I'll be sharing my insights on the latest tech trends, 
+                software development tips, and the fascinating world of AI. 
+                Join me on this exciting journey, where innovation and creativity converge.</p>
         </div>
 
         <div class=ServicesContainer>
@@ -46,12 +56,12 @@
                     <p>Looking for a custom program? I've got you covered. Specializing in Python, I'm also well-versed in C#, C++, HTML, CSS, and JavaScript, among other languages. Let's bring your ideas to life with tailored solutions.</p>
                 </div>
                 <div class="Service">
-                    <h3>IT Support</h3>
+                    <h3>IT Support & Consulting</h3>
                     <p>Facing computer issues? I'm here to assist. With expertise in Windows, Raspberry Pi OS, and macOS, I bring tailored solutions to ensure your computing experience is smooth and problem-free</p>
                 </div>
                 <div class="Service">
-                    <h3>Customer Service</h3>
-                    <p>Seeking someone to talk to? Count on me for a supportive conversation. With a background in customer service and a knack for creating meaningful connections, I'm here to provide the assistance and understanding you're looking for.</p>
+                    <h3>Customer Relations</h3>
+                    <p>Seeking someone to talk to? Count on me for a supportive conversation. With a background in customer relations and a knack for creating meaningful connections, I'm here to provide the assistance and understanding you're looking for.</p>
                 </div>
             </div>
         </div>

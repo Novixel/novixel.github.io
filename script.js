@@ -25,6 +25,14 @@ function toggleDarkMode(event) {
 }
 document.getElementById('darkModeSwitch').addEventListener('click', toggleDarkMode);
 
+let counter = 0;
+
+function incrementCounter(event) {
+    
+    counter++;
+    document.getElementById('counterLabel').textContent = counter.toString();
+}
+document.getElementById('counterLabel').addEventListener('click', incrementCounter);
 
 function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
