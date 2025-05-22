@@ -1,46 +1,56 @@
-var darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-var darkModeSwitch = document.getElementById('darkModeSwitch');
+// Dark mode toggle
+function setInitialDarkMode() {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark-mode');
+        setDarkModeButtonIcon(true);
+        setSeparatorDarkMode(true);
+    } else {
+        document.body.classList.remove('dark-mode');
+        setDarkModeButtonIcon(false);
+        setSeparatorDarkMode(false);
+    }
+}
 
-// Set initial switch position based on system preference
-if (darkModeMediaQuery.matches) {
-    document.body.classList.add('dark-mode');
-    darkModeSwitch.firstChild.className = 'fas fa-sun';
-    document.querySelector('.separator').classList.add('dark-mode');
-} else {
-    document.body.classList.remove('dark-mode');
-    darkModeSwitch.firstChild.className = 'fas fa-moon';
-    document.querySelector('.separator').classList.remove('dark-mode');
+function setDarkModeButtonIcon(isDark) {
+    var btn = document.querySelector('.fa-moon, .fa-sun');
+    if (btn) btn.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+}
+
+function setSeparatorDarkMode(isDark) {
+    var sep = document.querySelector('.separator');
+    if (sep) sep.classList[isDark ? 'add' : 'remove']('dark-mode');
 }
 
 function toggleDarkMode(event) {
-    var button = event.target;
     var isDarkMode = document.body.classList.toggle('dark-mode');
-    if (isDarkMode) {
-        button.className = 'fas fa-sun';
-        document.querySelector('.separator').classList.add('dark-mode');
-    } else {
-        button.className = 'fas fa-moon';
-        document.querySelector('.separator').classList.remove('dark-mode');
-    }
+    setDarkModeButtonIcon(isDarkMode);
+    setSeparatorDarkMode(isDarkMode);
 }
-document.getElementById('darkModeSwitch').addEventListener('click', toggleDarkMode);
 
+// Initialize dark mode on page load
+window.addEventListener('DOMContentLoaded', setInitialDarkMode);
+
+// Tab navigation
 function openTab(evt, tabName) {
-    var i, tabcontent, tablinks;
-
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
+    var i;
+    var tabcontent = document.getElementsByClassName('tabcontent');
     for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
+        tabcontent[i].style.display = 'none';
     }
-
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
+    var tablinks = document.getElementsByClassName('tablinks');
     for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
+        tablinks[i].className = tablinks[i].className.replace(' active', '');
     }
+    document.getElementById(tabName).style.display = 'block';
+    evt.currentTarget.className += ' active';
+}
 
-    // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
+// Logo toggle
+function CoolThing() {
+    var logo = document.getElementsByClassName('mainlogo')[0];
+    if (!logo) return;
+    var src1 = 'Novixel-icon-Trans1.png';
+    var src2 = 'Novixel-icon-Trans2.png';
+    var currentSrc = logo.getAttribute('src').replace(/^\\|\//, '');
+    logo.setAttribute('src', currentSrc === src1 ? src2 : src1);
 }

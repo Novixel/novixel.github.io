@@ -1,14 +1,48 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to Novixel!">
+    <meta name="keywords" content="Novixel, Software Development, Software Developer, IT support, Customer relations, Python, HTML, CSS, JavaScript, Consulting, Analyst">
+    <meta name="author" content="Novixel Computer Solutions">
+    <meta name="robots" content="index, follow">
+    <meta name="revisit-after" content="7 days">
+
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+
+    <!-- Icon -->
     <link rel="icon" href="FavIcon.png">
+
+    <!-- Title -->
     <title>Novixel</title>
+
 </head>
 <body>
+    <header>
+        <nav>
+            <div class="container">
+              <div class="headers">
+                    <a href="/index.html">Home</a>
+                    <a href="/game.html">Game</a>
+                    <a href="/calculator.html">Calculator</a>
+                    <a href="/tradingbots.html">Trading Bots</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- <div class="coolthing">
+        <button class="coolbutton" onclick="CoolThing(event)">Cool Button</button>
+    </div> -->
+
     <div class="container">
-        <img src="\Novixel-icon-Trans1.png" alt="Novixel Logo" class="logo" href="https://www.Novixel.ca/">
+        <img class="mainlogo" src="\Novixel-icon-Trans1.png" alt="Novixel Logo" class="logo" href="https://www.Novixel.ca/">
         <h1>Find Your Solution</h1>
         <button class="fas fa-moon" onclick="toggleDarkMode(event)"></button>
         <hr class="separator">
@@ -16,34 +50,66 @@
             <button class="tablinks" onclick="openTab(event, 'Home')">Home</button>
             <button class="tablinks" onclick="openTab(event, 'About')">About Me</button>
             <button class="tablinks" onclick="openTab(event, 'Skills')">My Skills</button>
-            <button class="tablinks" onclick="openTab(event, 'Blog')">My Blog</button>
+            <!-- Icon -->
+            <!--<button id="myblogtab" class="tablinks" onclick="openTab(event, 'Blog')">My Blog</button>-->
         </div>
         
         <div id="Home" class="tabcontent">
             <h2>Home</h2>
-            <p>Welcome to my homepage! Exciting content is on the horizon, so stay tuned for some amazing updates.</p>
+            <p>
+                Welcome to the homepage! 
+
+                Exciting content is on the horizon, stay tuned for some awesome updates.
+
+                Soon to be more links.
+                Soon to be more stuff.
+                Suggestions are cool.
+            </p>
         </div>
 
         <div id="About" class="tabcontent">
             <h2>About Me</h2>
-            <p>Hello, world! I'm Tristan, a devoted software developer driven by a fervent passion for coding, cryptocurrency, the fascinating world of AI, and the aromatic wonders of coffee. Join me on this exciting journey, where innovation and creativity converge.</p>
+            <p>
+                Hello, World! That's how it started. I use Python for most things—it's quick and portable.
+                If the need arises, I'll use whatever language best suits the environment.
+                
+                I specialize in building automation scripts, API wrappers, and trading bots for cryptocurrency exchanges.
+                Currently, I'm working on web development and security projects, always looking for new challenges to take on.
+                
+                As a self-taught developer, I'm constantly learning and improving my skills.
+                
+                A relatively new endeavor I've been exploring is electrical engineering.
+        
+                I'm currently working on a project involving a Raspberry Pi and a few controllers to build a physical trading bot.
+                I plan to start with a basic AI-powered robot car that I can build with my kids.    
+            </p>
         </div>
         
         <div id="Skills" class="tabcontent">
             <h2>My Skills</h2>
-            <p>I specialize in Python for software development, 
-                utilizing it as the cornerstone of my coding projects. 
-                Alongside this, I have proficiency in HTML, CSS, and JavaScript. 
-                In the realm of IT support, I bring expertise to ensure seamless operations and effective troubleshooting. 
-                Complementing these technical skills, my versatile set also extends to customer relations, 
-                where I excel in fostering positive interactions and creating meaningful connections.</p>
+            <p>
+                I have a unique set of skills that have helped me navigate life. Give me a problem, and I'll find a solution. 
+                It might not always be the most elegant fix, but you can bet it'll work. 
+                I have a knack for troubleshooting—whether it's weird automotive issues, power tools acting up, or debugging stubborn code. 
+                I've found that asking the right questions and truly understanding the problem is the key to getting to the root cause of any issue.
+                When it comes to coding, I'm solid. I specialize in Python but can work with C++, C#, HTML, CSS, and JavaScript when needed. 
+                I've built a variety of small to medium-sized software applications and have experience across multiple operating systems, including Windows, macOS, and several Linux distributions.
+                On top of that, I'm great with people. 
+                Customer relations is one of my strong suits—I know how to build meaningful connections and provide top-tier service. 
+                Whether it's clients, customers, or collaborators, I make sure the experience is smooth and professional.
+            </p>
         </div>
 
         <div id="Blog" class="tabcontent">
             <h2>My Blog</h2>
-            <p>Stay tuned for my upcoming blog, where I'll be sharing my insights on the latest tech trends, 
-                software development tips, and the fascinating world of AI. 
-                Join me on this exciting journey, where innovation and creativity converge.</p>
+            <p>One day ill start a blog where i express those feeling humans have.. or talk about tech, or AI, or cars? I dont know.
+                I'll figure it out.
+                Let's see what the future holds. Artificial general inteligence, self driving cars, nucular winter. Who knows.
+                Lets keep, keeping on and enjoy our lives.
+
+                Let me know if you care to hear more of my insight full comments
+
+            </p>
         </div>
 
         <div class=ServicesContainer>
@@ -51,31 +117,55 @@
             <div class="Services">
                 <div class="Service">
                     <h3>Software Development</h3>
-                    <p>Looking for a custom program? I've got you covered. Specializing in Python, I'm also well-versed in C#, C++, HTML, CSS, and JavaScript, among other languages. Let's bring your ideas to life with tailored solutions.</p>
+                    <p>
+                        Need a reliable software solution? I offer professional development services tailored to your requirements. With expertise in Python, C#, C++, HTML, CSS, JavaScript, and more, I deliver robust, efficient, and scalable applications to help you achieve your goals.
+                    </p>
                 </div>
                 <div class="Service">
                     <h3>IT Support & Consulting</h3>
-                    <p>Facing computer issues? I'm here to assist. With expertise in Windows, Raspberry Pi OS, and macOS, I bring tailored solutions to ensure your computing experience is smooth and problem-free</p>
+                    <p>Facing computer issues? I'm here to assist. With expertise in Windows, macOS, IOS, and Android. I bring tailored solutions to ensure your tech experience is smooth and problem-free</p>
                 </div>
                 <div class="Service">
-                    <h3>Customer Relations</h3>
-                    <p>Seeking someone to talk to? Count on me for a supportive conversation. With a background in customer relations and a knack for creating meaningful connections, I'm here to provide the assistance and understanding you're looking for.</p>
+                    <h3>Small Electronic Repairs </h3>
+                    <p>Have a broken TV, game console, or other electronic device? I offer repair services for a variety of consumer electronics. Whether it's troubleshooting, part replacement, or general maintenance, I'll work to get your devices back up and running smoothly.</p>
                 </div>
             </div>
         </div>
+        
 
+        <div id="specialareaid" class="specialarea">
+
+            <content></content> 
+            <hr class="separator">
+            <h2>Let Me Be Your Solution.</h2>
+
+
+            <h4>Send a Message</h4>
+            <form id="contactForm" action="mailto:novixel@hotmail.com" method="POST" enctype="text/plain">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required><br>
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="4" required></textarea><br>
+                <input type="submit" value="Send">
+            </form>
+        
+        </div>
 
         <div class="footer">
             <hr class="separator">
             <a class="social-link" href="https://instagram.com/novixel"><i class="fab fa-instagram"></i></a>
             <a class="social-link" href="https://x.com/OfficialNovixel"><i class="fab fa-twitter"></i></a>
             <a class="social-link" href="https://www.youtube.com/c/Novixel"><i class="fab fa-youtube"></i></a>
-            
             <p><a href="https://www.Novixel.ca/">Novixel</a></p>
         </div>
-        
-        
+
         <script src="script.js"></script>
+
+        
     </div>
 </body>
 </html>

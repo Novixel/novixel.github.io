@@ -1,7 +1,21 @@
-/* Dark mode styles & extras*/
-
 /* Global styles */
+.headers {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #202020;
+    background-color: #0f0f0f;
+    color: #f0f0f0;
+    
+}
+
+.headers.dark-mode {
+    background-color: #0f0f0f;
+    color: #f0f0f0;
+}
+
 body {
+    margin: 10px;
     text-align: center;
     background-color: #f0f0f0;
     font-family: Arial, sans-serif;
@@ -33,7 +47,7 @@ body {
     }
 }
 
-.logo {
+.mainlogo {
     width: 100px;
     height: auto;
     margin-bottom: 0px;
@@ -132,4 +146,105 @@ a:hover {
 }
 .separator.dark-mode {
     background-color: #96969600; /* Change this to your desired color */
+}
+
+/* Header styles */
+
+.headers {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #202020;
+}
+
+.headerlinks {
+    float: left;
+    border: 1px solid #d3d3d3;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 11px;
+}
+
+.headers a {
+    margin: 0 14px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+/* Contact form dark mode styles */
+body.dark-mode #contactForm,
+body.dark-mode #contactForm input,
+body.dark-mode #contactForm textarea {
+    background-color: transparent !important;
+    color: #f0f0f0 !important;
+    border: 1px solid #444 !important;
+}
+body.dark-mode #contactForm input[type="submit"] {
+    background-color: #333 !important;
+    color: #fff !important;
+    border: 1px solid #666 !important;
+}
+body.dark-mode #contactForm label {
+    color: #f0f0f0 !important;
+}
+#contactForm,
+#contactForm input,
+#contactForm textarea {
+    background-color: transparent !important;
+}
+#contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    border: none;
+    padding: 0;
+    margin: 16px auto 0 auto;
+    width: 100%;
+    max-width: 400px;
+}
+#contactForm input,
+#contactForm textarea {
+    width: 100%;
+    max-width: 400px;
+    border: none;
+    border-bottom: 1px solid #bbb;
+    border-radius: 0;
+    padding: 6px;
+    background: transparent;
+    color: inherit;
+    box-sizing: border-box;
+    text-align: left;
+    margin-bottom: 2px;
+}
+#contactForm input[type="submit"] {
+    width: auto;
+    background: #00ac00;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 20px;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: background 0.2s;
+    align-self: center;
+    box-shadow: none;
+}
+#contactForm input[type="submit"]:hover {
+    background: #008000;
+}
+#contactForm label {
+    align-self: center;
+    margin-bottom: 0px;
+    font-weight: 500;
+}
+body.dark-mode #contactForm input,
+body.dark-mode #contactForm textarea {
+    color: #f0f0f0;
+}
+body.dark-mode #contactForm input[type="submit"] {
+    background: #333;
+    color: #fff;
 }

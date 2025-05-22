@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Calculator</title>
+        <meta name="description" content="Calculator page for Novixel Computer Solutions">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="FavIcon.png">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="container">
+              <div class="headers">
+                        <a href="/index.html">Home</a>
+                        <a href="/game.html">Game</a>
+                        <a href="/calculator.html">Calculator</a>
+                        <a href="/tradingbots.html">Trading Bots</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container">
+            <h1>Welcome To The Calculator Page!</h1>
+            <button class="fas fa-moon" onclick="toggleDarkMode(event)"></button>
+            <hr class="separator">
+            <div id="calculator" style="max-width:300px;margin:0 auto;">
+                <input type="text" id="calc-display" style="width:100%;font-size:1.5em;text-align:right;margin-bottom:10px;" readonly>
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px;">
+                    <button onclick="calcInput('7')">7</button>
+                    <button onclick="calcInput('8')">8</button>
+                    <button onclick="calcInput('9')">9</button>
+                    <button onclick="calcInput('/')">÷</button>
+                    <button onclick="calcInput('4')">4</button>
+                    <button onclick="calcInput('5')">5</button>
+                    <button onclick="calcInput('6')">6</button>
+                    <button onclick="calcInput('*')">×</button>
+                    <button onclick="calcInput('1')">1</button>
+                    <button onclick="calcInput('2')">2</button>
+                    <button onclick="calcInput('3')">3</button>
+                    <button onclick="calcInput('-')">−</button>
+                    <button onclick="calcInput('0')">0</button>
+                    <button onclick="calcInput('.')">.</button>
+                    <button onclick="calcEquals()">=</button>
+                    <button onclick="calcInput('+')">+</button>
+                    <button onclick="calcClear()" style="grid-column:span 4;background:#f44336;color:#fff;">C</button>
+                </div>
+            </div>
+            <hr class="separator">
+            <h2>Contact Me</h2>
+            <form id="contactForm" action="mailto:novixel@hotmail.com" method="POST" enctype="text/plain">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="4" required></textarea><br>
+                <input type="submit" value="Send">
+            </form>
+            <div class="footer">
+                <hr class="separator">
+                <a class="social-link" href="https://instagram.com/novixel"><i class="fab fa-instagram"></i></a>
+                <a class="social-link" href="https://x.com/OfficialNovixel"><i class="fab fa-twitter"></i></a>
+                <a class="social-link" href="https://www.youtube.com/c/Novixel"><i class="fab fa-youtube"></i></a>
+                <p><a href="https://www.Novixel.ca/">Novixel</a></p>
+            </div>
+        </div>
+        <script src="script.js"></script>
+        <script>
+        // Calculator logic
+        let calcValue = '';
+        function calcInput(val) {
+            calcValue += val;
+            document.getElementById('calc-display').value = calcValue;
+        }
+        function calcEquals() {
+            try {
+                calcValue = eval(calcValue).toString();
+            } catch {
+                calcValue = 'Error';
+            }
+            document.getElementById('calc-display').value = calcValue;
+        }
+        function calcClear() {
+            calcValue = '';
+            document.getElementById('calc-display').value = '';
+        }
+        </script>
+    </body>
+</html>
