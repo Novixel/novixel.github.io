@@ -29,6 +29,7 @@
             <div id="calculator" style="max-width:300px;margin:0 auto;">
                 <input type="text" id="calc-display" style="width:100%;font-size:1.5em;text-align:right;margin-bottom:10px;" readonly>
                 <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px;">
+                    <button onclick="calcClear()" style="grid-column:4;background:#f44336;color:#fff;">C</button>
                     <button onclick="calcInput('7')">7</button>
                     <button onclick="calcInput('8')">8</button>
                     <button onclick="calcInput('9')">9</button>
@@ -45,7 +46,6 @@
                     <button onclick="calcInput('.')">.</button>
                     <button onclick="calcEquals()">=</button>
                     <button onclick="calcInput('+')">+</button>
-                    <button onclick="calcClear()" style="grid-column:span 4;background:#f44336;color:#fff;">C</button>
                 </div>
             </div>
             <hr class="separator">
@@ -87,6 +87,14 @@
             calcValue = '';
             document.getElementById('calc-display').value = '';
         }
+        // Keyboard support
+        // Allow numbers, operators, Enter (=), Escape/Backspace (clear)
+        document.addEventListener('keydown', function(e) {
+            if (e.key >= '0' && e.key <= '9') calcInput(e.key);
+            else if (["+", "-", "*", "/","."].includes(e.key)) calcInput(e.key);
+            else if (e.key === 'Enter' || e.key === '=') calcEquals();
+            else if (e.key === 'Escape' || e.key === 'Backspace' || e.key === 'Delete') calcClear();
+        });
         </script>
     </body>
 </html>
