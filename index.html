@@ -1,81 +1,136 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novixel - Dawson Creek Tech Expert - On-Demand Tech Support</title>
-    <link rel="stylesheet" href="styleid.css">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="Welcome to Novixel!">
+    <meta name="keywords" content="Novixel, Software Development, Software Developer, IT support, Customer relations, Python, HTML, CSS, JavaScript, Consulting, Analyst">
+    <meta name="author" content="Novixel Computer Solutions">
+    <meta name="robots" content="index, follow">
+    <meta name="revisit-after" content="7 days">
+
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css?v=2">
+
+    <!-- Icon -->
+    <link rel="icon" href="FavIcon.png">
+
+    <!-- Title -->
+    <title>Novixel</title>
+
 </head>
 <body>
-
-    <header class="site-header">
-        <div class="container">
-            <a href="index.html" class="site-logo">Novixel Mobile Solutions</a>
-            <nav class="main-nav">
-                <button class="nav-toggle" aria-label="Toggle navigation">
-                    <span class="hamburger"></span>
-                    <span class="hamburger"></span>
-                    <span class="hamburger"></span>
-                </button>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services-section">Services</a></li>
-                    <li><a href="#about-us-section">About Us</a></li>
-                    <li><a href="#pricing-section">Pricing</a></li>
-                    <li><a href="#contact-section">Contact</a></li>
-                    <li><button class="dark-mode-toggle" aria-label="Toggle dark mode">
-                        <i class="fas fa-moon"></i>
-                    </button></li>
-                    <li><a href="https://calendly.com/novixel" target="_blank" class="button primary-button">Book Now!</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <section id="home" class="hero-section section-spacing">
+    <header>
+        <nav>
             <div class="container">
-                <div class="hero-content">
-                    <h1>Your Local Tech Expert, On-Demand.</h1>
-                    <p class="sub-headline">Expert help for your computers, consoles, phones, smart home, and so much more, delivered right to your door in Dawson Creek.</p>
-                    <a href="https://calendly.com/novixel" target="_blank" class="button large-button primary-button">Book a Service Now</a>
-                    <p class="small-text">Or call or text us directly at (250) 219-4276</p>
-                </div>
-                <div class="hero-image-placeholder">
-                    <img src="friendly.png" alt="Friendly technician assisting a client with their computer at home">
+              <div class="headers">
+                    <a href="/index.html">Home</a>
+                    <a href="/game.html">Game</a>
+                    <a href="/calculator.html">Calculator</a>
+                    <a href="/tradingbots.html">Trading Bots</a>
                 </div>
             </div>
-        </section>
+        </nav>
+    </header>
 
-        <section class="services-overview section-spacing">
-            <div class="container">
-                <h2>Our Services At a Glance</h2>
-                <p class="section-description">We handle all your tech needs with expertise and a friendly smile.</p>
-                <div class="service-cards-grid">
-                    <div class="service-card rounded-square">
-                        <i class="fas fa-desktop icon-large"></i>
-                        <h3>Computer Setup & Data</h3>
-                        <p>New PC setup, data transfer, printer installation, and more.</p>
-                    </div>
-                    <div class="service-card rounded-square">
-                        <i class="fas fa-wifi icon-large"></i>
-                        <h3>Wi-Fi & Networks</h3>
-                        <p>Troubleshooting, secure setup, and optimizing your home network.</p>
-                    </div>
-                    <div class="service-card rounded-square">
-                        <i class="fas fa-home icon-large"></i>
-                        <h3>Smart Home Installation</h3>
-                        <p>Thermostats, video doorbells, smart lighting, and device integration.</p>
-                    </div>
-                    <div class="service-card rounded-square">
-                        <i class="fas fa-wrench icon-large"></i>
-                        <h3>Troubleshooting & Repairs</h3>
-                        <p>Slow computers, virus removal, software glitches, and general fixes.</p>
-                    </div>
+    <!-- <div class="coolthing">
+        <button class="coolbutton" onclick="CoolThing(event)">Cool Button</button>
+    </div> -->
+
+    <div class="container">
+        <img class="mainlogo" src="\Novixel-icon-Trans1.png" alt="Novixel Logo" class="logo" href="https://www.Novixel.ca/">
+        <h1>Find Your Solution</h1>
+        <button class="fas fa-moon" onclick="toggleDarkMode(event)"></button>
+        <hr class="separator">
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'Home')">Home</button>
+            <button class="tablinks" onclick="openTab(event, 'About')">About Me</button>
+            <button class="tablinks" onclick="openTab(event, 'Skills')">My Skills</button>
+            <!-- Icon -->
+            <!--<button id="myblogtab" class="tablinks" onclick="openTab(event, 'Blog')">My Blog</button>-->
+        </div>
+        
+        <div id="Home" class="tabcontent">
+            <h2>Home</h2>
+            <p>
+                Welcome to the homepage! 
+
+                Exciting content is on the horizon, stay tuned for some awesome updates.
+
+                Soon to be more links.
+                Soon to be more stuff.
+                Suggestions are cool.
+            </p>
+        </div>
+
+        <div id="About" class="tabcontent">
+            <h2>About Me</h2>
+            <p>
+                Hello, World! That's how it started. I use Python for most things—it's quick and portable.
+                If the need arises, I'll use whatever language best suits the environment.
+                
+                I specialize in building automation scripts, API wrappers, and trading bots for cryptocurrency exchanges.
+                Currently, I'm working on web development and security projects, always looking for new challenges to take on.
+                
+                As a self-taught developer, I'm constantly learning and improving my skills.
+                
+                A relatively new endeavor I've been exploring is electrical engineering.
+        
+                I'm currently working on a project involving a Raspberry Pi and a few controllers to build a physical trading bot.
+                I plan to start with a basic AI-powered robot car that I can build with my kids.    
+            </p>
+        </div>
+        
+        <div id="Skills" class="tabcontent">
+            <h2>My Skills</h2>
+            <p>
+                I have a unique set of skills that have helped me navigate life. Give me a problem, and I'll find a solution. 
+                It might not always be the most elegant fix, but you can bet it'll work. 
+                I have a knack for troubleshooting—whether it's weird automotive issues, power tools acting up, or debugging stubborn code. 
+                I've found that asking the right questions and truly understanding the problem is the key to getting to the root cause of any issue.
+                When it comes to coding, I'm solid. I specialize in Python but can work with C++, C#, HTML, CSS, and JavaScript when needed. 
+                I've built a variety of small to medium-sized software applications and have experience across multiple operating systems, including Windows, macOS, and several Linux distributions.
+                On top of that, I'm great with people. 
+                Customer relations is one of my strong suits—I know how to build meaningful connections and provide top-tier service. 
+                Whether it's clients, customers, or collaborators, I make sure the experience is smooth and professional.
+            </p>
+        </div>
+
+        <div id="Blog" class="tabcontent">
+            <h2>My Blog</h2>
+            <p>One day ill start a blog where i express those feeling humans have.. or talk about tech, or AI, or cars? I dont know.
+                I'll figure it out.
+                Let's see what the future holds. Artificial general inteligence, self driving cars, nucular winter. Who knows.
+                Lets keep, keeping on and enjoy our lives.
+
+                Let me know if you care to hear more of my insight full comments
+
+            </p>
+        </div>
+
+        <div class=ServicesContainer>
+            <hr class="separator">
+            <div class="Services">
+                <div class="Service">
+                    <h3>Software Development</h3>
+                    <p>
+                        Need a reliable software solution? I offer professional development services tailored to your requirements. With expertise in Python, C#, C++, HTML, CSS, JavaScript, and more, I deliver robust, efficient, and scalable applications to help you achieve your goals.
+                    </p>
                 </div>
+                <div class="Service">
+                    <h3>IT Support & Consulting</h3>
+                    <p>Facing computer issues? I'm here to assist. With expertise in Windows, macOS, IOS, and Android. I bring tailored solutions to ensure your tech experience is smooth and problem-free</p>
+                </div>
+                <div class="Service">
+                    <h3>Small Electronic Repairs </h3>
+                    <p>Have a broken TV, game console, or other electronic device? I offer repair services for a variety of consumer electronics. Whether it's troubleshooting, part replacement, or general maintenance, I'll work to get your devices back up and running smoothly.</p>
+                </div>
+<<<<<<< HEAD
                 <div class="text-center button-container">
                     <a href="#services-section" class="button secondary-button">View All Services</a>
                 </div>
@@ -355,17 +410,53 @@
                 </div>
                 <div class="footer-contact">
                     <h4>Get In Touch</h4>
-                    <p><i class="fas fa-phone-alt"></i> (250) 555-TECH (8324)</p>
-                    <p><i class="fas fa-envelope"></i> info@dawsoncreektechexpert.ca</p>
+                    <p><i class="fas fa-phone-alt"></i> (250) 219-4276</p>
+                    <p><i class="fas fa-envelope"></i> Novixel@hotmail.com</p>
+                    <p><i class="fas fa-clock"></i> Monday - Friday: 6pm - 9pm</p>
                     <p><i class="fas fa-map-marker-alt"></i> Serving Dawson Creek & Area</p>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2024 Dawson Creek Tech Expert. All rights reserved.</p>
+                <p>&copy; 2025 Novixel. All rights reserved.</p>
+=======
+>>>>>>> parent of c212151a (0.2.1)
             </div>
         </div>
-    </footer>
+        
 
-    <script src="scriptid.js"></script>
+        <div id="specialareaid" class="specialarea">
+
+            <content></content> 
+            <hr class="separator">
+            <h2>Let Me Be Your Solution.</h2>
+
+
+            <h4>Send a Message</h4>
+            <form id="contactForm" action="mailto:novixel@hotmail.com" method="POST" enctype="text/plain">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required><br>
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="4" required></textarea><br>
+                <input type="submit" value="Send">
+            </form>
+        
+        </div>
+
+        <div class="footer">
+            <hr class="separator">
+            <a class="social-link" href="https://instagram.com/novixel"><i class="fab fa-instagram"></i></a>
+            <a class="social-link" href="https://x.com/OfficialNovixel"><i class="fab fa-twitter"></i></a>
+            <a class="social-link" href="https://www.youtube.com/c/Novixel"><i class="fab fa-youtube"></i></a>
+            <p><a href="https://www.Novixel.ca/">Novixel</a></p>
+        </div>
+
+        <script src="script.js"></script>
+
+        
+    </div>
 </body>
 </html>

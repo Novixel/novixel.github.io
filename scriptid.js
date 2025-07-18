@@ -83,15 +83,26 @@ function handleContactFormSubmission() {
  */
 function setupDarkModeToggle() {
     const toggleButton = document.querySelector('.dark-mode-toggle');
-    if (!toggleButton) return; // Exit if the button isn't on the page
-
     const body = document.body;
+    // Defensive: If the button is missing, don't break anything
+    if (!toggleButton) {
+        // Still apply theme based on saved preference or OS
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            body.classList.add('dark-mode');
+        } else {
+            body.classList.remove('dark-mode');
+        }
+        return;
+    }
+
     const icon = toggleButton.querySelector('i');
 
     // Function to apply the selected theme
     const applyTheme = (isDark) => {
         body.classList.toggle('dark-mode', isDark);
-        icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        if (icon) icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
     };
 
