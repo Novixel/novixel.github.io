@@ -119,7 +119,7 @@ function setupDarkModeToggle() {
  */
 document.addEventListener('DOMContentLoaded', function() {
     setupMobileNavigation();       // Set up the mobile navigation menu functionality
-    handleContactFormSubmission(); // Set up the contact form submission logic
+    // handleContactFormSubmission(); // Set up the contact form submission logic
     setupDarkModeToggle();         // Set up the dark mode toggle functionality
     // Potentially add more functions here, e.g., for testimonial carousels,
     // smooth scrolling animations, lazy loading images, etc.
