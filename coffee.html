@@ -129,6 +129,7 @@
                 <div class="text-center max-w-3xl mx-auto">
                     <h2 class="text-3xl md:text-4xl font-bold">A Profitable & Scalable Business Model</h2>
                     <p class="mt-4 text-lg text-stone-600">Our financial model is built on recurring revenue with a clear path to high-margin profitability. The initial month's fee covers the investment in hardware, while subsequent months focus on low-cost consumables, ensuring strong and stable returns. Use the controls below to explore the financial breakdown for each tier.</p>
+                    <p id="price-disclaimer" class="mt-4 text-sm text-stone-500 text-center">Please note, these prices are not final and are subject to change as we conduct market research to find the optimal balance between affordability for our clients and a healthy profit margin for our business.</p>
                 </div>
 
                 <div class="mt-12 max-w-4xl mx-auto">
@@ -137,6 +138,7 @@
                         <button class="tier-btn bg-stone-200 text-stone-700 px-5 py-2 rounded-lg font-semibold" data-tier="business">Business Tier</button>
                         <button class="tier-btn bg-stone-200 text-stone-700 px-5 py-2 rounded-lg font-semibold" data-tier="premium">Premium Tier</button>
                     </div>
+                    <div id="tier-description" class="mt-8 mb-4 max-w-4xl mx-auto p-4 bg-stone-50 rounded-lg shadow-inner"></div>
                      <div class="flex justify-center items-center gap-4 mb-8">
                         <span class="font-semibold text-sm">Initial Month</span>
                         <label class="relative inline-flex items-center cursor-pointer">
@@ -244,8 +246,16 @@
             }
         };
 
+        const tierDescriptions = {
+            starter: "The Starter Tier is designed for small offices or waiting areas. It includes a simple, pod-based single-cup coffee machine and all basic supplies like creamer, sugar, and stir sticks, all presented in sleek, branded containers.",
+            business: "The Business Tier offers an upgraded experience. This includes a more robust coffee machine with more options, higher-quality consumables, and a wider variety of flavors to satisfy a broader range of tastes.",
+            premium: "The Premium Tier provides a top-of-the-line coffee experience. This includes a high-end, super-automatic espresso machine capable of making a variety of specialty drinks, along with premium whole beans and a selection of milks and syrups."
+        };
+
         let currentTier = 'starter';
         let isOngoing = false;
+        
+        const tierDescriptionElement = document.getElementById('tier-description');
 
         const ctx = document.getElementById('profitabilityChart').getContext('2d');
         let profitabilityChart;
@@ -325,9 +335,10 @@
             profitabilityChart = new Chart(ctx, config);
         }
 
-        function updateChart() {
+        function updateContent() {
             const monthType = isOngoing ? 'ongoing' : 'initial';
             const data = tierData[currentTier][monthType];
+            tierDescriptionElement.textContent = tierDescriptions[currentTier];
             createChart(data);
         }
 
@@ -342,17 +353,17 @@
                 button.classList.remove('bg-stone-200', 'text-stone-700');
                 
                 currentTier = button.dataset.tier;
-                updateChart();
+                updateContent();
             });
         });
 
         const monthToggle = document.getElementById('month-toggle');
         monthToggle.addEventListener('change', (event) => {
             isOngoing = event.target.checked;
-            updateChart();
+            updateContent();
         });
 
-        updateChart();
+        updateContent();
 
     </script>
 </body>
