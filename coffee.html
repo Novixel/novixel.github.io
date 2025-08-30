@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novixel Coffee Solutions - Business Plan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutral Harmony -->
+    <!-- Application Structure Plan: A single-page, scrollable narrative structure designed to walk an investor through a pitch. It starts with a strong hook (Hero), defines the market inefficiency (The Opportunity), presents the elegant solution (Our Service), details the financial viability with an interactive chart (Business Model), outlines the future vision (Growth Roadmap), defines the customer (Target Market), and ends with a call to action (The Ask). This linear, story-driven flow is more persuasive and easier to follow than a scattered layout, making the investment case clear and compelling. -->
+    <!-- Visualization & Content Choices: 
+        1. Financial Tiers: Report Info -> Tiered pricing and profit margins. Goal -> Allow investors to explore profitability. Viz -> Interactive Bar Chart (Chart.js). Interaction -> Users click buttons to switch between service tiers and toggle between "Initial Month" (with hardware costs) and "Ongoing Months" to see how profit margins dramatically increase. Justification -> This dynamic visualization makes the business model's key strength—strong recurring revenue profitability—instantly clear and tangible. Library -> Chart.js on Canvas.
+        2. Growth Plan: Report Info -> Future expansion ideas (add-ons, new services). Goal -> Showcase long-term vision and scalability. Viz -> Horizontal Timeline Diagram. Method -> Structured HTML and Tailwind CSS. Interaction -> Subtle hover effects on milestones. Justification -> A timeline is a universally understood and professional way to present a strategic roadmap, demonstrating foresight and a clear path to expansion.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+                max-height: 500px;
+            }
+        }
+    </style>
+</head>
+<body class="text-stone-800 antialiased">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl text-amber-900">☕</span>
+                <span class="text-xl font-bold text-stone-800">Novixel Coffee Solutions</span>
+            </div>
+            <div class="hidden md:flex space-x-6 lg:space-x-8 items-center font-semibold text-sm">
+                <a href="#opportunity" class="text-stone-600 hover:text-amber-800 transition-colors">The Opportunity</a>
+                <a href="#solution" class="text-stone-600 hover:text-amber-800 transition-colors">Our Solution</a>
+                <a href="#model" class="text-stone-600 hover:text-amber-800 transition-colors">Business Model</a>
+                <a href="#roadmap" class="text-stone-600 hover:text-amber-800 transition-colors">Growth Roadmap</a>
+                <a href="#contact" class="bg-amber-800 text-white px-4 py-2 rounded-lg hover:bg-amber-900 transition-transform hover:scale-105">Contact Us</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-stone-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2">
+            <a href="#opportunity" class="block text-stone-600 hover:text-amber-800 transition-colors">The Opportunity</a>
+            <a href="#solution" class="block text-stone-600 hover:text-amber-800 transition-colors">Our Solution</a>
+            <a href="#model" class="block text-stone-600 hover:text-amber-800 transition-colors">Business Model</a>
+            <a href="#roadmap" class="block text-stone-600 hover:text-amber-800 transition-colors">Growth Roadmap</a>
+            <a href="#contact" class="block bg-amber-800 text-white px-4 py-2 rounded-lg hover:bg-amber-900">Contact Us</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight tracking-tight">We Handle the Coffee,</h1>
+                <h2 class="text-4xl md:text-6xl font-bold text-amber-800 leading-tight tracking-tight">So You Can Handle Your Business.</h2>
+                <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-stone-600">Novixel Coffee Solutions provides premium, hassle-free, subscription-based coffee station management for offices and events. Save time, elevate your space, and never run out of coffee again.</p>
+            </div>
+        </section>
+
+        <section id="opportunity" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold">The Opportunity</h2>
+                    <p class="mt-4 text-lg text-stone-600">This section outlines the common, yet overlooked, problem that businesses face daily. We identify a significant pain point for business owners and managers, representing a clear market opportunity for a specialized service solution.</p>
+                </div>
+                <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-stone-50 p-8 rounded-xl shadow-sm">
+                        <h3 class="font-bold text-xl text-amber-900">The Time Sink</h3>
+                        <p class="mt-2 text-stone-600">Business managers lose countless productive hours every month on the recurring chore of monitoring supplies, making store runs for coffee, creamer, and sugar, and managing petty cash receipts. This is time that should be spent on profit-generating activities.</p>
+                    </div>
+                    <div class="bg-stone-50 p-8 rounded-xl shadow-sm">
+                        <h3 class="font-bold text-xl text-amber-900">The Hidden Costs</h3>
+                        <p class="mt-2 text-stone-600">Beyond the time lost, there's the administrative burden. Every small purchase creates another receipt for accounting to process, complicating bookkeeping. Unpredictable costs make budgeting for office amenities a frustrating guessing game.</p>
+                    </div>
+                    <div class="bg-stone-50 p-8 rounded-xl shadow-sm lg:col-span-1 md:col-span-2">
+                        <h3 class="font-bold text-xl text-amber-900">The Inconsistent Experience</h3>
+                        <p class="mt-2 text-stone-600">An understocked or messy coffee station negatively impacts both employee morale and client perception. It projects an image of disorganization and cheapness, whether in the staff break room or the client waiting area.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solution" class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                 <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold">Our Solution: The All-in-One Subscription</h2>
+                    <p class="mt-4 text-lg text-stone-600">Novixel offers a seamless, tiered subscription service that transforms a daily chore into a premium, managed amenity. We provide everything a business needs for a consistently excellent coffee experience, all for one predictable monthly fee. This allows our clients to focus on what truly matters: their business.</p>
+                </div>
+                <div class="mt-12 grid md:grid-cols-3 gap-8 text-center">
+                    <div class="border border-stone-200 p-8 rounded-xl transition-shadow hover:shadow-lg">
+                        <div class="text-4xl">🛠️</div>
+                        <h3 class="font-bold text-xl mt-4">Full Setup & Equipment</h3>
+                        <p class="mt-2 text-stone-600">We provide the complete station: modern coffee machines, elegant containers for supplies, and all necessary accessories. No upfront cost, no hassle.</p>
+                    </div>
+                    <div class="border border-stone-200 p-8 rounded-xl transition-shadow hover:shadow-lg">
+                        <div class="text-4xl">📦</div>
+                        <h3 class="font-bold text-xl mt-4">Automated Restocking</h3>
+                        <p class="mt-2 text-stone-600">Our team conducts weekly visits to clean, organize, and fully restock your coffee station. You never have to worry about running low on coffee, tea, cream, or sugar again.</p>
+                    </div>
+                    <div class="border border-stone-200 p-8 rounded-xl transition-shadow hover:shadow-lg">
+                        <div class="text-4xl">📈</div>
+                        <h3 class="font-bold text-xl mt-4">Predictable & Simple Billing</h3>
+                        <p class="mt-2 text-stone-600">Replace countless small receipts with a single, transparent monthly invoice. Simplify your accounting and budget with complete predictability.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="model" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold">A Profitable & Scalable Business Model</h2>
+                    <p class="mt-4 text-lg text-stone-600">Our financial model is built on recurring revenue with a clear path to high-margin profitability. The initial month's fee covers the investment in hardware, while subsequent months focus on low-cost consumables, ensuring strong and stable returns. Use the controls below to explore the financial breakdown for each tier.</p>
+                </div>
+
+                <div class="mt-12 max-w-4xl mx-auto">
+                    <div class="flex flex-wrap justify-center gap-4 mb-6">
+                        <button class="tier-btn bg-amber-800 text-white px-5 py-2 rounded-lg font-semibold" data-tier="starter">Starter Tier</button>
+                        <button class="tier-btn bg-stone-200 text-stone-700 px-5 py-2 rounded-lg font-semibold" data-tier="business">Business Tier</button>
+                        <button class="tier-btn bg-stone-200 text-stone-700 px-5 py-2 rounded-lg font-semibold" data-tier="premium">Premium Tier</button>
+                    </div>
+                     <div class="flex justify-center items-center gap-4 mb-8">
+                        <span class="font-semibold text-sm">Initial Month</span>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                          <input type="checkbox" value="" id="month-toggle" class="sr-only peer">
+                          <div class="w-11 h-6 bg-stone-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-amber-800"></div>
+                        </label>
+                        <span class="font-semibold text-sm">Ongoing Months</span>
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="profitabilityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="roadmap" class="py-16 md:py-24">
+             <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold">Our Growth Roadmap</h2>
+                    <p class="mt-4 text-lg text-stone-600">Our vision extends beyond coffee. We will start by establishing a strong client base with our core service and then strategically expand our offerings to become a complete office amenity solutions provider. This phased approach allows for focused growth, risk mitigation, and scaling based on proven demand.</p>
+                </div>
+                
+                <div class="mt-20">
+                    <div class="relative">
+                        <div class="absolute left-1/2 h-full w-0.5 bg-stone-200 -translate-x-1/2"></div>
+                        <div class="relative flex justify-between items-center w-full mb-16">
+                            <div class="w-5/12">
+                                <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-amber-800">
+                                    <h3 class="font-bold text-lg">Phase 1: Market Entry & Core Service</h3>
+                                    <p class="mt-2 text-sm text-stone-600">Launch with our Starter and Business coffee tiers, targeting small to medium-sized local businesses. Focus on building brand reputation, refining operations, and gathering customer feedback.</p>
+                                </div>
+                            </div>
+                            <div class="absolute left-1/2 -translate-x-1/2 z-10 w-8 h-8 rounded-full bg-amber-800 text-white flex items-center justify-center font-bold">1</div>
+                            <div class="w-5/12"></div>
+                        </div>
+
+                        <div class="relative flex justify-between items-center w-full mb-16">
+                            <div class="w-5/12"></div>
+                            <div class="w-5/12">
+                                <div class="bg-white p-6 rounded-xl shadow-md border-r-4 border-amber-800 text-right">
+                                    <h3 class="font-bold text-lg">Phase 2: Service Expansion</h3>
+                                    <p class="mt-2 text-sm text-stone-600">Introduce Premium and Enterprise tiers featuring high-end espresso machines. Begin offering optional add-ons like filtered water coolers and basic snack boxes to existing clients.</p>
+                                </div>
+                            </div>
+                            <div class="absolute left-1/2 -translate-x-1/2 z-10 w-8 h-8 rounded-full bg-amber-800 text-white flex items-center justify-center font-bold">2</div>
+                        </div>
+                        
+                        <div class="relative flex justify-between items-center w-full">
+                            <div class="w-5/12">
+                                <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-amber-800">
+                                    <h3 class="font-bold text-lg">Phase 3: Full Amenity Provider</h3>
+                                    <p class="mt-2 text-sm text-stone-600">Form partnerships with local bakeries for fresh goods. Introduce full beverage solutions with stocked mini-fridges. Launch catered event services with on-site baristas, becoming a one-stop-shop for office hospitality.</p>
+                                </div>
+                            </div>
+                            <div class="absolute left-1/2 -translate-x-1/2 z-10 w-8 h-8 rounded-full bg-amber-800 text-white flex items-center justify-center font-bold">3</div>
+                            <div class="w-5/12"></div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <section id="contact" class="py-16 md:py-24 bg-amber-800 text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold">Let's Build the Future of Office Hospitality.</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-amber-100">Novixel Coffee Solutions is seeking seed funding to acquire initial equipment and scale our operations. We believe there is a significant opportunity to capture the local market and build a profitable, scalable business. We invite you to connect with us to discuss this further.</p>
+                <a href="mailto:invest@novixelcoffee.com" class="mt-8 inline-block bg-white text-amber-800 font-bold px-8 py-3 rounded-lg hover:bg-amber-50 transition-transform hover:scale-105">Request Pitch Deck</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white py-6">
+        <div class="container mx-auto px-6 text-center text-sm text-stone-500">
+            &copy; 2025 Novixel Coffee Solutions. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        const tierData = {
+            starter: {
+                initial: { revenue: 150, costs: 120, profit: 30, labels: ['Machine', 'Pods', 'Creamer', 'Sugar', 'Service/Refills'] , costData: [50, 25, 10, 10, 25] },
+                ongoing: { revenue: 150, costs: 70, profit: 80, labels: ['Pods', 'Creamer', 'Sugar', 'Service/Refills'], costData: [25, 10, 10, 25] }
+            },
+            business: {
+                initial: { revenue: 300, costs: 240, profit: 60, labels: ['Machine', 'Pods', 'Creamer', 'Sugar', 'Service/Refills'], costData: [100, 50, 20, 20, 50] },
+                ongoing: { revenue: 300, costs: 140, profit: 160, labels: ['Pods', 'Creamer', 'Sugar', 'Service/Refills'], costData: [50, 20, 20, 50] }
+            },
+            premium: {
+                initial: { revenue: 1000, costs: 850, profit: 150, labels: ['Machine', 'Premium Beans', 'Milk/Alt', 'Syrups', 'Service/Refills'], costData: [600, 100, 50, 25, 75] },
+                ongoing: { revenue: 1000, costs: 250, profit: 750, labels: ['Premium Beans', 'Milk/Alt', 'Syrups', 'Service/Refills'], costData: [100, 50, 25, 75] }
+            }
+        };
+
+        let currentTier = 'starter';
+        let isOngoing = false;
+
+        const ctx = document.getElementById('profitabilityChart').getContext('2d');
+        let profitabilityChart;
+
+        function createChart(data) {
+            const chartData = {
+                labels: ['Total Revenue', 'Total Costs', 'Net Profit'],
+                datasets: [{
+                    label: 'Amount ($)',
+                    data: [data.revenue, data.costs, data.profit],
+                    backgroundColor: [
+                        'rgba(161, 98, 7, 0.2)',
+                        'rgba(239, 68, 68, 0.2)',
+                        'rgba(22, 163, 74, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(161, 98, 7, 1)',
+                        'rgba(239, 68, 68, 1)',
+                        'rgba(22, 163, 74, 1)'
+                    ],
+                    borderWidth: 2,
+                    borderRadius: 5,
+                }]
+            };
+
+            const config = {
+                type: 'bar',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+                                    }
+                                    return label;
+                                }
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: `Financials: ${currentTier.charAt(0).toUpperCase() + currentTier.slice(1)} Tier - ${isOngoing ? 'Ongoing Months' : 'Initial Month'}`,
+                            font: {
+                                size: 16
+                            },
+                            padding: {
+                                bottom: 20
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value, index, values) {
+                                    return '$' + value;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+            
+            if (profitabilityChart) {
+                profitabilityChart.destroy();
+            }
+            profitabilityChart = new Chart(ctx, config);
+        }
+
+        function updateChart() {
+            const monthType = isOngoing ? 'ongoing' : 'initial';
+            const data = tierData[currentTier][monthType];
+            createChart(data);
+        }
+
+        const tierButtons = document.querySelectorAll('.tier-btn');
+        tierButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                tierButtons.forEach(btn => {
+                    btn.classList.remove('bg-amber-800', 'text-white');
+                    btn.classList.add('bg-stone-200', 'text-stone-700');
+                });
+                button.classList.add('bg-amber-800', 'text-white');
+                button.classList.remove('bg-stone-200', 'text-stone-700');
+                
+                currentTier = button.dataset.tier;
+                updateChart();
+            });
+        });
+
+        const monthToggle = document.getElementById('month-toggle');
+        monthToggle.addEventListener('change', (event) => {
+            isOngoing = event.target.checked;
+            updateChart();
+        });
+
+        updateChart();
+
+    </script>
+</body>
+</html>
