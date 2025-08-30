@@ -1,4 +1,6 @@
 // Dark mode toggle
+// Global subject prefix for all mailto links/forms. Change this one value to adjust.
+window.MAIL_SUBJECT_PREFIX = '[SITE]';
 function setInitialDarkMode() {
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.body.classList.add('dark-mode');
@@ -29,6 +31,39 @@ function toggleDarkMode(event) {
 
 // Initialize dark mode on page load
 window.addEventListener('DOMContentLoaded', setInitialDarkMode);
+
+// Enhance mailto forms to inject a subject prefix and body content
+function initContactForms() {
+    var forms = document.querySelectorAll('form[action^="mailto:"]');
+    forms.forEach(function(form){
+        if (form.__mailtoEnhanced) return; // avoid double binding
+        form.__mailtoEnhanced = true;
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+            var action = form.getAttribute('action') || '';
+            var toMatch = action.match(/mailto:([^?]+)/i);
+            var to = toMatch ? toMatch[1] : 'novixel@hotmail.com';
+            var prefix = window.MAIL_SUBJECT_PREFIX || '';
+            var subjectInput = form.querySelector('[name="subject"]');
+            var rawSubject = (subjectInput ? subjectInput.value : 'Inquiry').trim() || 'Inquiry';
+            var subject = (prefix ? prefix + ' ' : '') + rawSubject;
+            var name = (form.querySelector('[name="name"]') || {}).value || '';
+            var email = (form.querySelector('[name="email"]') || {}).value || '';
+            var message = (form.querySelector('[name="message"]') || {}).value || '';
+            function enc(v){ return encodeURIComponent(v); }
+            var bodyLines = [];
+            if (name) bodyLines.push('Name: ' + name);
+            if (email) bodyLines.push('Email: ' + email);
+            bodyLines.push('');
+            if (message) bodyLines.push(message);
+            var body = enc(bodyLines.join('\r\n'));
+            var mailto = 'mailto:' + to + '?subject=' + enc(subject) + '&body=' + body;
+            window.location.href = mailto;
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initContactForms);
 
 // Tab navigation
 function openTab(evt, tabName) {
