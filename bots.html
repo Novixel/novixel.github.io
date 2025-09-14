@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaTrade – The Future of Automated Crypto Trading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* slate-900 */
+        }
+        .bg-grid-slate-800 {
+            background-image: linear-gradient(white 2px, transparent 2px), linear-gradient(90deg, white 2px, transparent 2px), linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px);
+            background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+            background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+            background-color: #1e293b; /* slate-800 */
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="text-slate-300">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-900/60 backdrop-blur-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white tracking-tight">
+                Nova<span class="text-cyan-400">Trade</span>
+            </a>
+            <p class="text-sm text-slate-400 hidden sm:block">Developed by Novixel</p>
+            <a href="#cta" class="hidden sm:inline-block bg-cyan-500 text-white font-semibold px-4 py-2 rounded-lg hover:bg-cyan-600 transition-colors">
+                Investor Deck
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative pt-32 pb-20 md:pt-48 md:pb-32 text-center text-white bg-slate-900 overflow-hidden">
+            <div class="absolute inset-0 bg-grid-slate-800 [mask-image:linear-gradient(to_bottom,white,transparent)] opacity-20"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tighter mb-4 leading-tight">
+                    Automated Crypto Trading, <br class="hidden md:block" /> Powered by <span class="text-cyan-400">AI</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-8">
+                    NovaTrade lets you run multiple algorithmic trading bots across top exchanges — track performance in real time from one sleek dashboard.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="#cta" class="w-full sm:w-auto bg-cyan-500 text-white font-bold px-8 py-3 rounded-lg hover:bg-cyan-600 transition-all transform hover:scale-105 shadow-lg shadow-cyan-500/20">
+                        Download Investor Deck
+                    </a>
+                    <a href="#cta" class="w-full sm:w-auto bg-slate-700 text-slate-100 font-bold px-8 py-3 rounded-lg hover:bg-slate-600 transition-all transform hover:scale-105">
+                        Join as an Early Backer
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Problem -->
+        <section class="py-20 bg-slate-900">
+            <div class="container mx-auto px-6 scroll-reveal">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">The Problem</h2>
+                    <p class="text-slate-400 mt-2 max-w-2xl mx-auto">Manual trading is failing to keep pace with the crypto market's velocity.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="bg-slate-800 p-8 rounded-xl border border-slate-700">
+                        <!-- Icon: AlertTriangle -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-400 mx-auto mb-4"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        <h3 class="text-xl font-semibold text-white mb-2">Stressful & Emotional</h3>
+                        <p class="text-slate-400">Manual crypto trading is stressful, emotional, and time-consuming.</p>
+                    </div>
+                    <div class="bg-slate-800 p-8 rounded-xl border border-slate-700">
+                        <!-- Icon: Clock -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400 mx-auto mb-4"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        <h3 class="text-xl font-semibold text-white mb-2">Impossible to Monitor 24/7</h3>
+                        <p class="text-slate-400">Even professional traders can’t monitor the volatile markets around the clock.</p>
+                    </div>
+                    <div class="bg-slate-800 p-8 rounded-xl border border-slate-700">
+                        <!-- Icon: Layers -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-400 mx-auto mb-4"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                        <h3 class="text-xl font-semibold text-white mb-2">Overly Complex Tools</h3>
+                        <p class="text-slate-400">Most existing platforms are overly complex or lack transparency.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Solution -->
+        <section class="py-20 bg-slate-900/50">
+            <div class="container mx-auto px-6 scroll-reveal">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">The Solution: NovaTrade</h2>
+                     <p class="text-slate-400 mt-2 max-w-2xl mx-auto">An all-in-one platform for automated, intelligent crypto trading.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-cyan-500/10 p-3 rounded-lg border border-cyan-500/20"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg></div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-white">Smart Trading Bots</h3>
+                            <p class="text-slate-400">Momentum, Arbitrage, Scalping, DCA, and Grid strategies.</p>
+                        </div>
+                    </div>
+                     <!-- Feature 2 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-cyan-500/10 p-3 rounded-lg border border-cyan-500/20"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-white">Real-Time Dashboard</h3>
+                            <p class="text-slate-400">Monitor trades, profits, and win rates at a glance.</p>
+                        </div>
+                    </div>
+                     <!-- Feature 3 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-cyan-500/10 p-3 rounded-lg border border-cyan-500/20"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg></div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-white">Multi-Exchange Support</h3>
+                            <p class="text-slate-400">Connect your accounts to the world’s largest exchanges.</p>
+                        </div>
+                    </div>
+                     <!-- Feature 4 -->
+                    <div class="flex items-start space-x-4">
+                         <div class="bg-cyan-500/10 p-3 rounded-lg border border-cyan-500/20"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-white">Scalable Setup</h3>
+                            <p class="text-slate-400">Run multiple bots at once, optimized for performance.</p>
+                        </div>
+                    </div>
+                     <!-- Feature 5 -->
+                    <div class="flex items-start space-x-4">
+                         <div class="bg-cyan-500/10 p-3 rounded-lg border border-cyan-500/20"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-white">Future Community</h3>
+                            <p class="text-slate-400">Built-in chat and strategy sharing (roadmap feature).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Business Model & Market -->
+        <section class="py-20 bg-slate-900">
+             <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center scroll-reveal">
+                <!-- Business Model -->
+                <div>
+                    <h2 class="text-3xl font-bold text-white tracking-tight mb-8">Business Model</h2>
+                    <div class="space-y-6">
+                        <div class="bg-slate-800 p-6 rounded-lg flex items-center space-x-4 border border-slate-700">
+                            <div class="bg-cyan-500/10 p-3 rounded-lg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+                            <div>
+                                <h3 class="font-semibold text-white">Subscription-Based</h3>
+                                <p class="text-slate-400">$1,000/month per user tier.</p>
+                            </div>
+                        </div>
+                        <div class="bg-slate-800 p-6 rounded-lg flex items-center space-x-4 border border-slate-700">
+                            <div class="bg-cyan-500/10 p-3 rounded-lg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
+                            <div>
+                                <h3 class="font-semibold text-white">Profit Share</h3>
+                                <p class="text-slate-400">0.1% of profits generated by the bots.</p>
+                            </div>
+                        </div>
+                         <div class="bg-slate-800 p-6 rounded-lg flex items-center space-x-4 border border-slate-700">
+                            <div class="bg-cyan-500/10 p-3 rounded-lg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg></div>
+                            <div>
+                                <h3 class="font-semibold text-white">High Margins</h3>
+                                <p class="text-slate-400">Lean infrastructure (cloud + CPUs for Python bots).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Market Opportunity -->
+                <div>
+                     <h2 class="text-3xl font-bold text-white tracking-tight mb-8">Market Opportunity</h2>
+                     <div class="space-y-6">
+                        <div class="bg-slate-800 p-6 rounded-lg border border-slate-700">
+                            <p class="text-4xl font-extrabold text-cyan-400 mb-2">$1T+</p>
+                            <h3 class="font-semibold text-white">Daily Crypto Trading Volume</h3>
+                        </div>
+                        <div class="bg-slate-800 p-6 rounded-lg border border-slate-700">
+                            <p class="text-4xl font-extrabold text-cyan-400 mb-2">60-70%</p>
+                            <h3 class="font-semibold text-white">Of traditional markets are algorithmic. Crypto is next.</h3>
+                        </div>
+                         <div class="bg-slate-800 p-6 rounded-lg border border-slate-700">
+                             <p class="text-4xl font-extrabold text-cyan-400 mb-2">Massive</p>
+                            <h3 class="font-semibold text-white">Demand for automation, simplicity, and transparency.</h3>
+                        </div>
+                     </div>
+                </div>
+             </div>
+        </section>
+
+        <!-- Roadmap -->
+        <section class="py-20 bg-slate-900/50">
+            <div class="container mx-auto px-6 scroll-reveal">
+                 <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">Roadmap</h2>
+                     <p class="text-slate-400 mt-2 max-w-2xl mx-auto">Our strategic plan for development and growth.</p>
+                </div>
+                <div class="relative">
+                    <!-- The vertical line -->
+                    <div class="absolute left-1/2 -translate-x-1/2 w-1 h-full bg-slate-700 rounded-full hidden md:block"></div>
+                    
+                    <!-- Roadmap Items -->
+                    <div class="space-y-16 md:space-y-0 md:grid grid-cols-2 gap-16">
+                        <!-- Item 1: Alpha -->
+                        <div class="flex md:justify-end">
+                             <div class="md:text-right md:w-5/6 relative">
+                                <div class="absolute -left-4 md:left-auto md:-right-4 top-1 w-8 h-8 bg-cyan-500 rounded-full border-4 border-slate-900/50"></div>
+                                <p class="text-cyan-400 font-semibold mb-1">Alpha (Now)</p>
+                                <h3 class="text-xl font-bold text-white mb-2">Core Bots Operational</h3>
+                                <p class="text-slate-400">Live testing is underway with our foundational set of trading algorithms and dashboard features.</p>
+                            </div>
+                        </div>
+                        <div></div> <!-- Empty column for spacing -->
+                        
+                        <div></div><!-- Empty column for spacing -->
+                        <!-- Item 2: Beta -->
+                        <div class="flex md:justify-start">
+                             <div class="md:w-5/6 relative">
+                                <div class="absolute -left-4 md:-left-4 top-1 w-8 h-8 bg-cyan-500 rounded-full border-4 border-slate-900/50"></div>
+                                <p class="text-cyan-400 font-semibold mb-1">Beta (2026)</p>
+                                <h3 class="text-xl font-bold text-white mb-2">Expansion & Community</h3>
+                                <p class="text-slate-400">Expanded exchange integrations, plus the launch of community features for strategy sharing.</p>
+                            </div>
+                        </div>
+
+                         <!-- Item 3: Public Launch -->
+                        <div class="flex md:justify-end">
+                             <div class="md:text-right md:w-5/6 relative">
+                                <div class="absolute -left-4 md:left-auto md:-right-4 top-1 w-8 h-8 bg-cyan-500 rounded-full border-4 border-slate-900/50"></div>
+                                <p class="text-cyan-400 font-semibold mb-1">Public Launch</p>
+                                <h3 class="text-xl font-bold text-white mb-2">Scale & Onboard</h3>
+                                <p class="text-slate-400">Scalable subscription rollout and formal investor onboarding process.</p>
+                            </div>
+                        </div>
+                        <div></div> <!-- Empty column for spacing -->
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Novixel -->
+        <section class="py-20 bg-slate-900">
+            <div class="container mx-auto px-6 text-center max-w-3xl scroll-reveal">
+                 <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">About Novixel</h2>
+                 <p class="mt-4 text-lg text-slate-400">
+                    NovaTrade is built by Novixel, a developer-driven company specializing in automation, AI, and fintech solutions. We are passionate about creating powerful tools that are both accessible and transparent.
+                </p>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section id="cta" class="py-20 bg-cyan-900/20">
+            <div class="container mx-auto px-6 text-center scroll-reveal">
+                 <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">Shape the Future of Automated Trading</h2>
+                <p class="text-slate-300 max-w-2xl mx-auto mt-4 mb-8">
+                     We’re seeking early angel and strategic investors to join NovaTrade in shaping the future of automated crypto trading.
+                </p>
+                 <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="#" class="w-full sm:w-auto bg-cyan-500 text-white font-bold px-8 py-3 rounded-lg hover:bg-cyan-600 transition-all transform hover:scale-105 shadow-lg shadow-cyan-500/20">
+                        Request Investor Deck
+                    </a>
+                    <a href="#" class="w-full sm:w-auto bg-slate-700 text-slate-100 font-bold px-8 py-3 rounded-lg hover:bg-slate-600 transition-all transform hover:scale-105">
+                        Apply as Early Backer
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800">
+        <div class="container mx-auto px-6 py-8 text-center text-slate-500">
+            <p>&copy; 2025 NovaTrade, by Novixel. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple scroll reveal animation
+        document.addEventListener("DOMContentLoaded", function() {
+            const revealElements = document.querySelectorAll('.scroll-reveal');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Optional: unobserve after revealing to save resources
+                        // observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            revealElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
