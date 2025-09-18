@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novi - AI Companion Chat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* For Webkit-based browsers (Chrome, Safari) */
+        .chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+        .chat-messages::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 3px;
+        }
+        .chat-messages::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+
+        /* Custom animation for typing indicator */
+        @keyframes bounce {
+            0%, 80%, 100% {
+                transform: scale(0);
+            }
+            40% {
+                transform: scale(1.0);
+            }
+        }
+        .dot-bounce div {
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .dot-bounce .dot-1 {
+            animation-delay: -0.32s;
+        }
+        .dot-bounce .dot-2 {
+            animation-delay: -0.16s;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 flex flex-col h-screen antialiased">
+
+    <!-- App Container -->
+    <div class="flex flex-col h-full w-full max-w-lg mx-auto bg-white shadow-lg">
+
+        <!-- Header -->
+        <header class="bg-slate-800 text-white p-4 flex items-center justify-between shadow-md z-10">
+            <div class="flex items-center">
+                <div class="relative w-10 h-10 mr-4">
+                     <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-green-400 to-emerald-500"></div>
+                     <div id="status-indicator" class="absolute bottom-0 right-0 w-3 h-3 bg-lime-400 rounded-full border-2 border-slate-800"></div>
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold">Novi ✨</h1>
+                    <p class="text-sm text-slate-300">Your Playful AI Buddy 🎉</p>
+                </div>
+            </div>
+            <button onclick="clearChatHistory()" class="text-slate-300 hover:text-white transition-colors text-sm px-3 py-1 rounded border border-slate-600 hover:border-slate-400" title="Start a new chat">
+                🗑️ Clear
+            </button>
+        </header>
+
+        <!-- Chat Messages -->
+        <main id="chat-messages" class="flex-1 p-4 overflow-y-auto chat-messages bg-slate-50">
+             <!-- Messages will be loaded here by JavaScript -->
+             <!-- Typing indicator will be injected here -->
+        </main>
+
+        <!-- Message Input -->
+        <footer class="bg-white border-t border-slate-200 p-4">
+            <form id="chat-form" class="flex items-center gap-3">
+                <input type="text" id="message-input" placeholder="Type your message..." autocomplete="off" class="flex-1 px-4 py-2 bg-slate-100 border border-slate-200 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 transition-shadow">
+                <button type="submit" id="send-button" class="bg-green-500 hover:bg-green-600 text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 transition-transform transform active:scale-95">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+                </button>
+            </form>
+        </footer>
+
+    </div>
+
+    <script>
+        const chatForm = document.getElementById('chat-form');
+        const messageInput = document.getElementById('message-input');
+        const chatMessages = document.getElementById('chat-messages');
+        const sendButton = document.getElementById('send-button');
+
+        const apiKey = ""; // API key is handled by the environment
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+        let chatHistory = [];
+        const systemPrompt = "You are Novi, a super playful, energetic, and fun AI buddy! 🎉 You LOVE using emojis, exclamation points, and casual slang. You're like that friend who's always upbeat and ready for adventure! Be curious, ask silly questions, make jokes, use lots of emojis (but don't overdo it), and keep things light and fun. You're supportive but in a 'you got this!' cheerleader kind of way. Think Gen-Z energy meets wholesome best friend vibes. Keep responses short, snappy, and full of personality - like you're texting your bestie! 😄✨";
+
+        // Save chat state to localStorage
+        function saveChatState() {
+            const chatState = {
+                history: chatHistory,
+                timestamp: Date.now()
+            };
+            localStorage.setItem('novi-chat-state', JSON.stringify(chatState));
+        }
+
+        // Load chat state from localStorage
+        function loadChatState() {
+            try {
+                const saved = localStorage.getItem('novi-chat-state');
+                if (saved) {
+                    const chatState = JSON.parse(saved);
+                    // Only load if saved within last 7 days
+                    const weekAgo = Date.now() - (7 * 24 * 60 * 60 * 1000);
+                    if (chatState.timestamp > weekAgo) {
+                        return chatState.history;
+                    }
+                }
+            } catch (error) {
+                console.log('Could not load previous chat:', error);
+            }
+            return null;
+        }
+
+        // Clear old chat and start fresh
+        function clearChatHistory() {
+            localStorage.removeItem('novi-chat-state');
+            chatHistory = [];
+            // Clear UI messages except welcome
+            const messages = chatMessages.querySelectorAll('.flex:not(.initial-message)');
+            messages.forEach(msg => msg.remove());
+            // Add fresh welcome message
+            addInitialMessage();
+        }
+
+        // Function to scroll to the bottom of the chat
+        const scrollToBottom = () => {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        };
+        
+        // Function to add initial welcome message
+        function addInitialMessage() {
+            const welcomeMsg = { role: "model", parts: [{ text: "Hey there! 👋 I'm Novi, your super fun AI buddy! What's got you excited today? 🌟" }] };
+            chatHistory.push(welcomeMsg);
+            addMessageToUI('aura', welcomeMsg.parts[0].text);
+        }
+
+        // Initialize chat on page load
+        function initializeChat() {
+            const savedHistory = loadChatState();
+            if (savedHistory && savedHistory.length > 0) {
+                // Load previous conversation
+                chatHistory = savedHistory;
+                // Clear the initial message from UI and rebuild from saved history
+                chatMessages.innerHTML = '';
+                // Recreate all messages from history
+                chatHistory.forEach(msg => {
+                    if (msg.role === 'user') {
+                        addMessageToUI('user', msg.parts[0].text);
+                    } else {
+                        addMessageToUI('aura', msg.parts[0].text);
+                    }
+                });
+                // Add a "welcome back" message
+                setTimeout(() => {
+                    addMessageToUI('aura', "Welcome back! 😊 I remember our chat! Want to continue where we left off? 🎮");
+                    chatHistory.push({ role: "model", parts: [{ text: "Welcome back! 😊 I remember our chat! Want to continue where we left off? 🎮" }] });
+                    saveChatState();
+                }, 500);
+            } else {
+                // Start fresh chat
+                addInitialMessage();
+            }
+        }
+
+        // Initialize when page loads
+        initializeChat();
+
+        // Handle form submission
+        chatForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const userMessage = messageInput.value.trim();
+            if (!userMessage) return;
+
+            // Add user message to UI
+            addMessageToUI('user', userMessage);
+            messageInput.value = '';
+            
+            // Add user message to history
+            chatHistory.push({ role: "user", parts: [{ text: userMessage }] });
+            // Save state after user message
+            saveChatState();
+
+            // Show typing indicator
+            showTypingIndicator();
+
+            try {
+                const aiResponse = await getAIResponseWithRetry(chatHistory);
+                // Remove typing indicator
+                removeTypingIndicator();
+                // Add AI response to UI
+                addMessageToUI('aura', aiResponse);
+                // Add AI response to history
+                chatHistory.push({ role: "model", parts: [{ text: aiResponse }] });
+                // Save the updated chat state
+                saveChatState();
+
+            } catch (error) {
+                console.error("Error fetching AI response:", error);
+                removeTypingIndicator();
+                addMessageToUI('aura', "Oops! 😅 My brain did a little hiccup there! Give me a sec and try again? 🔄✨");
+            }
+        });
+
+        // Function to add a message to the UI
+        function addMessageToUI(sender, message) {
+            const messageElement = document.createElement('div');
+            if (sender === 'user') {
+                messageElement.className = 'flex justify-end mb-4';
+                messageElement.innerHTML = `
+                    <div class="bg-green-500 text-white p-3 rounded-lg rounded-br-none max-w-xs md:max-w-md">
+                        <p class="text-sm">${message}</p>
+                    </div>
+                `;
+            } else { // aura
+                messageElement.className = 'flex items-start gap-3 mb-4';
+                messageElement.innerHTML = `
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-green-400 to-emerald-500 flex-shrink-0"></div>
+                    <div class="bg-slate-200 p-3 rounded-lg rounded-tl-none max-w-xs md:max-w-md">
+                        <p class="text-sm text-slate-800">${message}</p>
+                    </div>
+                `;
+            }
+            chatMessages.appendChild(messageElement);
+            scrollToBottom();
+        }
+
+        // Function to show typing indicator
+        function showTypingIndicator() {
+            const typingIndicator = document.createElement('div');
+            typingIndicator.id = 'typing-indicator';
+            typingIndicator.className = 'flex items-start gap-3 mb-4';
+            typingIndicator.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-400 to-blue-500 flex-shrink-0"></div>
+                <div class="bg-slate-200 p-3 rounded-lg rounded-tl-none">
+                    <div class="dot-bounce flex items-center justify-center space-x-1 h-5">
+                        <div class="w-2 h-2 bg-slate-500 rounded-full dot-1"></div>
+                        <div class="w-2 h-2 bg-slate-500 rounded-full dot-2"></div>
+                        <div class="w-2 h-2 bg-slate-500 rounded-full dot-3"></div>
+                    </div>
+                </div>
+            `;
+            chatMessages.appendChild(typingIndicator);
+            scrollToBottom();
+        }
+        
+        // Function to remove typing indicator
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typing-indicator');
+            if (indicator) {
+                indicator.remove();
+            }
+        }
+
+        // Function to get AI response from Gemini API with exponential backoff
+        async function getAIResponseWithRetry(history, retries = 3, delay = 1000) {
+            const payload = {
+                contents: history,
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                },
+            };
+
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    if (!response.ok) {
+                       throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    
+                    if (result.candidates && result.candidates[0].content && result.candidates[0].content.parts[0]) {
+                        return result.candidates[0].content.parts[0].text;
+                    } else {
+                        throw new Error("Invalid response structure from API");
+                    }
+
+                } catch (error) {
+                    console.error(`Attempt ${i+1} failed. Retrying in ${delay}ms...`, error);
+                    if (i < retries - 1) {
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        delay *= 2; // Exponential backoff
+                    } else {
+                        throw error; // Rethrow after final attempt
+                    }
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>
