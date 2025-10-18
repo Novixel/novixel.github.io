@@ -1,34 +1,191 @@
-# Novixel's Portfolio
+# Novixel Portfolio - Multi-Division Technology Company
 
-This repository contains the source code for Novixel's portfolio website.
+> **Novixel** - Your complete technology solution provider based in Dawson Creek, BC
 
-## Structure
+This repository contains the source code for Novixel's comprehensive portfolio website, showcasing multiple technology service divisions and interactive projects.
 
-The workspace consists of the following files:
+## 🏢 Company Structure
 
-- `index.html`: This is the main HTML file that represents the structure of the website.
-- `style.css`: This file contains all the CSS styles used across the website.
-- `script.js`: This file contains the JavaScript code for the website's interactivity.
-- `README.md`: This file provides an overview of the project.
-- `.gitattributes`: This file is used by Git to determine how certain files should be treated.
-- `CNAME`: This file is used by GitHub Pages to determine the custom domain for the website.
+**Novixel** is the parent company with specialized divisions:
 
-## Features
+### Our Divisions
 
-The website includes the following features:
+1. **Novixel Computer Solutions** (`index.html`, `idte.html`)
+   - IT support and repair services
+   - Mobile tech solutions
+   - Smart home installations
 
-- Dark mode toggle
-- Tabbed navigation
-- Responsive design
+2. **Novixel Software Solutions** (`tradingbots.html`)
+   - Custom software development
+   - Automation scripts
+   - API wrappers
 
-## Running Locally
+3. **Novixel Trading Solutions**
+   - **NovaTrade** (`bots.html`) - Full-featured crypto trading platform
+   - **NovalLite** (`novalite.html`) - Lightweight trading bot interface
+   
+4. **Novixel Coffee Solutions** (`coffee.html`)
+   - Premium office coffee services
+   - Business plan showcase
 
-To run the website locally, simply open the `index.html` file in your web browser.
+5. **Novixel AI Solutions** (`aicom.html`)
+   - AI companion chat interface
+   - Intelligent automation tools
 
-## Contributing
+## 🎨 Design System
 
-Contributions are welcome. Please open an issue to discuss your idea or submit a Pull Request.
+### Styling Architecture
 
-## License
+The site uses **two distinct styling systems**:
 
-This project is open source and available under the [MIT License](LICENSE).
+1. **Legacy System** (Primary)
+   - Files: `style.css` + `script.js`
+   - Pages: `Novixel.html`, `calculator.html`, `game.html`, `tradingbots.html`, `about.html`, `dev.html`
+   - Features: Dark mode, tabbed navigation, unified footer
+
+2. **Modern System**
+   - Files: `styleid.css` + `scriptid.js`  
+   - Pages: `index.html`, `idte.html`
+   - Features: Responsive design, mobile hamburger menu
+
+3. **Tailwind Standalone**
+   - Pages: `bots.html`, `novalite.html`, `coffee.html`, `aicom.html`
+   - Custom CSS variables with Tailwind CDN
+
+### Color Themes
+
+- **Green** (Computer Solutions): `#009f33`
+- **Gold** (NovaTrade): `#D4AF37`
+- **Lime** (NovalLite): `#7FFF00`
+- **Brown** (Coffee): `#8B4513`
+- **Slate** (AI Solutions): `#4A5568`
+
+## ✨ Features
+
+### Interactive Elements
+- 🌓 **Dark mode toggle** with OS preference detection
+- 📑 **Tabbed navigation** for organized content
+- 📱 **Responsive design** for all device sizes
+- ✉️ **Enhanced mailto forms** with auto-formatting
+- 🎮 **Interactive game** (endless jump game)
+- 🔢 **Web calculator** with dark mode
+- 🎯 **Smooth scroll** behavior
+- 💫 **Hover animations** and transitions
+- 🎨 **CSS animations** on page load
+
+### Polish & UX Enhancements
+- Button hover effects with glow
+- Form input focus animations
+- Social link scale transforms
+- Tab button shine effects
+- Logo hover rotation
+- Smooth page transitions
+- Ripple effects on clicks
+
+## 📂 Project Structure
+
+```
+novixel.github.io/
+├── Novixel.html          # Main portfolio hub (PRIMARY)
+├── index.html            # Computer Solutions landing
+├── idte.html             # Alt Computer Solutions page
+├── bots.html             # NovaTrade investor page
+├── novalite.html         # NovalLite trading platform ⚡ NEW
+├── coffee.html           # Coffee Solutions business plan
+├── aicom.html            # AI companion interface
+├── tradingbots.html      # Trading bots showcase
+├── calculator.html       # Web calculator utility
+├── game.html             # Endless jump game
+├── dev.html              # Project showcase
+├── about.html            # About page
+├── style.css             # Legacy styles (enhanced)
+├── styleid.css           # Modern styles
+├── script.js             # Legacy JavaScript
+├── scriptid.js           # Modern JavaScript
+├── investor-deck.md      # NovaTrade investor presentation
+├── CONSOLIDATION_SUMMARY.md  # Change log
+└── .github/
+    └── copilot-instructions.md  # AI agent guidelines
+
+```
+
+## 🚀 Getting Started
+
+### Running Locally
+
+Simply open any HTML file in your web browser:
+
+```bash
+# Open the main portfolio page
+start Novixel.html
+
+# Or open Computer Solutions landing
+start index.html
+
+# Or explore NovalLite
+start novalite.html
+```
+
+No build process required - pure HTML/CSS/JS!
+
+### Development
+
+The site is designed for GitHub Pages deployment:
+
+1. Push changes to `main` branch
+2. GitHub Pages automatically deploys
+3. Custom domain: `novixel.ca` (via CNAME)
+
+## 🎯 Key Pages
+
+### Novixel.html - Main Hub
+The primary portfolio page featuring:
+- Tabbed content (Home, About, Skills, Services)
+- Unified footer with all divisions
+- Dark mode support
+- Custom branding
+
+### novalite.html - NEW Trading Platform
+Lightweight cryptocurrency trading bot interface featuring:
+- Live bot status displays
+- Strategy configuration cards
+- Real-time P/L tracking
+- Animated background
+- Lime green theme (#7FFF00)
+- Interactive buttons with ripple effects
+
+### bots.html - NovaTrade Investor Page
+Comprehensive trading platform showcase:
+- Multi-strategy trading
+- Investor application
+- Gold theme (#D4AF37)
+- Professional layout
+
+## 🤝 Contributing
+
+Contributions welcome! Please:
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## 📞 Contact
+
+- **Email**: novixel@hotmail.com
+- **Phone**: (250) 219-4276
+- **Location**: Dawson Creek, BC
+- **Website**: novixel.ca
+
+## 📱 Social Media
+
+- Instagram: [@novixel](https://instagram.com/novixel)
+- Twitter/X: [@OfficialNovixel](https://x.com/OfficialNovixel)
+- YouTube: [Novixel](https://www.youtube.com/c/Novixel)
+
+## 📄 License
+
+© 2025 Novixel. All rights reserved.
+
+---
+
+**Built with** ❤️ **in Dawson Creek, BC**

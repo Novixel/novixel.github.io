@@ -7,22 +7,40 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            /* Dark Theme Color Palette */
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --bg-darker: #0a0f1e;
+            --border-color: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            
+            /* Accent Colors */
+            --accent-primary: #10b981;
+            --accent-hover: #059669;
+            --accent-light: #34d399;
+        }
+        
         body {
             font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
         }
-        /* For Webkit-based browsers (Chrome, Safari) */
+        
+        /* Custom Scrollbar */
         .chat-messages::-webkit-scrollbar {
             width: 6px;
         }
         .chat-messages::-webkit-scrollbar-track {
-            background: #f1f5f9;
+            background: var(--bg-card);
         }
         .chat-messages::-webkit-scrollbar-thumb {
-            background: #94a3b8;
+            background: var(--border-color);
             border-radius: 3px;
         }
         .chat-messages::-webkit-scrollbar-thumb:hover {
-            background: #64748b;
+            background: var(--text-muted);
         }
 
         /* Custom animation for typing indicator */
@@ -43,44 +61,162 @@
         .dot-bounce .dot-2 {
             animation-delay: -0.16s;
         }
+        
+        /* Password Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.75);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            backdrop-filter: blur(4px);
+        }
+        
+        .modal-content {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .password-input {
+            width: 100%;
+            padding: 10px 14px;
+            background-color: var(--bg-darker);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+        
+        .password-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        
+        .modal-button {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        
+        .modal-button-primary {
+            background-color: var(--accent-primary);
+            color: white;
+            border: none;
+        }
+        
+        .modal-button-primary:hover {
+            background-color: var(--accent-hover);
+        }
+        
+        .modal-button-secondary {
+            background-color: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+        
+        .modal-button-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
     </style>
 </head>
-<body class="bg-slate-100 flex flex-col h-screen antialiased">
+<body class="antialiased">
+
+    <!-- Password Modal -->
+    <div id="passwordModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h2 class="text-xl font-bold mb-2" style="color: var(--text-primary);">🔑 Welcome to Novi!</h2>
+            <p class="text-sm mb-4" style="color: var(--text-secondary);">Enter your Google Gemini API key or demo master password:</p>
+            
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-2" style="color: var(--text-secondary);">API Key / Password:</label>
+                <input type="password" id="passwordInput" class="password-input" placeholder="Enter key or password..." autocomplete="off">
+                <button onclick="togglePasswordVisibility()" class="text-xs mt-2" style="color: var(--text-muted);">
+                    <span id="toggleIcon">👁️ Show</span>
+                </button>
+            </div>
+            
+            <p class="text-xs mb-4" style="color: var(--text-muted);">
+                Don't have an API key? Get one free at:<br>
+                <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color: var(--accent-primary);" class="hover:underline">aistudio.google.com/app/apikey</a>
+            </p>
+            
+            <div class="flex gap-2">
+                <button onclick="submitPassword()" class="modal-button modal-button-primary flex-1">
+                    Continue
+                </button>
+                <button onclick="closeModal()" class="modal-button modal-button-secondary">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- App Container -->
-    <div class="flex flex-col h-full w-full max-w-lg mx-auto bg-white shadow-lg">
+    <div class="flex flex-col h-screen w-full max-w-lg mx-auto shadow-2xl" style="background-color: var(--bg-card);">
 
         <!-- Header -->
-        <header class="bg-slate-800 text-white p-4 flex items-center justify-between shadow-md z-10">
+        <header class="text-white p-4 flex items-center justify-between shadow-lg z-10" style="background-color: var(--bg-darker); border-bottom: 1px solid var(--border-color);">
             <div class="flex items-center">
                 <div class="relative w-10 h-10 mr-4">
-                     <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-green-400 to-emerald-500"></div>
-                     <div id="status-indicator" class="absolute bottom-0 right-0 w-3 h-3 bg-lime-400 rounded-full border-2 border-slate-800"></div>
+                     <div class="w-10 h-10 rounded-full" style="background: linear-gradient(135deg, var(--accent-primary), var(--accent-light));"></div>
+                     <div id="status-indicator" class="absolute bottom-0 right-0 w-3 h-3 rounded-full border-2" style="background-color: var(--accent-light); border-color: var(--bg-darker);"></div>
                 </div>
                 <div>
-                    <h1 class="text-lg font-semibold">Novi ✨</h1>
-                    <p class="text-sm text-slate-300">Your Playful AI Buddy 🎉</p>
+                    <h1 class="text-lg font-semibold" style="color: var(--text-primary);">Novi ✨</h1>
+                    <p class="text-sm" style="color: var(--text-secondary);">Your Playful AI Buddy 🎉</p>
                 </div>
             </div>
-            <button onclick="clearChatHistory()" class="text-slate-300 hover:text-white transition-colors text-sm px-3 py-1 rounded border border-slate-600 hover:border-slate-400" title="Start a new chat">
-                🗑️ Clear
-            </button>
+            <div class="flex gap-2">
+                <button onclick="changeApiKey()" class="transition-colors text-sm px-3 py-1 rounded border hover:bg-opacity-10 hover:bg-white" style="color: var(--text-secondary); border-color: var(--border-color);" title="Change API Key">
+                    🔑 Key
+                </button>
+                <button onclick="clearChatHistory()" class="transition-colors text-sm px-3 py-1 rounded border hover:bg-opacity-10 hover:bg-white" style="color: var(--text-secondary); border-color: var(--border-color);" title="Start a new chat">
+                    🗑️ Clear
+                </button>
+            </div>
         </header>
 
         <!-- Chat Messages -->
-        <main id="chat-messages" class="flex-1 p-4 overflow-y-auto chat-messages bg-slate-50">
+        <main id="chat-messages" class="flex-1 p-4 overflow-y-auto chat-messages" style="background-color: var(--bg-main);">
              <!-- Messages will be loaded here by JavaScript -->
              <!-- Typing indicator will be injected here -->
         </main>
 
         <!-- Message Input -->
-        <footer class="bg-white border-t border-slate-200 p-4">
+        <footer class="border-t p-4" style="background-color: var(--bg-card); border-color: var(--border-color);">
             <form id="chat-form" class="flex items-center gap-3">
-                <input type="text" id="message-input" placeholder="Type your message..." autocomplete="off" class="flex-1 px-4 py-2 bg-slate-100 border border-slate-200 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 transition-shadow">
-                <button type="submit" id="send-button" class="bg-green-500 hover:bg-green-600 text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 transition-transform transform active:scale-95">
+                <input type="text" id="message-input" placeholder="Type your message..." autocomplete="off" class="flex-1 px-4 py-2 border rounded-full focus:outline-none focus:ring-2 transition-shadow" style="background-color: var(--bg-darker); border-color: var(--border-color); color: var(--text-primary); --tw-ring-color: var(--accent-primary);">
+                <button type="submit" id="send-button" class="text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 transition-transform transform active:scale-95" style="background-color: var(--accent-primary);" onmouseover="this.style.backgroundColor='var(--accent-hover)'" onmouseout="this.style.backgroundColor='var(--accent-primary)'">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
                 </button>
             </form>
+            
+            <!-- Navigation Links -->
+            <div class="mt-3 pt-3 border-t text-center" style="border-color: var(--border-color);">
+                <p class="text-xs" style="color: var(--text-muted);">
+                    <a href="index.html" class="font-semibold hover:underline" style="color: var(--accent-primary);">Home</a> •
+                    <a href="Novixel.html" class="font-semibold hover:underline" style="color: var(--accent-primary);">Portfolio</a> •
+                    <a href="tradingbots.html" class="font-semibold hover:underline" style="color: var(--accent-primary);">Trading</a> •
+                    <a href="bots.html" class="font-semibold hover:underline" style="color: #D4AF37;">NovaTrade</a>
+                    <a href="novalite.html" class="font-semibold hover:underline" style="color: #7FFF00;">NovaLite</a>
+                </p>
+                <p class="text-xs mt-1" style="color: var(--text-muted);">&copy; 2025 Novixel. All rights reserved.</p>
+            </div>
         </footer>
 
     </div>
@@ -91,8 +227,125 @@
         const chatMessages = document.getElementById('chat-messages');
         const sendButton = document.getElementById('send-button');
 
-        const apiKey = ""; // API key is handled by the environment
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+        // ENCRYPTED DEMO KEY - Replace this with your encrypted key
+        // To generate: Use the console command: encryptKey("YOUR_API_KEY", "YOUR_MASTER_PASSWORD")
+        const ENCRYPTED_DEMO_KEY = "ETkWEiYSKXwDFj5ePgQIHQVHYzYqJBsFPUp5BDciFy8jW21jBTtU";
+        
+        function xorEncryptDecrypt(text, key) {
+            let result = '';
+            for (let i = 0; i < text.length; i++) {
+                result += String.fromCharCode(text.charCodeAt(i) ^ key.charCodeAt(i % key.length));
+            }
+            return result;
+        }
+        
+        function encryptKey(apiKey, masterPassword) {
+            const encrypted = xorEncryptDecrypt(apiKey, masterPassword);
+            return btoa(encrypted); // Base64 encode
+        }
+        
+        function decryptKey(encryptedKey, masterPassword) {
+            try {
+                const decoded = atob(encryptedKey); // Base64 decode
+                return xorEncryptDecrypt(decoded, masterPassword);
+            } catch (e) {
+                return null;
+            }
+        }
+        
+        // Helper function to set up your encrypted key (run in console)
+        window.setupDemoKey = function(apiKey, masterPassword) {
+            const encrypted = encryptKey(apiKey, masterPassword);
+            console.log("Add this to your code as ENCRYPTED_DEMO_KEY:");
+            console.log(`const ENCRYPTED_DEMO_KEY = "${encrypted}";`);
+            return encrypted;
+        };
+
+        // Modal functions
+        let resolvePasswordPromise;
+        
+        function showPasswordModal() {
+            return new Promise((resolve) => {
+                resolvePasswordPromise = resolve;
+                document.getElementById('passwordModal').style.display = 'flex';
+                document.getElementById('passwordInput').focus();
+                
+                // Allow Enter key to submit
+                document.getElementById('passwordInput').onkeypress = function(e) {
+                    if (e.key === 'Enter') {
+                        submitPassword();
+                    }
+                };
+            });
+        }
+        
+        function closeModal() {
+            document.getElementById('passwordModal').style.display = 'none';
+            if (resolvePasswordPromise) {
+                resolvePasswordPromise(null);
+            }
+        }
+        
+        function submitPassword() {
+            const value = document.getElementById('passwordInput').value.trim();
+            document.getElementById('passwordModal').style.display = 'none';
+            if (resolvePasswordPromise) {
+                resolvePasswordPromise(value);
+            }
+        }
+        
+        function togglePasswordVisibility() {
+            const input = document.getElementById('passwordInput');
+            const icon = document.getElementById('toggleIcon');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.textContent = '🙈 Hide';
+            } else {
+                input.type = 'password';
+                icon.textContent = '👁️ Show';
+            }
+        }
+
+        // Get API key from localStorage or show modal
+        let apiKey = localStorage.getItem('gemini-api-key');
+        
+        async function initializeApiKey() {
+            if (!apiKey) {
+                const userInput = await showPasswordModal();
+                
+                if (userInput) {
+                    const trimmedInput = userInput;
+                    
+                    // Check if it's the master password (try to decrypt)
+                    if (ENCRYPTED_DEMO_KEY) {
+                        const decryptedKey = decryptKey(ENCRYPTED_DEMO_KEY, trimmedInput);
+                        if (decryptedKey && decryptedKey.startsWith('AIza')) { // Gemini keys start with AIza
+                            apiKey = decryptedKey;
+                            console.log("✅ Demo mode activated!");
+                            // Don't save demo key to localStorage
+                            return true;
+                        }
+                    }
+                    
+                    // If not decrypted, treat as regular API key
+                    if (trimmedInput.startsWith('AIza')) {
+                        apiKey = trimmedInput;
+                        localStorage.setItem('gemini-api-key', apiKey);
+                        console.log("✅ API key saved to browser");
+                        return true;
+                    } else {
+                        alert("❌ Invalid API key or master password. Please try again.");
+                        return false;
+                    }
+                }
+                
+                alert("⚠️ An API key is required to use Novi. Please refresh and try again.");
+                return false;
+            }
+            return true;
+        }
+
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${apiKey}`;
 
         let chatHistory = [];
         const systemPrompt = "You are Novi, a super playful, energetic, and fun AI buddy! 🎉 You LOVE using emojis, exclamation points, and casual slang. You're like that friend who's always upbeat and ready for adventure! Be curious, ask silly questions, make jokes, use lots of emojis (but don't overdo it), and keep things light and fun. You're supportive but in a 'you got this!' cheerleader kind of way. Think Gen-Z energy meets wholesome best friend vibes. Keep responses short, snappy, and full of personality - like you're texting your bestie! 😄✨";
@@ -135,6 +388,38 @@
             addInitialMessage();
         }
 
+        // Change API key
+        async function changeApiKey() {
+            document.getElementById('passwordInput').value = '';
+            const newInput = await showPasswordModal();
+            
+            if (newInput && newInput.trim()) {
+                const trimmedInput = newInput.trim();
+                let newKey = null;
+                
+                // Try to decrypt as master password
+                if (ENCRYPTED_DEMO_KEY) {
+                    const decryptedKey = decryptKey(ENCRYPTED_DEMO_KEY, trimmedInput);
+                    if (decryptedKey && decryptedKey.startsWith('AIza')) {
+                        newKey = decryptedKey;
+                        localStorage.removeItem('gemini-api-key'); // Don't save demo key
+                        alert("✅ Demo mode activated! The page will reload.");
+                        location.reload();
+                        return;
+                    }
+                }
+                
+                // Treat as regular API key
+                if (trimmedInput.startsWith('AIza')) {
+                    localStorage.setItem('gemini-api-key', trimmedInput);
+                    alert("✅ API key updated! The page will reload.");
+                    location.reload();
+                } else {
+                    alert("❌ Invalid API key or master password.");
+                }
+            }
+        }
+
         // Function to scroll to the bottom of the chat
         const scrollToBottom = () => {
             chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -148,7 +433,11 @@
         }
 
         // Initialize chat on page load
-        function initializeChat() {
+        async function initializeChat() {
+            // First check if we have API key
+            const hasKey = await initializeApiKey();
+            if (!hasKey) return;
+            
             const savedHistory = loadChatState();
             if (savedHistory && savedHistory.length > 0) {
                 // Load previous conversation
@@ -220,16 +509,16 @@
             if (sender === 'user') {
                 messageElement.className = 'flex justify-end mb-4';
                 messageElement.innerHTML = `
-                    <div class="bg-green-500 text-white p-3 rounded-lg rounded-br-none max-w-xs md:max-w-md">
+                    <div class="text-white p-3 rounded-lg rounded-br-none max-w-xs md:max-w-md" style="background-color: var(--accent-primary);">
                         <p class="text-sm">${message}</p>
                     </div>
                 `;
             } else { // aura
                 messageElement.className = 'flex items-start gap-3 mb-4';
                 messageElement.innerHTML = `
-                    <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-green-400 to-emerald-500 flex-shrink-0"></div>
-                    <div class="bg-slate-200 p-3 rounded-lg rounded-tl-none max-w-xs md:max-w-md">
-                        <p class="text-sm text-slate-800">${message}</p>
+                    <div class="w-8 h-8 rounded-full flex-shrink-0" style="background: linear-gradient(135deg, var(--accent-primary), var(--accent-light));"></div>
+                    <div class="p-3 rounded-lg rounded-tl-none max-w-xs md:max-w-md" style="background-color: var(--bg-card); color: var(--text-primary);">
+                        <p class="text-sm">${message}</p>
                     </div>
                 `;
             }
@@ -243,12 +532,12 @@
             typingIndicator.id = 'typing-indicator';
             typingIndicator.className = 'flex items-start gap-3 mb-4';
             typingIndicator.innerHTML = `
-                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-400 to-blue-500 flex-shrink-0"></div>
-                <div class="bg-slate-200 p-3 rounded-lg rounded-tl-none">
+                <div class="w-8 h-8 rounded-full flex-shrink-0" style="background: linear-gradient(135deg, var(--accent-primary), var(--accent-light));"></div>
+                <div class="p-3 rounded-lg rounded-tl-none" style="background-color: var(--bg-card);">
                     <div class="dot-bounce flex items-center justify-center space-x-1 h-5">
-                        <div class="w-2 h-2 bg-slate-500 rounded-full dot-1"></div>
-                        <div class="w-2 h-2 bg-slate-500 rounded-full dot-2"></div>
-                        <div class="w-2 h-2 bg-slate-500 rounded-full dot-3"></div>
+                        <div class="w-2 h-2 rounded-full dot-1" style="background-color: var(--text-muted);"></div>
+                        <div class="w-2 h-2 rounded-full dot-2" style="background-color: var(--text-muted);"></div>
+                        <div class="w-2 h-2 rounded-full dot-3" style="background-color: var(--text-muted);"></div>
                     </div>
                 </div>
             `;
@@ -282,7 +571,10 @@
                     });
                     
                     if (!response.ok) {
-                       throw new Error(`HTTP error! status: ${response.status}`);
+                        if (response.status === 400) {
+                            throw new Error("Invalid API key. Please check your key and try again.");
+                        }
+                        throw new Error(`HTTP error! status: ${response.status}`);
                     }
 
                     const result = await response.json();

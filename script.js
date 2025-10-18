@@ -89,3 +89,15 @@ function CoolThing() {
     var currentSrc = logo.getAttribute('src').replace(/^\\|\//, '');
     logo.setAttribute('src', currentSrc === src1 ? src2 : src1);
 }
+
+// Auto-open Home tab on page load for index.html
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if we're on the homepage with tabs
+    var homeTab = document.getElementById('Home');
+    var homeButton = document.querySelector('.tablinks');
+    
+    if (homeTab && homeButton && window.location.pathname === '/index.html' || window.location.pathname === '/') {
+        // Simulate click on Home tab
+        homeButton.click();
+    }
+});

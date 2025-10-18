@@ -1,142 +1,514 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Trading Bots - Novixel</title>
-        <meta name="description" content="Learn about money, forex, crypto, and explore Novixel's trading bots.">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-        <link rel="stylesheet" href="style.css">
-        <link rel="icon" href="FavIcon.png">
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <style>
-            .bot-links { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; margin-top: 32px; }
-            .bot-card { width: 220px; background: #f9f9f9; border-radius: 10px; box-shadow: 0 2px 8px #0001; overflow: hidden; text-align: center; text-decoration: none; color: inherit; transition: transform 0.2s; }
-            .bot-card:hover { transform: scale(1.04); box-shadow: 0 4px 16px #0002; }
-            .bot-card img { width: 100%; height: 120px; object-fit: cover; }
-            .bot-card .desc { padding: 12px; }
-        </style>
-    </head>
-    <body>
-        <header>
-            <nav>
-                <div class="container">
-                    <div class="headers">
-                        <a href="/index.html">Home</a>
-                        <a href="/game.html">Game</a>
-                        <a href="/calculator.html">Calculator</a>
-                        <a href="/tradingbots.html">Trading Bots</a>
-                    </div>
-                </div>
-            </nav>
-        </header>
-        <div class="container">
-            <h1>Trading Bots & Markets</h1>
-            <button onclick="document.getElementById('contactForm').scrollIntoView({behavior: 'smooth'});">Contact Me</button>
-            <hr class="separator">
-            <section>
-                <h2>About Money, Forex, and Crypto</h2>
-                <p>
-                    Money is a universal medium of exchange, evolving from physical coins to digital assets. <b>Forex</b> (foreign exchange) is the world's largest financial market, where currencies are traded 24/7, enabling global commerce and investment. <b>Cryptocurrency</b> is a new form of digital money, secured by cryptography and powered by decentralized blockchain technology. Crypto markets are open around the clock, offering new opportunities and risks for traders and investors. Understanding these markets is key to navigating the modern financial world.
-                </p>
-            </section>
-            <hr class="separator">
-            <section>
-                <h2>Market Trends (Customizable Line Graph)</h2>
-                <canvas id="marketChart" width="600" height="300"></canvas>
-                <div style="margin:16px 0;">
-                    <button onclick="updateChart('forex')">Show Forex</button>
-                    <button onclick="updateChart('crypto')">Show Crypto</button>
-                    <button onclick="updateChart('custom')">Custom Data</button>
-                </div>
-            </section>
-            <hr class="separator">
-            <section>
-                <h2>My Trading Bots</h2>
-                <div class="bot-links">
-                    <a href="https://github.com/novixel/forex-bot" class="bot-card" target="_blank">
-                        <img src="Novixel-icon-Trans1.png" alt="Forex Bot">
-                        <div class="desc">
-                            <h3>Forex Bot</h3>
-                            <p>Automated trading bot for forex markets. Open source and customizable.</p>
-                        </div>
-                    </a>
-                    <a href="https://github.com/novixel/crypto-bot" class="bot-card" target="_blank">
-                        <img src="Novixel-icon-Trans2.png" alt="Crypto Bot">
-                        <div class="desc">
-                            <h3>Crypto Bot</h3>
-                            <p>Crypto trading bot for major exchanges. Download and try it out!</p>
-                        </div>
-                    </a>
-                    <a href="/downloads/novixel-bot.zip" class="bot-card">
-                        <img src="Web Desing.png" alt="Download Bot">
-                        <div class="desc">
-                            <h3>Download Bot</h3>
-                            <p>Get the latest version of my trading bot for Windows and Linux.</p>
-                        </div>
-                    </a>
-                </div>
-            </section>
-            <hr class="separator">
-            <section>
-                <h2>Contact Me</h2>
-                <form id="contactForm" action="mailto:novixel@hotmail.com" method="POST" enctype="text/plain">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required><br>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required><br>
-                    <label for="message">Message:</label><br>
-                    <textarea id="message" name="message" rows="4" required></textarea><br>
-                    <input type="submit" value="Send">
-                </form>
-            </section>
-        </div>
-        <script src="script.js"></script>
-        <script>
-        // Chart.js demo data
-        const ctx = document.getElementById('marketChart').getContext('2d');
-        let chartData = {
-            forex: {
-                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                data: [1.12, 1.13, 1.11, 1.15, 1.14, 1.13, 1.16],
-                label: 'EUR/USD'
-            },
-            crypto: {
-                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                data: [42000, 43000, 41000, 44000, 43500, 43800, 44500],
-                label: 'BTC/USD'
-            },
-            custom: {
-                labels: ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
-                data: [10, 20, 15, 30, 25, 35, 40],
-                label: 'Custom Data'
-            }
-        };
-        let marketChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: chartData.forex.labels,
-                datasets: [{
-                    label: chartData.forex.label,
-                    data: chartData.forex.data,
-                    borderColor: '#00c3ff',
-                    backgroundColor: 'rgba(0,195,255,0.1)',
-                    tension: 0.3,
-                    pointRadius: 4
-                }]
-            },
-            options: {
-                responsive: false,
-                plugins: { legend: { display: true } },
-                scales: { y: { beginAtZero: false } }
-            }
-        });
-        function updateChart(type) {
-            marketChart.data.labels = chartData[type].labels;
-            marketChart.data.datasets[0].data = chartData[type].data;
-            marketChart.data.datasets[0].label = chartData[type].label;
-            marketChart.update();
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Crypto Trading Bots - Novixel</title>
+    <meta name="description" content="Professional AI-enhanced cryptocurrency trading bots built in Python. Custom algorithmic solutions for automated crypto trading.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="FavIcon.png">
+    <style>
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, #005c30 0%, #009f33 100%);
+            color: rgb(66, 66, 66);
+            border-radius: 12px;
+            margin-bottom: 40px;
         }
-        </script>
-    </body>
+        
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .ai-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 40px auto;
+            max-width: 1100px;
+        }
+        
+        .feature-card {
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+        
+        .feature-card i {
+            font-size: 2.5em;
+            color: #009f33;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card h3 {
+            margin: 15px 0 10px;
+            font-size: 1.3em;
+        }
+        
+        /* Pricing Cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px auto;
+            max-width: 1200px;
+        }
+        
+        .pricing-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .pricing-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .pricing-card.featured {
+            border: 3px solid #009f33;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card .badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: #009f33;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        
+        .pricing-card .price {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #009f33;
+            margin: 20px 0;
+        }
+        
+        .pricing-card .price span {
+            font-size: 0.4em;
+            color: var(--text-color);
+            font-weight: 400;
+        }
+        
+        .pricing-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .pricing-card ul li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .pricing-card ul li i {
+            color: #009f33;
+            margin-right: 10px;
+        }
+        
+        .pricing-card .cta-button {
+            display: inline-block;
+            background: #009f33;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+            margin-top: 20px;
+        }
+        
+        .pricing-card .cta-button:hover {
+            background: #005c30;
+        }
+        
+        /* Portfolio Gallery */
+        .bot-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin: 40px auto;
+            max-width: 1000px;
+        }
+        
+        .bot-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        
+        .bot-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .bot-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .bot-card .content {
+            padding: 20px;
+        }
+        
+        .bot-card h4 {
+            margin-bottom: 10px;
+            color: #009f33;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #009f33 0%, #005c30 100%);
+            color: white;
+            padding: 60px 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.1em;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-section .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-section .button {
+            padding: 15px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .cta-section .button-primary {
+            background: white;
+            color: #009f33;
+        }
+        
+        .cta-section .button-primary:hover {
+            background: #f0f0f0;
+        }
+        
+        .cta-section .button-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .cta-section .button-secondary:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        /* Form Inputs */
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: inherit;
+            background: white;
+            color: #333;
+        }
+        
+        body.dark-mode .contact-form input,
+        body.dark-mode .contact-form select,
+        body.dark-mode .contact-form textarea {
+            background: #2a2a2a;
+            border-color: #444;
+            color: white;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .contact-form textarea {
+            resize: vertical;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="nav-container">
+        <div class="logo">
+            <img src="Novixel-icon-Trans1.png" alt="Novixel Logo" height="40">
+        </div>
+        <button class="fas fa-moon" onclick="toggleDarkMode(event)"></button>
+    </div>
+
+    <hr class="separator">
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Custom AI-Enhanced Crypto Trading Bots</h1>
+            <p>Eliminate emotional trading and maximize your crypto portfolio with custom-built algorithmic trading solutions. Available 24/7, fully automated, and tailored to your risk tolerance.</p>
+            <div class="ai-badge">
+                <i class="fas fa-brain"></i> AI-Powered Pattern Recognition
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <h2 style="text-align: center; margin: 60px 0 30px; font-size: 2em;">Why Choose Novixel Trading Bots?</h2>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-robot"></i>
+                <h3>24/7 Automation</h3>
+                <p>Your bot never sleeps, never misses an opportunity. Trades execute automatically based on your custom strategy, even while you're away.</p>
+            </div>
+            
+            <div class="feature-card">
+                <i class="fas fa-brain"></i>
+                <h3>AI-Enhanced Decision Making</h3>
+                <p>Advanced pattern recognition adapts to market conditions over time, learning from historical data to improve performance.</p>
+            </div>
+            
+            <div class="feature-card">
+                <i class="fas fa-heart-broken"></i>
+                <h3>Eliminate Emotions</h3>
+                <p>No fear, no greed, no hesitation. Your bot follows the strategy precisely, removing human emotional bias from trading decisions.</p>
+            </div>
+            
+            <div class="feature-card">
+                <i class="fas fa-sliders-h"></i>
+                <h3>Fully Customizable</h3>
+                <p>Every bot is built from scratch to match your exact requirements: risk tolerance, trading pairs, indicators, and strategies.</p>
+            </div>
+            
+            <div class="feature-card">
+                <i class="fab fa-python"></i>
+                <h3>Python-Powered</h3>
+                <p>Built with professional-grade Python for reliability, speed, and easy integration with major exchanges like Coinbase Pro.</p>
+            </div>
+            
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Real-Time Monitoring</h3>
+                <p>Track your bot's performance with live dashboards, detailed logs, and customizable alerts for critical market events.</p>
+            </div>
+        </div>
+
+        <!-- Pricing Section -->
+        <h2 style="text-align: center; margin: 80px 0 40px; font-size: 2em;">Flexible Pricing Tiers</h2>
+        
+        <div class="pricing-grid">
+            <!-- Basic Tier -->
+            <div class="pricing-card">
+                <h3>Basic Bot</h3>
+                <div class="price">$750<span> CAD</span></div>
+                <p style="color: #666; margin-bottom: 20px;">Perfect for getting started</p>
+                
+                <ul>
+                    <li><i class="fas fa-check"></i> 1 Trading Pair</li>
+                    <li><i class="fas fa-check"></i> Basic Technical Indicators</li>
+                    <li><i class="fas fa-check"></i> Exchange Integration (Limited)</li>
+                    <li><i class="fas fa-check"></i> Simple Strategy Implementation</li>
+                    <li><i class="fas fa-check"></i> 14-Day Delivery</li>
+                    <li><i class="fas fa-check"></i> 30 Days Support</li>
+                    <li><i class="fas fa-check"></i> Source Code Included</li>
+                </ul>
+                
+                <a href="#contact-form" class="cta-button">Get Started</a>
+            </div>
+            
+            <!-- Pro Tier (Featured) -->
+            <div class="pricing-card featured">
+                <div class="badge">MOST POPULAR</div>
+                <h3>Pro Bot</h3>
+                <div class="price">$1,500<span> CAD</span></div>
+                <p style="color: #666; margin-bottom: 20px;">For serious traders</p>
+                
+                <ul>
+                    <li><i class="fas fa-check"></i> Up to 3 Trading Pairs</li>
+                    <li><i class="fas fa-check"></i> Advanced AI Pattern Recognition</li>
+                    <li><i class="fas fa-check"></i> Multiple Exchange Support</li>
+                    <li><i class="fas fa-check"></i> Complex Multi-Strategy Logic</li>
+                    <li><i class="fas fa-check"></i> Risk Management System</li>
+                    <li><i class="fas fa-check"></i> 30-Day Delivery</li>
+                    <li><i class="fas fa-check"></i> 60 Days Support</li>
+                    <li><i class="fas fa-check"></i> Performance Dashboard</li>
+                    <li><i class="fas fa-check"></i> Custom Alert System</li>
+                </ul>
+                
+                <a href="#contact-form" class="cta-button">Get Started</a>
+            </div>
+            
+            <!-- Enterprise Tier -->
+            <div class="pricing-card">
+                <h3>Enterprise</h3>
+                <div class="price">Custom</div>
+                <p style="color: #666; margin-bottom: 20px;">Unlimited possibilities</p>
+                
+                <ul>
+                    <li><i class="fas fa-check"></i> Unlimited Trading Pairs</li>
+                    <li><i class="fas fa-check"></i> Full AI Integration</li>
+                    <li><i class="fas fa-check"></i> Multi-Exchange Arbitrage</li>
+                    <li><i class="fas fa-check"></i> Machine Learning Optimization</li>
+                    <li><i class="fas fa-check"></i> Portfolio Management</li>
+                    <li><i class="fas fa-check"></i> Priority Development</li>
+                    <li><i class="fas fa-check"></i> 90+ Days Support</li>
+                    <li><i class="fas fa-check"></i> Advanced Analytics Suite</li>
+                    <li><i class="fas fa-check"></i> Dedicated Account Manager</li>
+                    <li><i class="fas fa-check"></i> Ongoing Optimization</li>
+                </ul>
+                
+                <a href="#contact-form" class="cta-button">Get Yours Today!</a>
+            </div>
+        </div>
+
+        <!-- Social Proof -->
+        <section style="margin: 60px 0; text-align: center;">
+            <h2 style="font-size: 2em; margin-bottom: 30px;">Trusted by Traders</h2>
+            <div style="max-width: 800px; margin: 0 auto; padding: 30px; background: var(--card-bg); border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <div style="display: flex; justify-content: center; margin-bottom: 15px;">
+                    <i class="fas fa-star" style="color: #FFD700; font-size: 1.5em;"></i>
+                    <i class="fas fa-star" style="color: #FFD700; font-size: 1.5em;"></i>
+                    <i class="fas fa-star" style="color: #FFD700; font-size: 1.5em;"></i>
+                    <i class="fas fa-star" style="color: #FFD700; font-size: 1.5em;"></i>
+                    <i class="fas fa-star" style="color: #FFD700; font-size: 1.5em;"></i>
+                </div>
+                <p style="font-size: 1.1em; font-style: italic; margin-bottom: 15px;">"Excellent response time and very professional. For someone like myself with limited knowledge, I was met with patience and understanding. Highly recommend!"</p>
+                <p style="color: #009f33; font-weight: 600;">— Verified Fiverr Client</p>
+            </div>
+        </section>
+
+
+        <!-- CTA Section -->
+        <section class="cta-section" id="contact">
+            <h2>Ready to Automate Your Trading?</h2>
+            <p style="color: white; opacity: 0.95;">Get a custom-built trading bot tailored to your exact strategy and risk tolerance. No templates, no compromises—just professional Python code designed for your success.</p>
+            
+            <div class="button-group">
+                <a href="#contact-form" class="button button-primary">
+                    <i class="fas fa-envelope"></i> Get Free Consultation
+                </a>
+                <a href="https://calendly.com/novixel" class="button button-secondary" target="_blank">
+                    <i class="fas fa-calendar"></i> Schedule a Call
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section id="contact-form" style="max-width: 600px; margin: 60px auto; padding: 40px; background: var(--card-bg); border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <h2 style="text-align: center; margin-bottom: 30px;">Request a Quote</h2>
+            
+            <form action="mailto:novixel@hotmail.com" method="POST" enctype="text/plain" class="contact-form">
+                <div style="margin-bottom: 20px;">
+                    <label for="name">Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <label for="tier">Interested Tier</label>
+                    <select id="tier" name="tier">
+                        <option value="basic">Basic - $750</option>
+                        <option value="pro" selected>Pro - $1,500</option>
+                        <option value="enterprise">Enterprise - Custom</option>
+                        <option value="unsure">Not sure yet</option>
+                    </select>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <label for="message">Tell us about your trading strategy *</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+                
+                <button type="submit" style="width: 100%; padding: 15px; background: #009f33; color: white; border: none; border-radius: 8px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: background 0.3s;">
+                    <i class="fas fa-paper-plane"></i> Send Inquiry
+                </button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <hr class="separator">
+        
+        <p style="margin: 15px 0;">
+            <a href="index.html" style="color: #009f33; text-decoration: none; margin: 0 8px; font-weight: 600;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Home</a> •
+            <a href="Novixel.html" style="color: #009f33; text-decoration: none; margin: 0 8px; font-weight: 600;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Portfolio</a> •
+            <a href="tradingbots.html" style="color: #009f33; text-decoration: none; margin: 0 8px; font-weight: 600;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Trading Solutions</a> •
+            <a href="bots.html" style="color: #D4AF37; text-decoration: none; margin: 0 8px; font-weight: 600;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">NovaTrade</a> •
+            <a href="novalite.html" style="color: #7FFF00; text-decoration: none; margin: 0 8px; font-weight: 600;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">NovaLite</a> •
+            <a href="aicom.html" style="color: #4A5568; text-decoration: none; margin: 0 8px; font-weight: 600;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">AI Solutions</a>
+        </p>
+        
+        <p style="margin-top: 20px;">&copy; 2025 Novixel. All rights reserved.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>

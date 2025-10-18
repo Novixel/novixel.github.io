@@ -14,12 +14,28 @@
     color: #f0f0f0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 10px;
     text-align: center;
     background-color: #f0f0f0;
     font-family: Arial, sans-serif;
     transition: background-color 0.5s ease;
+    animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .container {
@@ -51,6 +67,13 @@ body {
     width: 100px;
     height: auto;
     margin-bottom: 0px;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.mainlogo:hover {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 0 10px #009f33);
 }
 
 /* Dark mode styles */
@@ -97,14 +120,42 @@ p {
 
 /* Links styles */
 a {
-    color: #00ac00; /* Change this to your desired color */
+    color: #00ac00;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
 }
+
 a:hover {
-    color: #0026ff; /* Change this to your desired hover color */
+    color: #009f33;
+    transform: translateY(-1px);
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #009f33;
+    transition: width 0.3s ease;
+}
+
+a:hover::after {
+    width: 100%;
 }
 
 .social-link {
-    margin: 0 10px; /* Adjust the value as needed */
+    margin: 0 10px;
+    font-size: 1.5em;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.social-link:hover {
+    transform: translateY(-3px) scale(1.2);
+    filter: drop-shadow(0 4px 8px rgba(0, 159, 51, 0.4));
 }
 
 /* Tab styles */
@@ -122,14 +173,38 @@ a:hover {
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
-    transition: 0.3s;
+    transition: all 0.3s ease;
     font-size: 17px;
+    position: relative;
+    overflow: hidden;
 }
+
+.tab button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 159, 51, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.tab button:hover::before {
+    left: 100%;
+}
+
 .tab button:hover {
     background-color: #d3d3d3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .tab button.active {
-    background-color: #d3d3d3;
+    background-color: #009f33;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 159, 51, 0.3);
 }
 .tabcontent {
     display: none;
@@ -210,30 +285,51 @@ body.dark-mode #contactForm label {
     width: 100%;
     max-width: 400px;
     border: none;
-    border-bottom: 1px solid #bbb;
+    border-bottom: 2px solid #bbb;
     border-radius: 0;
-    padding: 6px;
+    padding: 10px 6px;
     background: transparent;
     color: inherit;
     box-sizing: border-box;
     text-align: left;
-    margin-bottom: 2px;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+    font-size: 1em;
+}
+
+#contactForm input:focus,
+#contactForm textarea:focus {
+    outline: none;
+    border-bottom-color: #009f33;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 159, 51, 0.2);
 }
 #contactForm input[type="submit"] {
     width: auto;
-    background: #00ac00;
+    background: linear-gradient(135deg, #00ac00, #009f33);
     color: #fff;
     border: none;
-    border-radius: 4px;
-    padding: 8px 20px;
+    border-radius: 8px;
+    padding: 12px 32px;
     cursor: pointer;
-    margin-top: 6px;
-    transition: background 0.2s;
+    margin-top: 12px;
+    transition: all 0.3s ease;
     align-self: center;
-    box-shadow: none;
+    box-shadow: 0 4px 15px rgba(0, 159, 51, 0.3);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
+
 #contactForm input[type="submit"]:hover {
-    background: #008000;
+    background: linear-gradient(135deg, #009f33, #008000);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 159, 51, 0.4);
+}
+
+#contactForm input[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(0, 159, 51, 0.3);
 }
 #contactForm label {
     align-self: center;
@@ -247,4 +343,49 @@ body.dark-mode #contactForm textarea {
 body.dark-mode #contactForm input[type="submit"] {
     background: #333;
     color: #fff;
+}
+
+/* Division Cards */
+.division-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.division-card {
+    background: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.division-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.division-card h3 {
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.division-card p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.division-card a {
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
+}
+
+.division-card a:hover {
+    opacity: 0.8;
+}
+
+body.dark-mode .division-card {
+    background: #1a1a1a;
 }

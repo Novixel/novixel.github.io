@@ -1,55 +1,138 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta charset="utf-8">
-        <title>Calculator</title>
-        <meta name="description" content="Calculator page for Novixel Computer Solutions">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculator - Novixel</title>
+        <meta name="description" content="Simple web calculator with dark mode support by Novixel">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <link rel="stylesheet" href="style.css">
         <link rel="icon" href="FavIcon.png">
+        <style>
+            .calculator-container {
+                max-width: 400px;
+                margin: 40px auto;
+                padding: 30px;
+                background: var(--card-bg);
+                border-radius: 15px;
+                box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            }
+            
+            .operator-indicator {
+                text-align: right;
+                font-size: 0.9em;
+                color: #009f33;
+                font-weight: 600;
+                min-height: 20px;
+                margin-bottom: 5px;
+                font-family: 'Courier New', monospace;
+            }
+            
+            #calc-display {
+                width: 100%;
+                padding: 20px;
+                font-size: 2em;
+                text-align: right;
+                margin-bottom: 20px;
+                border: 2px solid var(--border-color);
+                border-radius: 10px;
+                background: var(--input-bg);
+                color: var(--text-color);
+                font-family: 'Courier New', monospace;
+                box-sizing: border-box;
+            }
+            
+            .calc-buttons {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 10px;
+            }
+            
+            .calc-buttons button {
+                padding: 20px;
+                font-size: 1.3em;
+                font-weight: 600;
+                border: none;
+                border-radius: 10px;
+                background: var(--button-bg);
+                color: var(--text-color);
+                cursor: pointer;
+                transition: all 0.2s;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            
+            .calc-buttons button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+                background: var(--button-hover-bg);
+            }
+            
+            .calc-buttons button:active {
+                transform: translateY(0);
+            }
+            
+            .calc-buttons .operator {
+                background: #009f33;
+                color: white;
+            }
+            
+            .calc-buttons .operator:hover {
+                background: #00b33a;
+            }
+            
+            .calc-buttons .equals {
+                background: #009f33;
+                color: white;
+            }
+            
+            .calc-buttons .equals:hover {
+                background: #00b33a;
+            }
+            
+            .calc-buttons .clear {
+                grid-column: span 4;
+                background: #f44336;
+                color: white;
+            }
+            
+            .calc-buttons .clear:hover {
+                background: #e53935;
+            }
+        </style>
     </head>
     <body>
-        <header>
-            <nav>
-                <div class="container">
-              <div class="headers">
-                        <a href="/index.html">Home</a>
-                        <a href="/game.html">Game</a>
-                        <a href="/calculator.html">Calculator</a>
-                        <a href="/tradingbots.html">Trading Bots</a>
-                    </div>
-                </div>
-            </nav>
-        </header>
         <div class="container">
-            <h1>Welcome To The Calculator Page!</h1>
+            <img src="Novixel-icon-Trans1.png" alt="Novixel Logo" class="mainlogo" onclick="CoolThing()" style="cursor: pointer;">
+            <h1>Web Calculator</h1>
             <button class="fas fa-moon" onclick="toggleDarkMode(event)"></button>
             <hr class="separator">
-            <div id="calculator" style="max-width:300px;margin:0 auto;">
-                <input type="text" id="calc-display" style="width:100%;font-size:1.5em;text-align:right;margin-bottom:10px;" readonly>
-                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px;">
+            
+            <div class="calculator-container">
+                <div class="operator-indicator" id="operator-indicator"></div>
+                <input type="text" id="calc-display" value="0" readonly>
+                <div class="calc-buttons">
                     <button onclick="calcInput('7')">7</button>
                     <button onclick="calcInput('8')">8</button>
                     <button onclick="calcInput('9')">9</button>
-                    <button onclick="calcInput('/')">÷</button>
+                    <button class="operator" onclick="calcInput('/')">÷</button>
                     <button onclick="calcInput('4')">4</button>
                     <button onclick="calcInput('5')">5</button>
                     <button onclick="calcInput('6')">6</button>
-                    <button onclick="calcInput('*')">×</button>
+                    <button class="operator" onclick="calcInput('*')">×</button>
                     <button onclick="calcInput('1')">1</button>
                     <button onclick="calcInput('2')">2</button>
                     <button onclick="calcInput('3')">3</button>
-                    <button onclick="calcInput('-')">−</button>
+                    <button class="operator" onclick="calcInput('-')">−</button>
                     <button onclick="calcInput('0')">0</button>
                     <button onclick="calcInput('.')">.</button>
-                    <button onclick="calcEquals()">=</button>
-                    <button onclick="calcInput('+')">+</button>
-                    <button onclick="calcClear()" style="grid-column:span 4;background:#f44336;color:#fff;">C</button>
+                    <button class="equals" onclick="calcEquals()">=</button>
+                    <button class="operator" onclick="calcInput('+')">+</button>
+                    <button class="clear" onclick="calcClear()">Clear</button>
                 </div>
             </div>
+            
             <hr class="separator">
-            <h2>Contact Me</h2>
+            <h2>Contact Us</h2>
             <form id="contactForm" action="mailto:novixel@hotmail.com" method="POST" enctype="text/plain">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required><br>
@@ -59,34 +142,172 @@
                 <textarea id="message" name="message" rows="4" required></textarea><br>
                 <input type="submit" value="Send">
             </form>
-            <div class="footer">
-                <hr class="separator">
-                <a class="social-link" href="https://instagram.com/novixel"><i class="fab fa-instagram"></i></a>
-                <a class="social-link" href="https://x.com/OfficialNovixel"><i class="fab fa-twitter"></i></a>
-                <a class="social-link" href="https://www.youtube.com/c/Novixel"><i class="fab fa-youtube"></i></a>
-                <p><a href="https://www.Novixel.ca/">Novixel</a></p>
-            </div>
         </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <hr class="separator">
+            
+            <p style="margin: 15px 0;">
+                <a href="index.html" style="color: #00da45; text-decoration: none; margin: 0 8px; font-weight: 600;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Home</a> •
+                <a href="Novixel.html" style="color: #04bd3e; text-decoration: none; margin: 0 8px; font-weight: 600;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Portfolio</a> •
+                <a href="tradingbots.html" style="color: #5fd300; text-decoration: none; margin: 0 8px; font-weight: 600;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Trading Solutions</a> •
+                <a href="bots.html" style="color: #D4AF37; text-decoration: none; margin: 0 8px; font-weight: 600;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">NovaTrade</a> •
+                <a href="novalite.html" style="color: #7FFF00; text-decoration: none; margin: 0 8px; font-weight: 600;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">NovaLite</a> •
+                <a href="aicom.html" style="color: #4A5568; text-decoration: none; margin: 0 8px; font-weight: 600;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">AI Solutions</a>
+            </p>
+            
+            <p style="margin-top: 20px;">&copy; 2025 Novixel. All rights reserved.</p>
+        </div>
+        
         <script src="script.js"></script>
         <script>
-        // Calculator logic
-        let calcValue = '';
-        function calcInput(val) {
-            calcValue += val;
-            document.getElementById('calc-display').value = calcValue;
-        }
-        function calcEquals() {
-            try {
-                calcValue = eval(calcValue).toString();
-            } catch {
-                calcValue = 'Error';
+        // Calculator logic with proper state management
+        let currentValue = '0';
+        let previousValue = null;
+        let operator = null;
+        let waitingForNewValue = false;
+        
+        function updateDisplay() {
+            document.getElementById('calc-display').value = currentValue;
+            
+            // Update operator indicator
+            const indicator = document.getElementById('operator-indicator');
+            if (previousValue !== null && operator !== null) {
+                const operatorSymbols = {
+                    '+': '+',
+                    '-': '−',
+                    '*': '×',
+                    '/': '÷'
+                };
+                indicator.textContent = previousValue + ' ' + operatorSymbols[operator];
+            } else {
+                indicator.textContent = '';
             }
-            document.getElementById('calc-display').value = calcValue;
         }
+        
+        function calcInput(val) {
+            const operators = ['+', '-', '*', '/'];
+            
+            // If it's a number or decimal point
+            if (!operators.includes(val)) {
+                if (waitingForNewValue) {
+                    currentValue = val;
+                    waitingForNewValue = false;
+                } else if (currentValue === '0' && val !== '.') {
+                    currentValue = val;
+                } else {
+                    // Prevent multiple decimal points
+                    if (val === '.' && currentValue.includes('.')) {
+                        return;
+                    }
+                    currentValue += val;
+                }
+            } 
+            // If it's an operator
+            else {
+                if (previousValue !== null && operator !== null && !waitingForNewValue) {
+                    // Perform the pending calculation
+                    performCalculation();
+                }
+                previousValue = currentValue;
+                operator = val;
+                waitingForNewValue = true;
+            }
+            
+            updateDisplay();
+        }
+        
+        function performCalculation() {
+            const prev = parseFloat(previousValue);
+            const current = parseFloat(currentValue);
+            
+            if (isNaN(prev) || isNaN(current)) {
+                currentValue = 'Error';
+                return;
+            }
+            
+            let result;
+            switch (operator) {
+                case '+':
+                    result = prev + current;
+                    break;
+                case '-':
+                    result = prev - current;
+                    break;
+                case '*':
+                    result = prev * current;
+                    break;
+                case '/':
+                    if (current === 0) {
+                        currentValue = 'Error';
+                        previousValue = null;
+                        operator = null;
+                        return;
+                    }
+                    result = prev / current;
+                    break;
+                default:
+                    return;
+            }
+            
+            // Round to avoid floating point errors
+            currentValue = Math.round(result * 100000000) / 100000000 + '';
+            previousValue = null;
+            operator = null;
+        }
+        
+        function calcEquals() {
+            if (previousValue !== null && operator !== null) {
+                performCalculation();
+                waitingForNewValue = true;
+            }
+            updateDisplay();
+        }
+        
         function calcClear() {
-            calcValue = '';
-            document.getElementById('calc-display').value = '';
+            currentValue = '0';
+            previousValue = null;
+            operator = null;
+            waitingForNewValue = false;
+            updateDisplay();
         }
+        
+        // Keyboard support for calculator
+        document.addEventListener('keydown', function(e) {
+            // Numbers (both main keyboard and numpad)
+            if ((e.key >= '0' && e.key <= '9') || e.key === '.') {
+                e.preventDefault();
+                calcInput(e.key);
+            }
+            // Operators
+            else if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
+                e.preventDefault();
+                calcInput(e.key);
+            }
+            // Enter or = for equals
+            else if (e.key === 'Enter' || e.key === '=') {
+                e.preventDefault();
+                calcEquals();
+            }
+            // Escape, Delete, or C for clear
+            else if (e.key === 'Escape' || e.key === 'Delete' || e.key === 'c' || e.key === 'C') {
+                e.preventDefault();
+                calcClear();
+            }
+            // Backspace to remove last character
+            else if (e.key === 'Backspace') {
+                e.preventDefault();
+                if (currentValue === 'Error') {
+                    calcClear();
+                } else if (currentValue.length > 1) {
+                    currentValue = currentValue.slice(0, -1);
+                } else {
+                    currentValue = '0';
+                }
+                updateDisplay();
+            }
+        });
         </script>
     </body>
 </html>

@@ -5,66 +5,51 @@
     <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Welcome to Novixel!">
-    <meta name="keywords" content="Novixel, Software Development, Software Developer, IT support, Customer relations, Python, HTML, CSS, JavaScript, Consulting, Analyst">
-    <meta name="author" content="Novixel Computer Solutions">
+    <meta name="description" content="Welcome to Novixel! Custom software solutions, IT support, and tech services based in Dawson Creek, BC.">
+    <meta name="keywords" content="Novixel, Software Development, Software Developer, IT support, Customer relations, Python, HTML, CSS, JavaScript, Consulting, Analyst, Dawson Creek">
+    <meta name="author" content="Novixel">
     <meta name="robots" content="index, follow">
     <meta name="revisit-after" content="7 days">
 
-
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
     <link rel="stylesheet" href="style.css?v=2">
 
     <!-- Icon -->
     <link rel="icon" href="FavIcon.png">
 
     <!-- Title -->
-    <title>Novixel</title>
+    <title>Novixel - Your Complete Tech Solution</title>
 
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="container">
-              <div class="headers">
-                    <a href="/index.html">Home</a>
-                    <a href="/game.html">Game</a>
-                    <a href="/calculator.html">Calculator</a>
-                    <a href="/tradingbots.html">Trading Bots</a>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <!-- <div class="coolthing">
-        <button class="coolbutton" onclick="CoolThing(event)">Cool Button</button>
-    </div> -->
-
     <div class="container">
-        <img class="mainlogo" src="\Novixel-icon-Trans1.png" alt="Novixel Logo" class="logo" href="https://www.Novixel.ca/">
+        <img class="mainlogo" src="Novixel-icon-Trans1.png" alt="Novixel Logo" onclick="CoolThing()">
         <h1>Find Your Solution</h1>
         <button class="fas fa-moon" onclick="toggleDarkMode(event)"></button>
         <hr class="separator">
+        
         <div class="tab">
             <button class="tablinks" onclick="openTab(event, 'Home')">Home</button>
-            <button class="tablinks" onclick="openTab(event, 'About')">About Me</button>
-            <button class="tablinks" onclick="openTab(event, 'Skills')">My Skills</button>
-            <!-- Icon -->
-            <!--<button id="myblogtab" class="tablinks" onclick="openTab(event, 'Blog')">My Blog</button>-->
+            <button class="tablinks" onclick="openTab(event, 'About')">About</button>
+            <button class="tablinks" onclick="openTab(event, 'Skills')">Skills</button>
+            <button class="tablinks" onclick="openTab(event, 'Services')">Services</button>
         </div>
         
         <div id="Home" class="tabcontent">
-            <h2>Home</h2>
+            <h2>Welcome to Novixel</h2>
             <p>
-                Welcome to the homepage! 
-
-                Exciting content is on the horizon, stay tuned for some awesome updates.
-
-                Soon to be more links.
-                Soon to be more stuff.
-                Suggestions are cool.
+                Your trusted technology partner based in Dawson Creek, BC. We provide comprehensive tech solutions across multiple specialties:
+            </p>
+            <ul style="text-align: left; max-width: 600px; margin: 20px auto;">
+                <li><strong>Custom Software Development</strong> - Automation, APIs, trading bots, and web applications</li>
+                <li><strong>Computer Solutions</strong> - IT support, repairs, and tech consulting</li>
+                <li><strong>Trading Solutions</strong> - Cryptocurrency trading automation and analysis</li>
+                <li><strong>AI Solutions</strong> - Intelligent assistants and automation tools</li>
+                <li><strong>Coffee Solutions</strong> - Premium office coffee services</li>
+            </ul>
+            <p>
+                Explore our divisions below or check out our interactive projects and tools.
             </p>
         </div>
 
@@ -93,542 +78,42 @@
                 It might not always be the most elegant fix, but you can bet it'll work. 
                 I have a knack for troubleshooting—whether it's weird automotive issues, power tools acting up, or debugging stubborn code. 
                 I've found that asking the right questions and truly understanding the problem is the key to getting to the root cause of any issue.
+            </p>
+            <p>
                 When it comes to coding, I'm solid. I specialize in Python but can work with C++, C#, HTML, CSS, and JavaScript when needed. 
                 I've built a variety of small to medium-sized software applications and have experience across multiple operating systems, including Windows, macOS, and several Linux distributions.
+            </p>
+            <p>
                 On top of that, I'm great with people. 
                 Customer relations is one of my strong suits—I know how to build meaningful connections and provide top-tier service. 
                 Whether it's clients, customers, or collaborators, I make sure the experience is smooth and professional.
             </p>
         </div>
 
-        <div id="Blog" class="tabcontent">
-            <h2>My Blog</h2>
-            <p>One day ill start a blog where i express those feeling humans have.. or talk about tech, or AI, or cars? I dont know.
-                I'll figure it out.
-                Let's see what the future holds. Artificial general inteligence, self driving cars, nucular winter. Who knows.
-                Lets keep, keeping on and enjoy our lives.
-
-                Let me know if you care to hear more of my insight full comments
-
-            </p>
-        </div>
-
-        <div class=ServicesContainer>
+        <div id="Services" class="tabcontent">
+            <h2>Our Services</h2>
             <hr class="separator">
             <div class="Services">
                 <div class="Service">
-                    <h3>Software Development</h3>
+                    <h3><i class="fas fa-code"></i> Software Development</h3>
                     <p>
                         Need a reliable software solution? I offer professional development services tailored to your requirements. With expertise in Python, C#, C++, HTML, CSS, JavaScript, and more, I deliver robust, efficient, and scalable applications to help you achieve your goals.
                     </p>
                 </div>
                 <div class="Service">
-                    <h3>IT Support & Consulting</h3>
-                    <p>Facing computer issues? I'm here to assist. With expertise in Windows, macOS, IOS, and Android. I bring tailored solutions to ensure your tech experience is smooth and problem-free</p>
+                    <h3><i class="fas fa-laptop"></i> IT Support & Consulting</h3>
+                    <p>Facing computer issues? I'm here to assist. With expertise in Windows, macOS, iOS, and Android, I bring tailored solutions to ensure your tech experience is smooth and problem-free.</p>
                 </div>
                 <div class="Service">
-                    <h3>Small Electronic Repairs </h3>
+                    <h3><i class="fas fa-tools"></i> Small Electronic Repairs</h3>
                     <p>Have a broken TV, game console, or other electronic device? I offer repair services for a variety of consumer electronics. Whether it's troubleshooting, part replacement, or general maintenance, I'll work to get your devices back up and running smoothly.</p>
                 </div>
-<<<<<<< HEAD
-                <div class="text-center button-container">
-                    <a href="#services-section" class="button secondary-button">View All Services</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="how-it-works section-spacing light-bg">
-            <div class="container">
-                <h2>How It Works: Simple & Convenient</h2>
-                <div class="steps-grid">
-                    <div class="step-card rounded-square">
-                        <div class="step-number">1</div>
-                        <h3>Call or Book Online</h3>
-                        <p>Reach out to us via phone or use our easy online booking form to describe your tech issue.</p>
-                    </div>
-                    <div class="step-card rounded-square">
-                        <div class="step-number">2</div>
-                        <h3>We Come To You</h3>
-                        <p>Our friendly tech expert arrives at your home or office at your scheduled time.</p>
-                    </div>
-                    <div class="step-card rounded-square">
-                        <div class="step-number">3</div>
-                        <h3>Your Tech is Solved!</h3>
-                        <p>We diagnose, fix, set up, or advise, ensuring your technology works perfectly.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="testimonials-section section-spacing">
-            <div class="container">
-                <h2>What Our Customers Say</h2>
-                <div class="testimonial-carousel">
-                    <div class="testimonial-card rounded-square">
-                        <p>"Absolutely fantastic service! My new computer was set up flawlessly, and they even transferred all my old photos. So patient and helpful!"</p>
-                        <cite>- Mary S., Dawson Creek</cite>
-                    </div>
-                    <div class="testimonial-card rounded-square">
-                        <p>"My Wi-Fi was a nightmare, but On-Demand Tech Expert fixed it in no time. Fast, professional, and friendly. Highly recommend!"</p>
-                        <cite>- John D., Local Business Owner</cite>
-                    </div>
-                    <div class="testimonial-card rounded-square">
-                        <p>"They made setting up my smart home system a breeze. Explained everything clearly and got all my devices connected seamlessly."</p>
-                        <cite>- Emily R., Happy Homeowner</cite>
-                    </div>
-                </div>
-                </div>
-        </section>
-
-        <section id="services-section" class="services-page section-spacing light-bg">
-            <div class="container">
-                <h2>Our Comprehensive Tech Services</h2>
-                <p class="section-description">From initial setup to complex troubleshooting, we're your go-to tech solution.</p>
-
-                <div class="service-category-block rounded-square">
-                    <h3><i class="fas fa-laptop-code service-icon-small"></i> Computers & Devices</h3>
-                    <ul>
-                        <li>New Computer Setup: Unboxing, initial configuration, user account setup.</li>
-                        <li>Data Transfer: Safely migrating files, photos, and documents from old devices to new ones.</li>
-                        <li>Printer Installation & Troubleshooting: Getting your printer connected and printing correctly.</li>
-                        <li>Software Installation & Updates: Installing essential programs and ensuring they're up-to-date.</li>
-                        <li>Peripheral Setup: Webcams, scanners, external drives, and other accessories.</li>
-                    </ul>
-                    <p class="why-choose-us">Why Choose Us: We ensure your new tech is ready to go, saving you hours of setup hassle and data worries.</p>
-                </div>
-
-                <div class="service-category-block rounded-square">
-                    <h3><i class="fas fa-network-wired service-icon-small"></i> Networks & Connectivity</h3>
-                    <ul>
-                        <li>Wi-Fi Network Setup: Securely setting up your home or office wireless network.</li>
-                        <li>Internet Troubleshooting: Diagnosing and resolving connection issues with your modem or router.</li>
-                        <li>Network Optimization: Improving Wi-Fi signal strength and coverage (e.g., with mesh systems or extenders).</li>
-                        <li>Guest Network Setup: Creating a separate, secure network for visitors.</li>
-                        <li>Basic Network Security: Advice on securing your home network from unauthorized access.</li>
-                    </ul>
-                    <p class="why-choose-us">Why Choose Us: Get reliable, fast internet throughout your space without the frustration of dropped connections.</p>
-                </div>
-
-                <div class="service-category-block rounded-square">
-                    <h3><i class="fas fa-lightbulb service-icon-small"></i> Smart Home Systems</h3>
-                    <ul>
-                        <li>Smart Thermostat Installation: Installing and configuring devices like Nest or Ecobee.</li>
-                        <li>Video Doorbell Setup: Ring, Arlo, Google Nest Doorbell installation and app integration.</li>
-                        <li>Smart Lighting & Plugs: Setting up smart bulbs, switches, and smart plugs for automation.</li>
-                        <li>Voice Assistant Integration: Connecting devices to Amazon Alexa, Google Assistant, or Apple HomeKit.</li>
-                        <li>Smart Home Consultation: Advising on the best smart devices for your needs and how they work together.</li>
-                    </ul>
-                    <p class="why-choose-us">Why Choose Us: We make smart home technology accessible and easy to use, enhancing your comfort and security.</p>
-                </div>
-
-                <div class="service-category-block rounded-square">
-                    <h3><i class="fas fa-diagnoses service-icon-small"></i> Troubleshooting & Repair</h3>
-                    <ul>
-                        <li>Slow Computer Diagnosis: Identifying and resolving issues causing performance slowdowns.</li>
-                        <li>Virus & Malware Removal: Cleaning infected systems and implementing preventative measures.</li>
-                        <li>Software Glitches: Fixing errors, crashes, and compatibility problems.</li>
-                        <li>Operating System Issues: Windows or macOS startup problems, updates, and more.</li>
-                        <li>General Tech Help: If it's got a power button, we can probably help!</li>
-                    </ul>
-                    <p class="why-choose-us">Why Choose Us: Don't let tech problems frustrate you. We get to the root of the issue and get you back on track.</p>
-                </div>
-
-                <div class="service-category-block rounded-square">
-                    <h3><i class="fas fa-handshake service-icon-small"></i> Tech Consultation & Advice</h3>
-                    <ul>
-                        <li>Buying Advice: Personalized recommendations for new computers, phones, software, and smart devices.</li>
-                        <li>Pre-Purchase Assessment: Ensuring new tech is compatible with your existing setup.</li>
-                        <li>Security Best Practices: Guidance on online safety, password management, and data protection.</li>
-                        <li>Tutorials & Training: One-on-one sessions to help you master your devices and software.</li>
-                    </ul>
-                    <p class="why-choose-us">Why Choose Us: Make informed decisions and gain confidence using your technology with expert, unbiased advice.</p>
-                </div>
-
-                <div class="text-center button-container">
-                    <a href="#contact-section" class="button primary-button">Request a Consultation</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="about-us-section" class="about-us-page section-spacing">
-            <div class="container">
-                <h2>About Your Local Tech Expert</h2>
-                <div class="about-content">
-                    <div class="about-image">
-                        <img src="https://via.placeholder.com/300x400/87CEEB/FFFFFF?text=Your+Friendly+Expert" alt="Photo of the tech expert">
-                    </div>
-                    <div class="about-text rounded-square">
-                        <p>Hi, I'm Tristan, the founder of Novixel Mobile Solutions, a local tech expert in Dawson Creek. I've always had a passion for technology and, more importantly, for helping people understand and master it. Living in Dawson Creek, I noticed a real need for convenient, reliable, and friendly tech support that comes directly to you. That's why I started this service. I plan to bridge the gap between complex technology and everyday use, right here in our community.</p>
-                        <p>With 16 years of experience in IT support, network administration, and smart home installations, I've seen it all. From stubborn Wi-Fi signals to intricate data transfers, my goal is always to provide clear, actionable solutions without the confusing jargon.</p>
-                        <p><strong>Our Mission:</strong> To empower the residents and small businesses of Dawson Creek with seamless and stress-free technology experiences, delivered conveniently at their location. We believe technology should simplify your life, not complicate it, and we're here to ensure it does just that.</p>
-                        <p>We're committed to providing honest, transparent, and patient service, ensuring you not only get your tech fixed but also understand how to use it better.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="pricing-section" class="pricing-page section-spacing light-bg">
-            <div class="container">
-                <h2>Transparent Pricing for Every Need</h2>
-                <p class="section-description">No hidden fees, just straightforward pricing for expert service.</p>
-
-                <div class="pricing-flex-container">
-                    <div class="pricing-card rounded-square">
-                        <h3>Hourly Service</h3>
-                        <p class="price-figure">$95/hour</p>
-                        <p>Our standard rate for general troubleshooting, diagnostics, and custom requests.</p>
-                        <ul>
-                            <li>Minimum 1-hour charge applies.</li>
-                            <li>Billed in 15-minute increments thereafter.</li>
-                            <li>Travel fee may apply for locations outside immediate Dawson Creek area.</li>
-                        </ul>
-                        <a href="#contact-section" class="button primary-button">Get an Estimate</a>
-                    </div>
-
-                    <div class="pricing-card rounded-square featured-pricing">
-                        <h3>Popular Packages</h3>
-                        <p class="price-figure">Starting from $150</p>
-                        <p>Flat-rate options for common services, offering great value and predictability.</p>
-                        <ul>
-                            <li>Basic Computer Setup: Includes unboxing, essential software, user account setup. ($150)</li>
-                            <li>Smart Thermostat Install: Professional installation and app integration. ($175)</li>
-                            <li>Wi-Fi Boost Package: Router optimization, range extender setup. ($200)</li>
-                            <li>Data Transfer Service: Safely migrate up to 200GB of data. ($180)</li>
-                        </ul>
-                        <p class="small-text">Custom packages available upon request.</p>
-                        <a href="#contact-section" class="button primary-button">See All Packages</a>
-                    </div>
-
-                    <div class="pricing-card rounded-square">
-                        <h3>Initial Consultation</h3>
-                        <p class="price-figure">FREE (15 mins)</p>
-                        <p>A brief phone consultation to discuss your needs and provide an initial assessment.</p>
-                        <ul>
-                            <li>Beyond 15 minutes, a standard hourly rate applies for in-depth consultation without service.</li>
-                            <li>Estimates for specific jobs are always free.</li>
-                            <li>No obligation after consultation.</li>
-                        </ul>
-                        <a href="#contact-section" class="button secondary-button">Request Free Call</a>
-                    </div>
-                </div>
-
-                <p class="small-text text-center privacy-note">All prices are subject to GST/PST. We will always provide a clear estimate before beginning any work.</p>
-            </div>
-        </section>
-
-        <section id="contact-section" class="contact-page section-spacing">
-            <div class="container">
-                <h2>Get In Touch</h2>
-                <p class="section-description">Ready for hassle-free tech? Contact us today!</p>
-
-                <div class="contact-info-grid">
-                    <div class="contact-card rounded-square">
-                        <i class="fas fa-phone-alt icon-large"></i>
-                        <h3>Call Us</h3>
-                        <p class="contact-detail"><a href="tel:+2502194276">(250) 219-4276</a></p>
-                        <p>The fastest way to get help!</p>
-                    </div>
-                    <div class="contact-card rounded-square">
-                        <i class="fas fa-envelope icon-large"></i>
-                        <h3>Email Us</h3>
-                        <p class="contact-detail"><a href="mailto:Novixel@hotmail.com">Novixel@hotmail.com</a></p>
-                        <p>For non-urgent inquiries or detailed requests.</p>
-                    </div>
-                    <div class="contact-card rounded-square">
-                        <i class="fas fa-clock icon-large"></i>
-                        <h3>Operating Hours</h3>
-                        <p>Mon - Fri: 6:00 PM - 9:00 PM</p>
-                        <p>Sat: 9:00 AM - 9:00 PM</p>
-                        <p>Sun: 9:00 AM - 9:00 PM</p>
-                    </div>
-                </div>
-
-                <!-- <div class="contact-form-container rounded-square light-bg">
-                    <h3>Send Us a Message</h3>
-                    <form id="contactForm" class="contact-form">
-                        <div class="form-group">
-                            <label for="name">Your Name:</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Your Email:</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Your Phone (Optional):</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="service">Interested Service:</label>
-                            <select id="service" name="service">
-                                <option value="">Select a Service</option>
-                                <option value="computer-setup">Computer Setup & Data</option>
-                                <option value="network-wifi">Wi-Fi & Networks</option>
-                                <option value="smart-home">Smart Home Installation</option>
-                                <option value="troubleshooting">Troubleshooting & Repair</option>
-                                <option value="consultation">Tech Consultation</option>
-                                <option value="other">Other / Not Sure</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Your Message:</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="button primary-button">Send Message</button>
-                    </form>
-                    <div id="formMessage" class="form-message"></div>
-                </div> -->
-
-                <div class="service-area-map rounded-square">
-                    <h3>Our Service Area</h3>
-                    <p>Proudly serving Dawson Creek and surrounding communities.</p>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16781.018903525256!2d-120.24439077273347!3d55.76012670744573!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53805e2671ae650d%3A0xc02384a6226c6d26!2sDawson%20Creek%2C%20BC%20V1G%204J5!5e0!3m2!1sen!2sca!4v1701234567890!5m2!1sen!2sca" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    <p class="small-text">Contact us if you are slightly outside this area; we may still be able to help!</p>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h4>Dawson Creek Tech Expert</h4>
-                    <p>Your local solution for all things tech.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services-section">Services</a></li>
-                        <li><a href="#about-us-section">About Us</a></li>
-                        <li><a href="#pricing-section">Pricing</a></li>
-                        <li><a href="#contact-section">Contact</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h4>Get In Touch</h4>
-                    <p><i class="fas fa-phone-alt"></i> (250) 219-4276</p>
-                    <p><i class="fas fa-envelope"></i> Novixel@hotmail.com</p>
-                    <p><i class="fas fa-clock"></i> Monday - Friday: 6pm - 9pm</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Serving Dawson Creek & Area</p>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 Novixel. All rights reserved.</p>
-=======
->>>>>>> parent of c212151a (0.2.1)
-=======
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <!-- <div class="coolthing">
-        <button class="coolbutton" onclick="CoolThing(event)">Cool Button</button>
-    </div> -->
-
-    <div class="container">
-        <img class="mainlogo" src="\Novixel-icon-Trans1.png" alt="Novixel Logo" class="logo" href="https://www.Novixel.ca/">
-        <h1>Find Your Solution</h1>
-        <button class="fas fa-moon" onclick="toggleDarkMode(event)"></button>
-        <hr class="separator">
-        <div class="tab">
-            <button class="tablinks" onclick="openTab(event, 'Home')">Home</button>
-            <button class="tablinks" onclick="openTab(event, 'About')">About Me</button>
-            <button class="tablinks" onclick="openTab(event, 'Skills')">My Skills</button>
-            <!-- Icon -->
-            <!--<button id="myblogtab" class="tablinks" onclick="openTab(event, 'Blog')">My Blog</button>-->
-        </div>
-        
-        <div id="Home" class="tabcontent">
-            <h2>Home</h2>
-            <p>
-                Welcome to the homepage! 
-
-                Exciting content is on the horizon, stay tuned for some awesome updates.
-
-                Soon to be more links.
-                Soon to be more stuff.
-                Suggestions are cool.
-            </p>
-        </div>
-
-        <div id="About" class="tabcontent">
-            <h2>About Me</h2>
-            <p>
-                Hello, World! That's how it started. I use Python for most things—it's quick and portable.
-                If the need arises, I'll use whatever language best suits the environment.
-                
-                I specialize in building automation scripts, API wrappers, and trading bots for cryptocurrency exchanges.
-                Currently, I'm working on web development and security projects, always looking for new challenges to take on.
-                
-                As a self-taught developer, I'm constantly learning and improving my skills.
-                
-                A relatively new endeavor I've been exploring is electrical engineering.
-        
-                I'm currently working on a project involving a Raspberry Pi and a few controllers to build a physical trading bot.
-                I plan to start with a basic AI-powered robot car that I can build with my kids.    
-            </p>
-        </div>
-        
-        <div id="Skills" class="tabcontent">
-            <h2>My Skills</h2>
-            <p>
-                I have a unique set of skills that have helped me navigate life. Give me a problem, and I'll find a solution. 
-                It might not always be the most elegant fix, but you can bet it'll work. 
-                I have a knack for troubleshooting—whether it's weird automotive issues, power tools acting up, or debugging stubborn code. 
-                I've found that asking the right questions and truly understanding the problem is the key to getting to the root cause of any issue.
-                When it comes to coding, I'm solid. I specialize in Python but can work with C++, C#, HTML, CSS, and JavaScript when needed. 
-                I've built a variety of small to medium-sized software applications and have experience across multiple operating systems, including Windows, macOS, and several Linux distributions.
-                On top of that, I'm great with people. 
-                Customer relations is one of my strong suits—I know how to build meaningful connections and provide top-tier service. 
-                Whether it's clients, customers, or collaborators, I make sure the experience is smooth and professional.
-            </p>
-        </div>
-
-        <div id="Blog" class="tabcontent">
-            <h2>My Blog</h2>
-            <p>One day ill start a blog where i express those feeling humans have.. or talk about tech, or AI, or cars? I dont know.
-                I'll figure it out.
-                Let's see what the future holds. Artificial general inteligence, self driving cars, nucular winter. Who knows.
-                Lets keep, keeping on and enjoy our lives.
-
-                Let me know if you care to hear more of my insight full comments
-
-            </p>
-        </div>
-
-        <div class=ServicesContainer>
-            <hr class="separator">
-            <div class="Services">
-                <div class="Service">
-                    <h3>Software Development</h3>
-                    <p>
-                        Need a reliable software solution? I offer professional development services tailored to your requirements. With expertise in Python, C#, C++, HTML, CSS, JavaScript, and more, I deliver robust, efficient, and scalable applications to help you achieve your goals.
-                    </p>
-                </div>
-                <div class="Service">
-                    <h3>IT Support & Consulting</h3>
-                    <p>Facing computer issues? I'm here to assist. With expertise in Windows, macOS, IOS, and Android. I bring tailored solutions to ensure your tech experience is smooth and problem-free</p>
-                </div>
-                <div class="Service">
-                    <h3>Small Electronic Repairs </h3>
-                    <p>Have a broken TV, game console, or other electronic device? I offer repair services for a variety of consumer electronics. Whether it's troubleshooting, part replacement, or general maintenance, I'll work to get your devices back up and running smoothly.</p>
-                </div>
->>>>>>> parent of c212151a (0.2.1)
-=======
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <!-- <div class="coolthing">
-        <button class="coolbutton" onclick="CoolThing(event)">Cool Button</button>
-    </div> -->
-
-    <div class="container">
-        <img class="mainlogo" src="\Novixel-icon-Trans1.png" alt="Novixel Logo" class="logo" href="https://www.Novixel.ca/">
-        <h1>Find Your Solution</h1>
-        <button class="fas fa-moon" onclick="toggleDarkMode(event)"></button>
-        <hr class="separator">
-        <div class="tab">
-            <button class="tablinks" onclick="openTab(event, 'Home')">Home</button>
-            <button class="tablinks" onclick="openTab(event, 'About')">About Me</button>
-            <button class="tablinks" onclick="openTab(event, 'Skills')">My Skills</button>
-            <!-- Icon -->
-            <!--<button id="myblogtab" class="tablinks" onclick="openTab(event, 'Blog')">My Blog</button>-->
-        </div>
-        
-        <div id="Home" class="tabcontent">
-            <h2>Home</h2>
-            <p>
-                Welcome to the homepage! 
-
-                Exciting content is on the horizon, stay tuned for some awesome updates.
-
-                Soon to be more links.
-                Soon to be more stuff.
-                Suggestions are cool.
-            </p>
-        </div>
-
-        <div id="About" class="tabcontent">
-            <h2>About Me</h2>
-            <p>
-                Hello, World! That's how it started. I use Python for most things—it's quick and portable.
-                If the need arises, I'll use whatever language best suits the environment.
-                
-                I specialize in building automation scripts, API wrappers, and trading bots for cryptocurrency exchanges.
-                Currently, I'm working on web development and security projects, always looking for new challenges to take on.
-                
-                As a self-taught developer, I'm constantly learning and improving my skills.
-                
-                A relatively new endeavor I've been exploring is electrical engineering.
-        
-                I'm currently working on a project involving a Raspberry Pi and a few controllers to build a physical trading bot.
-                I plan to start with a basic AI-powered robot car that I can build with my kids.    
-            </p>
-        </div>
-        
-        <div id="Skills" class="tabcontent">
-            <h2>My Skills</h2>
-            <p>
-                I have a unique set of skills that have helped me navigate life. Give me a problem, and I'll find a solution. 
-                It might not always be the most elegant fix, but you can bet it'll work. 
-                I have a knack for troubleshooting—whether it's weird automotive issues, power tools acting up, or debugging stubborn code. 
-                I've found that asking the right questions and truly understanding the problem is the key to getting to the root cause of any issue.
-                When it comes to coding, I'm solid. I specialize in Python but can work with C++, C#, HTML, CSS, and JavaScript when needed. 
-                I've built a variety of small to medium-sized software applications and have experience across multiple operating systems, including Windows, macOS, and several Linux distributions.
-                On top of that, I'm great with people. 
-                Customer relations is one of my strong suits—I know how to build meaningful connections and provide top-tier service. 
-                Whether it's clients, customers, or collaborators, I make sure the experience is smooth and professional.
-            </p>
-        </div>
-
-        <div id="Blog" class="tabcontent">
-            <h2>My Blog</h2>
-            <p>One day ill start a blog where i express those feeling humans have.. or talk about tech, or AI, or cars? I dont know.
-                I'll figure it out.
-                Let's see what the future holds. Artificial general inteligence, self driving cars, nucular winter. Who knows.
-                Lets keep, keeping on and enjoy our lives.
-
-                Let me know if you care to hear more of my insight full comments
-
-            </p>
-        </div>
-
-        <div class=ServicesContainer>
-            <hr class="separator">
-            <div class="Services">
-                <div class="Service">
-                    <h3>Software Development</h3>
-                    <p>
-                        Need a reliable software solution? I offer professional development services tailored to your requirements. With expertise in Python, C#, C++, HTML, CSS, JavaScript, and more, I deliver robust, efficient, and scalable applications to help you achieve your goals.
-                    </p>
-                </div>
-                <div class="Service">
-                    <h3>IT Support & Consulting</h3>
-                    <p>Facing computer issues? I'm here to assist. With expertise in Windows, macOS, IOS, and Android. I bring tailored solutions to ensure your tech experience is smooth and problem-free</p>
-                </div>
-                <div class="Service">
-                    <h3>Small Electronic Repairs </h3>
-                    <p>Have a broken TV, game console, or other electronic device? I offer repair services for a variety of consumer electronics. Whether it's troubleshooting, part replacement, or general maintenance, I'll work to get your devices back up and running smoothly.</p>
-                </div>
->>>>>>> parent of c212151a (0.2.1)
             </div>
         </div>
-        
 
         <div id="specialareaid" class="specialarea">
-
-            <content></content> 
             <hr class="separator">
-            <h2>Let Me Be Your Solution.</h2>
-
-
+            <h2>Let Me Be Your Solution</h2>
             <h4>Send a Message</h4>
             <form id="contactForm" action="mailto:novixel@hotmail.com" method="POST" enctype="text/plain">
                 <label for="name">Name:</label>
@@ -641,20 +126,22 @@
                 <textarea id="message" name="message" rows="4" required></textarea><br>
                 <input type="submit" value="Send">
             </form>
-        
         </div>
 
-        <div class="footer">
             <hr class="separator">
-            <a class="social-link" href="https://instagram.com/novixel"><i class="fab fa-instagram"></i></a>
-            <a class="social-link" href="https://x.com/OfficialNovixel"><i class="fab fa-twitter"></i></a>
-            <a class="social-link" href="https://www.youtube.com/c/Novixel"><i class="fab fa-youtube"></i></a>
-            <p><a href="https://www.Novixel.ca/">Novixel</a></p>
+            
+            <div style="margin: 15px 0;">
+                <a class="social-link" href="https://instagram.com/novixel"><i class="fab fa-instagram"></i></a>
+                <a class="social-link" href="https://x.com/OfficialNovixel"><i class="fab fa-twitter"></i></a>
+                <a class="social-link" href="https://www.youtube.com/c/Novixel"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <p><strong>Novixel</strong> - Based in Dawson Creek, BC</p>
+            <p style="font-size: 0.9em;"><a href="mailto:novixel@hotmail.com">novixel@hotmail.com</a> | <a href="tel:+2502194276">(250) 219-4276</a></p>
+            <p style="font-size: 0.8em; color: #666;">&copy; 2025 Novixel. All rights reserved.</p>
         </div>
 
         <script src="script.js"></script>
-
-        
     </div>
 </body>
 </html>
