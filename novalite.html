@@ -9,58 +9,117 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* NovaLite Color Palette - Lime Green Theme */
-            --lime-primary: #7FFF00;
-            --lime-light: #90FF10;
-            --lime-dark: #6FEF00;
+            /* NovaLite App Color Palette - Neon Green Theme */
+            --color-primary: #00ff00;
+            --color-primary-dark: #00cc00;
             
-            /* Neutral Colors */
-            --bg-main: #0a0a0a;
-            --bg-card: #1a1a1a;
-            --border-color: #2a2a2a;
+            /* Background Colors */
+            --bg-main: #000000;
+            --bg-darker: #0a0f0a;
+            --bg-card: rgba(0, 255, 0, 0.05);
+            --bg-card-hover: rgba(0, 255, 0, 0.08);
+            --border-color: rgba(0, 255, 0, 0.2);
+            
+            /* Text Colors */
             --text-primary: #ffffff;
-            --text-secondary: #b0b0b0;
-            --text-muted: #808080;
+            --text-secondary: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --text-dark: #808080;
             
             /* Status Colors */
-            --success: #10b981;
-            --warning: #f59e0b;
-            --error: #ef4444;
+            --success: #00ff00;
+            --warning: #ffc107;
+            --error: #ff0000;
+            --info: #2196f3;
             
-            /* Spacing */
-            --space-1: 4px;
-            --space-2: 8px;
-            --space-3: 12px;
-            --space-4: 16px;
-            --space-5: 20px;
-            --space-6: 24px;
+            /* Spacing System */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
             
-            /* Typography */
-            --font-size-micro: 11px;
-            --font-size-small: 12px;
-            --font-size-base: 14px;
-            --font-size-lg: 16px;
-            --font-size-xl: 18px;
-            --font-size-2xl: 20px;
-            --font-size-3xl: 24px;
+            /* Typography Scale */
+            --font-size-small: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 2rem;
+            --font-size-4xl: 2.5rem;
+            --font-size-5xl: 3rem;
             
-            /* Component Sizes */
-            --input-height: 36px;
-            --button-height: 32px;
-            --card-radius: 8px;
+            /* Border Radius */
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-full: 9999px;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.7);
+            --shadow-green: 0 0 20px rgba(0, 255, 0, 0.5);
+            
+            /* Transitions */
+            --transition-fast: 0.15s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-main);
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background: linear-gradient(135deg, var(--bg-main) 0%, var(--bg-darker) 100%);
+            color: var(--text-secondary);
             font-size: var(--font-size-base);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: background var(--transition-fast), 
+                        color var(--transition-fast), 
+                        border-color var(--transition-fast), 
+                        transform var(--transition-fast),
+                        box-shadow var(--transition-fast);
         }
         
         .bg-grid-slate-800 {
-            background-image: linear-gradient(white 2px, transparent 2px), linear-gradient(90deg, white 2px, transparent 2px), linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px);
-            background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
-            background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
-            background-color: var(--bg-card);
+            background-image: linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 255, 0, 0.3);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 255, 0, 0.5);
         }
         
         .scroll-reveal {
@@ -78,71 +137,141 @@
         .nova-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: var(--card-radius);
-            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            transition: all var(--transition-normal);
+        }
+
+        .nova-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(0, 255, 0, 0.4);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
         }
 
         .nova-button-primary {
-            background: var(--lime-primary);
-            color: #000000;
-            height: var(--button-height);
-            padding: 6px var(--space-2);
-            border-radius: var(--card-radius);
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+            padding: 1rem 2rem;
+            border-radius: var(--radius-md);
             font-weight: 600;
             font-size: var(--font-size-base);
-            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            transition: all var(--transition-normal);
         }
 
         .nova-button-primary:hover {
-            background: var(--lime-light);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 20px rgba(127, 255, 0, 0.4);
+            background: rgba(0, 255, 0, 0.2);
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-green);
         }
 
         .nova-button-secondary {
-            background: var(--bg-card);
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.2);
             color: var(--text-primary);
-            height: var(--button-height);
-            padding: 6px var(--space-2);
-            border: 1px solid var(--border-color);
-            border-radius: var(--card-radius);
-            font-weight: 500;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
             font-size: var(--font-size-base);
-            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            transition: all var(--transition-normal);
         }
 
         .nova-button-secondary:hover {
-            background: var(--border-color);
-            border-color: var(--lime-primary);
-            transform: translateY(-1px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
         }
 
         .nova-accent {
-            color: var(--lime-primary);
+            color: var(--color-primary);
         }
 
         .nova-icon-bg {
-            background: rgba(127, 255, 0, 0.1);
-            border: 1px solid rgba(127, 255, 0, 0.2);
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.2);
+        }
+        
+        /* Gradient text effect for titles */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
         }
 
         .price-card {
             background: var(--bg-card);
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            padding: var(--space-6);
-            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            transition: all var(--transition-normal);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .price-card:hover {
-            border-color: var(--lime-primary);
+            background: var(--bg-card-hover);
+            border-color: rgba(0, 255, 0, 0.4);
             transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(127, 255, 0, 0.2);
+            box-shadow: 0 8px 24px rgba(0, 255, 0, 0.2);
         }
 
         .feature-check {
-            color: var(--lime-primary);
+            color: var(--color-primary);
             font-weight: 600;
+            margin-right: 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        .pricing-badge {
+            background: rgba(255, 193, 7, 0.2);
+            border: 1px solid var(--warning);
+            color: var(--warning);
+            padding: 0.375rem 0.875rem;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .pricing-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1;
+        }
+        
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
         }
     </style>
 </head>
@@ -150,28 +279,28 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="relative text-center text-white bg-slate-900 overflow-hidden" style="padding-top: 30px; padding-bottom: var(--space-6); background-color: var(--bg-main);">
+        <section class="relative text-center text-white bg-slate-900 overflow-hidden" style="padding: var(--space-3xl) 0; background-color: var(--bg-main);">
             <div class="absolute inset-0 bg-grid-slate-800 [mask-image:linear-gradient(to_bottom,white,transparent)] opacity-20"></div>
-            <div class="container mx-auto px-6 relative z-10">
-                <h1 class="text-2xl md:text-3xl font-extrabold tracking-tighter leading-tight" style="font-size: var(--font-size-3xl); font-weight: 700; margin-bottom: var(--space-4);">
+            <div class="container mx-auto px-6 md:px-8 lg:px-12 relative z-10">
+                <h1 class="text-2xl md:text-3xl font-extrabold tracking-tighter leading-tight" style="font-size: var(--font-size-3xl); font-weight: 700; margin-bottom: var(--space-xl);">
                     <span class="nova-accent">NovaLite</span> - Personal Crypto <br class="hidden md:block" />Trading Automation
                 </h1>
-                <p class="text-slate-300 max-w-3xl mx-auto" style="font-size: var(--font-size-lg); color: var(--text-secondary); margin-bottom: var(--space-6);">
+                <p class="text-slate-300 max-w-3xl mx-auto" style="font-size: var(--font-size-lg); color: var(--text-secondary); margin-bottom: var(--space-2xl); line-height: 1.8;">
                     Multi-user cryptocurrency trading bot platform built for testing proven strategies. 
                     FastAPI backend with real-time execution on Coinbase Advanced Trading API—live trading only, no simulations.
                 </p>
-                <p class="text-slate-400 max-w-1xl mx-auto" style="font-size: var(--font-size-base); color: var(--text-tertiary); margin-bottom: var(--space-6);">
+                <p class="text-slate-400 max-w-1xl mx-auto" style="font-size: var(--font-size-base); color: var(--text-tertiary); margin-bottom: var(--space-2xl);">
                     <span class="nova-accent">✓</span> Live Trading Only
                     <span class="mx-2"> • </span>
                     <span class="nova-accent">✓</span> Proven Strategies    
                     <span class="mx-2"> • </span>
                     <span class="nova-accent">✓</span> $0.99 - $49.99/mo
                 </p>
-                <div class="flex flex-col sm:flex-row justify-center items-center" style="gap: var(--space-4);">
-                    <a href="#pricing" class="w-full sm:w-auto nova-button-primary font-bold transform hover:scale-105 shadow-lg" style="padding: var(--space-1) var(--space-6); box-shadow: 0 5px 14px 0 rgba(127, 255, 0, 0.3);">
+                <div class="flex flex-col sm:flex-row justify-center items-center" style="gap: var(--space-lg);">
+                    <a href="#pricing" class="w-full sm:w-auto nova-button-primary font-bold transform hover:scale-105 shadow-lg" style="padding: var(--space-lg) var(--space-2xl); box-shadow: 0 5px 14px 0 rgba(127, 255, 0, 0.3);">
                         Start 14-Day Trial
                     </a>
-                    <a href="#how-it-works" class="w-full sm:w-auto nova-button-secondary font-bold transform hover:scale-105" style="padding: var(--space-1) var(--space-6);">
+                    <a href="#how-it-works" class="w-full sm:w-auto nova-button-secondary font-bold transform hover:scale-105" style="padding: var(--space-lg) var(--space-2xl);">
                         See How It Works
                     </a>
                 </div>
@@ -179,13 +308,13 @@
         </section>
 
         <!-- The Problem -->
-        <section style="padding: var(--space-6) 0; background-color: var(--bg-main);">
-            <div class="container mx-auto px-6 scroll-reveal">
-                <div class="text-center" style="margin-bottom: var(--space-3);">
-                    <h2 class="font-bold tracking-tight" style="font-size: var(--font-size-2xl); color: var(--text-primary); font-weight: 600;">Why Manual Trading Doesn't Work</h2>
-                    <p class="mt-2 max-w-2xl mx-auto" style="color: var(--text-secondary); font-size: var(--font-size-base);">Trading crypto manually is stressful, time-consuming, and often unprofitable.</p>
+        <section style="padding: var(--space-3xl) 0; background-color: var(--bg-main);">
+            <div class="container mx-auto px-6 md:px-8 lg:px-12 scroll-reveal">
+                <div class="text-center" style="margin-bottom: var(--space-2xl);">
+                    <h2 class="font-bold tracking-tight" style="font-size: var(--font-size-2xl); color: var(--text-primary); font-weight: 600; margin-bottom: var(--space-lg);">Why Manual Trading Doesn't Work</h2>
+                    <p class="mt-2 max-w-2xl mx-auto" style="color: var(--text-secondary); font-size: var(--font-size-base); line-height: 1.8;">Trading crypto manually is stressful, time-consuming, and often unprofitable.</p>
                 </div>
-                <div class="grid md:grid-cols-3 text-center" style="gap: var(--space-3);">
+                <div class="grid md:grid-cols-3 text-center" style="gap: var(--space-xl);">
                     <div class="nova-card text-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nova-accent mx-auto" style="margin-bottom: var(--space-2);"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                         <h3 style="font-size: var(--font-size-xl); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-2);">Emotional Decisions</h3>
@@ -206,14 +335,14 @@
         </section>
 
         <!-- The Solution -->
-        <section style="padding: var(--space-6) 0; background-color: var(--bg-card);">
-            <div class="container mx-auto px-6 scroll-reveal">
-                <div class="text-center" style="margin-bottom: var(--space-3);">
-                    <h2 class="font-bold tracking-tight" style="font-size: var(--font-size-2xl); color: var(--text-primary); font-weight: 600;">The NovaLite Solution</h2>
-                    <p class="mt-2 max-w-2xl mx-auto" style="color: var(--text-secondary); font-size: var(--font-size-base);">Enterprise-grade automation built for individual traders. Deploy once, profit continuously.</p>
+        <section style="padding: var(--space-3xl) 0; background-color: var(--bg-card);">
+            <div class="container mx-auto px-6 md:px-8 lg:px-12 scroll-reveal">
+                <div class="text-center" style="margin-bottom: var(--space-2xl);">
+                    <h2 class="font-bold tracking-tight" style="font-size: var(--font-size-2xl); color: var(--text-primary); font-weight: 600; margin-bottom: var(--space-lg);">The NovaLite Solution</h2>
+                    <p class="mt-2 max-w-2xl mx-auto" style="color: var(--text-secondary); font-size: var(--font-size-base); line-height: 1.8;">Enterprise-grade automation built for individual traders. Deploy once, profit continuously.</p>
                 </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3" style="gap: var(--space-2);">
-                    <div class="flex items-start" style="gap: var(--space-4);">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3" style="gap: var(--space-xl);">
+                    <div class="flex items-start" style="gap: var(--space-lg);">
                         <div class="nova-icon-bg rounded-lg" style="padding: var(--space-3);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nova-accent"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
                         <div>
                             <h3 style="font-size: var(--font-size-lg); font-weight: 600; color: var(--text-primary);">24/7 Automation</h3>
@@ -266,13 +395,13 @@
         </section>
 
         <!-- How It Works -->
-        <section id="how-it-works" style="padding: var(--space-6) 0; background-color: var(--bg-main);">
-            <div class="container mx-auto px-6 scroll-reveal">
-                <div class="text-center" style="margin-bottom: var(--space-4);">
-                    <h2 class="font-bold tracking-tight" style="font-size: var(--font-size-2xl); color: var(--text-primary); font-weight: 600;">How NovaLite Works</h2>
-                    <p class="mt-2 max-w-2xl mx-auto" style="color: var(--text-secondary); font-size: var(--font-size-base);">Get started in minutes, not hours.</p>
+        <section id="how-it-works" style="padding: var(--space-3xl) 0; background-color: var(--bg-main);">
+            <div class="container mx-auto px-6 md:px-8 lg:px-12 scroll-reveal">
+                <div class="text-center" style="margin-bottom: var(--space-2xl);">
+                    <h2 class="font-bold tracking-tight" style="font-size: var(--font-size-2xl); color: var(--text-primary); font-weight: 600; margin-bottom: var(--space-lg);">How NovaLite Works</h2>
+                    <p class="mt-2 max-w-2xl mx-auto" style="color: var(--text-secondary); font-size: var(--font-size-base); line-height: 1.8;">Get started in minutes, not hours.</p>
                 </div>
-                <div class="grid md:grid-cols-4 text-center" style="gap: var(--space-4);">
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 text-center" style="gap: var(--space-xl);">
                     <div>
                         <div class="nova-icon-bg rounded-full mx-auto" style="width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-3);">
                             <span class="nova-accent" style="font-size: 28px; font-weight: 700;">1</span>
@@ -305,141 +434,105 @@
             </div>
         </section>
 
-        <!-- Ready for More? NovaTrade -->
-        <section style="padding: var(--space-6) 0; background-color: var(--bg-main);">
-            <div class="container mx-auto px-6 scroll-reveal">
-                <div class="nova-card" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(26, 26, 26, 0.8) 100%); border: 2px solid rgba(212, 175, 55, 0.3); padding: var(--space-6);">
-                    <div class="text-center max-w-3xl mx-auto">
-                        <div style="margin-bottom: var(--space-3);">
-                            <span style="display: inline-block; background: rgba(212, 175, 55, 0.2); color: var(--gold-primary); font-weight: 600; font-size: var(--font-size-small); padding: var(--space-1) var(--space-3); border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.4);">COMING SOON</span>
-                        </div>
-                        <h2 class="font-bold tracking-tight" style="font-size: var(--font-size-2xl); color: var(--text-primary); font-weight: 600; margin-bottom: var(--space-3);">
-                            Ready for the Next Level? Meet <span style="color: var(--gold-primary);">NovaTrade</span>
-                        </h2>
-                        <p style="color: var(--text-secondary); font-size: var(--font-size-base); margin-bottom: var(--space-4); line-height: 1.6;">
-                            NovaLite gets you started with automated trading. <strong style="color: var(--text-primary);">NovaTrade</strong> is the professional evolution—built for serious traders managing larger portfolios and executing complex strategies across multiple exchanges.
-                        </p>
-                        
-                        <div class="grid md:grid-cols-3 text-left" style="gap: var(--space-4); margin-bottom: var(--space-4);">
-                            <div>
-                                <div class="nova-icon-bg rounded-lg" style="padding: var(--space-2); display: inline-block; margin-bottom: var(--space-2);">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold-primary);"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
-                                </div>
-                                <h3 style="font-size: var(--font-size-base); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-1);">Multi-Strategy Execution</h3>
-                                <p style="color: var(--text-secondary); font-size: var(--font-size-small);">Run multiple strategies simultaneously for diversified returns</p>
-                            </div>
-                            <div>
-                                <div class="nova-icon-bg rounded-lg" style="padding: var(--space-2); display: inline-block; margin-bottom: var(--space-2);">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold-primary);"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                                </div>
-                                <h3 style="font-size: var(--font-size-base); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-1);">Cross-Exchange Trading</h3>
-                                <p style="color: var(--text-secondary); font-size: var(--font-size-small);">Unified portfolio management across major exchanges</p>
-                            </div>
-                            <div>
-                                <div class="nova-icon-bg rounded-lg" style="padding: var(--space-2); display: inline-block; margin-bottom: var(--space-2);">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold-primary);"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
-                                </div>
-                                <h3 style="font-size: var(--font-size-base); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-1);">AI Strategy Insights</h3>
-                                <p style="color: var(--text-secondary); font-size: var(--font-size-small);">Data-driven recommendations for strategy optimization</p>
-                            </div>
-                        </div>
-
-                        <div style="padding-top: var(--space-3); border-top: 1px solid rgba(212, 175, 55, 0.2);">
-                            <p style="color: var(--text-muted); font-size: var(--font-size-small); margin-bottom: var(--space-3); font-style: italic;">
-                                Start with NovaLite today. When you're ready to scale, NovaTrade will be waiting.
-                            </p>
-                            <a href="novatrade.html" class="nova-button-secondary font-bold transform hover:scale-105" style="padding: var(--space-2) var(--space-4); display: inline-block; border-color: rgba(212, 175, 55, 0.4);" onmouseover="this.style.borderColor='var(--gold-primary)'; this.style.color='var(--gold-primary)'" onmouseout="this.style.borderColor='rgba(212, 175, 55, 0.4)'; this.style.color='var(--text-primary)'">
-                                Learn About NovaTrade →
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Pricing -->
-        <section id="pricing" style="padding: var(--space-6) 0; background-color: var(--bg-card);">
-            <div class="container mx-auto px-6 scroll-reveal">
-                <div class="text-center" style="margin-bottom: var(--space-4);">
-                    <h2 class="font-bold tracking-tight" style="font-size: var(--font-size-2xl); color: var(--text-primary); font-weight: 600;">Simple, Transparent Pricing</h2>
-                    <p class="mt-2 max-w-2xl mx-auto" style="color: var(--text-secondary); font-size: var(--font-size-base);">Start with a 14-day trial, then choose the plan that fits your strategy.</p>
+        <section id="pricing" style="padding: var(--space-3xl) 0; background-color: var(--bg-card);">
+            <div class="container mx-auto px-6 md:px-8 lg:px-12 scroll-reveal">
+                <div class="text-center" style="margin-bottom: var(--space-2xl);">
+                    <h2 class="font-bold tracking-tight" style="font-size: var(--font-size-2xl); color: var(--text-primary); font-weight: 600; margin-bottom: var(--space-lg);">Simple, Transparent Pricing</h2>
+                    <p class="mt-2 max-w-2xl mx-auto" style="color: var(--text-secondary); font-size: var(--font-size-base); line-height: 1.8;">Start with a 14-day trial, then choose the plan that fits your strategy.</p>
                 </div>
-                <div class="grid md:grid-cols-4 max-w-6xl mx-auto" style="gap: var(--space-4);">
-                    <!-- Starter Plan -->
-                    <div class="price-card">
-                        <h3 style="font-size: var(--font-size-xl); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-2);">Starter</h3>
-                        <p class="nova-accent" style="font-size: var(--font-size-3xl); font-weight: 700; margin-bottom: var(--space-1);">$0.99<span style="font-size: var(--font-size-base); color: var(--text-secondary); font-weight: 400;">/month</span></p>
-                        <p style="color: var(--text-secondary); font-size: var(--font-size-base); margin-bottom: var(--space-4);">Perfect for testing</p>
-                        <ul style="margin-bottom: var(--space-4); list-style: none;">
-                            <li style="margin-bottom: var(--space-2);"><span class="feature-check">✓</span> 1 Trading Bot</li>
-                            <li style="margin-bottom: var(--space-2);"><span class="feature-check">✓</span> All Core Strategies</li>
-                            <li style="margin-bottom: var(--space-2);"><span class="feature-check">✓</span> $500 Trade Volume Limit</li>
-                            <li style="margin-bottom: var(--space-2);"><span class="feature-check">✓</span> 90-Day Trial Period</li>
-                            <li style="margin-bottom: var(--space-2);"><span class="feature-check">✓</span> Email Support</li>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto" style="gap: var(--space-lg);">
+                    <!-- Free Plan -->
+                    <div class="price-card" style="border-color: rgba(33, 150, 243, 0.5);">
+                        <div style="display: inline-block; background: rgba(33, 150, 243, 0.2); color: #2196f3; font-weight: 600; font-size: 0.75rem; padding: 0.375rem 0.875rem; border-radius: var(--radius-full); margin-bottom: var(--space-md);">Free Trial</div>
+                        <h3 style="font-size: var(--font-size-lg); font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-sm); text-transform: uppercase; letter-spacing: 0.5px;">FREE</h3>
+                        <div style="margin-bottom: var(--space-md);">
+                            <span class="pricing-amount">$0</span>
+                            <span style="font-size: var(--font-size-small); color: var(--text-muted); font-weight: 400;">/month</span>
+                        </div>
+                        <p style="color: var(--text-secondary); font-size: var(--font-size-small); margin-bottom: var(--space-lg);">Test the waters</p>
+                        <ul style="margin-bottom: auto; list-style: none; padding-left: 0; flex-grow: 1;">
+                            <li style="margin-bottom: var(--space-sm); font-size: var(--font-size-small);"><span class="feature-check">✓</span> 1 Trading Bot</li>
+                            <li style="margin-bottom: var(--space-sm); font-size: var(--font-size-small);"><span class="feature-check">✓</span> 3 Basic Strategies</li>
+                            <li style="margin-bottom: var(--space-sm); font-size: var(--font-size-small);"><span class="feature-check">✓</span> $1,000/mo Volume Cap</li>
+                            <li style="margin-bottom: var(--space-sm); font-size: var(--font-size-small);"><span class="feature-check">✓</span> 14-Day Trial</li>
+                            <li style="margin-bottom: var(--space-sm); color: var(--text-muted); font-size: var(--font-size-small);"><span style="color: var(--text-dark); margin-right: 0.5rem; font-weight: 600;">✗</span> Premium Strategies</li>
+                            <li style="margin-bottom: var(--space-sm); color: var(--text-muted); font-size: var(--font-size-small);"><span style="color: var(--text-dark); margin-right: 0.5rem; font-weight: 600;">✗</span> Priority Support</li>
                         </ul>
-                        <a href="#cta" class="nova-button-secondary font-bold block text-center" style="padding: var(--space-2) var(--space-4); width: 100%;">Start Free Trial</a>
+                        <a href="#cta" class="nova-button-secondary font-bold block text-center" style="padding: var(--space-md) var(--space-lg); width: 100%; margin-top: var(--space-lg); font-size: var(--font-size-small); text-transform: uppercase; letter-spacing: 0.5px;">Start Free Trial</a>
                     </div>
 
-                    <!-- Basic Plan -->
-                    <div class="price-card">
-                        <h3 style="font-size: var(--font-size-xl); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-2);">Basic</h3>
-                        <p class="nova-accent" style="font-size: var(--font-size-3xl); font-weight: 700; margin-bottom: var(--space-1);">$9.99<span style="font-size: var(--font-size-base); color: var(--text-secondary); font-weight: 400;">/month</span></p>
-                        <p style="color: var(--text-secondary); font-size: var(--font-size-base); margin-bottom: var(--space-4);">Scale your strategy</p>
-                        <ul style="margin-bottom: var(--space-4); list-style: none;">
-                            <li style="margin-bottom: var(--space-2);"><span class="feature-check">✓</span> 3 Trading Bots</li>
-                            <li style="margin-bottom: var(--space-2);"><span class="feature-check">✓</span> All Strategies</li>
-                            <li style="margin-bottom: var(--space-2);"><span class="feature-check">✓</span> Unlimited Volume</li>
-                            <li style="margin-bottom: var(--space-2);"><span class="feature-check">✓</span> Real-Time Dashboard</li>
-                            <li style="margin-bottom: var(--space-2);"><span class="feature-check">✓</span> Priority Support</li>
+                    <!-- Starter Plan (Most Popular) -->
+                    <div class="price-card" style="border-color: var(--color-primary); box-shadow: 0 0 24px rgba(0, 255, 0, 0.15);">
+                        <div class="pricing-badge" style="margin-bottom: var(--space-md);">Most Popular</div>
+                        <h3 style="font-size: var(--font-size-lg); font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-sm); text-transform: uppercase; letter-spacing: 0.5px;">STARTER</h3>
+                        <div style="margin-bottom: var(--space-md);">
+                            <span class="pricing-amount">$19</span>
+                            <span style="font-size: var(--font-size-small); color: var(--text-muted); font-weight: 400;">/month</span>
+                        </div>
+                        <p style="color: var(--text-secondary); font-size: var(--font-size-small); margin-bottom: var(--space-lg);">Get started seriously</p>
+                        <ul style="margin-bottom: auto; list-style: none; padding-left: 0; flex-grow: 1;">
+                            <li style="margin-bottom: var(--space-sm); font-size: var(--font-size-small);"><span class="feature-check">✓</span> 3 Trading Bots</li>
+                            <li style="margin-bottom: var(--space-sm); font-size: var(--font-size-small);"><span class="feature-check">✓</span> 5 Trading Strategies</li>
+                            <li style="margin-bottom: var(--space-sm); font-size: var(--font-size-small);"><span class="feature-check">✓</span> $10,000/mo Volume Cap</li>
+                            <li style="margin-bottom: var(--space-sm); font-size: var(--font-size-small);"><span class="feature-check">✓</span> Email Support</li>
+                            <li style="margin-bottom: var(--space-sm); font-size: var(--font-size-small);"><span class="feature-check">✓</span> Basic Analytics</li>
+                            <li style="margin-bottom: var(--space-sm); color: var(--text-muted); font-size: var(--font-size-small);"><span style="color: var(--text-dark); margin-right: 0.5rem; font-weight: 600;">✗</span> Custom Strategies</li>
                         </ul>
-                        <a href="#cta" class="nova-button-secondary font-bold block text-center" style="padding: var(--space-2) var(--space-4); width: 100%;">Start Free Trial</a>
+                        <a href="#cta" class="nova-button-primary font-bold block text-center" style="padding: var(--space-md) var(--space-lg); width: 100%; margin-top: var(--space-lg); font-size: var(--font-size-small); text-transform: uppercase; letter-spacing: 0.5px;">Upgrade Now</a>
                     </div>
 
-                    <!-- Pro Plan (Featured) -->
-                    <div class="price-card" style="border-color: var(--lime-primary); transform: scale(1.05);">
-                        <div style="background: var(--lime-primary); color: #000; font-weight: 600; font-size: var(--font-size-small); padding: var(--space-1) var(--space-2); border-radius: 4px; display: inline-block; margin-bottom: var(--space-2);">MOST POPULAR</div>
-                        <h3 style="font-size: var(--font-size-xl); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-2);">Pro</h3>
-                        <p class="nova-accent" style="font-size: var(--font-size-3xl); font-weight: 700; margin-bottom: var(--space-1);">$29.99<span style="font-size: var(--font-size-base); color: var(--text-secondary); font-weight: 400;">/month</span></p>
-                        <p style="color: var(--text-secondary); font-size: var(--font-size-base); margin-bottom: var(--space-4);">Serious traders</p>
-                        <ul style="margin-bottom: var(--space-4); list-style: none;">
-                            <li style="margin-bottom: var(--space-2);"><span class="feature-check">✓</span> 9 Trading Bots</li>
-                            <li style="margin-bottom: var(--space-2);"><span class="feature-check">✓</span> All Advanced Strategies</li>
-                            <li style="margin-bottom: var(--space-2);"><span class="feature-check">✓</span> Unlimited Volume</li>
-                            <li style="margin-bottom: var(--space-2);"><span class="feature-check">✓</span> Advanced Analytics</li>
-                            <li style="margin-bottom: var(--space-2);"><span class="feature-check">✓</span> Priority Support</li>
+                    <!-- Advanced Plan (Best Value) -->
+                    <div class="price-card" style="border-color: rgba(255, 193, 7, 0.5);">
+                        <div style="display: inline-block; background: rgba(255, 193, 7, 0.2); color: var(--warning); font-weight: 600; font-size: 0.75rem; padding: 0.375rem 0.875rem; border-radius: var(--radius-full); margin-bottom: var(--space-md);">Best Value</div>
+                        <h3 style="font-size: var(--font-size-lg); font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-sm); text-transform: uppercase; letter-spacing: 0.5px;">ADVANCED</h3>
+                        <div style="margin-bottom: var(--space-md);">
+                            <span class="pricing-amount">$39</span>
+                            <span style="font-size: var(--font-size-small); color: var(--text-muted); font-weight: 400;">/month</span>
+                        </div>
+                        <p style="color: var(--text-secondary); font-size: var(--font-size-small); margin-bottom: var(--space-lg);">Power trader</p>
+                        <ul style="margin-bottom: auto; list-style: none; padding-left: 0; flex-grow: 1;">
+                            <li style="margin-bottom: var(--space-sm); font-size: var(--font-size-small);"><span class="feature-check">✓</span> 10 Trading Bots</li>
+                            <li style="margin-bottom: var(--space-sm); font-size: var(--font-size-small);"><span class="feature-check">✓</span> All Trading Strategies</li>
+                            <li style="margin-bottom: var(--space-sm); font-size: var(--font-size-small);"><span class="feature-check">✓</span> $50,000/mo Volume Cap</li>
+                            <li style="margin-bottom: var(--space-sm); font-size: var(--font-size-small);"><span class="feature-check">✓</span> Priority Support</li>
+                            <li style="margin-bottom: var(--space-sm); font-size: var(--font-size-small);"><span class="feature-check">✓</span> Advanced Analytics</li>
+                            <li style="margin-bottom: var(--space-sm); font-size: var(--font-size-small);"><span class="feature-check">✓</span> API Access</li>
                         </ul>
-                        <a href="#cta" class="nova-button-primary font-bold block text-center" style="padding: var(--space-2) var(--space-4); width: 100%;">Start Free Trial</a>
+                        <a href="#cta" class="nova-button-secondary font-bold block text-center" style="padding: var(--space-md) var(--space-lg); width: 100%; margin-top: var(--space-lg); font-size: var(--font-size-small); text-transform: uppercase; letter-spacing: 0.5px;">Upgrade</a>
                     </div>
 
-                    <!-- Master Plan -->
-                    <div class="price-card">
-                        <h3 style="font-size: var(--font-size-xl); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-2);">Master</h3>
-                        <p class="nova-accent" style="font-size: var(--font-size-3xl); font-weight: 700; margin-bottom: var(--space-1);">$49.99<span style="font-size: var(--font-size-base); color: var(--text-secondary); font-weight: 400;">/month</span></p>
-                        <p style="color: var(--text-secondary); font-size: var(--font-size-base); margin-bottom: var(--space-4);">Maximum automation</p>
-                        <ul style="margin-bottom: var(--space-4); list-style: none;">
-                            <li style="margin-bottom: var(--space-2);"><span class="feature-check">✓</span> 15 Trading Bots</li>
-                            <li style="margin-bottom: var(--space-2);"><span class="feature-check">✓</span> All Strategies + Custom</li>
-                            <li style="margin-bottom: var(--space-2);"><span class="feature-check">✓</span> Unlimited Volume</li>
-                            <li style="margin-bottom: var(--space-2);"><span class="feature-check">✓</span> Advanced Analytics</li>
-                            <li style="margin-bottom: var(--space-2);"><span class="feature-check">✓</span> 24/7 Dedicated Support</li>
+                    <!-- Professional Plan (Pro) -->
+                    <div class="price-card" style="border-color: rgba(156, 39, 176, 0.5);">
+                        <div style="display: inline-block; background: rgba(156, 39, 176, 0.2); color: #9c27b0; font-weight: 600; font-size: 0.75rem; padding: 0.375rem 0.875rem; border-radius: var(--radius-full); margin-bottom: var(--space-md);">Pro</div>
+                        <h3 style="font-size: var(--font-size-lg); font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-sm); text-transform: uppercase; letter-spacing: 0.5px;">PROFESSIONAL</h3>
+                        <div style="margin-bottom: var(--space-md);">
+                            <span class="pricing-amount">$99</span>
+                            <span style="font-size: var(--font-size-small); color: var(--text-muted); font-weight: 400;">/month</span>
+                        </div>
+                        <p style="color: var(--text-secondary); font-size: var(--font-size-small); margin-bottom: var(--space-lg);">Maximum performance</p>
+                        <ul style="margin-bottom: auto; list-style: none; padding-left: 0; flex-grow: 1;">
+                            <li style="margin-bottom: var(--space-sm); font-size: var(--font-size-small);"><span class="feature-check">✓</span> 25 Trading Bots</li>
+                            <li style="margin-bottom: var(--space-sm); font-size: var(--font-size-small);"><span class="feature-check">✓</span> Custom Strategies</li>
+                            <li style="margin-bottom: var(--space-sm); font-size: var(--font-size-small);"><span class="feature-check">✓</span> $200,000/mo Volume Cap</li>
+                            <li style="margin-bottom: var(--space-sm); font-size: var(--font-size-small);"><span class="feature-check">✓</span> 24/7 Priority Support</li>
+                            <li style="margin-bottom: var(--space-sm); font-size: var(--font-size-small);"><span class="feature-check">✓</span> White-Label Option</li>
+                            <li style="margin-bottom: var(--space-sm); font-size: var(--font-size-small);"><span class="feature-check">✓</span> Dedicated Account Manager</li>
                         </ul>
-                        <a href="#cta" class="nova-button-secondary font-bold block text-center" style="padding: var(--space-2) var(--space-4); width: 100%;">Start Free Trial</a>
+                        <a href="#cta" class="nova-button-secondary font-bold block text-center" style="padding: var(--space-md) var(--space-lg); width: 100%; margin-top: var(--space-lg); font-size: var(--font-size-small); text-transform: uppercase; letter-spacing: 0.5px;">Upgrade</a>
                     </div>
                 </div>
-                <p class="text-center mt-6" style="color: var(--text-muted); font-size: var(--font-size-small);">
-                    Need more bots? Check out <a href="novatrade.html" class="nova-accent" style="text-decoration: underline;">NovaTrade</a> for enterprise-level unlimited automation.
-                </p>
             </div>
         </section>
 
         <!-- Testimonials / Social Proof -->
-        <section style="padding: var(--space-6) 0; background-color: var(--bg-main);">
-            <div class="container mx-auto px-6 scroll-reveal">
-                <div class="text-center" style="margin-bottom: var(--space-4);">
-                    <h2 class="font-bold tracking-tight" style="font-size: var(--font-size-2xl); color: var(--text-primary); font-weight: 600;">Trusted by Traders Worldwide</h2>
-                    <p class="mt-2 max-w-2xl mx-auto" style="color: var(--text-secondary); font-size: var(--font-size-base);">Join thousands who've automated their crypto trading.</p>
+        <section style="padding: var(--space-3xl) 0; background-color: var(--bg-main);">
+            <div class="container mx-auto px-6 md:px-8 lg:px-12 scroll-reveal">
+                <div class="text-center" style="margin-bottom: var(--space-2xl);">
+                    <h2 class="font-bold tracking-tight" style="font-size: var(--font-size-2xl); color: var(--text-primary); font-weight: 600; margin-bottom: var(--space-lg);">Trusted by Traders Worldwide</h2>
+                    <p class="mt-2 max-w-2xl mx-auto" style="color: var(--text-secondary); font-size: var(--font-size-base); line-height: 1.8;">Join thousands who've automated their crypto trading.</p>
                 </div>
-                <div class="grid md:grid-cols-3 max-w-5xl mx-auto" style="gap: var(--space-4);">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto" style="gap: var(--space-xl);">
                     <div class="nova-card">
                         <div style="margin-bottom: var(--space-3);">
                             <span class="nova-accent" style="font-size: 20px;">⭐⭐⭐⭐⭐</span>
@@ -466,13 +559,13 @@
         </section>
 
         <!-- FAQ -->
-        <section style="padding: var(--space-6) 0; background-color: var(--bg-card);">
-            <div class="container mx-auto px-6 max-w-3xl scroll-reveal">
-                <div class="text-center" style="margin-bottom: var(--space-4);">
+        <section style="padding: var(--space-3xl) 0; background-color: var(--bg-card);">
+            <div class="container mx-auto px-6 md:px-8 lg:px-12 max-w-4xl scroll-reveal">
+                <div class="text-center" style="margin-bottom: var(--space-2xl);">
                     <h2 class="font-bold tracking-tight" style="font-size: var(--font-size-2xl); color: var(--text-primary); font-weight: 600;">Frequently Asked Questions</h2>
                 </div>
-                <div style="gap: var(--space-3);">
-                    <div class="nova-card" style="margin-bottom: var(--space-3);">
+                <div style="gap: var(--space-lg);">
+                    <div class="nova-card" style="margin-bottom: var(--space-lg);">
                         <h3 style="font-size: var(--font-size-lg); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-2);">Is my money safe?</h3>
                         <p style="color: var(--text-secondary); font-size: var(--font-size-base);">Absolutely. Your funds stay on your exchange account. We use API keys with trading permissions only - we can never withdraw your funds.</p>
                     </div>
@@ -497,18 +590,18 @@
         </section>
 
         <!-- Final CTA -->
-        <section id="cta" style="padding: var(--space-6) 0; background-color: var(--bg-main);">
-            <div class="container mx-auto px-6 text-center scroll-reveal">
-                <h2 style="font-size: var(--font-size-2xl); font-weight: 700; color: var(--text-primary); letter-spacing: -0.025em;">Ready to Automate Your Crypto Trading?</h2>
-                <p class="text-slate-300 max-w-2xl mx-auto mt-4 mb-8" style="color: var(--text-secondary); font-size: var(--font-size-base);">
+        <section id="cta" style="padding: var(--space-3xl) 0; background-color: var(--bg-main);">
+            <div class="container mx-auto px-6 md:px-8 lg:px-12 text-center scroll-reveal">
+                <h2 style="font-size: var(--font-size-2xl); font-weight: 700; color: var(--text-primary); letter-spacing: -0.025em; margin-bottom: var(--space-lg);">Ready to Automate Your Crypto Trading?</h2>
+                <p class="text-slate-300 max-w-2xl mx-auto" style="color: var(--text-secondary); font-size: var(--font-size-base); line-height: 1.8; margin-bottom: var(--space-2xl);">
                     Start with our free plan today. No credit card required.
                 </p>
-                <div class="flex flex-col sm:flex-row justify-center items-center" style="gap: var(--space-4);">
-                    <a href="mailto:novixel@hotmail.com?subject=NovaLite - Free Trial Request" class="w-full sm:w-auto nova-button-primary font-bold transform hover:scale-105 shadow-lg" style="padding: var(--space-2) var(--space-6); box-shadow: 0 4px 14px 0 rgba(127, 255, 0, 0.3);">
+                <div class="flex flex-col sm:flex-row justify-center items-center" style="gap: var(--space-lg);">
+                    <a href="mailto:novixel@hotmail.com?subject=NovaLite - Free Trial Request" class="w-full sm:w-auto nova-button-primary font-bold transform hover:scale-105 shadow-lg" style="padding: var(--space-lg) var(--space-2xl); box-shadow: 0 4px 14px 0 rgba(127, 255, 0, 0.3);">
                         Start Free Trial
                     </a>
-                    <a href="novatrade.html" class="w-full sm:w-auto nova-button-secondary font-bold transform hover:scale-105" style="padding: var(--space-2) var(--space-6);">
-                        Explore NovaTrade →
+                    <a href="#how-it-works" class="w-full sm:w-auto nova-button-secondary font-bold transform hover:scale-105" style="padding: var(--space-lg) var(--space-2xl);">
+                        Learn More
                     </a>
                 </div>
             </div>
@@ -516,9 +609,9 @@
     </main>
 
     <!-- Footer -->
-    <footer style="background-color: var(--bg-card); border-top: 1px solid var(--border-color); padding: var(--space-6) 0;">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-8 mb-6">
+    <footer style="background-color: var(--bg-card); border-top: 1px solid var(--border-color); padding: var(--space-2xl) 0;">
+        <div class="container mx-auto px-6 md:px-8 lg:px-12">
+            <div class="grid md:grid-cols-3 gap-12 mb-8">
                 <div>
                     <h3 style="color: var(--lime-primary); font-weight: 600; margin-bottom: var(--space-3);">NovaLite</h3>
                     <p style="color: var(--text-secondary); font-size: var(--font-size-base);">Personal crypto trading automation made simple.</p>
