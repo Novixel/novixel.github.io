@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5C2L8WF4');</script>
+    <!-- End Google Tag Manager -->
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaLite Beta Program - Join Early Access</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* NovaLite App Color Palette - Neon Green Theme */
+            --color-primary: #00ff00;
+            --color-primary-dark: #00cc00;
+            
+            /* Background Colors */
+            --bg-main: #000000;
+            --bg-darker: #0a0f0a;
+            --bg-card: rgba(0, 255, 0, 0.05);
+            --bg-card-hover: rgba(0, 255, 0, 0.08);
+            --border-color: rgba(0, 255, 0, 0.2);
+            
+            /* Text Colors */
+            --text-primary: #ffffff;
+            --text-secondary: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --text-dark: #808080;
+            
+            /* Status Colors */
+            --success: #00ff00;
+            --warning: #ffc107;
+            --error: #ff0000;
+            --info: #2196f3;
+            
+            /* Spacing System */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-1: 0.625rem;
+            --space-2: 0.75rem;
+            --space-3: 1rem;
+            --space-4: 1.25rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+            
+            /* Typography Scale */
+            --font-size-small: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 2rem;
+            --font-size-4xl: 2.5rem;
+            --font-size-5xl: 3rem;
+            
+            /* Border Radius */
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-full: 9999px;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.7);
+            --shadow-green: 0 0 20px rgba(0, 255, 0, 0.5);
+            
+            /* Transitions */
+            --transition-fast: 0.15s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background: linear-gradient(135deg, var(--bg-main) 0%, var(--bg-darker) 100%);
+            color: var(--text-secondary);
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: background var(--transition-fast), 
+                        color var(--transition-fast), 
+                        border-color var(--transition-fast), 
+                        transform var(--transition-fast),
+                        box-shadow var(--transition-fast);
+        }
+        
+        .bg-grid-slate-800 {
+            background-image: linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 255, 0, 0.3);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 255, 0, 0.5);
+        }
+        
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* NovaLite Component Styles */
+        .nova-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            transition: all var(--transition-normal);
+        }
+
+        .nova-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(0, 255, 0, 0.4);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .nova-button-primary {
+            background: var(--color-primary);
+            color: var(--bg-main);
+            border: none;
+            padding: var(--space-md) var(--space-xl);
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nova-button-primary:hover {
+            background: var(--color-primary-dark);
+            transform: scale(1.05);
+            box-shadow: var(--shadow-green);
+        }
+
+        .nova-button-secondary {
+            background: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            padding: var(--space-md) var(--space-xl);
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nova-button-secondary:hover {
+            background: rgba(0, 255, 0, 0.1);
+            transform: scale(1.05);
+        }
+
+        .nova-accent {
+            color: var(--color-primary);
+        }
+
+        .nova-icon-bg {
+            background: rgba(0, 255, 0, 0.1);
+            color: var(--color-primary);
+        }
+
+        .feature-check {
+            color: var(--color-primary);
+            margin-right: 0.5rem;
+            font-weight: 700;
+        }
+
+        .beta-badge {
+            display: inline-block;
+            background: rgba(33, 150, 243, 0.2);
+            color: #2196f3;
+            font-weight: 700;
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            margin-bottom: var(--space-lg);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: rgba(0, 255, 0, 0.1);
+            color: var(--color-primary);
+            border-radius: var(--radius-full);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--space-3);
+        }
+
+        form input,
+        form select,
+        form textarea {
+            width: 100%;
+            padding: var(--space-md);
+            margin-bottom: var(--space-lg);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-size: var(--font-size-base);
+        }
+
+        form input:focus,
+        form select:focus,
+        form textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 0, 0.1);
+        }
+
+        form button {
+            width: 100%;
+            padding: var(--space-lg);
+            background: var(--color-primary);
+            color: var(--bg-main);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-lg);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+
+        form button:hover {
+            background: var(--color-primary-dark);
+            transform: scale(1.02);
+            box-shadow: var(--shadow-green);
+        }
+
+        .disclaimer {
+            padding: var(--space-lg);
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            font-size: var(--font-size-small);
+            margin-top: var(--space-lg);
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-lg);
+        }
+
+        .faq-item h3 {
+            color: var(--text-primary);
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--space-2);
+        }
+
+        .faq-item p {
+            color: var(--text-secondary);
+            font-size: var(--font-size-base);
+            margin: 0;
+        }
+
+        header {
+            padding: var(--space-xl) 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-xl);
+        }
+
+        section {
+            padding: var(--space-3xl) 0;
+        }
+
+        h1 {
+            font-size: var(--font-size-5xl);
+            color: var(--text-primary);
+            font-weight: 900;
+            margin-bottom: var(--space-lg);
+        }
+
+        h2 {
+            font-size: var(--font-size-3xl);
+            color: var(--text-primary);
+            font-weight: 700;
+            margin-bottom: var(--space-xl);
+        }
+
+        h3 {
+            font-size: var(--font-size-xl);
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: var(--space-2);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .max-w-4xl {
+            max-width: 896px;
+        }
+
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C2L8WF4"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <a href="https://novalite.app" style="text-decoration: none;">
+                    <span style="font-size: var(--font-size-2xl); font-weight: 900; color: var(--color-primary);">NovaLite</span>
+                </a>
+                <a href="https://novalite.app/login" class="nova-button-secondary" style="padding: var(--space-md) var(--space-lg); font-size: var(--font-size-small);">
+                    Sign In
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section style="padding: var(--space-3xl) 0; background-color: var(--bg-main);" class="bg-grid-slate-800">
+        <div class="container text-center scroll-reveal">
+            <div class="beta-badge">BETA PROGRAM</div>
+            <h1 style="font-size: var(--font-size-5xl); font-weight: 900; color: var(--text-primary); margin-bottom: var(--space-lg);">
+                Join the NovaLite Beta Program
+            </h1>
+            <p style="font-size: var(--font-size-xl); color: var(--text-secondary); margin-bottom: var(--space-2xl); max-width: 800px; margin-left: auto; margin-right: auto;">
+                Be among the first to experience automated crypto trading with proven strategies
+            </p>
+            
+            <div class="nova-card" style="max-width: 600px; margin: 0 auto var(--space-2xl);">
+                <p style="font-size: var(--font-size-lg); font-weight: 700; color: var(--color-primary); margin-bottom: var(--space-lg);">
+                    Beta Testers Receive:
+                </p>
+                <ul style="list-style: none; padding: 0; text-align: left;">
+                    <li style="margin-bottom: var(--space-3); padding-left: 2rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: 700;">✓</span>
+                        <strong>Permanent 3-Bot STARTER Plan</strong> ($19/mo value)
+                    </li>
+                    <li style="margin-bottom: var(--space-3); padding-left: 2rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: 700;">✓</span>
+                        <strong>Lifetime Free 1-Bot Access</strong> (Forever)
+                    </li>
+                    <li style="margin-bottom: var(--space-3); padding-left: 2rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: 700;">✓</span>
+                        Early Access to New Features
+                    </li>
+                    <li style="margin-bottom: var(--space-3); padding-left: 2rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: 700;">✓</span>
+                        Direct Support Channel
+                    </li>
+                    <li style="padding-left: 2rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: 700;">✓</span>
+                        Influence Product Roadmap
+                    </li>
+                </ul>
+            </div>
+
+            <a href="#signup" class="nova-button-primary" style="padding: var(--space-lg) var(--space-2xl); font-size: var(--font-size-lg);">
+                Apply for Beta Access
+            </a>
+        </div>
+    </section>
+
+    <!-- How Beta Works -->
+    <section id="process" style="padding: var(--space-3xl) 0; background-color: var(--bg-card);">
+        <div class="container scroll-reveal">
+            <div class="text-center" style="margin-bottom: var(--space-2xl);">
+                <h2>Beta Program Timeline</h2>
+                <p style="color: var(--text-secondary); font-size: var(--font-size-base); max-width: 800px; margin: 0 auto;">
+                    From application to lifetime rewards in 5 simple steps
+                </p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-xl); max-width: 1400px; margin: 0 auto;">
+                <div style="text-align: center;">
+                    <div class="step-number">1</div>
+                    <h3 style="font-size: var(--font-size-lg); margin-bottom: var(--space-2);">Apply Today</h3>
+                    <p style="color: var(--text-secondary);">Fill out the form below. We review applications within 48 hours.</p>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="step-number">2</div>
+                    <h3 style="font-size: var(--font-size-lg); margin-bottom: var(--space-2);">Receive Your Code</h3>
+                    <p style="color: var(--text-secondary);">Qualified applicants receive a unique promo code via email.</p>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="step-number">3</div>
+                    <h3 style="font-size: var(--font-size-lg); margin-bottom: var(--space-2);">Start Trading Free</h3>
+                    <p style="color: var(--text-secondary);">Use your 1-bot free tier to test NovaLite for 14 days.</p>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="step-number">4</div>
+                    <h3 style="font-size: var(--font-size-lg); margin-bottom: var(--space-2);">Upgrade to 3-Bot Access</h3>
+                    <p style="color: var(--text-secondary);">Apply your beta code at checkout for permanent STARTER plan access.</p>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="step-number">5</div>
+                    <h3 style="font-size: var(--font-size-lg); margin-bottom: var(--space-2);">Lifetime Reward</h3>
+                    <p style="color: var(--text-secondary);">After beta period ends, keep 1 bot free forever as our thank you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signup Form -->
+    <section id="signup" style="padding: var(--space-3xl) 0; background-color: var(--bg-main);">
+        <div class="container scroll-reveal">
+            <div class="text-center" style="margin-bottom: var(--space-2xl);">
+                <h2>Request Beta Access</h2>
+                <p style="color: var(--text-secondary); font-size: var(--font-size-base); max-width: 800px; margin: 0 auto;">
+                    Fill out this form and we'll send qualified applicants a promo code via email within 48 hours
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Google Form Embed - Replace with your actual Google Form URL -->
+                <div style="text-align: center; padding: var(--space-2xl); background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg);">
+                    <p style="color: var(--text-muted); margin-bottom: var(--space-lg);">Google Form embed goes here</p>
+                    <p style="color: var(--text-secondary); font-size: var(--font-size-small);">
+                        Replace this section with your Google Form iframe:<br>
+                        <code style="background: rgba(0, 0, 0, 0.5); padding: 0.25rem 0.5rem; border-radius: 4px; color: var(--color-primary);">
+                            &lt;iframe src="YOUR_GOOGLE_FORM_URL" width="100%" height="800"&gt;&lt;/iframe&gt;
+                        </code>
+                    </p>
+                </div>
+
+                <!-- Alternative: Built-in Form (Uncomment if needed) -->
+                <!--
+                <form id="beta-signup" action="https://novalite.app/api/beta/signup" method="POST" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: var(--space-2xl);">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    
+                    <select name="experience" required>
+                        <option value="">Trading Experience Level</option>
+                        <option value="none">None - Complete Beginner</option>
+                        <option value="some">Some - 1-2 years</option>
+                        <option value="experienced">Experienced - 3+ years</option>
+                    </select>
+                    
+                    <select name="capital" required>
+                        <option value="">Trading Capital Available</option>
+                        <option value="100-500">$100 - $500</option>
+                        <option value="500-2000">$500 - $2,000</option>
+                        <option value="2000+">$2,000+</option>
+                    </select>
+                    
+                    <textarea name="why" placeholder="Why do you want to join the beta?" rows="4" required></textarea>
+                    
+                    <button type="submit">Submit Application</button>
+                </form>
+                -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Beta Requirements -->
+    <section id="requirements" style="padding: var(--space-3xl) 0; background-color: var(--bg-card);">
+        <div class="container scroll-reveal">
+            <div class="text-center" style="margin-bottom: var(--space-2xl);">
+                <h2>Beta Tester Requirements</h2>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="nova-card">
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: var(--space-3); padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: 700;">✓</span>
+                            Active Coinbase account (or willing to create one)
+                        </li>
+                        <li style="margin-bottom: var(--space-3); padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: 700;">✓</span>
+                            Starting capital of $100+ USD
+                        </li>
+                        <li style="margin-bottom: var(--space-3); padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: 700;">✓</span>
+                            Willing to provide feedback on features
+                        </li>
+                        <li style="margin-bottom: var(--space-3); padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: 700;">✓</span>
+                            Report bugs and issues promptly
+                        </li>
+                        <li style="padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: 700;">✓</span>
+                            Available for occasional 15-min feedback calls
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="disclaimer">
+                    <strong>Beta Disclaimer:</strong> NovaLite is in early beta testing. 
+                    Expect bugs, glitches, and potential data loss. Past performance does not 
+                    guarantee future results. You are responsible for all trading losses. 
+                    We recommend starting with small amounts ($100-500).
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" style="padding: var(--space-3xl) 0; background-color: var(--bg-main);">
+        <div class="container scroll-reveal">
+            <div class="text-center" style="margin-bottom: var(--space-2xl);">
+                <h2>Beta Program FAQ</h2>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="faq-item">
+                    <h3>When does the beta period end?</h3>
+                    <p>Beta testing runs through Q1 2026 (approximately 3-4 months).</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>What happens after beta ends?</h3>
+                    <p>Your permanent 3-bot STARTER plan continues at no charge. You also keep 1 bot free forever.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Can I upgrade to more bots during beta?</h3>
+                    <p>Yes! Beta testers can upgrade to ADVANCED (10 bots) or PROFESSIONAL (25 bots) anytime at regular pricing.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Is my money safe?</h3>
+                    <p>Yes. Your funds stay on Coinbase. We use API keys with trade-only permissions (no withdrawals).</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>What if I don't like it during the trial?</h3>
+                    <p>No problem! The 14-day free trial has no commitments. Cancel anytime with one click.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>How do I know if I'm qualified?</h3>
+                    <p>We accept applicants with any experience level who have trading capital and are willing to provide feedback.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="cta" style="padding: var(--space-3xl) 0; background-color: var(--bg-card);">
+        <div class="container text-center scroll-reveal">
+            <h2 style="font-size: var(--font-size-3xl); margin-bottom: var(--space-lg);">Ready to Join the Beta?</h2>
+            <p style="color: var(--text-secondary); font-size: var(--font-size-lg); max-width: 800px; margin: 0 auto var(--space-2xl);">
+                Limited spots available. Apply now to secure your lifetime free bot.
+            </p>
+            <a href="#signup" class="nova-button-primary" style="padding: var(--space-lg) var(--space-2xl); font-size: var(--font-size-lg);">
+                Apply for Beta Access
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="padding: var(--space-2xl) 0; background-color: var(--bg-main); border-top: 1px solid var(--border-color);">
+        <div class="container text-center">
+            <p style="color: var(--text-muted); font-size: var(--font-size-small); margin-bottom: var(--space-lg);">
+                © 2025 NovaLite. All rights reserved.
+            </p>
+            <div style="display: flex; justify-content: center; gap: var(--space-xl); flex-wrap: wrap;">
+                <a href="https://novalite.app/terms" style="color: var(--text-muted); text-decoration: none; font-size: var(--font-size-small);">Terms of Service</a>
+                <a href="https://novalite.app/privacy" style="color: var(--text-muted); text-decoration: none; font-size: var(--font-size-small);">Privacy Policy</a>
+                <a href="mailto:contact.novalite@gmail.com" style="color: var(--text-muted); text-decoration: none; font-size: var(--font-size-small);">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll Reveal Animation -->
+    <script>
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
