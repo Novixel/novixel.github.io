@@ -9,19 +9,20 @@
     })(window,document,'script','dataLayer','GTM-5C2L8WF4');</script>
     <!-- End Google Tag Manager -->
     
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6MYVFSJSD"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-X6MYVFSJSD');
-    </script>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaLite Beta Program - Join Early Access</title>
+    <meta name="description" content="Join NovaLite Beta and lock in $304+ value. Get 1 free trading bot for LIFE plus unlimited access during testing. Automated crypto trading on Coinbase.">
+    <link rel="canonical" href="https://novixel.ca/beta">
+    <meta name="theme-color" content="#00ff00">
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:title" content="NovaLite Beta — Lock $304+ Value">
+    <meta property="og:description" content="Automated crypto trading on Coinbase. Beta testers get 1 free bot for life + 3-bot STARTER access during testing.">
+    <meta property="og:url" content="https://novixel.ca/beta">
+    <meta property="og:image" content="https://novixel.ca/static/novalite_og.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -370,6 +371,15 @@
             margin-left: auto;
             margin-right: auto;
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { scroll-behavior: auto !important; }
+            .scroll-reveal { transition: none !important; }
+        }
+
+        @media (max-width: 768px) {
+            .secondary-cta-mobile { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -400,7 +410,7 @@
                 Join the NovaLite Beta Program
             </h1>
             <p style="font-size: var(--font-size-xl); color: var(--text-secondary); margin-bottom: var(--space-2xl); max-width: 800px; margin-left: auto; margin-right: auto;">
-                Be among the first to experience automated crypto trading with proven strategies
+                Automated crypto trading on Coinbase. Beta testers lock $304+ in value.
             </p>
             
             <div class="nova-card" style="max-width: 600px; margin: 0 auto var(--space-2xl);">
@@ -431,9 +441,27 @@
                 </ul>
             </div>
 
-            <a href="#signup" class="nova-button-primary" style="padding: var(--space-lg) var(--space-2xl); font-size: var(--font-size-lg);">
-                Apply for Beta Access
-            </a>
+            <div style="display: flex; gap: var(--space-lg); justify-content: center; flex-wrap: wrap; margin-bottom: var(--space-lg);">
+                <a id="cta-apply-top"
+                   href="https://docs.google.com/forms/d/e/1FAIpQLSfw5EixLFtyJjNEOJ43Ts0Qs8ijPEe-rNmcOQZdh9YCeqGL8w/viewform?usp=dialog"
+                   class="nova-button-primary"
+                   target="_blank" rel="noopener"
+                   aria-label="Apply for NovaLite Beta access"
+                   style="padding: var(--space-lg) var(--space-2xl); font-size: var(--font-size-lg);">
+                    Apply for Beta Access
+                </a>
+                <a href="#process" class="nova-button-secondary secondary-cta-mobile" style="padding: var(--space-lg) var(--space-2xl); font-size: var(--font-size-lg);">
+                    Learn How It Works
+                </a>
+            </div>
+
+            <p style="color: var(--text-muted); font-size: var(--font-size-small); max-width: 600px; margin: 0 auto;">
+                Limited beta • Coinbase only (v1) • Not financial advice • Read-only API keys recommended
+            </p>
+
+            <p style="color: var(--text-dark); font-size: 0.75rem; max-width: 600px; margin: var(--space-md) auto 0;">
+                *Lifetime bot access for accounts in good standing; fair-use applies
+            </p>
         </div>
     </section>
 
@@ -492,14 +520,7 @@
             </div>
             
             <div class="max-w-4xl mx-auto">
-                <!-- Google Form Embed -->
-                <div style="text-align: center; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: var(--space-lg); overflow: hidden;">
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfw5EixLFtyJjNEOJ43Ts0Qs8ijPEe-rNmcOQZdh9YCeqGL8w/viewform?embedded=true" width="100%" height="1377" frameborder="0" marginheight="0" marginwidth="0" style="border: none; max-width: 640px; margin: 0 auto; display: block;">Loading…</iframe>
-                </div>
-
-                <!-- Alternative: Built-in Form (Uncomment if needed) -->
-                <!--
-                <form id="beta-signup" action="https://novalite.app/api/beta/signup" method="POST" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: var(--space-2xl);">
+                <form id="beta-signup" action="mailto:contact.novalite@gmail.com" method="POST" enctype="text/plain" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: var(--space-2xl);">
                     <input type="text" name="name" placeholder="Full Name" required>
                     <input type="email" name="email" placeholder="Email Address" required>
                     
@@ -517,11 +538,10 @@
                         <option value="2000+">$2,000+</option>
                     </select>
                     
-                    <textarea name="why" placeholder="Why do you want to join the beta?" rows="4" required></textarea>
+                    <textarea name="why" placeholder="Why do you want to join the beta? What are your trading goals?" rows="4" required></textarea>
                     
                     <button type="submit">Submit Application</button>
                 </form>
-                -->
             </div>
         </div>
     </section>
@@ -579,7 +599,7 @@
             <div class="max-w-4xl mx-auto">
                 <div class="faq-item">
                     <h3>When does the beta period end?</h3>
-                    <p>Beta testing runs through Q1 2026 (approximately 3-4 months).</p>
+                    <p>Beta testing runs for approximately 3-4 months. We'll notify all beta testers 30 days before the official launch.</p>
                 </div>
                 
                 <div class="faq-item">
@@ -594,7 +614,7 @@
                 
                 <div class="faq-item">
                     <h3>Is my money safe?</h3>
-                    <p>Yes. Your funds stay on Coinbase. We use API keys with trade-only permissions (no withdrawals).</p>
+                    <p>Yes. Your funds stay on Coinbase. We use API keys with <strong style="color: var(--color-primary);">trade-only permissions</strong> — withdrawals are disabled. We recommend using read-only API keys during initial setup for maximum security.</p>
                 </div>
                 
                 <div class="faq-item">
@@ -617,7 +637,12 @@
             <p style="color: var(--text-secondary); font-size: var(--font-size-lg); max-width: 800px; margin: 0 auto var(--space-2xl);">
                 Limited spots available. Apply now to secure your lifetime free bot.
             </p>
-            <a href="#signup" class="nova-button-primary" style="padding: var(--space-lg) var(--space-2xl); font-size: var(--font-size-lg);">
+            <a id="cta-apply-bottom"
+               href="https://docs.google.com/forms/d/e/1FAIpQLSfw5EixLFtyJjNEOJ43Ts0Qs8ijPEe-rNmcOQZdh9YCeqGL8w/viewform?usp=dialog"
+               class="nova-button-primary"
+               target="_blank" rel="noopener"
+               aria-label="Apply for NovaLite Beta access now"
+               style="padding: var(--space-lg) var(--space-2xl); font-size: var(--font-size-lg);">
                 Apply for Beta Access
             </a>
         </div>
@@ -626,12 +651,16 @@
     <!-- Footer -->
     <footer style="padding: var(--space-2xl) 0; background-color: var(--bg-main); border-top: 1px solid var(--border-color);">
         <div class="container text-center">
-            <p style="color: var(--text-muted); font-size: var(--font-size-small); margin-bottom: var(--space-lg);">
-                © 2025 NovaLite. All rights reserved.
+            <p style="color: var(--text-muted); font-size: var(--font-size-small); margin-bottom: var(--space-md);">
+                © 2025 NovaLite by Novixel. All rights reserved.
+            </p>
+            <p style="color: var(--text-dark); font-size: 0.75rem; margin-bottom: var(--space-lg); max-width: 700px; margin-left: auto; margin-right: auto;">
+                Not financial advice. Trading cryptocurrencies involves risk of loss. Past performance does not guarantee future results. You are solely responsible for your trading decisions and outcomes.
             </p>
             <div style="display: flex; justify-content: center; gap: var(--space-xl); flex-wrap: wrap;">
-                <a href="https://novalite.app/terms" style="color: var(--text-muted); text-decoration: none; font-size: var(--font-size-small);">Terms of Service</a>
-                <a href="https://novalite.app/privacy" style="color: var(--text-muted); text-decoration: none; font-size: var(--font-size-small);">Privacy Policy</a>
+                <a href="https://novixel.ca/terms" style="color: var(--text-muted); text-decoration: none; font-size: var(--font-size-small);">Terms of Service</a>
+                <a href="https://novixel.ca/privacy" style="color: var(--text-muted); text-decoration: none; font-size: var(--font-size-small);">Privacy Policy</a>
+                <a href="https://novixel.ca/beta-agreement" style="color: var(--text-muted); text-decoration: none; font-size: var(--font-size-small);">Beta Agreement</a>
                 <a href="mailto:contact.novalite@gmail.com" style="color: var(--text-muted); text-decoration: none; font-size: var(--font-size-small);">Contact</a>
             </div>
         </div>
@@ -656,6 +685,24 @@
         document.querySelectorAll('.scroll-reveal').forEach(el => {
             observer.observe(el);
         });
+    </script>
+
+    <!-- GTM Click Tracking for Beta CTAs -->
+    <script>
+        (function(){
+            var ids = ['cta-apply-top','cta-apply-bottom'];
+            ids.forEach(function(id){
+                var el = document.getElementById(id);
+                if (!el) return;
+                el.addEventListener('click', function(){
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({
+                        event: 'apply_beta_click',
+                        cta_location: id
+                    });
+                });
+            });
+        })();
     </script>
 </body>
 </html>
