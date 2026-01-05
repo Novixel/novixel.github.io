@@ -10,7 +10,7 @@ This repository contains the source code for Novixel's comprehensive portfolio w
 
 ### Our Divisions
 
-1. **Novixel Computer Solutions** (`index.html`, `idte.html`)
+1. **Novixel Computer Solutions** (`index.html`, `computer-solutions.html`)
    - IT support and repair services
    - Mobile tech solutions
    - Smart home installations
@@ -18,47 +18,46 @@ This repository contains the source code for Novixel's comprehensive portfolio w
 2. **Novixel Software Solutions** (`tradingbots.html`)
    - Custom software development
    - Automation scripts
-   - API wrappers
+   - Trading bots
 
 3. **Novixel Trading Solutions**
-   - **NovaTrade** (`bots.html`) - Full-featured crypto trading platform
-   - **NovalLite** (`novalite.html`) - Lightweight trading bot interface
-   
-4. **Novixel Coffee Solutions** (`coffee.html`)
-   - Premium office coffee services
-   - Business plan showcase
+   - **NovaTrade** (`novatrade.html`, `bots.html`) - Enterprise crypto trading platform
+   - **NovaLite** → [try.novalite.app](https://try.novalite.app) (external, hosted on Railway)
 
-5. **Novixel AI Solutions** (`aicom.html`)
+4. **Novixel AI Solutions** (`aicom.html`)
    - AI companion chat interface
    - Intelligent automation tools
+
+### Hidden/Inactive Divisions
+- **Novixel Coffee Solutions** (`coffee.html`) - Business plan, not linked in navigation
 
 ## 🎨 Design System
 
 ### Styling Architecture
 
-The site uses **two distinct styling systems**:
+The site uses **three distinct styling systems**:
 
 1. **Legacy System** (Primary)
    - Files: `style.css` + `script.js`
-   - Pages: `Novixel.html`, `calculator.html`, `game.html`, `tradingbots.html`, `about.html`, `dev.html`
+   - Pages: `Novixel.html`, `calculator.html`, `game.html`, `tradingbots.html`, `about.html`
    - Features: Dark mode, tabbed navigation, unified footer
 
 2. **Modern System**
    - Files: `styleid.css` + `scriptid.js`  
-   - Pages: `index.html`, `idte.html`
+   - Pages: `index.html`, `computer-solutions.html`
    - Features: Responsive design, mobile hamburger menu
 
 3. **Tailwind Standalone**
-   - Pages: `bots.html`, `novalite.html`, `coffee.html`, `aicom.html`
+   - Pages: `novatrade.html`, `bots.html`, `coffee.html`, `aicom.html`, `atomic.html`
    - Custom CSS variables with Tailwind CDN
 
 ### Color Themes
 
 - **Green** (Computer Solutions): `#009f33`
 - **Gold** (NovaTrade): `#D4AF37`
-- **Lime** (NovalLite): `#7FFF00`
-- **Brown** (Coffee): `#8B4513`
+- **Lime** (NovaLite): `#7FFF00`
 - **Slate** (AI Solutions): `#4A5568`
+- **Muted Gray** (Footer links): `#6b7c8c`
 
 ## ✨ Features
 
@@ -88,26 +87,31 @@ The site uses **two distinct styling systems**:
 novixel.github.io/
 ├── Novixel.html          # Main portfolio hub (PRIMARY)
 ├── index.html            # Computer Solutions landing
-├── idte.html             # Alt Computer Solutions page
-├── bots.html             # NovaTrade investor page
-├── novalite.html         # NovalLite trading platform ⚡ NEW
-├── coffee.html           # Coffee Solutions business plan
+├── computer-solutions.html # Computer Solutions detailed page
+├── novatrade.html        # NovaTrade investor page (gold theme)
+├── bots.html             # NovaTrade alternate landing
+├── coffee.html           # Coffee Solutions business plan (hidden)
 ├── aicom.html            # AI companion interface
 ├── tradingbots.html      # Trading bots showcase
+├── atomic.html           # Atomic Diff mod tool landing
 ├── calculator.html       # Web calculator utility
 ├── game.html             # Endless jump game
-├── dev.html              # Project showcase
 ├── about.html            # About page
-├── style.css             # Legacy styles (enhanced)
+├── style.css             # Legacy styles
 ├── styleid.css           # Modern styles
 ├── script.js             # Legacy JavaScript
 ├── scriptid.js           # Modern JavaScript
 ├── investor-deck.md      # NovaTrade investor presentation
-├── CONSOLIDATION_SUMMARY.md  # Change log
 └── .github/
     └── copilot-instructions.md  # AI agent guidelines
 
 ```
+
+## 🌐 Domain Architecture
+
+- **novixel.ca** (GitHub Pages) → Portfolio/company site (this repo)
+- **try.novalite.app** (Railway) → NovaLite marketing landing
+- **novalite.app** (Railway) → NovaLite application
 
 ## 🚀 Getting Started
 
@@ -122,8 +126,7 @@ start Novixel.html
 # Or open Computer Solutions landing
 start index.html
 
-# Or explore NovalLite
-start novalite.html
+# NovaLite is now at try.novalite.app
 ```
 
 No build process required - pure HTML/CSS/JS!
@@ -145,21 +148,18 @@ The primary portfolio page featuring:
 - Dark mode support
 - Custom branding
 
-### novalite.html - NEW Trading Platform
-Lightweight cryptocurrency trading bot interface featuring:
-- Live bot status displays
-- Strategy configuration cards
-- Real-time P/L tracking
-- Animated background
-- Lime green theme (#7FFF00)
-- Interactive buttons with ripple effects
-
-### bots.html - NovaTrade Investor Page
+### novatrade.html - NovaTrade Investor Page
 Comprehensive trading platform showcase:
 - Multi-strategy trading
 - Investor application
 - Gold theme (#D4AF37)
 - Professional layout
+
+### NovaLite (External)
+Personal cryptocurrency trading automation:
+- Marketing landing: [try.novalite.app](https://try.novalite.app)
+- Application: [novalite.app](https://novalite.app)
+- Lime green theme (#7FFF00)
 
 ## 🤝 Contributing
 
@@ -184,7 +184,7 @@ Contributions welcome! Please:
 
 ## 📄 License
 
-© 2025 Novixel. All rights reserved.
+© 2026 Novixel. All rights reserved.
 
 ---
 

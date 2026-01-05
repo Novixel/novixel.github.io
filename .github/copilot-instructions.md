@@ -15,27 +15,34 @@ Static GitHub Pages portfolio for **Novixel** - a technology services company ba
 ### Brand Architecture
 **Parent Company**: Novixel (based in Dawson Creek, BC)
 
-**Divisions**:
-- **Novixel Computer Solutions** (`index.html`, `idte.html`) - IT support, mobile tech services
+**Active Divisions** (shown in footer navigation):
+- **Novixel Computer Solutions** (`index.html`, `computer-solutions.html`) - IT support, mobile tech services
 - **Novixel Software Solutions** (`tradingbots.html`) - Custom automation, trading bots
-- **Novixel Trading Solutions**:
-  - **NovaTrade** (`novatrade.html`) - Enterprise crypto trading platform (investor-focused)
-  - **NovaLite** (`novalite.html`) - Personal crypto trading automation
-- **Novixel Coffee Solutions** (`coffee.html`) - Office coffee services business plan
+- **Novixel Trading Solutions**: NovaLite → [try.novalite.app](https://try.novalite.app) (external)
 - **Novixel AI Solutions** (`aicom.html`) - AI companion chat interface
+
+**Hidden/Inactive Divisions** (pages exist but not in navigation):
+- **Novixel Coffee Solutions** (`coffee.html`) - Office coffee services business plan
+- **NovaTrade** (`novatrade.html`, `bots.html`) - Enterprise crypto trading platform
+
+### Domain Architecture
+- **novixel.ca** (GitHub Pages) → Portfolio/company site ONLY
+- **try.novalite.app** (Railway) → NovaLite marketing landing
+- **novalite.app** (Railway) → NovaLite application
+
+**Important Rule**: No product landing pages on GitHub Pages. GitHub Pages = portfolio/docs only.
 
 ### Page Structure
 - **`Novixel.html`**: **PRIMARY** - Main portfolio hub with tabbed navigation (use this style as template)
-- **`index.html`/`idte.html`**: Novixel Computer Solutions landing (modern system)
-- **`novatrade.html`**: NovaTrade enterprise platform (Tailwind + gold theme)
-- **`novalite.html`**: NovaLite personal trading (Tailwind + lime theme)
-- **`coffee.html`**: Coffee Solutions business plan (Tailwind + warm theme)
-- **`aicom.html`**: AI companion interface (Tailwind + blue theme)
+- **`index.html`**: Novixel Computer Solutions landing (modern system)
+- **`computer-solutions.html`**: Computer Solutions detailed page (modern system)
 - **`tradingbots.html`**: Trading bots showcase (legacy system)
-- **Utility pages**: `calculator.html`, `game.html` (endless jump game), `dev.html` (project showcase)
+- **`aicom.html`**: AI companion interface (Tailwind + slate theme)
+- **`atomic.html`**: Atomic Diff mod tool landing page (Tailwind standalone)
+- **Utility pages**: `calculator.html`, `game.html` (endless jump game)
 - **`about.html`**: Basic about page (legacy, minimal)
-- **`special/index.html`**: Subdirectory landing page
-- **`investor-deck.md`**: Markdown investor deck for NovaTrade (426 lines)
+- **Hidden pages**: `novatrade.html`, `bots.html`, `coffee.html` (not in navigation)
+- **`investor-deck.md`**: Markdown investor deck for NovaTrade
 
 ## Styling Conventions
 
@@ -126,27 +133,34 @@ Function `openTab(evt, tabName)` controls tab visibility in `Novixel.html`:
 4. **Import correct CSS/JS**: `style.css` + `script.js` OR `styleid.css` + `scriptid.js`
 5. **Add separator**: `<hr class="separator">` after header sections
 
-### Unified Footer Pattern (All Legacy Pages)
-ALL legacy system pages (`Novixel.html`, `calculator.html`, `game.html`, `tradingbots.html`, `about.html`, `dev.html`) use a unified footer with:
-- **Division links**: Buttons linking to all Novixel divisions with themed colors
-- **Social media icons**: Instagram, Twitter/X, YouTube
-- **Contact info**: Email and phone number
-- **Copyright**: "© 2025 Novixel. All rights reserved."
+### Unified Footer Pattern (All Pages)
+All pages use a clean, minimal footer with consistent links:
 
-The footer uses inline styles for the division buttons with color-coded backgrounds:
-- Computer Solutions: `#009f33` (green)
-- Trading Solutions: `#009f33` (green)
-- NovaTrade: `#D4AF37` (gold)
-- NovaLite: `#7FFF00` (lime green)
-- Coffee Solutions: `#8B4513` (brown)
-- AI Solutions: `#4A5568` (slate)
+```html
+<div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin: 20px 0;">
+    <a href="Novixel.html" style="color: #6b7c8c; text-decoration: none; font-size: 14px;">Portfolio</a>
+    <a href="tradingbots.html" style="color: #6b7c8c; text-decoration: none; font-size: 14px;">Trading Solutions</a>
+    <a href="https://try.novalite.app" target="_blank" style="color: #6b7c8c; text-decoration: none; font-size: 14px;">NovaLite</a>
+    <a href="aicom.html" style="color: #6b7c8c; text-decoration: none; font-size: 14px;">AI Solutions</a>
+</div>
+<p style="font-size: 13px; color: #6b7c8c;">&copy; 2026 Novixel. All rights reserved.</p>
+```
+
+**Footer Rules**:
+- Muted gray color (`#6b7c8c`) for all links
+- Flexbox centered with `gap: 24px`
+- No bullet separators, no onmouseover handlers
+- NovaLite links to external `https://try.novalite.app` with `target="_blank"`
+- Copyright: "© 2026 Novixel. All rights reserved."
+
+**Exception**: `computer-solutions.html` has its own footer structure (Quick Links, Contact info)
 
 ### Color Consistency
-- **Green theme** (Computer Solutions): `#009f33`, `#005c30`, `#28b80e`
-- **Gold theme** (NovaTrade): `#D4AF37`, `#E8C547`, `#B8941F`
-- **Lime theme** (NovaLite): `#7FFF00`, `#90FF10`, `#6FEF00`
-- **Brown theme** (Coffee): `#8B4513`, `#CD853F`
-- **Slate theme** (AI): `#4A5568`, `#64748b`
+- **Green theme** (Computer Solutions): `#009f33`
+- **Gold theme** (NovaTrade): `#D4AF37`
+- **Lime theme** (NovaLite): `#7FFF00`
+- **Slate theme** (AI): `#4A5568`
+- **Muted gray** (Footer links): `#6b7c8c`
 
 ## Copy & UX Style Guide
 
@@ -285,8 +299,9 @@ Pain point it solves: [describe user problem]
 Forms are auto-enhanced by `initContactForms()` to inject subject prefix and format body.
 
 ## Common Pitfalls
-- **Don't use Tailwind classes** outside of `bots.html`
+- **Don't use Tailwind classes** outside of standalone Tailwind pages
 - **Don't mix CSS variable patterns** between systems
 - **Logo toggle function** (`CoolThing()`) swaps between Trans1/Trans2 pngs - only used in `Novixel.html`
 - **Calculator function** (`calculator.html`) uses global functions: `calcInput()`, `calcEquals()`, `calcClear()`
-- **Empty html/ directory** exists but contains no files
+- **NovaLite pages deleted** - all NovaLite links go to external `try.novalite.app`
+- **Coffee Solutions & NovaTrade** are hidden from navigation but pages still exist

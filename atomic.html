@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Atomic Diff — Mod Load Order Comparison Tool | Novixel</title>
+  <meta name="description" content="Snapshot your mod load order, compare changes, and generate clean help reports for Discord/Reddit. Free tool for Fallout 4 and Skyrim SE/AE modders.">
+  <link rel="icon" href="FavIcon.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --bg-main: #0a0d12;
+      --bg-card: #0f1318;
+      --bg-card-hover: #141a20;
+      --border-color: #1e2830;
+      --text-primary: #e8eef4;
+      --text-secondary: #9aacbc;
+      --text-muted: #6b7c8c;
+      --accent-green: #66ff99;
+      --accent-green-dim: rgba(102, 255, 153, 0.15);
+      --accent-green-glow: rgba(102, 255, 153, 0.3);
+      --novixel-green: #009f33;
+    }
+    
+    * { box-sizing: border-box; }
+    
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+    
+    .wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+    
+    .brand {
+      font-size: 14px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    
+    .brand:hover { color: var(--novixel-green); }
+    
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 28px;
+      transition: border-color 0.2s;
+    }
+    
+    .card:hover { border-color: #2a3848; }
+    
+    .row {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 20px;
+    }
+    
+    @media (max-width: 900px) { 
+      .row { grid-template-columns: 1fr; }
+    }
+    
+    h1 {
+      margin: 0 0 8px;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    
+    .tagline {
+      font-size: 20px;
+      color: var(--text-secondary);
+      margin: 0 0 6px;
+    }
+    
+    .subline {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    
+    .btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    
+    a.btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.2s ease;
+    }
+    
+    a.btn.primary {
+      background: transparent;
+      color: #FA5C5C;
+      border: 1px solid #FA5C5C;
+    }
+    
+    a.btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(250, 92, 92, 0.3);
+      background: rgba(250, 92, 92, 0.1);
+    }
+    
+    a.btn.secondary {
+      background: transparent;
+      color: #8957e5;
+      border: 1px solid #8957e5;
+    }
+    
+    a.btn.secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(137, 87, 229, 0.3);
+      background: rgba(137, 87, 229, 0.1);
+    }
+    
+    a.btn.gumroad {
+      background: transparent;
+      color: #FF90E8;
+      border: 1px solid #FF90E8;
+    }
+    
+    a.btn.gumroad:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 144, 232, 0.3);
+      background: rgba(255, 144, 232, 0.1);
+    }
+    
+    a.btn.btc {
+      background: transparent;
+      color: #F7931A;
+      border: 1px solid #F7931A;
+    }
+    
+    a.btn.btc:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(247, 147, 26, 0.3);
+      background: rgba(247, 147, 26, 0.1);
+    }
+    
+    .meta {
+      margin-top: 32px;
+      padding: 14px 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .meta i { color: #0078D4; }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    
+    @media (max-width: 700px) { 
+      .grid { grid-template-columns: 1fr; }
+    }
+    
+    h3 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    
+    ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--text-secondary);
+    }
+    
+    ul li { margin-bottom: 8px; }
+    ul li:last-child { margin-bottom: 0; }
+    
+    .demo-placeholder {
+      background: var(--bg-main);
+      border: 2px dashed var(--border-color);
+      border-radius: 12px;
+      padding: 48px 24px;
+      text-align: center;
+      color: var(--text-muted);
+    }
+    
+    .demo-placeholder i {
+      font-size: 32px;
+      margin-bottom: 12px;
+      opacity: 0.5;
+    }
+    
+    .faq-section {
+      margin-top: 20px;
+    }
+    
+    .faq-item {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .faq-item:last-child { border-bottom: none; }
+    
+    .faq-item strong {
+      color: var(--text-primary);
+      display: block;
+      margin-bottom: 4px;
+    }
+    
+    .faq-item p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 15px;
+    }
+    
+    .footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    
+    .footer-links a:hover { color: var(--novixel-green); }
+    
+    .copyright {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <a href="Novixel.html" class="brand">← Back to Novixel</a>
+    </div>
+    
+    <div class="row">
+      <div class="card">
+        <h1>Atomic Diff</h1>
+        <p class="tagline">It worked yesterday. What changed?</p>
+        <p class="subline">Snapshot + diff + Markdown report for modders.</p>
+
+        <div class="btns">
+          <a class="btn primary" href="#"><i class="fab fa-itch-io"></i> Download on itch.io</a>
+          <a class="btn gumroad" href="#"><i class="fas fa-shopping-cart"></i> Gumroad (PWYW)</a>
+          <a class="btn secondary" href="#"><i class="fab fa-github"></i> GitHub Releases</a>
+          <a class="btn btc" href="#tip"><i class="fab fa-bitcoin"></i> Tip</a>
+        </div>
+
+        <div class="meta">
+          <i class="fab fa-windows"></i>
+          Windows 10/11 • Fallout 4 • Skyrim SE/AE • 100% Local • No Account Required
+        </div>
+
+        <div class="grid">
+          <div>
+            <h3>What it does</h3>
+            <ul>
+              <li>Snapshot your load order as "Known Good"</li>
+              <li>Compare Current vs Known Good in seconds</li>
+              <li>Generate clean Markdown help reports</li>
+              <li>Paste directly to Discord/Reddit/Nexus</li>
+            </ul>
+          </div>
+          <div>
+            <h3>What it isn't</h3>
+            <ul>
+              <li>Not a crash fixer or debugger</li>
+              <li>Not a load order optimizer</li>
+              <li>Not a LOOT replacement</li>
+              <li>Not a mod manager</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Demo</h3>
+        <div class="demo-placeholder">
+          <i class="fas fa-play-circle"></i>
+          <p>GIF or screenshot coming soon</p>
+          <p style="font-size: 13px; margin-top: 8px;">Snapshot → Compare → Copy Report</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card faq-section">
+      <h3>FAQ</h3>
+      <div class="faq-item">
+        <strong>How much does it cost?</strong>
+        <p>Pay what you want. It's free, but tips are appreciated.</p>
+      </div>
+      <div class="faq-item">
+        <strong>What games are supported?</strong>
+        <p>Fallout 4 and Skyrim Special Edition / Anniversary Edition. More games may be added based on demand.</p>
+      </div>
+      <div class="faq-item">
+        <strong>Does it need an internet connection?</strong>
+        <p>No. Atomic Diff runs entirely offline. Your mod data never leaves your computer.</p>
+      </div>
+      <div class="faq-item">
+        <strong>Where can I get support?</strong>
+        <p>Open an issue on GitHub or reach out via the Novixel contact form.</p>
+      </div>
+    </div>
+    
+    <div id="tip" class="card" style="margin-top: 20px;">
+      <div style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 200px;">
+          <h3 style="display: flex; align-items: center; gap: 8px;">
+            <i class="fab fa-bitcoin" style="color: #F7931A;"></i> Tip Jar
+          </h3>
+          <p style="color: var(--text-secondary); margin: 8px 0 16px;">
+            Atomic Diff is free, but if it saved you hours of debugging, consider buying me a coffee (or some sats).
+          </p>
+          <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; font-family: monospace; font-size: 12px; word-break: break-all; color: var(--text-secondary);">
+            3HYnXVUxbtqvSkutKnPysaq6nuou8qScFn
+          </div>
+          <button onclick="navigator.clipboard.writeText('3HYnXVUxbtqvSkutKnPysaq6nuou8qScFn'); this.textContent='Copied!'; setTimeout(() => this.textContent='Copy Address', 2000);" style="margin-top: 12px; padding: 8px 16px; background: #F7931A; color: #000; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.2s;">
+            Copy Address
+          </button>
+        </div>
+        <div style="text-align: center;">
+          <img src="btc-qr.png" alt="Bitcoin QR Code" style="width: 120px; height: 120px; border-radius: 8px; background: #fff; padding: 8px;">
+          <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">Scan to tip BTC</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <div class="footer-links">
+        <a href="Novixel.html">Portfolio</a>
+        <a href="tradingbots.html">Trading Solutions</a>
+        <a href="https://try.novalite.app" target="_blank">NovaLite</a>
+        <a href="aicom.html">AI Solutions</a>
+      </div>
+      <p class="copyright">© 2026 Novixel. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>
