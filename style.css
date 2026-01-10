@@ -612,6 +612,7 @@ body.dark-mode .processStep strong {
    Contact Section
    =========================================== */
 .specialarea {
+    display: block;
     margin-top: 24px;
 }
 
