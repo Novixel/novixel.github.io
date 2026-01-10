@@ -141,15 +141,11 @@ function CoolThing() {
 // Initialize on Page Load
 // ===========================================
 document.addEventListener('DOMContentLoaded', function() {
-    // Auto-open Home tab on Novixel.html
+    // Auto-open Home tab on pages with tab navigation
     var homeTab = document.getElementById('Home');
     var homeButton = document.getElementById('tab-Home') || document.querySelector('.tablinks');
     
     if (homeTab && homeButton) {
-        // Check if we're on the portfolio page or homepage
-        var path = window.location.pathname;
-        if (path.includes('Novixel.html') || path === '/' || path.endsWith('/')) {
-            homeButton.click();
-        }
+        homeButton.click();
     }
 });
