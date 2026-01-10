@@ -1,146 +1,255 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Welcome to Novixel! Custom software solutions, IT support, and tech services based in Dawson Creek, BC.">
-    <meta name="keywords" content="Novixel, Software Development, Software Developer, IT support, Customer relations, Python, HTML, CSS, JavaScript, Consulting, Analyst, Dawson Creek">
+    <meta name="description" content="Novixel — software development, IT support, and automation solutions based in Dawson Creek, BC.">
+    <meta name="keywords" content="Novixel, Dawson Creek, Software Development, IT support, Automation, Python, Web Apps, Consulting">
     <meta name="author" content="Novixel">
     <meta name="robots" content="index, follow">
-    <meta name="revisit-after" content="7 days">
 
-    <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=2">
-
-    <!-- Icon -->
+    <link rel="stylesheet" href="style.css?v=3">
     <link rel="icon" href="FavIcon.png">
 
-    <!-- Title -->
-    <title>Novixel - Your Complete Tech Solution</title>
-
+    <title>Novixel — Tech Solutions</title>
 </head>
+
 <body>
     <div class="container">
-        <img class="mainlogo" src="Novixel-icon-Trans1.png" alt="Novixel Logo" onclick="CoolThing()">
-        <h1>Find Your Solution</h1>
-        <button class="fas fa-moon" onclick="toggleDarkMode(event)"></button>
+        <header class="header">
+            <button class="logoBtn" type="button" onclick="CoolThing()" aria-label="Toggle logo">
+                <img class="mainlogo" src="Novixel-icon-Trans1.png" alt="Novixel logo">
+            </button>
+
+            <div class="headline">
+                <h1>Find Your Solution</h1>
+                <p class="subhead">
+                    Software, IT support, and automation — built for real-world reliability.
+                    <span class="location">Dawson Creek, BC</span>
+                </p>
+            </div>
+
+            <button class="iconBtn fas fa-moon" type="button" onclick="toggleDarkMode(event)" aria-label="Toggle dark mode"></button>
+        </header>
+
         <hr class="separator">
-        
-        <div class="tab">
-            <button class="tablinks" onclick="openTab(event, 'Home')">Home</button>
-            <button class="tablinks" onclick="openTab(event, 'About')">About</button>
-            <button class="tablinks" onclick="openTab(event, 'Skills')">Skills</button>
-            <button class="tablinks" onclick="openTab(event, 'Services')">Services</button>
-        </div>
-        
-        <div id="Home" class="tabcontent">
-            <h2>Welcome to Novixel</h2>
-            <p>
-                Your trusted technology partner based in Dawson Creek, BC. We provide comprehensive tech solutions across multiple specialties:
-            </p>
-            <ul style="text-align: left; max-width: 600px; margin: 20px auto;">
-                <li><strong>Custom Software Development</strong> - Automation, APIs, trading bots, and web applications</li>
-                <li><strong>Computer Solutions</strong> - IT support, repairs, and tech consulting</li>
-                <li><strong>Trading Solutions</strong> - Cryptocurrency trading automation and analysis</li>
-                <li><strong>AI Solutions</strong> - Intelligent assistants and automation tools</li>
-                <li><strong>Coffee Solutions</strong> - Premium office coffee services</li>
-            </ul>
-            <p>
-                Explore our divisions below or check out our interactive projects and tools.
-            </p>
-        </div>
 
-        <div id="About" class="tabcontent">
-            <h2>About Me</h2>
-            <p>
-                Hello, World! That's how it started. I use Python for most things—it's quick and portable.
-                If the need arises, I'll use whatever language best suits the environment.
-                
-                I specialize in building automation scripts, API wrappers, and trading bots for cryptocurrency exchanges.
-                Currently, I'm working on web development and security projects, always looking for new challenges to take on.
-                
-                As a self-taught developer, I'm constantly learning and improving my skills.
-                
-                A relatively new endeavor I've been exploring is electrical engineering.
-        
-                I'm currently working on a project involving a Raspberry Pi and a few controllers to build a physical trading bot.
-                I plan to start with a basic AI-powered robot car that I can build with my kids.    
-            </p>
-        </div>
-        
-        <div id="Skills" class="tabcontent">
-            <h2>My Skills</h2>
-            <p>
-                I have a unique set of skills that have helped me navigate life. Give me a problem, and I'll find a solution. 
-                It might not always be the most elegant fix, but you can bet it'll work. 
-                I have a knack for troubleshooting—whether it's weird automotive issues, power tools acting up, or debugging stubborn code. 
-                I've found that asking the right questions and truly understanding the problem is the key to getting to the root cause of any issue.
-            </p>
-            <p>
-                When it comes to coding, I'm solid. I specialize in Python but can work with C++, C#, HTML, CSS, and JavaScript when needed. 
-                I've built a variety of small to medium-sized software applications and have experience across multiple operating systems, including Windows, macOS, and several Linux distributions.
-            </p>
-            <p>
-                On top of that, I'm great with people. 
-                Customer relations is one of my strong suits—I know how to build meaningful connections and provide top-tier service. 
-                Whether it's clients, customers, or collaborators, I make sure the experience is smooth and professional.
-            </p>
-        </div>
+        <nav class="tab" role="tablist" aria-label="Primary navigation">
+            <button class="tablinks" role="tab" aria-selected="true" aria-controls="Home" id="tab-Home" onclick="openTab(event, 'Home')">Home</button>
+            <button class="tablinks" role="tab" aria-selected="false" aria-controls="About" id="tab-About" onclick="openTab(event, 'About')">About</button>
+            <button class="tablinks" role="tab" aria-selected="false" aria-controls="Skills" id="tab-Skills" onclick="openTab(event, 'Skills')">Skills</button>
+            <button class="tablinks" role="tab" aria-selected="false" aria-controls="Services" id="tab-Services" onclick="openTab(event, 'Services')">Services</button>
+        </nav>
 
-        <div id="Services" class="tabcontent">
-            <h2>Our Services</h2>
-            <hr class="separator">
-            <div class="Services">
-                <div class="Service">
-                    <h3><i class="fas fa-code"></i> Software Development</h3>
-                    <p>
-                        Need a reliable software solution? I offer professional development services tailored to your requirements. With expertise in Python, C#, C++, HTML, CSS, JavaScript, and more, I deliver robust, efficient, and scalable applications to help you achieve your goals.
-                    </p>
+        <!-- HOME -->
+        <section id="Home" class="tabcontent" role="tabpanel" aria-labelledby="tab-Home">
+            <div class="heroCard">
+                <h2>Welcome to Novixel</h2>
+                <p class="muted">
+                    Clear communication. Fast troubleshooting. Clean solutions that don't fall apart later.
+                </p>
+
+                <div class="pillRow" aria-label="Highlights">
+                    <span class="pill">Automation & APIs</span>
+                    <span class="pill">Web Apps</span>
+                    <span class="pill">IT Support</span>
+                    <span class="pill">Security-First</span>
                 </div>
-                <div class="Service">
-                    <h3><i class="fas fa-laptop"></i> IT Support & Consulting</h3>
-                    <p>Facing computer issues? I'm here to assist. With expertise in Windows, macOS, iOS, and Android, I bring tailored solutions to ensure your tech experience is smooth and problem-free.</p>
+
+                <ul class="serviceList">
+                    <li><strong>Custom Software Development</strong> — automation, APIs, web apps, internal tools</li>
+                    <li><strong>Computer Solutions</strong> — support, repairs, setup, and consulting</li>
+                    <li><strong>Trading Solutions</strong> — crypto automation tooling and analytics</li>
+                    <li><strong>AI Solutions</strong> — assistants, workflows, and practical automations</li>
+                </ul>
+
+                <div class="trustBlock">
+                    <span><i class="fas fa-map-marker-alt"></i> Local in Dawson Creek</span>
+                    <span><i class="fas fa-bolt"></i> Fast Turnaround</span>
+                    <span><i class="fas fa-tag"></i> Clear Pricing</span>
+                    <span><i class="fas fa-comments"></i> No Jargon</span>
                 </div>
-                <div class="Service">
-                    <h3><i class="fas fa-tools"></i> Small Electronic Repairs</h3>
-                    <p>Have a broken TV, game console, or other electronic device? I offer repair services for a variety of consumer electronics. Whether it's troubleshooting, part replacement, or general maintenance, I'll work to get your devices back up and running smoothly.</p>
+
+                <div class="ctaRow">
+                    <a class="btn primary" href="#contact" onclick="jumpToContact(event)">Get a Quote</a>
+                    <a class="btn ghost" href="https://try.novalite.app" target="_blank" rel="noopener">View NovaLite</a>
+                </div>
+
+                <p class="tiny muted">
+                    Typical turnaround: same day to 3 days depending on scope.
+                </p>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="About" class="tabcontent" role="tabpanel" aria-labelledby="tab-About" hidden>
+            <div class="card">
+                <h2>About</h2>
+                <p>
+                    I build practical software and tech solutions for people who need things to work — not just look good.
+                    Most of my work is Python-based for speed and portability, but I use whatever stack fits the job.
+                </p>
+                <p>
+                    I specialize in automation, API integrations, and tools that remove repetitive work. I also provide hands-on
+                    IT support and repairs when you need someone local who can actually diagnose the problem.
+                </p>
+                <p>
+                    Currently exploring electrical engineering projects — from Raspberry Pi controllers to physical automation builds.
+                    Always learning, always building.
+                </p>
+                <p class="muted">
+                    If you can explain the outcome you want, I can map the steps and build the solution.
+                </p>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="Skills" class="tabcontent" role="tabpanel" aria-labelledby="tab-Skills" hidden>
+            <div class="card">
+                <h2>Skills</h2>
+
+                <div class="grid2">
+                    <div class="miniCard">
+                        <h3><i class="fas fa-code"></i> Development</h3>
+                        <p class="muted">
+                            Python, JavaScript, HTML/CSS, C# / C++, automation, APIs, small-to-mid web apps.
+                        </p>
+                    </div>
+                    <div class="miniCard">
+                        <h3><i class="fas fa-lightbulb"></i> Problem Solving</h3>
+                        <p class="muted">
+                            Troubleshooting, systems thinking, clean fixes, and solid documentation so you're not stuck later.
+                        </p>
+                    </div>
+                    <div class="miniCard">
+                        <h3><i class="fas fa-laptop"></i> IT Support</h3>
+                        <p class="muted">
+                            Windows/macOS, device setup, cleanup, performance fixes, backups, and practical security.
+                        </p>
+                    </div>
+                    <div class="miniCard">
+                        <h3><i class="fas fa-handshake"></i> Customer Work</h3>
+                        <p class="muted">
+                            Clear updates, no mystery timelines, and honest recommendations when something isn't worth it.
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div id="specialareaid" class="specialarea">
+        <!-- SERVICES -->
+        <section id="Services" class="tabcontent" role="tabpanel" aria-labelledby="tab-Services" hidden>
+            <div class="card">
+                <h2>Services</h2>
+                <p class="muted">Pick what you need — or just tell me the problem and I'll point you to the right option.</p>
+
+                <div class="serviceGrid">
+                    <article class="serviceCard">
+                        <h3><i class="fas fa-code"></i> Software Development</h3>
+                        <p>
+                            Custom tools, automation, integrations, dashboards, and internal apps built to be stable and maintainable.
+                        </p>
+                        <ul class="bullets">
+                            <li>Automation scripts</li>
+                            <li>API integrations</li>
+                            <li>Web apps & tooling</li>
+                        </ul>
+                    </article>
+
+                    <article class="serviceCard">
+                        <h3><i class="fas fa-laptop"></i> IT Support & Consulting</h3>
+                        <p>
+                            Troubleshooting, tune-ups, setups, and straightforward advice to keep your system reliable.
+                        </p>
+                        <ul class="bullets">
+                            <li>System cleanup & performance</li>
+                            <li>Backups & recovery</li>
+                            <li>Security basics</li>
+                        </ul>
+                    </article>
+
+                    <article class="serviceCard">
+                        <h3><i class="fas fa-tools"></i> Small Electronics Repairs</h3>
+                        <p>
+                            Diagnostic and repair help for consumer electronics where it makes sense to fix instead of replace.
+                        </p>
+                        <ul class="bullets">
+                            <li>Consoles & accessories</li>
+                            <li>Basic component swaps</li>
+                            <li>General diagnostics</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <!-- Process Section -->
+                <div class="processSection">
+                    <h3>How It Works</h3>
+                    <div class="processSteps">
+                        <div class="processStep">
+                            <span class="stepNumber">1</span>
+                            <strong>Message</strong>
+                            <p class="muted">Send details about what you need</p>
+                        </div>
+                        <div class="processStep">
+                            <span class="stepNumber">2</span>
+                            <strong>Quick Call</strong>
+                            <p class="muted">We scope the work together</p>
+                        </div>
+                        <div class="processStep">
+                            <span class="stepNumber">3</span>
+                            <strong>Build & Deliver</strong>
+                            <p class="muted">I build it, you approve it</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="specialarea">
             <hr class="separator">
-            <h2>Let Me Be Your Solution</h2>
-            <h4>Send a Message</h4>
-            <form id="contactForm" action="mailto:novixel@hotmail.com" method="POST" enctype="text/plain">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required><br>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required><br>
-                <label for="subject">Subject:</label>
-                <input type="text" id="subject" name="subject" required><br>
-                <label for="message">Message:</label><br>
-                <textarea id="message" name="message" rows="4" required></textarea><br>
-                <input type="submit" value="Send">
+
+            <h2>Contact</h2>
+            <p class="muted">Send the details and I'll reply with next steps.</p>
+
+            <form id="contactForm" class="contactForm" action="mailto:novixel@hotmail.com" method="POST" enctype="text/plain">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" autocomplete="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" autocomplete="email" required>
+
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <div class="ctaRow">
+                    <input class="btn primary" type="submit" value="Send Message">
+                    <a class="btn ghost" href="https://calendly.com/novixel" target="_blank" rel="noopener">Book a Call</a>
+                </div>
+
+                <p class="tiny muted">
+                    Tip: If you'd rather not use email apps, click "Book a Call" to schedule directly.
+                </p>
             </form>
-        </div>
+        </section>
 
+        <footer class="footer">
             <hr class="separator">
-            
-            <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin: 20px 0;">
-                <a href="Novixel.html" style="color: #6b7c8c; text-decoration: none; font-size: 14px;">Portfolio</a>
-                <a href="tradingbots.html" style="color: #6b7c8c; text-decoration: none; font-size: 14px;">Trading Solutions</a>
-                <a href="https://try.novalite.app" target="_blank" style="color: #6b7c8c; text-decoration: none; font-size: 14px;">NovaLite</a>
-                <a href="aicom.html" style="color: #6b7c8c; text-decoration: none; font-size: 14px;">AI Solutions</a>
+            <div class="footerLinks">
+                <a href="Novixel.html">Portfolio</a>
+                <a href="tradingbots.html">Trading Solutions</a>
+                <a href="https://try.novalite.app" target="_blank" rel="noopener">NovaLite</a>
+                <a href="aicom.html">AI Solutions</a>
             </div>
-            
-            <p style="font-size: 13px; color: #6b7c8c;">&copy; 2026 Novixel. All rights reserved.</p>
-        </div>
-
-        <script src="script.js"></script>
+            <p class="tiny muted">&copy; 2026 Novixel. All rights reserved.</p>
+        </footer>
     </div>
+
+    <script src="script.js?v=2"></script>
 </body>
 </html>

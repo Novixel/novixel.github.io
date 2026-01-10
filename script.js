@@ -1,38 +1,42 @@
-// Dark mode toggle
-// Global subject prefix for all mailto links/forms. Change this one value to adjust.
+// ===========================================
+// Novixel Portfolio - Scripts v2
+// ===========================================
+
+// Global subject prefix for all mailto links/forms
 window.MAIL_SUBJECT_PREFIX = '[SITE]';
+
+// ===========================================
+// Dark Mode
+// ===========================================
 function setInitialDarkMode() {
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.body.classList.add('dark-mode');
         setDarkModeButtonIcon(true);
-        setSeparatorDarkMode(true);
     } else {
         document.body.classList.remove('dark-mode');
         setDarkModeButtonIcon(false);
-        setSeparatorDarkMode(false);
     }
 }
 
 function setDarkModeButtonIcon(isDark) {
     var btn = document.querySelector('.fa-moon, .fa-sun');
-    if (btn) btn.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-}
-
-function setSeparatorDarkMode(isDark) {
-    var sep = document.querySelector('.separator');
-    if (sep) sep.classList[isDark ? 'add' : 'remove']('dark-mode');
+    if (btn) {
+        btn.classList.remove('fa-moon', 'fa-sun');
+        btn.classList.add(isDark ? 'fa-sun' : 'fa-moon');
+    }
 }
 
 function toggleDarkMode(event) {
     var isDarkMode = document.body.classList.toggle('dark-mode');
     setDarkModeButtonIcon(isDarkMode);
-    setSeparatorDarkMode(isDarkMode);
 }
 
 // Initialize dark mode on page load
 window.addEventListener('DOMContentLoaded', setInitialDarkMode);
 
-// Enhance mailto forms to inject a subject prefix and body content
+// ===========================================
+// Contact Form Enhancement
+// ===========================================
 function initContactForms() {
     var forms = document.querySelectorAll('form[action^="mailto:"]');
     forms.forEach(function(form){
@@ -65,24 +69,67 @@ function initContactForms() {
 
 document.addEventListener('DOMContentLoaded', initContactForms);
 
-// Tab navigation
+// ===========================================
+// Tab Navigation
+// ===========================================
 function openTab(evt, tabName) {
-    var i;
-    var tabcontent = document.getElementsByClassName('tabcontent');
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = 'none';
+    // Hide all panels
+    var panels = document.querySelectorAll('.tabcontent');
+    panels.forEach(function(p) {
+        p.style.display = 'none';
+        p.hidden = true;
+    });
+
+    // Remove active state from all tabs
+    var tabs = document.querySelectorAll('.tablinks');
+    tabs.forEach(function(t) {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+    });
+
+    // Show selected panel
+    var panel = document.getElementById(tabName);
+    if (panel) {
+        panel.style.display = 'block';
+        panel.hidden = false;
     }
-    var tablinks = document.getElementsByClassName('tablinks');
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(' active', '');
+
+    // Activate clicked button
+    if (evt && evt.currentTarget) {
+        evt.currentTarget.classList.add('active');
+        evt.currentTarget.setAttribute('aria-selected', 'true');
     }
-    document.getElementById(tabName).style.display = 'block';
-    evt.currentTarget.className += ' active';
 }
 
-// Logo toggle
+// ===========================================
+// Navigation Helpers
+// ===========================================
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function jumpToContact(e) {
+    // Prevent default anchor behavior
+    if (e) e.preventDefault();
+
+    // Ensure Home tab is active (contact is in main view)
+    var homeBtn = document.getElementById('tab-Home');
+    if (homeBtn) homeBtn.click();
+
+    // Smooth scroll to contact section
+    var contact = document.getElementById('contact');
+    if (contact) {
+        setTimeout(function() {
+            contact.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+    }
+}
+
+// ===========================================
+// Logo Toggle (Easter Egg)
+// ===========================================
 function CoolThing() {
-    var logo = document.getElementsByClassName('mainlogo')[0];
+    var logo = document.querySelector('.mainlogo');
     if (!logo) return;
     var src1 = 'Novixel-icon-Trans1.png';
     var src2 = 'Novixel-icon-Trans2.png';
@@ -90,14 +137,19 @@ function CoolThing() {
     logo.setAttribute('src', currentSrc === src1 ? src2 : src1);
 }
 
-// Auto-open Home tab on page load for index.html
+// ===========================================
+// Initialize on Page Load
+// ===========================================
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if we're on the homepage with tabs
+    // Auto-open Home tab on Novixel.html
     var homeTab = document.getElementById('Home');
-    var homeButton = document.querySelector('.tablinks');
+    var homeButton = document.getElementById('tab-Home') || document.querySelector('.tablinks');
     
-    if (homeTab && homeButton && window.location.pathname === '/index.html' || window.location.pathname === '/') {
-        // Simulate click on Home tab
-        homeButton.click();
+    if (homeTab && homeButton) {
+        // Check if we're on the portfolio page or homepage
+        var path = window.location.pathname;
+        if (path.includes('Novixel.html') || path === '/' || path.endsWith('/')) {
+            homeButton.click();
+        }
     }
 });
