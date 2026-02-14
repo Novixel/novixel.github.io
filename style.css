@@ -5,22 +5,22 @@
 /* CSS Variables */
 :root {
     --bg: #f0f0f0;
-    --bg-dark: #0b0d10;
+    --bg-dark: #000000;
     --panel: #ffffff;
-    --panel-dark: #10151c;
+    --panel-dark: #0a0a0a;
     --panel2: #f8f8f8;
-    --panel2-dark: #0f1319;
+    --panel2-dark: #0d0d0d;
     --border: #ddd;
-    --border-dark: #253043;
+    --border-dark: #1a1a1a;
     --text: #333;
-    --text-dark: #e8eef7;
+    --text-dark: #e0e0e0;
     --muted: #666;
-    --muted-dark: #a9b5c6;
-    --accent: #009f33;
-    --accent-light: #39ff88;
-    --accent-dark: #2bdc74;
+    --muted-dark: #888888;
+    --accent: #00ff66;
+    --accent-light: #00ff66;
+    --accent-dark: #00ff66;
     --shadow: 0 10px 30px rgba(0,0,0,.1);
-    --shadow-dark: 0 10px 30px rgba(0,0,0,.45);
+    --shadow-dark: 0 10px 30px rgba(0,0,0,.6);
     --radius: 14px;
     --max: 980px;
 }
@@ -47,7 +47,7 @@ body {
 
 /* Dark Mode Base */
 body.dark-mode {
-    background: radial-gradient(1200px 600px at 50% 0%, rgba(57,255,136,.08), transparent 55%), var(--bg-dark);
+    background: radial-gradient(800px 400px at 50% 0%, rgba(0,255,102,.06), transparent 60%), var(--bg-dark);
     color: var(--text-dark);
 }
 
@@ -154,7 +154,7 @@ body.dark-mode .location {
 }
 
 body.dark-mode .iconBtn {
-    border-color: rgba(37,48,67,.9);
+    border-color: rgba(255,255,255,.08);
     background: linear-gradient(180deg, rgba(16,21,28,.9), rgba(15,19,25,.9));
     color: var(--text-dark);
     box-shadow: var(--shadow-dark);
@@ -173,7 +173,7 @@ body.dark-mode .iconBtn:hover {
 }
 
 body.dark-mode .separator {
-    background: linear-gradient(90deg, transparent, rgba(37,48,67,.9), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
 }
 
 /* ===========================================
@@ -215,7 +215,7 @@ body.dark-mode .separator {
 }
 
 body.dark-mode .tablinks {
-    border-color: rgba(37,48,67,.9);
+    border-color: rgba(255,255,255,.08);
     background: rgba(16,21,28,.75);
     color: var(--text-dark);
 }
@@ -261,7 +261,7 @@ body.dark-mode .tablinks.active {
 body.dark-mode .card,
 body.dark-mode .heroCard {
     background: linear-gradient(180deg, rgba(16,21,28,.92), rgba(15,19,25,.92));
-    border-color: rgba(37,48,67,.9);
+    border-color: rgba(255,255,255,.08);
     box-shadow: var(--shadow-dark);
 }
 
@@ -331,7 +331,7 @@ body.dark-mode .muted { color: var(--muted-dark); }
 }
 
 body.dark-mode .pill {
-    border-color: rgba(37,48,67,.9);
+    border-color: rgba(255,255,255,.08);
     background: rgba(11,13,16,.35);
     color: rgba(232,238,247,.92);
 }
@@ -446,7 +446,7 @@ body.dark-mode .serviceList strong {
 }
 
 body.dark-mode .btn {
-    border-color: rgba(37,48,67,.9);
+    border-color: rgba(255,255,255,.08);
     background: rgba(16,21,28,.75);
     color: var(--text-dark);
 }
@@ -485,7 +485,7 @@ body.dark-mode .btn.ghost:hover {
 
 body.dark-mode .miniCard {
     background: rgba(11,13,16,.35);
-    border-color: rgba(37,48,67,.75);
+    border-color: rgba(255,255,255,.06);
 }
 
 /* Service Grid */
@@ -506,7 +506,7 @@ body.dark-mode .miniCard {
 
 body.dark-mode .serviceCard {
     background: rgba(11,13,16,.35);
-    border-color: rgba(37,48,67,.75);
+    border-color: rgba(255,255,255,.06);
 }
 
 .serviceCard i {
@@ -554,7 +554,7 @@ body.dark-mode .bullets {
 }
 
 body.dark-mode .processSection {
-    border-top-color: rgba(37,48,67,.6);
+    border-top-color: rgba(255,255,255,.05);
 }
 
 .processSection h3 {
@@ -590,7 +590,7 @@ body.dark-mode .processSection {
 
 body.dark-mode .stepNumber {
     background: rgba(57,255,136,.8);
-    color: #0b0d10;
+    color: #000000;
 }
 
 .processStep strong {
@@ -657,7 +657,7 @@ body.dark-mode .contactForm label {
 
 body.dark-mode .contactForm input,
 body.dark-mode .contactForm textarea {
-    border-color: rgba(37,48,67,.9);
+    border-color: rgba(255,255,255,.08);
     background: rgba(11,13,16,.35);
     color: var(--text-dark);
 }
@@ -881,7 +881,7 @@ body.dark-mode a:hover {
 
 body.dark-mode .division-card {
     background: #1a1a1a;
-    border-color: rgba(37,48,67,.75);
+    border-color: rgba(255,255,255,.06);
 }
 
 /* Featured Product Banner */
@@ -890,19 +890,19 @@ body.dark-mode .division-card {
     position: relative;
     margin-top: 24px;
     padding: 20px 24px;
-    background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
-    border: 1px solid rgba(57,255,136,.3);
+    background: #0a0a0a;
+    border: 1px solid rgba(0,255,102,.3);
     border-radius: var(--radius);
     text-decoration: none;
-    color: #e8eef7;
+    color: #e0e0e0;
     overflow: hidden;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.05);
+    box-shadow: 0 4px 20px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.03);
 }
 
 .featured-banner:hover {
-    border-color: rgba(57,255,136,.6);
-    box-shadow: 0 8px 32px rgba(57,255,136,.15), inset 0 1px 0 rgba(255,255,255,.05);
+    border-color: rgba(0,255,102,.6);
+    box-shadow: 0 8px 32px rgba(0,255,102,.12), inset 0 1px 0 rgba(255,255,255,.03);
     transform: translateY(-2px);
 }
 
@@ -913,7 +913,7 @@ body.dark-mode .division-card {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(57,255,136,.5), transparent);
+    background: linear-gradient(90deg, transparent, rgba(0,255,102,.4), transparent);
 }
 
 .featured-badge {
@@ -956,7 +956,7 @@ body.dark-mode .division-card {
     display: inline-block;
     margin-left: 8px;
     padding: 2px 8px;
-    background: rgba(57,255,136,.15);
+    background: rgba(0,255,102,.12);
     color: var(--accent-light);
     font-size: 11px;
     font-weight: 600;
@@ -967,7 +967,7 @@ body.dark-mode .division-card {
 .featured-text p {
     margin: 0;
     font-size: 0.9rem;
-    color: #a9b5c6;
+    color: #888888;
 }
 
 .featured-cta {
