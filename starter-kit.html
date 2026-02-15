@@ -263,33 +263,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             <div id="signup-form" class="email-form">
                 <h2>Get Your Free Kit</h2>
-                <p class="form-subtitle">Enter your email and we'll send it right over.</p>
+                <p class="form-subtitle">Click below to download instantly from Gumroad.</p>
                 
-                <form id="starter-kit-form" action="https://novixel.gumroad.com/l/ai-starter-kit" method="GET">
-                    <input 
-                        type="email" 
-                        name="email" 
-                        id="email-input"
-                        placeholder="you@example.com" 
-                        required
-                        autocomplete="email"
-                    >
-                    <button type="submit" class="btn primary">
-                        <i class="fas fa-download"></i> Download Free Kit
-                    </button>
-                </form>
+                <a href="https://novixel.gumroad.com/l/ai-starter-kit" 
+                   class="btn primary" 
+                   style="display: block; text-align: center; text-decoration: none;"
+                   onclick="if(window.dataLayer){dataLayer.push({'event':'lead_capture','lead_source':'starter-kit'});}">
+                    <i class="fas fa-download"></i> Download Free Kit
+                </a>
                 
                 <p style="font-size: 0.85rem; opacity: 0.6; margin-top: 16px; text-align: center;">
-                    No spam, ever. Unsubscribe anytime.
-                </p>
-            </div>
-
-            <div id="success-message" class="success-message">
-                <i class="fas fa-check-circle"></i>
-                <h2>You're In! 🎉</h2>
-                <p>Check your email for the download link. If you don't see it, check your spam folder.</p>
-                <p style="margin-top: 20px;">
-                    <a href="index.html" class="btn primary">Explore Novixel →</a>
+                    100% free. No credit card required.
                 </p>
             </div>
 
@@ -313,14 +297,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <script src="script.js?v=2"></script>
     <script>
-        // Track form submission
-        document.getElementById('starter-kit-form').addEventListener('submit', function(e) {
-            // Push to dataLayer for GTM
+        // Track button click
+        document.querySelector('a[href*="gumroad"]').addEventListener('click', function() {
             if (window.dataLayer) {
                 dataLayer.push({
                     'event': 'lead_capture',
-                    'lead_source': 'starter-kit',
-                    'email': document.getElementById('email-input').value
+                    'lead_source': 'starter-kit'
                 });
             }
         });
