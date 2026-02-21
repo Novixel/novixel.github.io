@@ -1,16 +1,18 @@
-# Novixel Portfolio Design System v3
+# Novixel Portfolio Design System v4
 
-**Last Updated:** January 9, 2026  
-**Applies to:** `Novixel.html` (portfolio page) using `style.css` + `script.js`
+**Last Updated:** February 21, 2026  
+**Applies to:** `index.html` (portfolio page) using `style.css` + `script.js`
 
 ---
 
 ## Design Philosophy
 
-- **Dark "console/hacker" vibe** with professional polish
+- **Dark "polished terminal" aesthetic** with cyberpunk accents
+- **Pure black backgrounds** with neon green primary accent
+- **Cyan/teal highlights** for interactive elements
+- **Subtle amber accents** for warmth
+- **Clean typography and spacing** — professional but edgy
 - **Security-first, reliability-focused** messaging
-- **Clean typography and spacing** — no template feel
-- **Subtle green accent** (`#009f33` light / `#39ff88` dark mode)
 
 ---
 
@@ -24,24 +26,33 @@
 --border: #ddd;
 --text: #333;
 --muted: #666;
---accent: #009f33;
+--accent: #00ff66;
 ```
 
-### Dark Mode
+### Dark Mode (v4 — Polished Terminal)
 ```css
---bg-dark: #0b0d10;
---panel-dark: #10151c;
---panel2-dark: #0f1319;
---border-dark: #253043;
---text-dark: #e8eef7;
---muted-dark: #a9b5c6;
---accent-light: #39ff88;
+--bg-dark: #0a0a0a;          /* Slightly lighter than pure black */
+--panel-dark: #111111;        /* Card backgrounds */
+--panel2-dark: #0d0d0d;       /* Secondary panels */
+--border-dark: #1e1e1e;       /* Subtle borders */
+--text-dark: #00ff00;         /* Bright neon green */
+--muted-dark: #b0b0b0;        /* Light grey for body text */
+--accent: #00ff66;            /* Primary green */
+--accent-light: #00ff66;      /* Bright green */
+--accent-dark: #00cc55;       /* Darker green */
+--accent-amber: #fbbf24;      /* Warm accent */
+--accent-teal: #2dd4bf;       /* Cyan/teal for highlights */
 ```
 
-### Background Gradient (Dark Mode)
+### Background Gradient (Dark Mode v4)
 ```css
-background: radial-gradient(1200px 600px at 50% 0%, rgba(57,255,136,.08), transparent 55%), var(--bg-dark);
+background: 
+    radial-gradient(circle at 20% 80%, rgba(57, 255, 136, 0.02), transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(251, 191, 36, 0.015), transparent 50%),
+    var(--bg-dark);
 ```
+
+**Rationale:** Subtle dual-gradient creates depth without overwhelming. Green glow bottom-left, warm amber glow top-right.
 
 ---
 
@@ -49,12 +60,14 @@ background: radial-gradient(1200px 600px at 50% 0%, rgba(57,255,136,.08), transp
 
 - **Font Stack:** `system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif`
 - **Line Height:** `1.55`
-- **H1:** 34px (26px mobile)
-- **H2:** 22px
-- **H3:** 16px
+- **H1:** 34px (26px mobile) — Bright green (#00ff00)
+- **H2:** 22px — Light grey (#e2e8f0)
+- **H3:** 16px — Accent green
 - **Body:** 1em (16px base)
+- **Muted Text:** Light grey (#b0b0b0) for paragraphs and descriptions
 - **Small/Muted:** 13px
 - **Tiny:** 12px
+- **Radius:** 12px (slightly tighter than v3)
 
 ---
 
@@ -77,6 +90,10 @@ background: radial-gradient(1200px 600px at 50% 0%, rgba(57,255,136,.08), transp
 </header>
 ```
 
+**Dark Mode Styling:**
+- Location badge: Cyan border (#00ffff) with subtle glow
+- Icon button: Pure black gradient background
+
 ### Tab Navigation
 ```html
 <nav class="tab" role="tablist">
@@ -84,6 +101,10 @@ background: radial-gradient(1200px 600px at 50% 0%, rgba(57,255,136,.08), transp
     <!-- More tabs... -->
 </nav>
 ```
+
+**Dark Mode Styling:**
+- Default: Pure black background (rgba(0,0,0,.75))
+- Active: Green tint background (rgba(57, 255, 136, 0.1)) with bright green border
 
 ### Cards
 ```html
@@ -100,6 +121,13 @@ background: radial-gradient(1200px 600px at 50% 0%, rgba(57,255,136,.08), transp
 <article class="serviceCard">...</article>
 ```
 
+**Dark Mode Styling (v4):**
+- Background: Pure black (rgba(0,0,0,.35-.92) depending on card type)
+- Hover: Green border glow (rgba(57, 255, 136, 0.3)) with subtle lift animation
+- Icons: Bright green accent color
+- Price text: Green with subtle glow
+- Bullet markers: Green accent color
+
 ### Pills/Tags
 ```html
 <div class="pillRow">
@@ -107,6 +135,11 @@ background: radial-gradient(1200px 600px at 50% 0%, rgba(57,255,136,.08), transp
     <span class="pill">Web Apps</span>
 </div>
 ```
+
+**Dark Mode Styling (v4):**
+- Border: Subtle green (rgba(57,255,136,.15))
+- Background: Very transparent green (rgba(57,255,136,.06))
+- Text: Bright green (rgba(57,255,136,.9))
 
 ### Trust Block
 ```html
@@ -125,6 +158,36 @@ background: radial-gradient(1200px 600px at 50% 0%, rgba(57,255,136,.08), transp
     <a class="btn ghost" href="https://example.com">Secondary Action</a>
 </div>
 ```
+
+**Dark Mode Styling (v4 — Cyan Primary):**
+```css
+/* Primary button */
+.btn.primary {
+    border-color: rgba(0, 255, 255, 0.5);
+    background: linear-gradient(180deg, rgba(0, 255, 255, 0.12), rgba(0,0,0,.9));
+    color: #00ffff;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.btn.primary:hover {
+    border-color: rgba(0, 255, 255, 0.8);
+    box-shadow: 0 0 24px rgba(0, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Ghost button */
+.btn.ghost {
+    border-color: rgba(255,255,255,.1);
+    color: var(--accent-light);
+}
+
+.btn.ghost:hover {
+    border-color: rgba(57,255,136,.35);
+    background: rgba(57,255,136,.05);
+}
+```
+
+**Rationale:** Cyan for primary actions creates visual hierarchy. Green for ghost/secondary keeps brand consistency.
 
 ### Process Steps
 ```html
@@ -177,6 +240,58 @@ background: radial-gradient(1200px 600px at 50% 0%, rgba(57,255,136,.08), transp
 
 ---
 
+## Interaction & Animation Patterns (v4)
+
+### Hover States
+All interactive elements use consistent hover patterns:
+
+**Cards:**
+```css
+/* Lift + glow */
+transform: translateY(-2px);
+box-shadow: 0 0 20px rgba(57, 255, 136, 0.08);
+border-color: rgba(57, 255, 136, 0.3);
+transition: all 0.3s ease;
+```
+
+**Buttons:**
+```css
+/* Cyan primary */
+transform: translateY(-1px);
+box-shadow: 0 0 24px rgba(0, 255, 255, 0.2);
+border-color: rgba(0, 255, 255, 0.8);
+
+/* Green ghost */
+background: rgba(57,255,136,.05);
+border-color: rgba(57,255,136,.35);
+```
+
+**Links:**
+```css
+/* Subtle color shift */
+color: var(--accent-light);
+transition: color 0.3s ease;
+```
+
+### Visual Effects
+
+**Service Cards:**
+- Unified green glow on hover (not individual colors per card)
+- Icons use primary accent color
+- Price/strong text highlighted in accent green
+- Bullet markers match accent color
+
+**Featured Banner:**
+- Green border (rgba(0,255,102,.3))
+- Subtle bottom gradient line
+- Lift animation on hover with enhanced glow
+
+**Location Badge:**
+- Cyan color (#00ffff) with matching border
+- Subtle box-shadow glow (rgba(0, 255, 255, 0.15))
+
+---
+
 ## Grid Layouts
 
 ### 2-Column Grid (Skills)
@@ -217,22 +332,57 @@ At `860px`, both grids collapse to single column.
 
 ## Copy Guidelines
 
-### Voice
+### Voice (v4 Update)
 - **Confident, not arrogant**
 - **Technical, not complex**
-- **Minimal, not sparse**
-- **Professional, not corporate**
+- **Direct, not sparse**
+- **Professional with edge** (polished terminal aesthetic)
+- **Clear value proposition** (speed, cost, reliability)
+
+### Tone Keywords
+- Fast, efficient, reliable
+- Clean, tested, documented
+- No bullshit, no overhead
+- Terminal-style directness
 
 ### Avoid
 - Hype language ("revolutionary", "game-changing")
-- Emoji in body copy (checkmarks ✓ OK in lists)
+- Excessive emoji (checkmarks ✓ OK in lists)
 - Passive voice
 - Vague timelines
+- Corporate speak
 
 ### Good Examples
 - "Clear communication. Fast troubleshooting. Clean solutions that don't fall apart later."
 - "Typical turnaround: same day to 3 days depending on scope."
 - "If you can explain the outcome you want, I can map the steps and build the solution."
+- "Turbocharge your OpenClaw assistant — 50-100x faster, 60-90% cheaper."
+
+---
+
+## Design System Changelog
+
+### v4 (February 21, 2026) — Polished Terminal
+**Major Changes:**
+- Pure black backgrounds (rgba(0,0,0) instead of blue-grey)
+- Bright neon green (#00ff00) for primary text
+- Cyan accents (#00ffff) for interactive elements (buttons, location badge)
+- Light grey (#b0b0b0) for body text (improved readability)
+- Added amber accent (#fbbf24) for subtle warmth
+- Tighter border radius (12px)
+- Unified hover states across all components
+- Enhanced glow effects on interactive elements
+
+**Rationale:**
+- Pure black creates stronger contrast and more professional look
+- Cyan primary buttons create clear visual hierarchy
+- Green remains brand color but used more strategically
+- Improved text readability with proper grey tones
+
+### v3 (January 9, 2026) — Console/Hacker Vibe
+- Blue-grey backgrounds
+- Subtle green accents
+- Professional polish
 
 ---
 

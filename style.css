@@ -5,23 +5,25 @@
 /* CSS Variables */
 :root {
     --bg: #f0f0f0;
-    --bg-dark: #000000;
+    --bg-dark: #0a0a0a;
     --panel: #ffffff;
-    --panel-dark: #0a0a0a;
+    --panel-dark: #111111;
     --panel2: #f8f8f8;
     --panel2-dark: #0d0d0d;
     --border: #ddd;
-    --border-dark: #1a1a1a;
+    --border-dark: #1e1e1e;
     --text: #333;
-    --text-dark: #e0e0e0;
+    --text-dark: #00ff00;
     --muted: #666;
-    --muted-dark: #888888;
+    --muted-dark: #b0b0b0;
     --accent: #00ff66;
     --accent-light: #00ff66;
-    --accent-dark: #00ff66;
+    --accent-dark: #00cc55;
+    --accent-amber: #fbbf24;
+    --accent-teal: #2dd4bf;
     --shadow: 0 10px 30px rgba(0,0,0,.1);
     --shadow-dark: 0 10px 30px rgba(0,0,0,.6);
-    --radius: 14px;
+    --radius: 12px;
     --max: 980px;
 }
 
@@ -47,7 +49,10 @@ body {
 
 /* Dark Mode Base */
 body.dark-mode {
-    background: radial-gradient(800px 400px at 50% 0%, rgba(0,255,102,.06), transparent 60%), var(--bg-dark);
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(57, 255, 136, 0.02), transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(251, 191, 36, 0.015), transparent 50%),
+        var(--bg-dark);
     color: var(--text-dark);
 }
 
@@ -131,8 +136,9 @@ body.dark-mode .subhead {
 }
 
 body.dark-mode .location {
-    border-color: rgba(57,255,136,.25);
-    color: rgba(57,255,136,.9);
+    border-color: rgba(0, 255, 255, 0.35);
+    color: #00ffff;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.15);
 }
 
 /* Icon Button (Dark Mode Toggle) */
@@ -155,7 +161,7 @@ body.dark-mode .location {
 
 body.dark-mode .iconBtn {
     border-color: rgba(255,255,255,.08);
-    background: linear-gradient(180deg, rgba(16,21,28,.9), rgba(15,19,25,.9));
+    background: linear-gradient(180deg, rgba(0,0,0,.9), rgba(10,10,10,.9));
     color: var(--text-dark);
     box-shadow: var(--shadow-dark);
 }
@@ -216,7 +222,7 @@ body.dark-mode .separator {
 
 body.dark-mode .tablinks {
     border-color: rgba(255,255,255,.08);
-    background: rgba(16,21,28,.75);
+    background: rgba(0,0,0,.75);
     color: var(--text-dark);
 }
 
@@ -260,7 +266,7 @@ body.dark-mode .tablinks.active {
 
 body.dark-mode .card,
 body.dark-mode .heroCard {
-    background: linear-gradient(180deg, rgba(16,21,28,.92), rgba(15,19,25,.92));
+    background: linear-gradient(180deg, rgba(0,0,0,.92), rgba(10,10,10,.92));
     border-color: rgba(255,255,255,.08);
     box-shadow: var(--shadow-dark);
 }
@@ -331,9 +337,9 @@ body.dark-mode .muted { color: var(--muted-dark); }
 }
 
 body.dark-mode .pill {
-    border-color: rgba(255,255,255,.08);
-    background: rgba(11,13,16,.35);
-    color: rgba(232,238,247,.92);
+    border-color: rgba(57,255,136,.15);
+    background: rgba(57,255,136,.06);
+    color: rgba(57,255,136,.9);
 }
 
 /* ===========================================
@@ -447,22 +453,31 @@ body.dark-mode .serviceList strong {
 
 body.dark-mode .btn {
     border-color: rgba(255,255,255,.08);
-    background: rgba(16,21,28,.75);
+    background: rgba(0,0,0,.75);
     color: var(--text-dark);
 }
 
 body.dark-mode .btn.primary {
-    border-color: rgba(57,255,136,.55);
-    background: linear-gradient(180deg, rgba(57,255,136,.18), rgba(16,21,28,.85));
-    color: var(--text-dark);
+    border-color: rgba(0, 255, 255, 0.5);
+    background: linear-gradient(180deg, rgba(0, 255, 255, 0.12), rgba(0,0,0,.9));
+    color: #00ffff;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
 }
 
 body.dark-mode .btn.primary:hover {
-    box-shadow: 0 0 0 3px rgba(57,255,136,.08);
+    border-color: rgba(0, 255, 255, 0.8);
+    box-shadow: 0 0 24px rgba(0, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+body.dark-mode .btn.ghost {
+    border-color: rgba(255,255,255,.1);
+    color: var(--accent-light);
 }
 
 body.dark-mode .btn.ghost:hover {
     border-color: rgba(57,255,136,.35);
+    background: rgba(57,255,136,.05);
 }
 
 /* ===========================================
@@ -484,7 +499,7 @@ body.dark-mode .btn.ghost:hover {
 }
 
 body.dark-mode .miniCard {
-    background: rgba(11,13,16,.35);
+    background: rgba(0,0,0,.35);
     border-color: rgba(255,255,255,.06);
 }
 
@@ -505,7 +520,7 @@ body.dark-mode .miniCard {
 }
 
 body.dark-mode .serviceCard {
-    background: rgba(11,13,16,.35);
+    background: rgba(0,0,0,.35);
     border-color: rgba(255,255,255,.06);
 }
 
@@ -530,6 +545,11 @@ body.dark-mode .serviceCard i {
 
 body.dark-mode .bullets {
     color: var(--muted-dark);
+}
+
+/* Bullet markers */
+body.dark-mode .serviceCard .bullets li::marker {
+    color: var(--accent);
 }
 
 /* Legacy Service Layout (backward compatibility) */
@@ -658,7 +678,7 @@ body.dark-mode .contactForm label {
 body.dark-mode .contactForm input,
 body.dark-mode .contactForm textarea {
     border-color: rgba(255,255,255,.08);
-    background: rgba(11,13,16,.35);
+    background: rgba(0,0,0,.35);
     color: var(--text-dark);
 }
 
@@ -684,7 +704,7 @@ body.dark-mode .contactForm textarea:focus {
 }
 
 body.dark-mode .contactForm input[type="submit"] {
-    background: linear-gradient(180deg, rgba(57,255,136,.25), rgba(16,21,28,.85));
+    background: linear-gradient(180deg, rgba(57,255,136,.25), rgba(0,0,0,.85));
     border: 1px solid rgba(57,255,136,.55);
 }
 
@@ -891,18 +911,18 @@ body.dark-mode .division-card {
     margin-top: 24px;
     padding: 20px 24px;
     background: #0a0a0a;
-    border: 1px solid rgba(0,255,102,.3);
+    border: 1px solid rgba(0, 255, 102, 0.3);
     border-radius: var(--radius);
     text-decoration: none;
-    color: #e0e0e0;
+    color: #00ff00;
     overflow: hidden;
     transition: all 0.3s ease;
     box-shadow: 0 4px 20px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.03);
 }
 
 .featured-banner:hover {
-    border-color: rgba(0,255,102,.6);
-    box-shadow: 0 8px 32px rgba(0,255,102,.12), inset 0 1px 0 rgba(255,255,255,.03);
+    border-color: rgba(0, 255, 102, 0.6);
+    box-shadow: 0 8px 32px rgba(0, 255, 102, 0.1), inset 0 1px 0 rgba(255,255,255,.03);
     transform: translateY(-2px);
 }
 
@@ -913,7 +933,7 @@ body.dark-mode .division-card {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(0,255,102,.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 102, 0.4), transparent);
 }
 
 .featured-badge {
@@ -967,7 +987,7 @@ body.dark-mode .division-card {
 .featured-text p {
     margin: 0;
     font-size: 0.9rem;
-    color: #888888;
+    color: #e0e0e0;
 }
 
 .featured-cta {
@@ -980,7 +1000,7 @@ body.dark-mode .division-card {
 
 /* Light mode adjustments */
 body:not(.dark-mode) .featured-banner {
-    background: linear-gradient(135deg, #1a1f26 0%, #242a33 100%);
+    background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
 }
 
 /* Mobile responsive */
@@ -1002,4 +1022,91 @@ body:not(.dark-mode) .featured-banner {
         top: 8px;
         right: 8px;
     }
+}
+
+/* ===========================================
+   Accent Color Enhancements (Polished Terminal)
+   =========================================== */
+
+/* Service card — unified hover glow */
+body.dark-mode .serviceCard {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .serviceCard:hover {
+    border-color: rgba(57, 255, 136, 0.3);
+    box-shadow: 0 0 20px rgba(57, 255, 136, 0.08);
+    transform: translateY(-2px);
+}
+
+/* Icon color */
+body.dark-mode .serviceCard i {
+    color: var(--accent);
+}
+
+/* Price/cost text */
+body.dark-mode .serviceCard strong {
+    color: var(--accent);
+}
+
+/* Mini card hover */
+body.dark-mode .miniCard:hover {
+    border-color: rgba(57, 255, 136, 0.25);
+    box-shadow: 0 4px 16px rgba(57, 255, 136, 0.06);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+/* --- Headings --- */
+body.dark-mode h2 {
+    color: #e2e8f0;
+}
+
+body.dark-mode h3 {
+    color: var(--accent);
+}
+
+/* --- Tab active state --- */
+body.dark-mode .tablinks.active {
+    background: rgba(57, 255, 136, 0.1) !important;
+    border-color: rgba(57, 255, 136, 0.45);
+}
+
+/* --- Link hover --- */
+body.dark-mode a:not(.btn):hover {
+    color: var(--accent-light);
+    transition: color 0.3s ease;
+}
+
+body.dark-mode a:not(.btn) {
+    position: relative;
+}
+
+body.dark-mode a:not(.btn)::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+body.dark-mode a:not(.btn):hover::after {
+    width: 100%;
+}
+
+/* --- Location badge --- */
+body.dark-mode .location {
+    border-color: rgba(0, 255, 255, 0.35);
+    color: #00ffff;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.15);
+}
+
+/* --- Card borders — clean single-color --- */
+body.dark-mode .card {
+    border-color: rgba(57, 255, 136, 0.08);
 }
