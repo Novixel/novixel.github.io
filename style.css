@@ -512,6 +512,14 @@ body.dark-mode .serviceList strong {
     box-shadow: 0 4px 15px rgba(0, 159, 51, 0.3);
 }
 
+/* Icon spacing inside buttons */
+.btn i,
+.btn .fas,
+.btn .fab,
+.btn .far {
+    margin-right: 8px;
+}
+
 .btn.primary:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 159, 51, 0.4);
