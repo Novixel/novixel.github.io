@@ -6,11 +6,11 @@
 
 ## 🔐 The Problem: CORS (Cross-Origin Resource Security)
 
-When you try to call Gumroad/Patreon APIs directly from browser JavaScript, you get blocked:
+When you try to call Stripe/Patreon APIs directly from browser JavaScript, you get blocked:
 
 ```javascript
 // This FAILS in browser:
-fetch('https://api.gumroad.com/v2/sales?access_token=YOUR_TOKEN')
+fetch('https://api.Stripe.com/v2/sales?access_token=YOUR_TOKEN')
 // ❌ Error: CORS policy blocked
 ```
 
@@ -22,18 +22,18 @@ fetch('https://api.gumroad.com/v2/sales?access_token=YOUR_TOKEN')
 
 Instead of:
 ```
-Browser → Gumroad API (BLOCKED ❌)
+Browser → Stripe API (BLOCKED ❌)
 ```
 
 Do this:
 ```
-Browser → Your Server → Gumroad API (WORKS ✅)
+Browser → Your Server → Stripe API (WORKS ✅)
 ```
 
 Your server acts as a **proxy** (middleman) that:
 1. Receives requests from your browser
 2. Adds your API token (securely stored on server)
-3. Forwards request to Gumroad/Patreon
+3. Forwards request to Stripe/Patreon
 4. Returns data back to browser
 
 ---
@@ -57,14 +57,14 @@ cd novixel-api-proxy
 
 Create these files:
 
-**`api/gumroad-sales.js`:**
+**`api/Stripe-sales.js`:**
 ```javascript
 export default async function handler(req, res) {
-  const token = process.env.GUMROAD_TOKEN;
+  const token = process.env.Stripe_TOKEN;
   
   try {
     const response = await fetch(
-      `https://api.gumroad.com/v2/sales?access_token=${token}`
+      `https://api.Stripe.com/v2/sales?access_token=${token}`
     );
     const data = await response.json();
     res.json(data);
@@ -74,14 +74,14 @@ export default async function handler(req, res) {
 }
 ```
 
-**`api/gumroad-products.js`:**
+**`api/Stripe-products.js`:**
 ```javascript
 export default async function handler(req, res) {
-  const token = process.env.GUMROAD_TOKEN;
+  const token = process.env.Stripe_TOKEN;
   
   try {
     const response = await fetch(
-      `https://api.gumroad.com/v2/products?access_token=${token}`
+      `https://api.Stripe.com/v2/products?access_token=${token}`
     );
     const data = await response.json();
     res.json(data);
@@ -153,7 +153,7 @@ export default async function handler(req, res) {
 {
   "name": "novixel-api-proxy",
   "version": "1.0.0",
-  "description": "API proxy for Gumroad and Patreon"
+  "description": "API proxy for Stripe and Patreon"
 }
 ```
 
@@ -164,14 +164,14 @@ vercel
 # - Login with GitHub/email
 # - Create new project
 # - Add environment variables:
-#   GUMROAD_TOKEN=your_gumroad_token
+#   Stripe_TOKEN=your_Stripe_token
 #   PATREON_TOKEN=your_patreon_token
 ```
 
 #### 4. Get Your URLs
 ```
-https://your-app.vercel.app/api/gumroad-sales
-https://your-app.vercel.app/api/gumroad-products
+https://your-app.vercel.app/api/Stripe-sales
+https://your-app.vercel.app/api/Stripe-products
 https://your-app.vercel.app/api/patreon-campaign
 https://your-app.vercel.app/api/patreon-members
 ```
@@ -183,20 +183,20 @@ In `command-center.html`, add after `<script>`:
 ```javascript
 const API_BASE = 'https://your-app.vercel.app/api';
 
-async function fetchGumroadData() {
+async function fetchStripeData() {
   try {
     // Fetch sales
-    const salesRes = await fetch(`${API_BASE}/gumroad-sales`);
+    const salesRes = await fetch(`${API_BASE}/Stripe-sales`);
     const salesData = await salesRes.json();
     
     // Fetch products
-    const productsRes = await fetch(`${API_BASE}/gumroad-products`);
+    const productsRes = await fetch(`${API_BASE}/Stripe-products`);
     const productsData = await productsRes.json();
     
     // Update dashboard
-    updateGumroadStats(salesData, productsData);
+    updateStripeStats(salesData, productsData);
   } catch (error) {
-    console.error('Gumroad fetch failed:', error);
+    console.error('Stripe fetch failed:', error);
   }
 }
 
@@ -221,7 +221,7 @@ async function fetchPatreonData() {
   }
 }
 
-function updateGumroadStats(sales, products) {
+function updateStripeStats(sales, products) {
   // Calculate totals
   let totalRevenue = 0;
   let today = new Date().toDateString();
@@ -286,12 +286,12 @@ function updatePatreonStats(campaign, members) {
 
 // Auto-refresh every 5 minutes
 setInterval(() => {
-  fetchGumroadData();
+  fetchStripeData();
   fetchPatreonData();
 }, 300000);
 
 // Initial fetch
-fetchGumroadData();
+fetchStripeData();
 fetchPatreonData();
 ```
 
@@ -313,14 +313,14 @@ require('dotenv').config();
 const app = express();
 app.use(cors());
 
-const GUMROAD_TOKEN = process.env.GUMROAD_TOKEN;
+const Stripe_TOKEN = process.env.Stripe_TOKEN;
 const PATREON_TOKEN = process.env.PATREON_TOKEN;
 
-// Gumroad endpoints
-app.get('/api/gumroad/sales', async (req, res) => {
+// Stripe endpoints
+app.get('/api/Stripe/sales', async (req, res) => {
   try {
     const response = await axios.get(
-      `https://api.gumroad.com/v2/sales?access_token=${GUMROAD_TOKEN}`
+      `https://api.Stripe.com/v2/sales?access_token=${Stripe_TOKEN}`
     );
     res.json(response.data);
   } catch (error) {
@@ -328,10 +328,10 @@ app.get('/api/gumroad/sales', async (req, res) => {
   }
 });
 
-app.get('/api/gumroad/products', async (req, res) => {
+app.get('/api/Stripe/products', async (req, res) => {
   try {
     const response = await axios.get(
-      `https://api.gumroad.com/v2/products?access_token=${GUMROAD_TOKEN}`
+      `https://api.Stripe.com/v2/products?access_token=${Stripe_TOKEN}`
     );
     res.json(response.data);
   } catch (error) {
@@ -379,7 +379,7 @@ app.listen(PORT, () => {
 
 **`.env`:**
 ```
-GUMROAD_TOKEN=your_gumroad_token
+Stripe_TOKEN=your_Stripe_token
 PATREON_TOKEN=your_patreon_token
 PORT=3000
 ```
@@ -422,28 +422,28 @@ npm start
 
 ### Setup
 
-**`api/gumroad-sales.php`:**
+**`api/Stripe-sales.php`:**
 ```php
 <?php
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
-$token = getenv('GUMROAD_TOKEN');
-$url = "https://api.gumroad.com/v2/sales?access_token=$token";
+$token = getenv('Stripe_TOKEN');
+$url = "https://api.Stripe.com/v2/sales?access_token=$token";
 
 $data = file_get_contents($url);
 echo $data;
 ?>
 ```
 
-**`api/gumroad-products.php`:**
+**`api/Stripe-products.php`:**
 ```php
 <?php
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
-$token = getenv('GUMROAD_TOKEN');
-$url = "https://api.gumroad.com/v2/products?access_token=$token";
+$token = getenv('Stripe_TOKEN');
+$url = "https://api.Stripe.com/v2/products?access_token=$token";
 
 $data = file_get_contents($url);
 echo $data;
@@ -473,7 +473,7 @@ echo $data;
 ### Upload & Configure
 1. Upload to your hosting
 2. Set environment variables in cPanel
-3. Call: `https://novixel.ca/api/gumroad-sales.php`
+3. Call: `https://novixel.ca/api/Stripe-sales.php`
 
 ---
 
@@ -486,7 +486,7 @@ JavaScript calls your proxy endpoint
          ↓
 Proxy reads API tokens from environment
          ↓
-Proxy calls Gumroad/Patreon API
+Proxy calls Stripe/Patreon API
          ↓
 API returns sales/patron data
          ↓
@@ -526,7 +526,7 @@ Dashboard updates with live stats! ✅
 ## 💡 Quick Start Checklist
 
 ### Step 1: Get API Tokens
-- [ ] Gumroad: https://app.gumroad.com/settings/advanced
+- [ ] Stripe: https://app.Stripe.com/settings/advanced
 - [ ] Patreon: https://www.patreon.com/portal/registration/register-clients
 
 ### Step 2: Choose Proxy Method
@@ -557,7 +557,7 @@ Dashboard updates with live stats! ✅
 
 ### "Invalid access token"
 → Check environment variables are set correctly
-→ Regenerate tokens in Gumroad/Patreon
+→ Regenerate tokens in Stripe/Patreon
 
 ### "CORS error"
 → Add CORS headers to proxy responses
@@ -577,10 +577,11 @@ Dashboard updates with live stats! ✅
 
 ## 📚 Related Docs
 
-- GUMROAD_API_INTEGRATION.md - Gumroad API details
+- Stripe_API_INTEGRATION.md - Stripe API details
 - PATREON_API_INTEGRATION.md - Patreon API details
 - COMMAND_CENTER_SUMMARY.md - Dashboard overview
 
 ---
 
-**TL;DR:** Use Vercel serverless functions (5-min setup, free, zero maintenance). Your tokens stay secure on the server, browser calls your proxy, proxy calls Gumroad/Patreon. Done! ✅
+**TL;DR:** Use Vercel serverless functions (5-min setup, free, zero maintenance). Your tokens stay secure on the server, browser calls your proxy, proxy calls Stripe/Patreon. Done! ✅
+
