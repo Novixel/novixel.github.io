@@ -98,6 +98,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <script>
+const DOWNLOAD_WORKER = 'https://novixel-downloads.officialnovixel.workers.dev';
+
+// Templates that use secure downloads
+const SECURE_PRODUCTS = ['pulse-template', 'forge-template', 'starter-template', 'landing-page-bundle'];
+
 function toggleDarkMode(event) {
     document.body.classList.toggle('dark-mode');
     const btn = event.currentTarget;
@@ -120,23 +125,54 @@ const productNameEl = document.getElementById('product-name');
 const mainDownloadEl = document.getElementById('main-download');
 const additionalDownloadsEl = document.getElementById('additional-downloads');
 
-if (productId && NOVIXEL_PRODUCTS[productId]) {
-    const product = NOVIXEL_PRODUCTS[productId];
-    const downloads = product.downloads || {};
-    
-    productNameEl.textContent = product.name;
-    
-    if (downloads.main) {
-        mainDownloadEl.href = downloads.main.url;
-        mainDownloadEl.querySelector('span').textContent = downloads.main.label;
+async function loadDownloads() {
+    if (!productId || !NOVIXEL_PRODUCTS[productId]) {
+        productNameEl.textContent = 'Your Product';
+        mainDownloadEl.style.display = 'none';
+        document.querySelector('.card h2').textContent = 'Check your email for download links';
+        return;
     }
 
-    if (downloads.additional && downloads.additional.length > 0) {
-        additionalDownloadsEl.innerHTML = downloads.additional.map(dl => `
-            <a href="${dl.url}" class="btn ghost" style="margin: 4px;">
-                <i class="fas ${dl.icon || 'fa-file'}"></i>&nbsp; ${dl.label}
-            </a>
-        `).join('');
+    const product = NOVIXEL_PRODUCTS[productId];
+    productNameEl.textContent = product.name;
+
+    // For secure products, fetch URL from worker
+    if (SECURE_PRODUCTS.includes(productId) && sessionId) {
+        mainDownloadEl.querySelector('span').textContent = 'Preparing download...';
+        mainDownloadEl.style.pointerEvents = 'none';
+        
+        try {
+            const response = await fetch(`${DOWNLOAD_WORKER}/generate-token?product=${productId}&session_id=${sessionId}`);
+            const data = await response.json();
+            
+            if (data.downloadUrl) {
+                mainDownloadEl.href = data.downloadUrl;
+                mainDownloadEl.querySelector('span').textContent = 'Download Now';
+                mainDownloadEl.style.pointerEvents = 'auto';
+            } else {
+                throw new Error(data.error || 'Failed to generate download');
+            }
+        } catch (err) {
+            console.error('Download error:', err);
+            mainDownloadEl.querySelector('span').textContent = 'Download (contact support if issues)';
+            mainDownloadEl.href = `mailto:novixel@hotmail.com?subject=Download%20Issue&body=Product:%20${productId}%0ASession:%20${sessionId}`;
+            mainDownloadEl.style.pointerEvents = 'auto';
+        }
+    } else {
+        // Use static download URL from products-data.js
+        const downloads = product.downloads || {};
+        if (downloads.main) {
+            mainDownloadEl.href = downloads.main.url;
+            mainDownloadEl.querySelector('span').textContent = downloads.main.label;
+        }
+
+        if (downloads.additional && downloads.additional.length > 0) {
+            additionalDownloadsEl.innerHTML = downloads.additional.map(dl => `
+                <a href="${dl.url}" class="btn ghost" style="margin: 4px;">
+                    <i class="fas ${dl.icon || 'fa-file'}"></i>&nbsp; ${dl.label}
+                </a>
+            `).join('');
+        }
     }
 
     // GTM tracking
@@ -151,21 +187,9 @@ if (productId && NOVIXEL_PRODUCTS[productId]) {
             }
         });
     }
-} else {
-    productNameEl.textContent = 'Your Product';
-    mainDownloadEl.style.display = 'none';
-    document.querySelector('.card h2').textContent = 'Check your email for download links';
 }
+
+loadDownloads();
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
