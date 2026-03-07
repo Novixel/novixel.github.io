@@ -103,10 +103,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </p>
             </div>
 
-            <div class="header-actions">
-                <a href="/products/" class="btn small ghost"><i class="fas fa-store"></i> Shop</a>
-                <button class="iconBtn fas fa-moon" type="button" onclick="toggleDarkMode(event)" aria-label="Toggle dark mode"></button>
-            </div>
+            <button class="iconBtn fas fa-moon" type="button" onclick="toggleDarkMode(event)" aria-label="Toggle dark mode"></button>
         </header>
 
         <hr class="separator">
@@ -115,6 +112,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <button class="tablinks" role="tab" aria-selected="true" aria-controls="Home" id="tab-Home" onclick="openTab(event, 'Home')">Home</button>
             <button class="tablinks" role="tab" aria-selected="false" aria-controls="About" id="tab-About" onclick="openTab(event, 'About')">About</button>
             <button class="tablinks" role="tab" aria-selected="false" aria-controls="Divisions" id="tab-Divisions" onclick="openTab(event, 'Divisions')">Divisions</button>
+            <button class="tablinks" role="tab" aria-selected="false" aria-controls="Products" id="tab-Products" onclick="openTab(event, 'Products')">Products</button>
             <button class="tablinks" role="tab" aria-selected="false" aria-controls="Contact" id="tab-Contact" onclick="openTab(event, 'Contact')">Contact</button>
         </nav>
 
@@ -265,6 +263,147 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </section>
 
+        <!-- PRODUCTS -->
+        <section id="Products" class="tabcontent" role="tabpanel" aria-labelledby="tab-Products" hidden>
+            <div class="card">
+                <h2>Products & Resources</h2>
+                <p class="muted">Digital products, templates, and tools available now.</p>
+
+                <!-- Filter Tabs -->
+                <div class="pillRow" style="margin-bottom: 24px;">
+                    <button class="pill active" onclick="filterProducts('all')">All</button>
+                    <button class="pill" onclick="filterProducts('ai')">AI Tools</button>
+                    <button class="pill" onclick="filterProducts('courses')">Courses</button>
+                    <button class="pill" onclick="filterProducts('templates')">Templates</button>
+                </div>
+
+                <div class="serviceGrid" id="products-grid">
+                    <!-- AI Tools -->
+                    <article class="serviceCard" data-category="ai">
+                        <h3><i class="fas fa-bolt"></i> Turbo</h3>
+                        <p>AI performance layer for OpenClaw. 50-100x faster, 60-90% cheaper tokens.</p>
+                        <ul class="bullets">
+                            <li>Zero-LLM execution</li>
+                            <li>Auto-learns patterns</li>
+                            <li>$5,226/year saved</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>$49 CAD</strong></p>
+                        <a class="btn primary" href="/turbo/">Learn More →</a>
+                    </article>
+
+                    <article class="serviceCard" data-category="ai">
+                        <h3><i class="fas fa-rocket"></i> AI Starter Kit</h3>
+                        <p>Everything you need to start automating with AI. 50+ prompts and templates.</p>
+                        <ul class="bullets">
+                            <li>50+ ChatGPT prompts</li>
+                            <li>Workflow templates</li>
+                            <li>Getting started guide</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>Pay What You Want</strong></p>
+                        <a class="btn primary" href="/products/ai-starter-kit.html">Get Free Kit →</a>
+                    </article>
+
+                    <article class="serviceCard" data-category="ai">
+                        <h3><i class="fas fa-atom"></i> Atomic Diff</h3>
+                        <p>Mod load order comparison for Fallout 4 and Skyrim SE/AE.</p>
+                        <ul class="bullets">
+                            <li>Snapshot load orders</li>
+                            <li>Instant diff comparison</li>
+                            <li>Markdown reports</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>Free</strong></p>
+                        <a class="btn primary" href="/atomic/">Learn More →</a>
+                    </article>
+
+                    <!-- Courses -->
+                    <article class="serviceCard" data-category="courses">
+                        <h3><i class="fas fa-graduation-cap"></i> AI Fundamentals</h3>
+                        <p>Learn how AI actually works - transformers, attention, embeddings, memory.</p>
+                        <ul class="bullets">
+                            <li>4 in-depth modules</li>
+                            <li>3+ hours of video</li>
+                            <li>Hands-on exercises</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>$29 CAD</strong></p>
+                        <a class="btn primary" href="/products/ai-fundamentals.html">Get Course →</a>
+                    </article>
+
+                    <article class="serviceCard" data-category="courses">
+                        <h3><i class="fas fa-robot"></i> Build Your First AI Assistant</h3>
+                        <p>Step-by-step course to build a JARVIS-style voice assistant.</p>
+                        <ul class="bullets">
+                            <li>Speech recognition</li>
+                            <li>GPT-4 integration</li>
+                            <li>Memory systems</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>$97 CAD</strong></p>
+                        <a class="btn primary" href="https://buy.stripe.com/00eVcfWy1qS3ytdIGgUM0f">Get Course →</a>
+                    </article>
+
+                    <article class="serviceCard" data-category="courses">
+                        <h3><i class="fas fa-book"></i> Course Bundle</h3>
+                        <p>Both AI courses at a discount. AI Fundamentals + Build Your First AI Assistant.</p>
+                        <ul class="bullets">
+                            <li>8+ hours of content</li>
+                            <li>All code & materials</li>
+                            <li>Save $27</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong><s>$126</s> $99 CAD</strong></p>
+                        <a class="btn primary" href="https://buy.stripe.com/eVq28qeSu5H85GB6gegUM0d">Get Bundle →</a>
+                    </article>
+
+                    <!-- Templates -->
+                    <article class="serviceCard" data-category="templates">
+                        <h3><i class="fas fa-layer-group"></i> Landing Page Bundle</h3>
+                        <p>4 premium landing page templates in one bundle. SaaS, Agency, App, Portfolio.</p>
+                        <ul class="bullets">
+                            <li>4 complete templates</li>
+                            <li>Clean HTML/CSS</li>
+                            <li>Dark mode ready</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>$49 CAD</strong></p>
+                        <a class="btn primary" href="/products/landing-page-bundle.html">Get Bundle →</a>
+                    </article>
+
+                    <article class="serviceCard" data-category="templates">
+                        <h3><i class="fas fa-mobile-alt"></i> Pulse Template</h3>
+                        <p>Mobile app landing page. App store badges, feature showcase, testimonials.</p>
+                        <ul class="bullets">
+                            <li>Mobile-first design</li>
+                            <li>App store ready</li>
+                            <li>Conversion optimized</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>$29 CAD</strong></p>
+                        <a class="btn primary" href="https://buy.stripe.com/eVqaEWfWyb1sd939sqgUM0i">Get Template →</a>
+                    </article>
+
+                    <article class="serviceCard" data-category="templates">
+                        <h3><i class="fas fa-paint-brush"></i> Forge Template</h3>
+                        <p>Creative agency landing page. Portfolio grid, services, contact form.</p>
+                        <ul class="bullets">
+                            <li>Portfolio showcase</li>
+                            <li>Service cards</li>
+                            <li>Contact integration</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>$29 CAD</strong></p>
+                        <a class="btn primary" href="https://buy.stripe.com/fZudR88u67Pgglf6gegUM0g">Get Template →</a>
+                    </article>
+
+                    <article class="serviceCard" data-category="templates">
+                        <h3><i class="fas fa-rocket"></i> Starter Template</h3>
+                        <p>SaaS product landing page. Pricing tables, features, CTA sections.</p>
+                        <ul class="bullets">
+                            <li>Pricing comparison</li>
+                            <li>Feature highlights</li>
+                            <li>Newsletter signup</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>$29 CAD</strong></p>
+                        <a class="btn primary" href="https://buy.stripe.com/9B67sKeSu0mO2up5cagUM0j">Get Template →</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <!-- CONTACT -->
         <section id="Contact" class="tabcontent" role="tabpanel" aria-labelledby="tab-Contact" hidden>
             <div class="card">
@@ -343,7 +482,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <hr class="separator">
             <div class="footerLinks">
                 <a href="/Novixel.html">Portfolio</a>
-                <a href="/products/">Products</a>
+                <a href="/#Products" onclick="openTab(event, 'Products'); return false;">Products</a>
                 <a href="/tradingbots.html">Trading Solutions</a>
                 <a href="https://try.novalite.app" target="_blank" rel="noopener">NovaLite</a>
                 <a href="/aicom.html">AI Solutions</a>
@@ -355,6 +494,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <script src="script.js?v=2"></script>
 </body>
 </html>
+
+
 
 
 

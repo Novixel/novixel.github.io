@@ -170,3 +170,43 @@ window.addEventListener('hashchange', function() {
         if (tabButton) tabButton.click();
     }
 });
+
+// ===========================================
+// Product Filtering
+// ===========================================
+function filterProducts(category) {
+    var cards = document.querySelectorAll('#products-grid .serviceCard');
+    var pills = document.querySelectorAll('#Products .pillRow .pill');
+    
+    // Update active pill
+    pills.forEach(function(p) { p.classList.remove('active'); });
+    if (event && event.target) event.target.classList.add('active');
+    
+    // Filter cards
+    cards.forEach(function(card) {
+        if (category === 'all' || card.dataset.category === category) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+// ===========================================
+// Products Filter
+// ===========================================
+function filterProducts(category) {
+    var cards = document.querySelectorAll('#products-grid .serviceCard');
+    var pills = document.querySelectorAll('#Products .pillRow .pill');
+    
+    pills.forEach(function(p) { p.classList.remove('active'); });
+    if (event && event.target) event.target.classList.add('active');
+    
+    cards.forEach(function(card) {
+        if (category === 'all' || card.dataset.category === category) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
