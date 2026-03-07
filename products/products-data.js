@@ -420,8 +420,8 @@ const NOVIXEL_PRODUCTS = {
     'galactic-empire-01': {
         id: 'galactic-empire-01',
         name: 'Galactic Empire: The Rubble',
-        tagline: 'Short Story 01 in the Galactic Empire series',
-        description: 'A tale of survival in the aftermath of interstellar war.',
+        tagline: 'Short Story 01 — Three years stranded',
+        description: 'Three years stranded on a planet that wants her dead. The beginning of an epic survival saga.',
         category: 'creative',
         accent: 'purple',
         icon: '🌌',
@@ -432,13 +432,10 @@ const NOVIXEL_PRODUCTS = {
             type: 'pwyw'
         },
         
-        stripeLink: 'https://buy.stripe.com/14AdR8fWy2uW6KF1ZYgUM0n',
+        stripeLink: '', // TODO: Create Stripe link
         
         downloads: {
-            main: { url: '#', label: 'Download (EPUB)' },
-            additional: [
-                { url: '#', label: 'PDF Version', icon: 'fa-file-pdf' }
-            ]
+            main: { url: '#', label: 'Download (HTML + TXT)' }
         },
         
         page: 'galactic-empire-01.html'
@@ -447,8 +444,8 @@ const NOVIXEL_PRODUCTS = {
     'galactic-empire-02': {
         id: 'galactic-empire-02',
         name: 'Galactic Empire: Ore and Blood',
-        tagline: 'Short Story 02 in the Galactic Empire series',
-        description: 'The price of resources in a galaxy torn by conflict.',
+        tagline: 'Short Story 02 — The mineral fights back',
+        description: 'Mining alien ore. Fighting beasts. The wreck begins to breathe.',
         category: 'creative',
         accent: 'purple',
         icon: '⚔️',
@@ -459,16 +456,160 @@ const NOVIXEL_PRODUCTS = {
             type: 'pwyw'
         },
         
-        stripeLink: 'https://buy.stripe.com/3cI14m7q2glMglfdIGgUM0o',
+        stripeLink: '', // TODO: Create Stripe link
         
         downloads: {
-            main: { url: '#', label: 'Download (EPUB)' },
-            additional: [
-                { url: '#', label: 'PDF Version', icon: 'fa-file-pdf' }
-            ]
+            main: { url: '#', label: 'Download (HTML + TXT)' }
         },
         
         page: 'galactic-empire-02.html'
+    },
+
+    'galactic-empire-03': {
+        id: 'galactic-empire-03',
+        name: 'Galactic Empire: The Broken Sky',
+        tagline: 'Short Story 03 — The ship takes its first breath',
+        description: 'After three years of silence, hope returns. The ship comes alive.',
+        category: 'creative',
+        accent: 'purple',
+        icon: '🚀',
+        
+        pricing: {
+            price: 2,
+            currency: 'CAD',
+            type: 'pwyw'
+        },
+        
+        stripeLink: '', // TODO: Create Stripe link
+        
+        downloads: {
+            main: { url: '#', label: 'Download (HTML + TXT)' }
+        },
+        
+        page: 'galactic-empire-03.html'
+    },
+
+    'galactic-empire-04': {
+        id: 'galactic-empire-04',
+        name: 'Galactic Empire: Echoes of War',
+        tagline: 'Short Story 04 — Into the graveyard of ships',
+        description: 'She breaks free of the planet—into a graveyard of ships bigger than cities.',
+        category: 'creative',
+        accent: 'purple',
+        icon: '💀',
+        
+        pricing: {
+            price: 2,
+            currency: 'CAD',
+            type: 'pwyw'
+        },
+        
+        stripeLink: '', // TODO: Create Stripe link
+        
+        downloads: {
+            main: { url: '#', label: 'Download (HTML + TXT)' }
+        },
+        
+        page: 'galactic-empire-04.html'
+    },
+
+    'galactic-empire-05': {
+        id: 'galactic-empire-05',
+        name: 'Galactic Empire: The Pirate\'s Shadow',
+        tagline: 'Short Story 05 — The galaxy isn\'t empty',
+        description: 'The galaxy isn\'t empty. It\'s full of predators. Time to become one.',
+        category: 'creative',
+        accent: 'purple',
+        icon: '☠️',
+        
+        pricing: {
+            price: 3,
+            currency: 'CAD',
+            type: 'pwyw'
+        },
+        
+        stripeLink: '', // TODO: Create Stripe link
+        
+        downloads: {
+            main: { url: '#', label: 'Download (HTML + TXT)' }
+        },
+        
+        page: 'galactic-empire-05.html'
+    },
+
+    'galactic-empire-bundle': {
+        id: 'galactic-empire-bundle',
+        name: 'Galactic Empire: 5-Story Bundle',
+        tagline: 'Stories 01-05 — Save 50%',
+        description: 'All 5 introductory stories. From crash landing to first pirate encounter.',
+        category: 'creative',
+        accent: 'purple',
+        icon: '📚',
+        
+        pricing: {
+            price: 5,
+            originalPrice: 10,
+            currency: 'CAD',
+            type: 'one-time',
+            badge: 'SAVE 50%'
+        },
+        
+        stripeLink: '', // TODO: Create Stripe link
+        
+        downloads: {
+            main: { url: '#', label: 'Download Bundle (ZIP)' }
+        },
+        
+        features: [
+            'The Rubble (~1,000 words)',
+            'Ore and Blood (~1,200 words)',
+            'The Broken Sky (~1,000 words)',
+            'Echoes of War (~1,200 words)',
+            'The Pirate\'s Shadow (~1,300 words)'
+        ],
+        
+        page: 'galactic-empire-bundle.html'
+    },
+
+    'galactic-empire-book': {
+        id: 'galactic-empire-book',
+        name: 'Galactic Empire: Origins',
+        tagline: 'Complete Book — All 12 Chapters',
+        description: 'The complete saga. 15,000+ words. From crash landing to pirate queen to the final battle.',
+        category: 'creative',
+        accent: 'purple',
+        icon: '📖',
+        featured: true,
+        
+        pricing: {
+            price: 20,
+            originalPrice: 24,
+            currency: 'CAD',
+            type: 'one-time',
+            badge: 'COMPLETE BOOK'
+        },
+        
+        stripeLink: '', // TODO: Create Stripe link
+        
+        downloads: {
+            main: { url: '#', label: 'Download Book (ZIP)' }
+        },
+        
+        features: [
+            '12 full chapters',
+            '15,000+ words',
+            '60+ pages',
+            'HTML + TXT formats',
+            'DRM-free'
+        ],
+        
+        stats: [
+            { value: '12', label: 'Chapters' },
+            { value: '15K+', label: 'Words' },
+            { value: '60+', label: 'Pages' }
+        ],
+        
+        page: 'galactic-empire-book.html'
     },
 
     // =========================================
