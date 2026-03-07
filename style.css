@@ -78,6 +78,18 @@ body.dark-mode {
     gap: 16px;
 }
 
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+}
+
+.btn.small {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+
 .logoBtn {
     background: transparent;
     border: 0;

@@ -26,9 +26,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="container">
     <header class="header">
-        <a href="/" class="logoBtn">
+        <a href="/" class="logoBtn" aria-label="Home">
             <img class="mainlogo" src="../Novixel-icon-Trans1.png" alt="Novixel logo">
         </a>
+
         <div class="headline">
             <h1>Novixel</h1>
             <p class="subhead">
@@ -36,16 +37,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="location">Dawson Creek, BC</span>
             </p>
         </div>
-        <button class="iconBtn fas fa-sun" type="button" onclick="toggleDarkMode(event)" aria-label="Toggle dark mode"></button>
+
+        <div class="header-actions">
+            <a href="/products/" class="btn small ghost"><i class="fas fa-store"></i> Shop</a>
+            <button class="iconBtn fas fa-sun" type="button" onclick="toggleDarkMode(event)" aria-label="Toggle dark mode"></button>
+        </div>
     </header>
 
     <hr class="separator">
 
-    <nav class="tab">
+    <nav class="tab" role="tablist">
         <a class="tablinks" href="/">Home</a>
         <a class="tablinks" href="/#About">About</a>
         <a class="tablinks" href="/#Divisions">Divisions</a>
-        <a class="tablinks" href="/products/">Products</a>
         <a class="tablinks" href="/#Contact">Contact</a>
     </nav>
 
@@ -159,6 +163,7 @@ if (productId && NOVIXEL_PRODUCTS[productId]) {
 </script>
 </body>
 </html>
+
 
 
 
