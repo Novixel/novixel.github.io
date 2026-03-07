@@ -1,63 +1,105 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>About - Novixel</title>
-        <meta name="description" content="About Novixel - Your trusted technology partner based in Dawson Creek, BC.">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-        <link rel="stylesheet" href="style.css?v=5">
-        <link rel="icon" href="FavIcon.ico">
-    </head>
-    <body>
-        <div class="container">
-            <img src="Novixel-icon-Trans1.png" alt="Novixel Logo" class="mainlogo" onclick="CoolThing()">
-            <h1>About Novixel</h1>
-            <button class="fas fa-moon" onclick="toggleDarkMode(event)"></button>
-            <hr class="separator">
-            
-            <p>Welcome to Novixel - Your trusted technology partner based in Dawson Creek, BC.</p>
-            
-            <p>We specialize in providing comprehensive tech solutions across multiple divisions:</p>
-            <ul style="text-align: left; max-width: 600px; margin: 20px auto;">
-                <li><strong>Computer Solutions</strong> - IT support, repairs, and tech consulting</li>
-                <li><strong>Trading Solutions</strong> - Custom cryptocurrency trading bots and automation</li>
-                <li><strong>NovaTrade</strong> - Full-featured crypto trading platform</li>
-                <li><strong>NovaLite</strong> - Lightweight trading bot interface</li>
-                <li><strong>AI Solutions</strong> - Intelligent assistants and automation tools</li>
-            </ul>
-            
-            <hr class="separator">
-            <h2>Contact Us</h2>
-            <form id="contactForm" action="mailto:novixel@hotmail.com" method="POST" enctype="text/plain">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required><br>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required><br>
-                <label for="message">Message:</label><br>
-                <textarea id="message" name="message" rows="4" required></textarea><br>
-                <input type="submit" value="Send">
-            </form>
+<html lang="en">
+<head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MX4LBRM');</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Novixel | Technology Solutions</title>
+    <meta name="description" content="About Novixel - Your trusted technology partner based in Dawson Creek, BC.">
+    <link rel="canonical" href="https://novixel.ca/about.html">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=9">
+    <link rel="icon" href="FavIcon.ico">
+</head>
+
+<body class="dark-mode">
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MX4LBRM" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="container">
+    <header class="header">
+        <a href="/" class="logoBtn" aria-label="Home">
+            <img class="mainlogo" src="Novixel-icon-Trans1.png" alt="Novixel logo">
+        </a>
+        <div class="headline">
+            <h1>Novixel</h1>
+            <p class="subhead">Technology solutions that work as hard as you do. <span class="location">Dawson Creek, BC</span></p>
         </div>
-        
-        <!-- Footer -->
-        <div class="footer">
-            <hr class="separator">
-            
-            <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin: 20px 0;">
-                <a href="/Novixel.html" style="color: #6b7c8c; text-decoration: none; font-size: 14px;">Portfolio</a>
-                <a href="/tradingbots.html" style="color: #6b7c8c; text-decoration: none; font-size: 14px;">Trading Solutions</a>
-                <a href="https://try.novalite.app" target="_blank" style="color: #6b7c8c; text-decoration: none; font-size: 14px;">NovaLite</a>
-                <a href="/#Products">Products</a>
-                <a href="/aicom.html" style="color: #6b7c8c; text-decoration: none; font-size: 14px;">AI Solutions</a>
-            </div>
-            
-            <p style="font-size: 13px; color: #6b7c8c;">&copy; 2026 Novixel. All rights reserved.</p>
+    </header>
+
+    <hr class="separator">
+
+    <nav class="tab" role="tablist">
+        <a class="tablinks" href="/">Home</a>
+        <a class="tablinks active" href="/about.html">About</a>
+        <a class="tablinks" href="/#Divisions">Divisions</a>
+        <a class="tablinks" href="/#Products">Products</a>
+        <a class="tablinks" href="/#Contact">Contact</a>
+    </nav>
+
+    <div class="heroCard">
+        <h2>About Novixel</h2>
+        <p style="font-size: 18px; max-width: 600px; margin: 16px auto;">
+            Your trusted technology partner based in Dawson Creek, BC. We build solutions that work as hard as you do.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Our Divisions</h2>
+        <div class="serviceGrid" style="margin-top: 24px;">
+            <article class="serviceCard">
+                <h3><i class="fas fa-laptop" style="color: var(--accent);"></i> Computer Solutions</h3>
+                <p>IT support, repairs, smart home setup, and tech consulting for homes and businesses.</p>
+            </article>
+            <article class="serviceCard">
+                <h3><i class="fas fa-chart-line" style="color: var(--accent);"></i> Trading Solutions</h3>
+                <p>Custom cryptocurrency trading bots, automation systems, and algorithmic strategies.</p>
+            </article>
+            <article class="serviceCard">
+                <h3><i class="fas fa-robot" style="color: var(--accent);"></i> AI Solutions</h3>
+                <p>Intelligent assistants, automation tools, and AI-powered applications.</p>
+            </article>
+            <article class="serviceCard">
+                <h3><i class="fas fa-code" style="color: var(--accent);"></i> Software Development</h3>
+                <p>Custom web apps, desktop software, and API integrations built to your specs.</p>
+            </article>
         </div>
-        
-        <script src="script.js?v=2"></script>
-    </body>
+    </div>
+
+    <div class="card">
+        <h2>Our Mission</h2>
+        <p>We believe technology should empower, not complicate. Every solution we build is designed to:</p>
+        <ul class="bullets" style="max-width: 500px; margin: 16px auto;">
+            <li>Work reliably without constant babysitting</li>
+            <li>Save you time and reduce manual effort</li>
+            <li>Scale with your needs as you grow</li>
+            <li>Be transparent and understandable</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Get In Touch</h2>
+        <div class="ctaRow" style="margin-top: 16px;">
+            <a class="btn primary" href="https://calendly.com/novixel" target="_blank" rel="noopener"><i class="fas fa-calendar"></i> Book a Call</a>
+            <a class="btn ghost" href="mailto:novixel@hotmail.com"><i class="fas fa-envelope"></i> Email Us</a>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 24px;">
+        <a href="/" class="muted"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+
+    <footer class="footer" style="margin-top: 32px;">
+        <hr class="separator">
+        <p class="tiny muted">&copy; 2026 Novixel. All rights reserved.</p>
+    </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
 </html>
-
-
-
