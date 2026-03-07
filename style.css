@@ -25,6 +25,9 @@
     --shadow-dark: 0 10px 30px rgba(0,0,0,.6);
     --radius: 12px;
     --max: 980px;
+    --card-bg: var(--panel);
+    --text-color: var(--text);
+    --border-color: var(--border);
 }
 
 /* Global Reset & Base */
@@ -54,6 +57,9 @@ body.dark-mode {
         radial-gradient(circle at 80% 20%, rgba(251, 191, 36, 0.015), transparent 50%),
         var(--bg-dark);
     color: var(--text-dark);
+    --card-bg: var(--panel-dark);
+    --text-color: var(--text-dark);
+    --border-color: var(--border-dark);
 }
 
 /* Container */

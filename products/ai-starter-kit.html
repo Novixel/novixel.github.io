@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MX4LBRM');</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Automation Starter Kit | Novixel</title>
+    <meta name="description" content="Everything you need to start automating with AI. Templates, guides, workflows, and example projects. Pay what you want.">
+    <meta name="keywords" content="AI automation, starter kit, AI templates, automation workflows, Novixel">
+    <link rel="canonical" href="https://novixel.ca/products/ai-starter-kit.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="product">
+    <meta property="og:url" content="https://novixel.ca/products/ai-starter-kit.html">
+    <meta property="og:title" content="AI Automation Starter Kit | Novixel">
+    <meta property="og:description" content="Everything you need to start automating with AI. Pay what you want.">
+    <meta property="og:image" content="https://novixel.ca/og-image.png">
+    <meta property="product:price:amount" content="0">
+    <meta property="product:price:currency" content="CAD">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../FavIcon.ico">
+
+    <!-- JSON-LD Product -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "AI Automation Starter Kit",
+        "description": "Everything you need to start automating with AI. Templates, guides, and example workflows.",
+        "image": "https://novixel.ca/og-image.png",
+        "brand": {
+            "@type": "Brand",
+            "name": "Novixel"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "CAD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://novixel.ca/products/ai-starter-kit.html"
+        }
+    }
+    </script>
+
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0a0a0a;
+            --panel: #111111;
+            --border: #1e1e1e;
+            --green: #00ff66;
+            --green-glow: rgba(0, 255, 102, 0.15);
+            --cyan: #00ffff;
+            --cyan-glow: rgba(0, 255, 255, 0.15);
+            --amber: #fbbf24;
+            --text: #e2e8f0;
+            --muted: #8a9bb0;
+            --radius: 12px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(0, 255, 102, 0.03), transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(0, 255, 255, 0.02), transparent 50%),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .container { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+
+        .header-inner { display: flex; justify-content: space-between; align-items: center; }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--green);
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .logo img { width: 36px; height: 36px; }
+
+        .header-nav { display: flex; gap: 8px; }
+
+        .header-nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 14px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .header-nav a:hover { color: var(--green); background: rgba(0, 255, 102, 0.05); }
+
+        .header-nav .back-link {
+            color: var(--green);
+            border: 1px solid rgba(0, 255, 102, 0.2);
+        }
+
+        /* Hero */
+        .hero { text-align: center; padding: 80px 0 60px; }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(0, 255, 102, 0.1);
+            border: 1px solid rgba(0, 255, 102, 0.3);
+            border-radius: 999px;
+            color: var(--green);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 span { color: var(--cyan); }
+
+        .hero .tagline {
+            font-size: 20px;
+            color: var(--muted);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+        .btn-primary {
+            background: linear-gradient(180deg, rgba(0, 255, 255, 0.15), rgba(0, 0, 0, 0.9));
+            border: 1px solid rgba(0, 255, 255, 0.5);
+            color: var(--cyan);
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            border-color: rgba(0, 255, 255, 0.8);
+            box-shadow: 0 0 24px var(--cyan-glow);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--green);
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+
+        .btn-ghost:hover {
+            border-color: rgba(0, 255, 102, 0.3);
+            background: rgba(0, 255, 102, 0.05);
+        }
+
+        /* Separator */
+        .sep {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 60px 0;
+        }
+
+        /* Sections */
+        .section { padding: 20px 0; }
+
+        .section h2 {
+            font-size: 28px;
+            color: #fff;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: var(--muted);
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(0, 255, 102, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .feature-card i {
+            font-size: 32px;
+            color: var(--cyan);
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* What's Included */
+        .included-list {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .included-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .included-item:last-child { border-bottom: none; }
+
+        .included-item i {
+            color: var(--green);
+            font-size: 18px;
+            margin-top: 2px;
+        }
+
+        .included-item h4 {
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .included-item p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* Pricing */
+        .pricing-box {
+            background: var(--panel);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: var(--radius);
+            padding: 40px;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 0 40px var(--cyan-glow);
+        }
+
+        .pricing-box h3 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .pricing-box .price {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--green);
+            margin-bottom: 8px;
+        }
+
+        .pricing-box .price-note {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .pricing-box .feature-list {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 24px;
+        }
+
+        .pricing-box .feature-list li {
+            padding: 8px 0;
+            color: var(--text);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-box .feature-list li i {
+            color: var(--green);
+            font-size: 12px;
+        }
+
+        /* Custom amount input */
+        .amount-input {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .amount-input span {
+            color: var(--text);
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .amount-input input {
+            width: 100px;
+            padding: 12px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 24px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .amount-input input:focus {
+            outline: none;
+            border-color: var(--cyan);
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 24px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #6b7c8c;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover { color: var(--green); }
+
+        .footer .copy { font-size: 13px; color: #6b7c8c; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .features-grid { grid-template-columns: 1fr; }
+            .header-nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MX4LBRM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<header>
+    <div class="container">
+        <div class="header-inner">
+            <a href="../index.html" class="logo">
+                <img src="../Novixel-icon-Trans1.png" alt="Novixel">
+                Novixel
+            </a>
+            <nav class="header-nav">
+                <a href="../products.html" class="back-link"><i class="fas fa-arrow-left"></i> All Products</a>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-badge">PAY WHAT YOU WANT</div>
+        <h1>AI Automation <span>Starter Kit</span></h1>
+        <p class="tagline">Everything you need to start automating with AI. Templates, guides, workflows, and example projects to get you building in minutes.</p>
+        
+        <div class="hero-cta">
+            <a href="#pricing" class="btn-primary">Get the Kit</a>
+            <a href="#included" class="btn-ghost">What's Included</a>
+        </div>
+    </section>
+
+    <hr class="sep">
+
+    <!-- Features -->
+    <section class="section">
+        <h2>Start Automating Today</h2>
+        <p class="section-sub">No experience required. Just follow the guides.</p>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-rocket"></i>
+                <h3>Quick Start Guide</h3>
+                <p>Step-by-step instructions to get your first automation running in under 30 minutes</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-file-code"></i>
+                <h3>Ready Templates</h3>
+                <p>Pre-built automation templates for common tasks you can customize</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-project-diagram"></i>
+                <h3>Example Workflows</h3>
+                <p>Real-world automation examples with full source code and explanations</p>
+            </div>
+        </div>
+    </section>
+
+    <hr class="sep">
+
+    <!-- What's Included -->
+    <section class="section" id="included">
+        <h2>What's Included</h2>
+        <p class="section-sub">Everything in one download</p>
+
+        <div class="included-list">
+            <div class="included-item">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <h4>Getting Started Guide (PDF)</h4>
+                    <p>20-page guide covering AI automation fundamentals and best practices</p>
+                </div>
+            </div>
+            <div class="included-item">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <h4>5 Automation Templates</h4>
+                    <p>Email responder, data processor, content generator, scheduler, and reporter</p>
+                </div>
+            </div>
+            <div class="included-item">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <h4>Prompt Library</h4>
+                    <p>50+ tested prompts for common automation tasks, ready to copy-paste</p>
+                </div>
+            </div>
+            <div class="included-item">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <h4>Tool Comparison Chart</h4>
+                    <p>Side-by-side comparison of popular AI automation tools with recommendations</p>
+                </div>
+            </div>
+            <div class="included-item">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <h4>Video Walkthrough</h4>
+                    <p>45-minute video showing how to set up and customize each template</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="sep">
+
+    <!-- Pricing -->
+    <section class="section" id="pricing">
+        <h2>Get the Starter Kit</h2>
+        <p class="section-sub">Pay what you want — even $0</p>
+
+        <div class="pricing-box">
+            <h3>AI Automation Starter Kit</h3>
+            <div class="price">$0+</div>
+            <p class="price-note">Pay what it's worth to you</p>
+
+            <div class="amount-input">
+                <span>$</span>
+                <input type="number" id="amount" value="0" min="0" step="1">
+                <span>CAD</span>
+            </div>
+
+            <ul class="feature-list">
+                <li><i class="fas fa-check"></i> Getting Started Guide</li>
+                <li><i class="fas fa-check"></i> 5 Automation Templates</li>
+                <li><i class="fas fa-check"></i> 50+ Prompt Library</li>
+                <li><i class="fas fa-check"></i> Tool Comparison Chart</li>
+                <li><i class="fas fa-check"></i> Video Walkthrough</li>
+                <li><i class="fas fa-check"></i> Lifetime Updates</li>
+            </ul>
+
+            <button id="checkout-btn" class="btn-primary" style="width: 100%; padding: 16px;">
+                Get the Kit
+            </button>
+            <p style="margin-top: 12px; font-size: 12px; color: var(--muted);">
+                Secure checkout powered by Stripe
+            </p>
+        </div>
+    </section>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="../products.html">Products</a>
+            <a href="../Novixel.html">Portfolio</a>
+            <a href="../aicom.html">AI Solutions</a>
+        </div>
+        <p class="copy">&copy; 2026 Novixel. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Stripe Configuration
+    // IMPORTANT: Replace with your Stripe Payment Link URL
+    // Create this in Stripe Dashboard > Payment Links
+    const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE';
+    
+    // For pay-what-you-want, you'll need a Stripe Checkout Session
+    // This requires a backend. For static hosting, use a fixed Payment Link
+    // or set up a serverless function (Vercel/Netlify)
+    
+    const checkoutBtn = document.getElementById('checkout-btn');
+    const amountInput = document.getElementById('amount');
+
+    checkoutBtn.addEventListener('click', async () => {
+        const amount = parseInt(amountInput.value) || 0;
+        
+        if (amount === 0) {
+            // Free download - redirect to success page directly
+            window.location.href = '../checkout-success.html?product=ai-starter-kit&amount=0';
+        } else {
+            // Paid - redirect to Stripe Payment Link
+            // For dynamic amounts, you'd need a backend to create checkout sessions
+            // For now, redirect to a fixed payment link
+            window.location.href = STRIPE_PAYMENT_LINK + '?prefilled_email=';
+        }
+    });
+
+    // Track purchase intent
+    checkoutBtn.addEventListener('click', () => {
+        if (typeof dataLayer !== 'undefined') {
+            dataLayer.push({
+                'event': 'begin_checkout',
+                'ecommerce': {
+                    'items': [{
+                        'item_name': 'AI Automation Starter Kit',
+                        'price': amountInput.value,
+                        'currency': 'CAD'
+                    }]
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>

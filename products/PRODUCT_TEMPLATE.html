@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 
+    ============================================
+    NOVIXEL PRODUCT PAGE TEMPLATE
+    ============================================
+    
+    To create a new product page:
+    1. Copy this file
+    2. Rename to your-product-id.html
+    3. Update the PRODUCT_ID below
+    4. Customize sections as needed
+    5. Add product to products-data.js
+    
+    The page auto-loads product info from products-data.js
+    ============================================
+    -->
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MX4LBRM');</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ⚠️ CONFIGURE: Product ID - must match key in products-data.js -->
+    <script>const PRODUCT_ID = 'YOUR_PRODUCT_ID';</script>
+    
+    <!-- Dynamic meta tags populated by JS -->
+    <title>Loading... | Novixel</title>
+    <meta name="description" content="">
+    <link rel="canonical" href="">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="product">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://novixel.ca/og-image.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="product-styles.css">
+    <link rel="icon" href="../FavIcon.ico">
+
+    <!-- Products Data -->
+    <script src="products-data.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MX4LBRM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<header>
+    <div class="container">
+        <div class="header-inner">
+            <a href="../index.html" class="logo">
+                <img src="../Novixel-icon-Trans1.png" alt="Novixel">
+                Novixel
+            </a>
+            <nav class="header-nav">
+                <a href="../products.html" class="back-link"><i class="fas fa-arrow-left"></i> All Products</a>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-badge" id="hero-badge">Loading...</div>
+        <h1 id="hero-title">Loading...</h1>
+        <p class="tagline" id="hero-tagline"></p>
+        
+        <div class="hero-cta">
+            <a href="#pricing" class="btn-primary" id="hero-cta-primary">Get Product</a>
+            <a href="#features" class="btn-ghost">Learn More</a>
+        </div>
+    </section>
+
+    <hr class="sep">
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <h2>Features</h2>
+        <p class="section-sub" id="features-sub"></p>
+
+        <div class="grid-3" id="features-grid">
+            <!-- Populated by JS or customize manually -->
+        </div>
+    </section>
+
+    <hr class="sep">
+
+    <!-- What's Included (optional - show/hide via JS) -->
+    <section class="section" id="included-section">
+        <h2>What's Included</h2>
+        <p class="section-sub">Everything in your purchase</p>
+
+        <div class="included-list" id="included-list">
+            <!-- Populated by JS -->
+        </div>
+    </section>
+
+    <hr class="sep">
+
+    <!-- Pricing Section -->
+    <section class="section" id="pricing">
+        <h2>Get Started</h2>
+        <p class="section-sub">One-time purchase. Lifetime access.</p>
+
+        <div class="pricing-box">
+            <h3 id="pricing-title">Product Name</h3>
+            <div class="price" id="pricing-price">$0</div>
+            <p class="price-note" id="pricing-note">One-time purchase</p>
+
+            <ul class="feature-list" id="pricing-features">
+                <!-- Populated by JS -->
+            </ul>
+
+            <a href="#" class="btn-primary btn-block" id="checkout-btn">
+                Buy Now
+            </a>
+            <p class="mt-2 text-muted" style="font-size: 12px;">
+                Secure checkout powered by Stripe
+            </p>
+        </div>
+    </section>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="../products.html">Products</a>
+            <a href="../Novixel.html">Portfolio</a>
+            <a href="../aicom.html">AI Solutions</a>
+        </div>
+        <p class="copy">&copy; 2026 Novixel. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // =========================================
+    // Auto-populate page from products-data.js
+    // =========================================
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const product = getProduct(PRODUCT_ID);
+        
+        if (!product) {
+            console.error(`Product not found: ${PRODUCT_ID}`);
+            document.getElementById('hero-title').textContent = 'Product Not Found';
+            return;
+        }
+
+        // Set accent color
+        document.body.classList.add(`accent-${product.accent}`);
+
+        // Update meta tags
+        document.title = `${product.name} | Novixel`;
+        document.querySelector('meta[name="description"]').content = product.description;
+        document.querySelector('link[rel="canonical"]').href = `https://novixel.ca/${product.page}`;
+        document.querySelector('meta[property="og:url"]').content = `https://novixel.ca/${product.page}`;
+        document.querySelector('meta[property="og:title"]').content = `${product.name} | Novixel`;
+        document.querySelector('meta[property="og:description"]').content = product.description;
+
+        // Hero section
+        document.getElementById('hero-badge').textContent = product.pricing.badge || 
+            (product.pricing.type === 'free' ? 'FREE' : `$${product.pricing.price}`);
+        document.getElementById('hero-title').innerHTML = 
+            `${product.icon || ''} <span>${product.name}</span>`;
+        document.getElementById('hero-tagline').textContent = product.tagline;
+        
+        // Hero CTA
+        const ctaBtn = document.getElementById('hero-cta-primary');
+        ctaBtn.textContent = product.pricing.type === 'free' ? 
+            'Get Free' : `Get ${product.name.split(' ')[0]} — $${product.pricing.price}`;
+
+        // Features grid
+        if (product.features && product.features.length > 0) {
+            const featuresGrid = document.getElementById('features-grid');
+            featuresGrid.innerHTML = product.features.slice(0, 6).map((feature, i) => `
+                <div class="feature-card">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>${feature}</h3>
+                </div>
+            `).join('');
+            document.getElementById('features-sub').textContent = product.description;
+        }
+
+        // Included list
+        if (product.features && product.features.length > 0) {
+            const includedList = document.getElementById('included-list');
+            includedList.innerHTML = product.features.map(feature => `
+                <div class="included-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <h4>${feature}</h4>
+                    </div>
+                </div>
+            `).join('');
+        } else {
+            document.getElementById('included-section').style.display = 'none';
+        }
+
+        // Pricing box
+        document.getElementById('pricing-title').textContent = product.name;
+        
+        const priceEl = document.getElementById('pricing-price');
+        if (product.pricing.type === 'free') {
+            priceEl.textContent = 'Free';
+        } else if (product.pricing.type === 'pwyw') {
+            priceEl.textContent = product.pricing.price === 0 ? '$0+' : `$${product.pricing.price}+`;
+        } else {
+            priceEl.innerHTML = product.pricing.originalPrice ? 
+                `<span class="old">$${product.pricing.originalPrice}</span>$${product.pricing.price}` :
+                `$${product.pricing.price}`;
+        }
+
+        document.getElementById('pricing-note').textContent = 
+            product.pricing.type === 'pwyw' ? 'Pay what you want' : 'One-time purchase. Lifetime access.';
+
+        // Pricing features list
+        if (product.features) {
+            document.getElementById('pricing-features').innerHTML = product.features.map(f => 
+                `<li><i class="fas fa-check"></i> ${f}</li>`
+            ).join('');
+        }
+
+        // Checkout button
+        const checkoutBtn = document.getElementById('checkout-btn');
+        checkoutBtn.href = product.stripeLink || '#';
+        checkoutBtn.textContent = product.pricing.type === 'free' ? 
+            'Get Free' : `Buy Now — $${product.pricing.price}`;
+
+        // Track checkout click
+        checkoutBtn.addEventListener('click', () => {
+            if (typeof dataLayer !== 'undefined') {
+                dataLayer.push({
+                    'event': 'begin_checkout',
+                    'ecommerce': {
+                        'items': [{
+                            'item_name': product.name,
+                            'price': product.pricing.price,
+                            'currency': product.pricing.currency
+                        }]
+                    }
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>

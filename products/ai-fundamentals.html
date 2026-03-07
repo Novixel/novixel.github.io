@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MX4LBRM');</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Fundamentals: Transformers to Memory | Novixel</title>
+    <meta name="description" content="Deep dive into how AI actually works. Learn about transformers, attention mechanisms, embeddings, and memory systems. Understand the technology behind ChatGPT and modern AI.">
+    <meta name="keywords" content="AI fundamentals, transformers, attention mechanism, embeddings, AI course, machine learning basics">
+    <link rel="canonical" href="https://novixel.ca/products/ai-fundamentals.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="product">
+    <meta property="og:url" content="https://novixel.ca/products/ai-fundamentals.html">
+    <meta property="og:title" content="AI Fundamentals: Transformers to Memory | Novixel">
+    <meta property="og:description" content="Deep dive into how AI actually works. Transformers, attention, embeddings explained.">
+    <meta property="og:image" content="https://novixel.ca/og-image.png">
+    <meta property="product:price:amount" content="29">
+    <meta property="product:price:currency" content="CAD">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../FavIcon.ico">
+
+    <!-- JSON-LD Product -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "AI Fundamentals: Transformers to Memory",
+        "description": "Deep dive into how AI actually works. Transformers, attention, embeddings, and memory systems explained.",
+        "provider": {
+            "@type": "Organization",
+            "name": "Novixel"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "29",
+            "priceCurrency": "CAD",
+            "availability": "https://schema.org/InStock"
+        }
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0a0a0a;
+            --panel: #111111;
+            --border: #1e1e1e;
+            --green: #00ff66;
+            --green-glow: rgba(0, 255, 102, 0.15);
+            --cyan: #00ffff;
+            --cyan-glow: rgba(0, 255, 255, 0.15);
+            --blue: #3b82f6;
+            --blue-glow: rgba(59, 130, 246, 0.15);
+            --text: #e2e8f0;
+            --muted: #8a9bb0;
+            --radius: 12px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.03), transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(0, 255, 255, 0.02), transparent 50%),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header { padding: 20px 0; border-bottom: 1px solid var(--border); }
+        .container { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; }
+
+        .logo {
+            display: flex; align-items: center; gap: 12px;
+            text-decoration: none; color: var(--green);
+            font-size: 20px; font-weight: 700;
+        }
+        .logo img { width: 36px; height: 36px; }
+
+        .header-nav { display: flex; gap: 8px; }
+        .header-nav a {
+            color: var(--muted); text-decoration: none;
+            font-size: 14px; padding: 6px 14px;
+            border-radius: 8px; transition: all 0.2s;
+        }
+        .header-nav a:hover { color: var(--green); background: rgba(0, 255, 102, 0.05); }
+        .header-nav .back-link { color: var(--green); border: 1px solid rgba(0, 255, 102, 0.2); }
+
+        .hero { text-align: center; padding: 80px 0 60px; }
+
+        .hero-badge {
+            display: inline-block; padding: 6px 16px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 999px; color: var(--blue);
+            font-size: 13px; font-weight: 600; margin-bottom: 24px;
+        }
+
+        .hero h1 { font-size: 48px; font-weight: 800; color: #fff; margin-bottom: 16px; }
+        .hero h1 span { color: var(--blue); }
+
+        .hero .tagline {
+            font-size: 20px; color: var(--muted);
+            margin-bottom: 40px; max-width: 600px;
+            margin-left: auto; margin-right: auto;
+        }
+
+        .hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+        .btn-primary {
+            background: linear-gradient(180deg, rgba(59, 130, 246, 0.2), rgba(0, 0, 0, 0.9));
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            color: var(--blue); padding: 14px 32px;
+            border-radius: 8px; text-decoration: none;
+            font-weight: 600; font-size: 16px;
+            transition: all 0.2s; cursor: pointer;
+        }
+        .btn-primary:hover {
+            border-color: rgba(59, 130, 246, 0.8);
+            box-shadow: 0 0 24px var(--blue-glow);
+        }
+
+        .btn-ghost {
+            background: transparent; border: 1px solid var(--border);
+            color: var(--green); padding: 14px 32px;
+            border-radius: 8px; text-decoration: none;
+            font-weight: 600; font-size: 16px; transition: all 0.2s;
+        }
+        .btn-ghost:hover {
+            border-color: rgba(0, 255, 102, 0.3);
+            background: rgba(0, 255, 102, 0.05);
+        }
+
+        .sep {
+            border: none; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 60px 0;
+        }
+
+        .section { padding: 20px 0; }
+        .section h2 { font-size: 28px; color: #fff; margin-bottom: 8px; text-align: center; }
+        .section-sub { text-align: center; color: var(--muted); font-size: 16px; margin-bottom: 40px; }
+
+        /* Curriculum */
+        .curriculum { max-width: 700px; margin: 0 auto; }
+
+        .module {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .module-header {
+            padding: 20px; cursor: pointer;
+            display: flex; justify-content: space-between;
+            align-items: center; transition: background 0.2s;
+        }
+        .module-header:hover { background: rgba(59, 130, 246, 0.03); }
+
+        .module-header h3 {
+            display: flex; align-items: center; gap: 12px;
+            font-size: 16px; color: #fff;
+        }
+        .module-header h3 .num {
+            width: 28px; height: 28px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50%; display: flex;
+            align-items: center; justify-content: center;
+            font-size: 12px; color: var(--blue);
+        }
+
+        .module-meta { display: flex; align-items: center; gap: 16px; }
+        .module-meta span { font-size: 13px; color: var(--muted); }
+        .module-arrow { color: var(--muted); transition: transform 0.3s; }
+        .module.active .module-arrow { transform: rotate(180deg); }
+
+        .module-body { max-height: 0; overflow: hidden; transition: max-height 0.3s; }
+        .module.active .module-body { max-height: 500px; }
+
+        .module-content { padding: 0 20px 20px; }
+        .module-content ul { list-style: none; }
+        .module-content li {
+            padding: 10px 0; border-bottom: 1px solid var(--border);
+            display: flex; align-items: center; gap: 12px;
+            color: var(--muted); font-size: 14px;
+        }
+        .module-content li:last-child { border-bottom: none; }
+        .module-content li i { color: var(--blue); width: 16px; }
+
+        /* Pricing */
+        .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 700px; margin: 0 auto; }
+
+        .pricing-card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+        }
+        .pricing-card.featured {
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 0 40px var(--blue-glow);
+        }
+
+        .pricing-card h3 { font-size: 20px; color: #fff; margin-bottom: 8px; }
+        .pricing-card .desc { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+        .pricing-card .price { font-size: 36px; font-weight: 800; color: var(--blue); margin-bottom: 20px; }
+
+        .pricing-card ul { list-style: none; margin-bottom: 24px; }
+        .pricing-card li {
+            padding: 8px 0; font-size: 14px; color: var(--text);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .pricing-card li i { color: var(--green); font-size: 12px; }
+
+        .pricing-card .card-btn {
+            display: block; text-align: center; padding: 14px;
+            border-radius: 8px; text-decoration: none;
+            font-weight: 600; font-size: 14px; transition: all 0.2s;
+        }
+        .pricing-card .card-btn.primary {
+            background: linear-gradient(180deg, rgba(59, 130, 246, 0.2), rgba(0, 0, 0, 0.9));
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            color: var(--blue);
+        }
+        .pricing-card .card-btn.primary:hover {
+            border-color: rgba(59, 130, 246, 0.8);
+            box-shadow: 0 0 20px var(--blue-glow);
+        }
+
+        .footer { border-top: 1px solid var(--border); padding: 24px 0; text-align: center; margin-top: 60px; }
+        .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 12px; }
+        .footer-links a { color: #6b7c8c; text-decoration: none; font-size: 14px; }
+        .footer-links a:hover { color: var(--green); }
+        .footer .copy { font-size: 13px; color: #6b7c8c; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .header-nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MX4LBRM" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<header>
+    <div class="container">
+        <div class="header-inner">
+            <a href="../index.html" class="logo">
+                <img src="../Novixel-icon-Trans1.png" alt="Novixel">
+                Novixel
+            </a>
+            <nav class="header-nav">
+                <a href="../products.html" class="back-link"><i class="fas fa-arrow-left"></i> All Products</a>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <section class="hero">
+        <div class="hero-badge">SELF-PACED COURSE</div>
+        <h1>AI Fundamentals: <span>Transformers to Memory</span></h1>
+        <p class="tagline">Deep dive into how AI actually works. Understand transformers, attention mechanisms, embeddings, and memory systems — the technology behind ChatGPT and modern AI.</p>
+        
+        <div class="hero-cta">
+            <a href="#pricing" class="btn-primary">Enroll Now — $29</a>
+            <a href="#curriculum" class="btn-ghost">View Curriculum</a>
+        </div>
+    </section>
+
+    <hr class="sep">
+
+    <section class="section" id="curriculum">
+        <h2>Course Curriculum</h2>
+        <p class="section-sub">4 modules • 3+ hours of content • Lifetime access</p>
+
+        <div class="curriculum">
+            <div class="module active">
+                <div class="module-header" onclick="toggleModule(this)">
+                    <h3><span class="num">1</span> Foundations of Neural Networks</h3>
+                    <div class="module-meta">
+                        <span>45 min</span>
+                        <i class="fas fa-chevron-down module-arrow"></i>
+                    </div>
+                </div>
+                <div class="module-body">
+                    <div class="module-content">
+                        <ul>
+                            <li><i class="fas fa-play-circle"></i> What is a neural network?</li>
+                            <li><i class="fas fa-play-circle"></i> Layers, weights, and biases</li>
+                            <li><i class="fas fa-play-circle"></i> Activation functions explained</li>
+                            <li><i class="fas fa-play-circle"></i> Backpropagation and training</li>
+                            <li><i class="fas fa-file-code"></i> Hands-on: Build a simple neural network</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-header" onclick="toggleModule(this)">
+                    <h3><span class="num">2</span> Embeddings & Vector Spaces</h3>
+                    <div class="module-meta">
+                        <span>40 min</span>
+                        <i class="fas fa-chevron-down module-arrow"></i>
+                    </div>
+                </div>
+                <div class="module-body">
+                    <div class="module-content">
+                        <ul>
+                            <li><i class="fas fa-play-circle"></i> What are embeddings?</li>
+                            <li><i class="fas fa-play-circle"></i> Word2Vec and semantic meaning</li>
+                            <li><i class="fas fa-play-circle"></i> Vector similarity and search</li>
+                            <li><i class="fas fa-play-circle"></i> Embedding dimensions and trade-offs</li>
+                            <li><i class="fas fa-file-code"></i> Hands-on: Semantic search with embeddings</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-header" onclick="toggleModule(this)">
+                    <h3><span class="num">3</span> Transformers & Attention</h3>
+                    <div class="module-meta">
+                        <span>60 min</span>
+                        <i class="fas fa-chevron-down module-arrow"></i>
+                    </div>
+                </div>
+                <div class="module-body">
+                    <div class="module-content">
+                        <ul>
+                            <li><i class="fas fa-play-circle"></i> The attention mechanism</li>
+                            <li><i class="fas fa-play-circle"></i> Self-attention and cross-attention</li>
+                            <li><i class="fas fa-play-circle"></i> Multi-head attention</li>
+                            <li><i class="fas fa-play-circle"></i> Transformer architecture deep dive</li>
+                            <li><i class="fas fa-play-circle"></i> GPT vs BERT: Decoder vs Encoder</li>
+                            <li><i class="fas fa-file-code"></i> Hands-on: Attention visualization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-header" onclick="toggleModule(this)">
+                    <h3><span class="num">4</span> Memory Systems & RAG</h3>
+                    <div class="module-meta">
+                        <span>50 min</span>
+                        <i class="fas fa-chevron-down module-arrow"></i>
+                    </div>
+                </div>
+                <div class="module-body">
+                    <div class="module-content">
+                        <ul>
+                            <li><i class="fas fa-play-circle"></i> Context windows and limitations</li>
+                            <li><i class="fas fa-play-circle"></i> External memory and retrieval</li>
+                            <li><i class="fas fa-play-circle"></i> RAG: Retrieval Augmented Generation</li>
+                            <li><i class="fas fa-play-circle"></i> Vector databases explained</li>
+                            <li><i class="fas fa-file-code"></i> Hands-on: Build a RAG system</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="sep">
+
+    <section class="section" id="pricing">
+        <h2>Get Started</h2>
+        <p class="section-sub">One-time purchase. Lifetime access.</p>
+
+        <div class="pricing-grid">
+            <div class="pricing-card featured">
+                <h3>Full Course</h3>
+                <p class="desc">Complete access to all modules and materials</p>
+                <div class="price">$29</div>
+                <ul>
+                    <li><i class="fas fa-check"></i> 4 in-depth modules</li>
+                    <li><i class="fas fa-check"></i> 3+ hours of video</li>
+                    <li><i class="fas fa-check"></i> Hands-on exercises</li>
+                    <li><i class="fas fa-check"></i> Code examples</li>
+                    <li><i class="fas fa-check"></i> Lifetime access</li>
+                    <li><i class="fas fa-check"></i> Future updates included</li>
+                </ul>
+                <!-- STRIPE: Replace with your Payment Link -->
+                <a href="https://buy.stripe.com/YOUR_AI_FUNDAMENTALS_LINK" class="card-btn primary" id="checkout-btn">
+                    Enroll Now — $29
+                </a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Course Bundle</h3>
+                <p class="desc">AI Fundamentals + Build Your First AI Assistant</p>
+                <div class="price">$99 <span style="font-size: 16px; color: var(--muted); text-decoration: line-through;">$126</span></div>
+                <ul>
+                    <li><i class="fas fa-check"></i> Both complete courses</li>
+                    <li><i class="fas fa-check"></i> 8+ hours of content</li>
+                    <li><i class="fas fa-check"></i> All code & materials</li>
+                    <li><i class="fas fa-check"></i> Save $27</li>
+                </ul>
+                <!-- STRIPE: Replace with your Bundle Payment Link -->
+                <a href="https://buy.stripe.com/YOUR_BUNDLE_LINK" class="card-btn primary">
+                    Get Bundle — $99
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="../products.html">Products</a>
+            <a href="../aicom.html">AI Solutions</a>
+        </div>
+        <p class="copy">&copy; 2026 Novixel. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    function toggleModule(el) {
+        el.parentElement.classList.toggle('active');
+    }
+
+    // Track enrollment intent
+    document.getElementById('checkout-btn')?.addEventListener('click', () => {
+        if (typeof dataLayer !== 'undefined') {
+            dataLayer.push({
+                'event': 'begin_checkout',
+                'ecommerce': {
+                    'items': [{
+                        'item_name': 'AI Fundamentals: Transformers to Memory',
+                        'price': 29,
+                        'currency': 'CAD'
+                    }]
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MX4LBRM');</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page Template Bundle | Novixel</title>
+    <meta name="description" content="4 premium landing page templates in one bundle. SaaS, Agency, Mobile App, and Portfolio designs. Clean HTML/CSS, fully responsive, easy to customize.">
+    <meta name="keywords" content="landing page templates, HTML templates, SaaS template, agency template, responsive design">
+    <link rel="canonical" href="https://novixel.ca/products/landing-page-bundle.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="product">
+    <meta property="og:url" content="https://novixel.ca/products/landing-page-bundle.html">
+    <meta property="og:title" content="Landing Page Template Bundle | Novixel">
+    <meta property="og:description" content="4 premium landing page templates. SaaS, Agency, Mobile App, Portfolio.">
+    <meta property="og:image" content="https://novixel.ca/og-image.png">
+    <meta property="product:price:amount" content="49">
+    <meta property="product:price:currency" content="CAD">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../FavIcon.ico">
+
+    <!-- JSON-LD Product -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Landing Page Template Bundle",
+        "description": "4 premium landing page templates: SaaS, Agency, Mobile App, and Portfolio designs.",
+        "brand": { "@type": "Brand", "name": "Novixel" },
+        "offers": {
+            "@type": "Offer",
+            "price": "49",
+            "priceCurrency": "CAD",
+            "availability": "https://schema.org/InStock"
+        }
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0a0a0a;
+            --panel: #111111;
+            --border: #1e1e1e;
+            --green: #00ff66;
+            --green-glow: rgba(0, 255, 102, 0.15);
+            --cyan: #00ffff;
+            --cyan-glow: rgba(0, 255, 255, 0.15);
+            --pink: #ec4899;
+            --pink-glow: rgba(236, 72, 153, 0.15);
+            --text: #e2e8f0;
+            --muted: #8a9bb0;
+            --radius: 12px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(236, 72, 153, 0.03), transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(0, 255, 255, 0.02), transparent 50%),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header { padding: 20px 0; border-bottom: 1px solid var(--border); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; }
+
+        .logo {
+            display: flex; align-items: center; gap: 12px;
+            text-decoration: none; color: var(--green);
+            font-size: 20px; font-weight: 700;
+        }
+        .logo img { width: 36px; height: 36px; }
+
+        .header-nav { display: flex; gap: 8px; }
+        .header-nav a {
+            color: var(--muted); text-decoration: none;
+            font-size: 14px; padding: 6px 14px;
+            border-radius: 8px; transition: all 0.2s;
+        }
+        .header-nav a:hover { color: var(--green); background: rgba(0, 255, 102, 0.05); }
+        .header-nav .back-link { color: var(--green); border: 1px solid rgba(0, 255, 102, 0.2); }
+
+        .hero { text-align: center; padding: 80px 0 60px; }
+
+        .hero-badge {
+            display: inline-block; padding: 6px 16px;
+            background: rgba(236, 72, 153, 0.1);
+            border: 1px solid rgba(236, 72, 153, 0.3);
+            border-radius: 999px; color: var(--pink);
+            font-size: 13px; font-weight: 600; margin-bottom: 24px;
+        }
+
+        .hero h1 { font-size: 48px; font-weight: 800; color: #fff; margin-bottom: 16px; }
+        .hero h1 span { color: var(--pink); }
+
+        .hero .tagline {
+            font-size: 20px; color: var(--muted);
+            margin-bottom: 40px; max-width: 600px;
+            margin-left: auto; margin-right: auto;
+        }
+
+        .hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+        .btn-primary {
+            background: linear-gradient(180deg, rgba(236, 72, 153, 0.2), rgba(0, 0, 0, 0.9));
+            border: 1px solid rgba(236, 72, 153, 0.5);
+            color: var(--pink); padding: 14px 32px;
+            border-radius: 8px; text-decoration: none;
+            font-weight: 600; font-size: 16px;
+            transition: all 0.2s; cursor: pointer;
+        }
+        .btn-primary:hover {
+            border-color: rgba(236, 72, 153, 0.8);
+            box-shadow: 0 0 24px var(--pink-glow);
+        }
+
+        .btn-ghost {
+            background: transparent; border: 1px solid var(--border);
+            color: var(--green); padding: 14px 32px;
+            border-radius: 8px; text-decoration: none;
+            font-weight: 600; font-size: 16px; transition: all 0.2s;
+        }
+        .btn-ghost:hover {
+            border-color: rgba(0, 255, 102, 0.3);
+            background: rgba(0, 255, 102, 0.05);
+        }
+
+        .sep {
+            border: none; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 60px 0;
+        }
+
+        .section { padding: 20px 0; }
+        .section h2 { font-size: 28px; color: #fff; margin-bottom: 8px; text-align: center; }
+        .section-sub { text-align: center; color: var(--muted); font-size: 16px; margin-bottom: 40px; }
+
+        /* Template Grid */
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .template-card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .template-card:hover {
+            border-color: rgba(236, 72, 153, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .template-preview {
+            height: 200px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .template-content { padding: 20px; }
+
+        .template-content h3 {
+            color: #fff; font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .template-content p {
+            color: var(--muted); font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .template-tags {
+            display: flex; flex-wrap: wrap; gap: 8px;
+        }
+
+        .template-tags span {
+            padding: 4px 10px;
+            background: rgba(236, 72, 153, 0.1);
+            border: 1px solid rgba(236, 72, 153, 0.2);
+            border-radius: 4px;
+            font-size: 12px;
+            color: var(--pink);
+        }
+
+        /* Pricing */
+        .pricing-box {
+            background: var(--panel);
+            border: 1px solid rgba(236, 72, 153, 0.3);
+            border-radius: var(--radius);
+            padding: 40px;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 0 40px var(--pink-glow);
+        }
+
+        .pricing-box h3 { color: #fff; font-size: 24px; margin-bottom: 8px; }
+        .pricing-box .price { font-size: 48px; font-weight: 800; color: var(--pink); margin-bottom: 8px; }
+        .pricing-box .price-note { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+
+        .pricing-box ul { list-style: none; text-align: left; margin-bottom: 24px; }
+        .pricing-box li {
+            padding: 10px 0; font-size: 14px; color: var(--text);
+            display: flex; align-items: center; gap: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        .pricing-box li:last-child { border-bottom: none; }
+        .pricing-box li i { color: var(--green); font-size: 14px; }
+
+        .pricing-box .buy-btn {
+            display: block; width: 100%; padding: 16px;
+            background: linear-gradient(180deg, rgba(236, 72, 153, 0.2), rgba(0, 0, 0, 0.9));
+            border: 1px solid rgba(236, 72, 153, 0.5);
+            border-radius: 8px; color: var(--pink);
+            font-size: 16px; font-weight: 600;
+            text-decoration: none; transition: all 0.2s;
+        }
+        .pricing-box .buy-btn:hover {
+            border-color: rgba(236, 72, 153, 0.8);
+            box-shadow: 0 0 24px var(--pink-glow);
+        }
+
+        .footer { border-top: 1px solid var(--border); padding: 24px 0; text-align: center; margin-top: 60px; }
+        .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 12px; }
+        .footer-links a { color: #6b7c8c; text-decoration: none; font-size: 14px; }
+        .footer-links a:hover { color: var(--green); }
+        .footer .copy { font-size: 13px; color: #6b7c8c; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .templates-grid { grid-template-columns: 1fr; }
+            .header-nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MX4LBRM" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<header>
+    <div class="container">
+        <div class="header-inner">
+            <a href="../index.html" class="logo">
+                <img src="../Novixel-icon-Trans1.png" alt="Novixel">
+                Novixel
+            </a>
+            <nav class="header-nav">
+                <a href="../products.html" class="back-link"><i class="fas fa-arrow-left"></i> All Products</a>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <section class="hero">
+        <div class="hero-badge">4 TEMPLATES • $49</div>
+        <h1>Landing Page <span>Template Bundle</span></h1>
+        <p class="tagline">4 premium landing page templates in one bundle. Clean HTML/CSS, fully responsive, easy to customize. Perfect for startups, agencies, and developers.</p>
+        
+        <div class="hero-cta">
+            <a href="#pricing" class="btn-primary">Get the Bundle — $49</a>
+            <a href="#templates" class="btn-ghost">Preview Templates</a>
+        </div>
+    </section>
+
+    <hr class="sep">
+
+    <section class="section" id="templates">
+        <h2>What's Included</h2>
+        <p class="section-sub">4 complete templates, ready to deploy</p>
+
+        <div class="templates-grid">
+            <div class="template-card">
+                <div class="template-preview">🚀</div>
+                <div class="template-content">
+                    <h3>Starter — SaaS Landing</h3>
+                    <p>Clean SaaS landing page with hero, features, pricing table, testimonials, and FAQ sections.</p>
+                    <div class="template-tags">
+                        <span>SaaS</span>
+                        <span>Pricing Table</span>
+                        <span>FAQ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <div class="template-preview">📱</div>
+                <div class="template-content">
+                    <h3>Pulse — Mobile App</h3>
+                    <p>Modern mobile app landing with app store buttons, feature showcase, and device mockups.</p>
+                    <div class="template-tags">
+                        <span>Mobile App</span>
+                        <span>App Store</span>
+                        <span>Mockups</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <div class="template-preview">🎨</div>
+                <div class="template-content">
+                    <h3>Forge — Creative Agency</h3>
+                    <p>Bold agency template with portfolio grid, team section, services, and contact form.</p>
+                    <div class="template-tags">
+                        <span>Agency</span>
+                        <span>Portfolio</span>
+                        <span>Team</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <div class="template-preview">👤</div>
+                <div class="template-content">
+                    <h3>Profile — Personal Portfolio</h3>
+                    <p>Minimal personal portfolio for developers and designers. Projects, skills, and about sections.</p>
+                    <div class="template-tags">
+                        <span>Portfolio</span>
+                        <span>Minimal</span>
+                        <span>Dark Mode</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="sep">
+
+    <section class="section" id="pricing">
+        <h2>Get the Bundle</h2>
+        <p class="section-sub">All 4 templates. One price. Lifetime updates.</p>
+
+        <div class="pricing-box">
+            <h3>Landing Page Bundle</h3>
+            <div class="price">$49</div>
+            <p class="price-note">One-time purchase. Use on unlimited projects.</p>
+
+            <ul>
+                <li><i class="fas fa-check"></i> 4 complete landing pages</li>
+                <li><i class="fas fa-check"></i> Clean HTML5 & CSS3</li>
+                <li><i class="fas fa-check"></i> Fully responsive design</li>
+                <li><i class="fas fa-check"></i> Easy to customize</li>
+                <li><i class="fas fa-check"></i> Dark & light modes</li>
+                <li><i class="fas fa-check"></i> Optimized for performance</li>
+                <li><i class="fas fa-check"></i> SEO-friendly markup</li>
+                <li><i class="fas fa-check"></i> Lifetime updates</li>
+            </ul>
+
+            <!-- STRIPE: Replace with your Payment Link -->
+            <a href="https://buy.stripe.com/YOUR_LANDING_BUNDLE_LINK" class="buy-btn" id="checkout-btn">
+                Get the Bundle — $49
+            </a>
+            <p style="margin-top: 12px; font-size: 12px; color: var(--muted);">
+                Secure checkout powered by Stripe
+            </p>
+        </div>
+    </section>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="../products.html">Products</a>
+            <a href="../aicom.html">AI Solutions</a>
+        </div>
+        <p class="copy">&copy; 2026 Novixel. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('checkout-btn')?.addEventListener('click', () => {
+        if (typeof dataLayer !== 'undefined') {
+            dataLayer.push({
+                'event': 'begin_checkout',
+                'ecommerce': {
+                    'items': [{
+                        'item_name': 'Landing Page Template Bundle',
+                        'price': 49,
+                        'currency': 'CAD'
+                    }]
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>
