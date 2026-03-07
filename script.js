@@ -141,11 +141,32 @@ function CoolThing() {
 // Initialize on Page Load
 // ===========================================
 document.addEventListener('DOMContentLoaded', function() {
-    // Auto-open Home tab on pages with tab navigation
+    // Check for hash in URL (e.g., index.html#About)
+    var hash = window.location.hash.replace('#', '');
+    
+    if (hash) {
+        // Try to find and click the matching tab
+        var tabButton = document.getElementById('tab-' + hash);
+        if (tabButton) {
+            tabButton.click();
+            return;
+        }
+    }
+    
+    // Default: open Home tab on pages with tab navigation
     var homeTab = document.getElementById('Home');
     var homeButton = document.getElementById('tab-Home') || document.querySelector('.tablinks');
     
     if (homeTab && homeButton) {
         homeButton.click();
+    }
+});
+
+// Handle hash changes (back/forward navigation)
+window.addEventListener('hashchange', function() {
+    var hash = window.location.hash.replace('#', '');
+    if (hash) {
+        var tabButton = document.getElementById('tab-' + hash);
+        if (tabButton) tabButton.click();
     }
 });
