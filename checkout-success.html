@@ -10,393 +10,144 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You! | Novixel</title>
+    <title>Purchase Complete | Novixel</title>
     <meta name="robots" content="noindex">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=6">
     <link rel="icon" href="FavIcon.ico">
 
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --bg: #0a0a0a;
-            --panel: #111111;
-            --border: #1e1e1e;
-            --green: #00ff66;
-            --green-glow: rgba(0, 255, 102, 0.15);
-            --cyan: #00ffff;
-            --cyan-glow: rgba(0, 255, 255, 0.15);
-            --text: #e2e8f0;
-            --muted: #8a9bb0;
-            --radius: 12px;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            background: 
-                radial-gradient(circle at 30% 20%, rgba(0, 255, 102, 0.03), transparent 50%),
-                radial-gradient(circle at 70% 80%, rgba(0, 255, 255, 0.02), transparent 50%),
-                var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        header {
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .container { max-width: 700px; margin: 0 auto; padding: 0 24px; }
-
-        .header-inner { display: flex; justify-content: space-between; align-items: center; }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: var(--green);
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        .logo img { width: 36px; height: 36px; }
-
-        /* Main Content */
-        main {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 60px 24px;
-        }
-
-        .success-card {
-            background: var(--panel);
-            border: 1px solid rgba(0, 255, 102, 0.3);
-            border-radius: var(--radius);
-            padding: 48px;
-            text-align: center;
-            max-width: 500px;
-            width: 100%;
-            box-shadow: 0 0 60px var(--green-glow);
-        }
-
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            background: rgba(0, 255, 102, 0.1);
-            border: 2px solid var(--green);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            font-size: 36px;
-            color: var(--green);
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.4); }
-            50% { box-shadow: 0 0 0 15px rgba(0, 255, 102, 0); }
-        }
-
-        .success-card h1 {
-            font-size: 32px;
-            color: #fff;
-            margin-bottom: 12px;
-        }
-
-        .success-card .subtitle {
-            color: var(--muted);
-            font-size: 16px;
-            margin-bottom: 32px;
-        }
-
-        .product-info {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 24px;
-            text-align: left;
-        }
-
-        .product-info h3 {
-            color: var(--cyan);
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-
-        .product-info .product-name {
-            color: #fff;
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        .download-section {
-            margin-bottom: 24px;
-        }
-
-        .download-section h3 {
-            color: var(--text);
-            font-size: 14px;
-            margin-bottom: 12px;
-        }
-
-        .download-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            width: 100%;
-            padding: 16px 24px;
-            background: linear-gradient(180deg, rgba(0, 255, 255, 0.15), rgba(0, 0, 0, 0.9));
-            border: 1px solid rgba(0, 255, 255, 0.5);
-            border-radius: 8px;
-            color: var(--cyan);
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-
-        .download-btn:hover {
-            border-color: rgba(0, 255, 255, 0.8);
-            box-shadow: 0 0 24px var(--cyan-glow);
-        }
-
-        .download-btn i {
-            font-size: 20px;
-        }
-
-        .additional-downloads {
-            text-align: left;
-            margin-top: 16px;
-        }
-
-        .additional-downloads a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px;
-            color: var(--muted);
-            text-decoration: none;
-            font-size: 14px;
-            border-radius: 6px;
-            transition: all 0.2s;
-        }
-
-        .additional-downloads a:hover {
-            background: rgba(0, 255, 102, 0.05);
-            color: var(--green);
-        }
-
-        .additional-downloads a i {
-            width: 20px;
-            text-align: center;
-        }
-
-        .help-text {
-            color: var(--muted);
-            font-size: 13px;
-            margin-top: 24px;
-            padding-top: 24px;
-            border-top: 1px solid var(--border);
-        }
-
-        .help-text a {
-            color: var(--green);
-            text-decoration: none;
-        }
-
-        .help-text a:hover {
-            text-decoration: underline;
-        }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--muted);
-            text-decoration: none;
-            font-size: 14px;
-            margin-top: 24px;
-            transition: color 0.2s;
-        }
-
-        .back-link:hover {
-            color: var(--green);
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 24px 0;
-            text-align: center;
-        }
-
-        footer p {
-            font-size: 13px;
-            color: #6b7c8c;
-        }
-
-        /* Loading state */
-        .loading {
-            display: none;
-        }
-
-        .loading.active {
-            display: block;
-        }
-
-        .loading-spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid var(--border);
-            border-top-color: var(--green);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 16px;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-    </style>
+    <script src="products/products-data.js"></script>
 </head>
-<body>
-<!-- Google Tag Manager (noscript) -->
+
+<body class="dark-mode">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MX4LBRM"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<header>
-    <div class="container" style="max-width: 980px;">
-        <div class="header-inner">
-            <a href="index.html" class="logo">
-                <img src="Novixel-icon-Trans1.png" alt="Novixel">
-                Novixel
-            </a>
-        </div>
-    </div>
-</header>
-
-<main>
-    <div class="success-card">
-        <div class="success-icon">
-            <i class="fas fa-check"></i>
-        </div>
-        
-        <h1>Thank You!</h1>
-        <p class="subtitle">Your purchase was successful. Your download is ready.</p>
-
-        <div class="product-info">
-            <h3>You purchased</h3>
-            <div class="product-name" id="product-name">Loading...</div>
-        </div>
-
-        <div class="download-section">
-            <h3>Download your files</h3>
-            <a href="#" id="main-download" class="download-btn">
-                <i class="fas fa-download"></i>
-                <span>Download Now</span>
-            </a>
-
-            <div class="additional-downloads" id="additional-downloads">
-                <!-- Populated by JavaScript -->
-            </div>
-        </div>
-
-        <div class="help-text">
-            <p>Having trouble? <a href="mailto:novixel@hotmail.com">Contact support</a></p>
-            <p style="margin-top: 8px;">A copy of your download links has been sent to your email.</p>
-        </div>
-
-        <a href="products.html" class="back-link">
-            <i class="fas fa-arrow-left"></i>
-            Browse more products
+<div class="container">
+    <header class="header">
+        <a href="index.html" class="logoBtn">
+            <img class="mainlogo" src="Novixel-icon-Trans1.png" alt="Novixel logo">
         </a>
-    </div>
-</main>
+        <div class="headline">
+            <h1>Novixel</h1>
+            <p class="subhead">
+                Technology solutions that work as hard as you do.
+                <span class="location">Dawson Creek, BC</span>
+            </p>
+        </div>
+        <button class="iconBtn fas fa-sun" type="button" onclick="toggleDarkMode(event)" aria-label="Toggle dark mode"></button>
+    </header>
 
-<footer>
-    <div class="container">
-        <p>&copy; 2026 Novixel. All rights reserved.</p>
-    </div>
-</footer>
+    <hr class="separator">
 
-<!-- Products Data - single source of truth -->
-<script src="products/products-data.js"></script>
+    <nav class="tab">
+        <a class="tablinks" href="index.html">Home</a>
+        <a class="tablinks" href="index.html#About">About</a>
+        <a class="tablinks" href="index.html#Divisions">Divisions</a>
+        <a class="tablinks" href="products.html">Products</a>
+        <a class="tablinks" href="index.html#Contact">Contact</a>
+    </nav>
+
+    <!-- Success Card -->
+    <div class="heroCard" style="text-align: center;">
+        <div style="width: 80px; height: 80px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+            <i class="fas fa-check" style="font-size: 36px; color: #000;"></i>
+        </div>
+        
+        <h2>Thank You!</h2>
+        <p class="muted">Your purchase was successful. Your download is ready.</p>
+
+        <div class="miniCard" style="max-width: 400px; margin: 24px auto; text-align: left;">
+            <h3 style="margin-bottom: 8px;">You purchased</h3>
+            <p id="product-name" style="font-size: 18px;">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Download Section -->
+    <div class="card" style="text-align: center;">
+        <h2>Download Your Files</h2>
+        
+        <a href="#" id="main-download" class="btn primary" style="padding: 16px 32px; font-size: 18px; margin: 16px 0;">
+            <i class="fas fa-download"></i>&nbsp; <span>Download Now</span>
+        </a>
+
+        <div id="additional-downloads" style="margin-top: 16px;"></div>
+
+        <p class="muted" style="font-size: 13px; margin-top: 24px;">
+            Having trouble? <a href="mailto:novixel@hotmail.com">Contact support</a>
+        </p>
+    </div>
+
+    <!-- Back Link -->
+    <div style="text-align: center; margin-top: 24px;">
+        <a href="products.html" class="muted" style="font-size: 14px;"><i class="fas fa-arrow-left"></i> Browse more products</a>
+    </div>
+
+    <footer style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border-color); text-align: center;">
+        <p class="muted" style="font-size: 13px;">&copy; 2026 Novixel. All rights reserved.</p>
+    </footer>
+</div>
+
 <script>
-    // Uses NOVIXEL_PRODUCTS from products-data.js
-    // Download URLs are defined in each product's 'downloads' field
+function toggleDarkMode(event) {
+    document.body.classList.toggle('dark-mode');
+    const btn = event.currentTarget;
+    btn.classList.toggle('fa-moon');
+    btn.classList.toggle('fa-sun');
+    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+}
+if (localStorage.getItem('darkMode') === 'false') {
+    document.body.classList.remove('dark-mode');
+    document.querySelector('.iconBtn').classList.remove('fa-sun');
+    document.querySelector('.iconBtn').classList.add('fa-moon');
+}
+
+// Load product info
+const params = new URLSearchParams(window.location.search);
+const productId = params.get('product');
+const sessionId = params.get('session_id');
+
+const productNameEl = document.getElementById('product-name');
+const mainDownloadEl = document.getElementById('main-download');
+const additionalDownloadsEl = document.getElementById('additional-downloads');
+
+if (productId && NOVIXEL_PRODUCTS[productId]) {
+    const product = NOVIXEL_PRODUCTS[productId];
+    const downloads = product.downloads || {};
     
-    // Parse URL parameters
-    const params = new URLSearchParams(window.location.search);
-    const productId = params.get('product');
-    const sessionId = params.get('session_id'); // From Stripe redirect
-    const amount = params.get('amount');
-
-    // Display product info
-    const productNameEl = document.getElementById('product-name');
-    const mainDownloadEl = document.getElementById('main-download');
-    const additionalDownloadsEl = document.getElementById('additional-downloads');
-
-    if (productId && NOVIXEL_PRODUCTS[productId]) {
-        const product = NOVIXEL_PRODUCTS[productId];
-        const downloads = product.downloads || {};
-        
-        productNameEl.textContent = product.name;
-        
-        if (downloads.main) {
-            mainDownloadEl.href = downloads.main.url;
-            mainDownloadEl.querySelector('span').textContent = downloads.main.label;
-        }
-
-        // Add additional downloads
-        if (downloads.additional && downloads.additional.length > 0) {
-            additionalDownloadsEl.innerHTML = downloads.additional.map(dl => `
-                <a href="${dl.url}">
-                    <i class="fas ${dl.icon || 'fa-file'}"></i>
-                    ${dl.label}
-                </a>
-            `).join('');
-        }
-
-        // Track purchase completion in GTM
-        if (typeof dataLayer !== 'undefined') {
-            dataLayer.push({
-                'event': 'purchase',
-                'ecommerce': {
-                    'transaction_id': sessionId || 'free-' + Date.now(),
-                    'value': amount || product.pricing.price || 0,
-                    'currency': product.pricing.currency || 'CAD',
-                    'items': [{
-                        'item_name': product.name,
-                        'price': amount || product.pricing.price || 0
-                    }]
-                }
-            });
-        }
-    } else {
-        // Unknown product or direct access
-        productNameEl.textContent = 'Your Product';
-        mainDownloadEl.style.display = 'none';
-        document.querySelector('.download-section h3').textContent = 'Check your email for download links';
+    productNameEl.textContent = product.name;
+    
+    if (downloads.main) {
+        mainDownloadEl.href = downloads.main.url;
+        mainDownloadEl.querySelector('span').textContent = downloads.main.label;
     }
 
-    // If coming from Stripe, verify the session (requires backend)
-    // For static hosting, we trust the redirect URL
-    if (sessionId) {
-        console.log('Stripe session:', sessionId);
-        // In production, verify this session with your backend
+    if (downloads.additional && downloads.additional.length > 0) {
+        additionalDownloadsEl.innerHTML = downloads.additional.map(dl => `
+            <a href="${dl.url}" class="btn ghost" style="margin: 4px;">
+                <i class="fas ${dl.icon || 'fa-file'}"></i>&nbsp; ${dl.label}
+            </a>
+        `).join('');
     }
+
+    // GTM tracking
+    if (typeof dataLayer !== 'undefined') {
+        dataLayer.push({
+            'event': 'purchase',
+            'ecommerce': {
+                'transaction_id': sessionId || 'free-' + Date.now(),
+                'value': product.pricing.price || 0,
+                'currency': product.pricing.currency || 'CAD',
+                'items': [{ 'item_name': product.name, 'price': product.pricing.price || 0 }]
+            }
+        });
+    }
+} else {
+    productNameEl.textContent = 'Your Product';
+    mainDownloadEl.style.display = 'none';
+    document.querySelector('.card h2').textContent = 'Check your email for download links';
+}
 </script>
 </body>
 </html>
