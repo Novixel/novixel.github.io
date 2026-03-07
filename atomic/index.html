@@ -159,13 +159,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2><i class="fab fa-bitcoin" style="color: #F7931A;"></i> Tip Jar</h2>
         <p class="muted">Atomic Diff is free, but if it saved you hours of debugging, consider tipping.</p>
         
-        <div class="miniCard" style="margin-top: 16px; padding: 20px;">
-            <p style="font-family: monospace; font-size: 12px; word-break: break-all; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px;">
-                3HYnXVUxbtqvSkutKnPysaq6nuou8qScFn
-            </p>
-            <button onclick="navigator.clipboard.writeText('3HYnXVUxbtqvSkutKnPysaq6nuou8qScFn'); this.textContent='Copied!'; setTimeout(() => this.textContent='Copy BTC Address', 2000);" class="btn ghost" style="margin-top: 12px;">
-                Copy BTC Address
-            </button>
+        <div class="grid2" style="margin-top: 16px; align-items: center;">
+            <div class="miniCard" style="padding: 20px;">
+                <p style="font-family: monospace; font-size: 11px; word-break: break-all; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px;">
+                    3HYnXVUxbtqvSkutKnPysaq6nuou8qScFn
+                </p>
+                <button onclick="navigator.clipboard.writeText('3HYnXVUxbtqvSkutKnPysaq6nuou8qScFn'); this.textContent='Copied!'; setTimeout(() => this.textContent='Copy BTC Address', 2000);" class="btn ghost" style="margin-top: 12px;">
+                    Copy BTC Address
+                </button>
+            </div>
+            <div style="text-align: center;">
+                <img src="../btc-qr.png" alt="Bitcoin QR Code" style="width: 140px; height: 140px; border-radius: 8px; background: #fff; padding: 8px;">
+                <p class="muted" style="font-size: 12px; margin-top: 8px;">Scan to tip BTC</p>
+            </div>
         </div>
     </div>
 
