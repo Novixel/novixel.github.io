@@ -77,7 +77,7 @@ const NOVIXEL_PRODUCTS = {
             badge: 'PAY WHAT YOU WANT'
         },
         
-        stripeLink: 'https://buy.stripe.com/YOUR_STARTER_KIT_LINK',
+        stripeLink: 'https://buy.stripe.com/4gM5kCbGi9Xob0VeMKgUM08',
         
         downloads: {
             main: {
@@ -255,6 +255,44 @@ const NOVIXEL_PRODUCTS = {
         page: 'products/ai-fundamentals.html'
     },
 
+    'course-bundle': {
+        id: 'course-bundle',
+        name: 'AI Course Bundle',
+        tagline: 'Both AI courses at a discount',
+        description: 'AI Fundamentals + Build Your First AI Assistant. Save $27.',
+        category: 'courses',
+        accent: 'blue',
+        icon: '📚',
+        
+        pricing: {
+            price: 99,
+            originalPrice: 126,
+            currency: 'CAD',
+            type: 'one-time',
+            badge: 'BUNDLE & SAVE'
+        },
+        
+        stripeLink: 'https://buy.stripe.com/00w00i25I3z0ed7fQOgUM07',
+        
+        downloads: {
+            main: {
+                url: '#',
+                label: 'Access Courses'
+            }
+        },
+        
+        features: [
+            'AI Fundamentals course',
+            'Build Your First AI Assistant course',
+            '8+ hours of content',
+            'All code & materials',
+            'Lifetime access',
+            'Save $27'
+        ],
+        
+        page: 'products/course-bundle.html'
+    },
+
     // =========================================
     // Templates
     // =========================================
@@ -316,7 +354,7 @@ const NOVIXEL_PRODUCTS = {
             type: 'one-time'
         },
         
-        stripeLink: 'https://buy.stripe.com/YOUR_PULSE_LINK',
+        stripeLink: 'https://buy.stripe.com/8x26oGdOqfhIed79sqgUM04',
         page: 'products/pulse-template.html'
     },
 
@@ -335,7 +373,7 @@ const NOVIXEL_PRODUCTS = {
             type: 'one-time'
         },
         
-        stripeLink: 'https://buy.stripe.com/YOUR_FORGE_LINK',
+        stripeLink: 'https://buy.stripe.com/00w8wOeSu4D4d93gUSgUM05',
         page: 'products/forge-template.html'
     },
 
@@ -354,7 +392,7 @@ const NOVIXEL_PRODUCTS = {
             type: 'one-time'
         },
         
-        stripeLink: 'https://buy.stripe.com/YOUR_STARTER_LINK',
+        stripeLink: 'https://buy.stripe.com/00w3cu11E7Pg8SNdIGgUM06',
         page: 'products/starter-template.html'
     },
 
@@ -376,7 +414,7 @@ const NOVIXEL_PRODUCTS = {
             type: 'pwyw'
         },
         
-        stripeLink: 'https://buy.stripe.com/YOUR_GE01_LINK',
+        stripeLink: 'https://buy.stripe.com/cNifZg5hUglM1qlawugUM09',
         
         downloads: {
             main: { url: '#', label: 'Download (EPUB)' },
@@ -403,7 +441,7 @@ const NOVIXEL_PRODUCTS = {
             type: 'pwyw'
         },
         
-        stripeLink: 'https://buy.stripe.com/YOUR_GE02_LINK',
+        stripeLink: 'https://buy.stripe.com/aFa28q4dQfhI3ytfQOgUM0a',
         
         downloads: {
             main: { url: '#', label: 'Download (EPUB)' },
@@ -434,7 +472,7 @@ const NOVIXEL_PRODUCTS = {
             badge: 'ENTERPRISE'
         },
         
-        stripeLink: 'https://buy.stripe.com/YOUR_YOUTUBE_LINK',
+        stripeLink: 'https://buy.stripe.com/7sYbJ0h0Cc5w0mh0VUgUM0b',
         
         downloads: {
             main: { url: '#', label: 'Schedule Setup Call' }
@@ -537,3 +575,4 @@ function getSuccessUrl(productId) {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { NOVIXEL_PRODUCTS, PRODUCT_CATEGORIES, getProduct, getProductsByCategory, formatPrice };
 }
+
