@@ -31,7 +31,7 @@ const NOVIXEL_PRODUCTS = {
         
         stripeLink: 'https://buy.stripe.com/fZu14mcKm1qS3yt7kigUM0c',
         
-        // For checkout-success.html
+        // For checkout-success/
         downloads: {
             main: {
                 url: 'https://github.com/novixel/turbo/releases/latest/download/turbo.zip',
@@ -57,7 +57,7 @@ const NOVIXEL_PRODUCTS = {
             { value: '$5,226', label: 'Saved Per Year' }
         ],
         
-        page: 'turbo.html',
+        page: 'turbo/',
         featured: true
     },
 
@@ -99,7 +99,7 @@ const NOVIXEL_PRODUCTS = {
             'Lifetime Updates'
         ],
         
-        page: 'products/ai-starter-kit.html'
+        page: 'ai-starter-kit.html'
     },
 
     'atomic-diff': {
@@ -168,7 +168,7 @@ const NOVIXEL_PRODUCTS = {
             'Lifetime updates'
         ],
         
-        page: 'products/ai-assistant-course.html'
+        page: 'ai-assistant-course.html'
     },
 
     'ai-fundamentals': {
@@ -252,7 +252,7 @@ const NOVIXEL_PRODUCTS = {
             }
         ],
         
-        page: 'products/ai-fundamentals.html'
+        page: 'ai-fundamentals.html'
     },
 
     'course-bundle': {
@@ -290,7 +290,7 @@ const NOVIXEL_PRODUCTS = {
             'Save $27'
         ],
         
-        page: 'products/course-bundle.html'
+        page: 'course-bundle.html'
     },
 
     // =========================================
@@ -336,7 +336,7 @@ const NOVIXEL_PRODUCTS = {
             'Lifetime updates'
         ],
         
-        page: 'products/landing-page-bundle.html'
+        page: 'landing-page-bundle.html'
     },
 
     'pulse-template': {
@@ -355,7 +355,7 @@ const NOVIXEL_PRODUCTS = {
         },
         
         stripeLink: 'https://buy.stripe.com/8x26oGdOqfhIed79sqgUM04',
-        page: 'products/pulse-template.html'
+        page: 'pulse-template.html'
     },
 
     'forge-template': {
@@ -374,7 +374,7 @@ const NOVIXEL_PRODUCTS = {
         },
         
         stripeLink: 'https://buy.stripe.com/00w8wOeSu4D4d93gUSgUM05',
-        page: 'products/forge-template.html'
+        page: 'forge-template.html'
     },
 
     'starter-template': {
@@ -393,7 +393,7 @@ const NOVIXEL_PRODUCTS = {
         },
         
         stripeLink: 'https://buy.stripe.com/00w3cu11E7Pg8SNdIGgUM06',
-        page: 'products/starter-template.html'
+        page: 'starter-template.html'
     },
 
     // =========================================
@@ -423,7 +423,7 @@ const NOVIXEL_PRODUCTS = {
             ]
         },
         
-        page: 'products/galactic-empire-01.html'
+        page: 'galactic-empire-01.html'
     },
 
     'galactic-empire-02': {
@@ -450,7 +450,7 @@ const NOVIXEL_PRODUCTS = {
             ]
         },
         
-        page: 'products/galactic-empire-02.html'
+        page: 'galactic-empire-02.html'
     },
 
     // =========================================
@@ -478,7 +478,7 @@ const NOVIXEL_PRODUCTS = {
             main: { url: '#', label: 'Schedule Setup Call' }
         },
         
-        page: 'products/youtube-curator.html'
+        page: 'youtube-curator.html'
     }
 };
 
@@ -568,12 +568,13 @@ function formatPrice(product) {
  * Get checkout success URL for a product
  */
 function getSuccessUrl(productId) {
-    return `https://novixel.ca/checkout-success.html?product=${productId}`;
+    return `https://novixel.ca/checkout-success/?product=${productId}`;
 }
 
 // Export for use in other scripts
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { NOVIXEL_PRODUCTS, PRODUCT_CATEGORIES, getProduct, getProductsByCategory, formatPrice };
 }
+
 
 
