@@ -29,8 +29,7 @@ const NOVIXEL_PRODUCTS = {
             badge: 'LAUNCH SPECIAL'
         },
         
-        // Replace with actual Stripe Payment Link
-        stripeLink: 'https://buy.stripe.com/YOUR_TURBO_LINK',
+        stripeLink: 'https://buy.stripe.com/28EcN4eSu3z05GBeMKgUM00',
         
         // For checkout-success.html
         downloads: {
@@ -148,7 +147,7 @@ const NOVIXEL_PRODUCTS = {
             badge: 'FULL COURSE'
         },
         
-        stripeLink: 'https://buy.stripe.com/YOUR_AI_COURSE_LINK',
+        stripeLink: 'https://buy.stripe.com/5kQ7sKeSuc5wed77kigUM02',
         
         downloads: {
             main: {
@@ -188,7 +187,7 @@ const NOVIXEL_PRODUCTS = {
             badge: 'SELF-PACED COURSE'
         },
         
-        stripeLink: 'https://buy.stripe.com/YOUR_AI_FUNDAMENTALS_LINK',
+        stripeLink: 'https://buy.stripe.com/4gM5kC6lYglM9WReMKgUM01',
         
         downloads: {
             main: {
@@ -275,7 +274,7 @@ const NOVIXEL_PRODUCTS = {
             badge: '4 TEMPLATES'
         },
         
-        stripeLink: 'https://buy.stripe.com/YOUR_BUNDLE_LINK',
+        stripeLink: 'https://buy.stripe.com/dRmcN49ya1qSed7342gUM03',
         
         downloads: {
             main: {
