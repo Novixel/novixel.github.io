@@ -316,15 +316,9 @@ const NOVIXEL_PRODUCTS = {
         
         downloads: {
             main: {
-                url: '#',
-                label: 'Download Templates (ZIP)'
-            },
-            additional: [
-                { url: '#', label: 'Pulse Template', icon: 'fa-mobile-alt' },
-                { url: '#', label: 'Forge Template', icon: 'fa-paint-brush' },
-                { url: '#', label: 'Starter Template', icon: 'fa-rocket' },
-                { url: '#', label: 'Profile Template', icon: 'fa-user' }
-            ]
+                url: 'https://21c3b3af025b8eed239861dda489adb3.r2.cloudflarestorage.com/novixel-downloads/Landing-Page-Bundle.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=bf0769abed437a7a0a8582c9bfcd5122%2F20260307%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260307T203010Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=3ea04364e4ce82abebbb6b012a976b759f6179ed90ea78c2e65069ed71f5192a',
+                label: 'Download All Templates (ZIP)'
+            }
         },
         
         features: [
@@ -355,6 +349,14 @@ const NOVIXEL_PRODUCTS = {
         },
         
         stripeLink: 'https://buy.stripe.com/eVqaEWfWyb1sd939sqgUM0i',
+        
+        downloads: {
+            main: {
+                url: 'https://21c3b3af025b8eed239861dda489adb3.r2.cloudflarestorage.com/novixel-downloads/Pulse-App-Template.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=bf0769abed437a7a0a8582c9bfcd5122%2F20260307%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260307T203006Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=68b88fab13188714eaf808021718138a533355c7f423268f07ac28a63fcc56c6',
+                label: 'Download Pulse Template (ZIP)'
+            }
+        },
+        
         page: 'pulse-template.html'
     },
 
@@ -374,6 +376,14 @@ const NOVIXEL_PRODUCTS = {
         },
         
         stripeLink: 'https://buy.stripe.com/fZudR88u67Pgglf6gegUM0g',
+        
+        downloads: {
+            main: {
+                url: 'https://21c3b3af025b8eed239861dda489adb3.r2.cloudflarestorage.com/novixel-downloads/Forge-Agency-Template.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=bf0769abed437a7a0a8582c9bfcd5122%2F20260307%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260307T203008Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=1ad961f6e218eb70c2fe4edb22e9d0657b501512d1d7cb8a6c43b9fbc87f1010',
+                label: 'Download Forge Template (ZIP)'
+            }
+        },
+        
         page: 'forge-template.html'
     },
 
@@ -393,6 +403,14 @@ const NOVIXEL_PRODUCTS = {
         },
         
         stripeLink: 'https://buy.stripe.com/9B67sKeSu0mO2up5cagUM0j',
+        
+        downloads: {
+            main: {
+                url: 'https://21c3b3af025b8eed239861dda489adb3.r2.cloudflarestorage.com/novixel-downloads/Starter-SaaS-Template.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=bf0769abed437a7a0a8582c9bfcd5122%2F20260307%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260307T203009Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=e4390a9c845baedc9bcfd78d8d4548de14059097ea2921200f4a1a6767cb22fb',
+                label: 'Download Starter Template (ZIP)'
+            }
+        },
+        
         page: 'starter-template.html'
     },
 
