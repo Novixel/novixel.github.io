@@ -22,14 +22,14 @@ const NOVIXEL_PRODUCTS = {
         icon: '⚡',
         
         pricing: {
-            price: 9,
-            originalPrice: 49,
+            price: 49,
+            
             currency: 'CAD',
             type: 'one-time',
-            badge: 'LAUNCH SPECIAL'
+            badge: 'ONE LICENSE'
         },
         
-        stripeLink: 'https://buy.stripe.com/28EcN4eSu3z05GBeMKgUM00',
+        stripeLink: 'https://buy.stripe.com/fZu14mcKm1qS3yt7kigUM0c',
         
         // For checkout-success.html
         downloads: {
@@ -575,4 +575,5 @@ function getSuccessUrl(productId) {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { NOVIXEL_PRODUCTS, PRODUCT_CATEGORIES, getProduct, getProductsByCategory, formatPrice };
 }
+
 
