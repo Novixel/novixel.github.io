@@ -294,18 +294,34 @@
         }
     </style>
 </head>
-<body>
-    <!-- Navigation -->
-    <div class="nav-container">
-        <div class="logo">
-            <img src="Novixel-icon-Trans1.png" alt="Novixel Logo" height="40">
-        </div>
-        <button class="fas fa-moon" onclick="toggleDarkMode(event)"></button>
-    </div>
-
-    <hr class="separator">
-
+<body class="dark-mode">
     <div class="container">
+        <header class="header">
+            <a href="/" class="logoBtn" aria-label="Home">
+                <img class="mainlogo" src="Novixel-icon-Trans1.png" alt="Novixel logo">
+            </a>
+
+            <div class="headline">
+                <h1>Novixel</h1>
+                <p class="subhead">
+                    Technology solutions that work as hard as you do.
+                    <span class="location">Dawson Creek, BC</span>
+                </p>
+            </div>
+
+            <button class="iconBtn fas fa-moon" type="button" onclick="toggleDarkMode(event)" aria-label="Toggle dark mode"></button>
+        </header>
+
+        <hr class="separator">
+
+        <nav class="tab" role="tablist">
+            <a class="tablinks" href="/">Home</a>
+            <a class="tablinks" href="/#About">About</a>
+            <a class="tablinks active" href="/#Divisions">Divisions</a>
+            <a class="tablinks" href="/#Products">Products</a>
+            <a class="tablinks" href="/#Contact">Contact</a>
+        </nav>
+
         <!-- Hero Section -->
         <section class="hero">
             <h1>Custom AI-Enhanced Crypto Trading Bots</h1>

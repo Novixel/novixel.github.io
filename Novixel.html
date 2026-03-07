@@ -18,30 +18,31 @@
 
 <body>
     <div class="container">
-        <header class="header">
-            <button class="logoBtn" type="button" onclick="CoolThing()" aria-label="Toggle logo">
-                <img class="mainlogo" src="Novixel-icon-Trans1.png" alt="Novixel logo">
-            </button>
+    <header class="header">
+        <a href="/" class="logoBtn" aria-label="Home">
+            <img class="mainlogo" src="Novixel-icon-Trans1.png" alt="Novixel logo">
+        </a>
 
-            <div class="headline">
-                <h1>Find Your Solution</h1>
-                <p class="subhead">
-                    Software, IT support, and automation - built for real-world reliability.
-                    <span class="location">Dawson Creek, BC</span>
-                </p>
-            </div>
+        <div class="headline">
+            <h1>Novixel</h1>
+            <p class="subhead">
+                Technology solutions that work as hard as you do.
+                <span class="location">Dawson Creek, BC</span>
+            </p>
+        </div>
 
-            <button class="iconBtn fas fa-moon" type="button" onclick="toggleDarkMode(event)" aria-label="Toggle dark mode"></button>
-        </header>
+        <button class="iconBtn fas fa-moon" type="button" onclick="toggleDarkMode(event)" aria-label="Toggle dark mode"></button>
+    </header>
 
-        <hr class="separator">
+    <hr class="separator">
 
-        <nav class="tab" role="tablist" aria-label="Primary navigation">
-            <button class="tablinks" role="tab" aria-selected="true" aria-controls="Home" id="tab-Home" onclick="openTab(event, 'Home')">Home</button>
-            <button class="tablinks" role="tab" aria-selected="false" aria-controls="About" id="tab-About" onclick="openTab(event, 'About')">About</button>
-            <button class="tablinks" role="tab" aria-selected="false" aria-controls="Skills" id="tab-Skills" onclick="openTab(event, 'Skills')">Skills</button>
-            <button class="tablinks" role="tab" aria-selected="false" aria-controls="Services" id="tab-Services" onclick="openTab(event, 'Services')">Services</button>
-        </nav>
+    <nav class="tab" role="tablist">
+        <a class="tablinks" href="/">Home</a>
+        <a class="tablinks" href="/#About">About</a>
+        <a class="tablinks" href="/#Divisions">Divisions</a>
+        <a class="tablinks" href="/#Products">Products</a>
+        <a class="tablinks" href="/#Contact">Contact</a>
+    </nav>
 
         <!-- HOME -->
         <section id="Home" class="tabcontent" role="tabpanel" aria-labelledby="tab-Home">
@@ -255,6 +256,7 @@
     <script src="script.js?v=2"></script>
 </body>
 </html>
+
 
 
 
