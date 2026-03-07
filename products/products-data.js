@@ -29,7 +29,7 @@ const NOVIXEL_PRODUCTS = {
             badge: 'ONE LICENSE'
         },
         
-        stripeLink: 'https://buy.stripe.com/fZu14mcKm1qS3yt7kigUM0c',
+        stripeLink: 'https://buy.stripe.com/bJe4gy9ya4D4glf7kigUM0k',
         
         // For checkout-success/
         downloads: {
@@ -77,7 +77,7 @@ const NOVIXEL_PRODUCTS = {
             badge: 'PAY WHAT YOU WANT'
         },
         
-        stripeLink: 'https://buy.stripe.com/4gM5kCbGi9Xob0VeMKgUM08',
+        stripeLink: 'https://buy.stripe.com/7sY4gy11E2uWfhb8omgUM0l',
         
         downloads: {
             main: {
@@ -147,7 +147,7 @@ const NOVIXEL_PRODUCTS = {
             badge: 'FULL COURSE'
         },
         
-        stripeLink: 'https://buy.stripe.com/5kQ7sKeSuc5wed77kigUM02',
+        stripeLink: 'https://buy.stripe.com/00eVcfWy1qS3ytdIGgUM0f',
         
         downloads: {
             main: {
@@ -187,7 +187,7 @@ const NOVIXEL_PRODUCTS = {
             badge: 'SELF-PACED COURSE'
         },
         
-        stripeLink: 'https://buy.stripe.com/4gM5kC6lYglM9WReMKgUM01',
+        stripeLink: 'https://buy.stripe.com/5kQfZgh0Cc5w7OJdIGgUM0h',
         
         downloads: {
             main: {
@@ -272,7 +272,7 @@ const NOVIXEL_PRODUCTS = {
             badge: 'BUNDLE & SAVE'
         },
         
-        stripeLink: 'https://buy.stripe.com/00w00i25I3z0ed7fQOgUM07',
+        stripeLink: 'https://buy.stripe.com/eVq28qeSu5H85GB6gegUM0d',
         
         downloads: {
             main: {
@@ -312,7 +312,7 @@ const NOVIXEL_PRODUCTS = {
             badge: '4 TEMPLATES'
         },
         
-        stripeLink: 'https://buy.stripe.com/dRmcN49ya1qSed7342gUM03',
+        stripeLink: 'https://buy.stripe.com/4gM4gyh0C2uWd939sqgUM0e',
         
         downloads: {
             main: {
@@ -354,7 +354,7 @@ const NOVIXEL_PRODUCTS = {
             type: 'one-time'
         },
         
-        stripeLink: 'https://buy.stripe.com/8x26oGdOqfhIed79sqgUM04',
+        stripeLink: 'https://buy.stripe.com/eVqaEWfWyb1sd939sqgUM0i',
         page: 'pulse-template.html'
     },
 
@@ -373,7 +373,7 @@ const NOVIXEL_PRODUCTS = {
             type: 'one-time'
         },
         
-        stripeLink: 'https://buy.stripe.com/00w8wOeSu4D4d93gUSgUM05',
+        stripeLink: 'https://buy.stripe.com/fZudR88u67Pgglf6gegUM0g',
         page: 'forge-template.html'
     },
 
@@ -392,7 +392,7 @@ const NOVIXEL_PRODUCTS = {
             type: 'one-time'
         },
         
-        stripeLink: 'https://buy.stripe.com/00w3cu11E7Pg8SNdIGgUM06',
+        stripeLink: 'https://buy.stripe.com/9B67sKeSu0mO2up5cagUM0j',
         page: 'starter-template.html'
     },
 
@@ -414,7 +414,7 @@ const NOVIXEL_PRODUCTS = {
             type: 'pwyw'
         },
         
-        stripeLink: 'https://buy.stripe.com/cNifZg5hUglM1qlawugUM09',
+        stripeLink: 'https://buy.stripe.com/14AdR8fWy2uW6KF1ZYgUM0n',
         
         downloads: {
             main: { url: '#', label: 'Download (EPUB)' },
@@ -441,7 +441,7 @@ const NOVIXEL_PRODUCTS = {
             type: 'pwyw'
         },
         
-        stripeLink: 'https://buy.stripe.com/aFa28q4dQfhI3ytfQOgUM0a',
+        stripeLink: 'https://buy.stripe.com/3cI14m7q2glMglfdIGgUM0o',
         
         downloads: {
             main: { url: '#', label: 'Download (EPUB)' },
@@ -472,7 +472,7 @@ const NOVIXEL_PRODUCTS = {
             badge: 'ENTERPRISE'
         },
         
-        stripeLink: 'https://buy.stripe.com/7sYbJ0h0Cc5w0mh0VUgUM0b',
+        stripeLink: 'https://buy.stripe.com/aFa3cu25Ib1s1qleMKgUM0m',
         
         downloads: {
             main: { url: '#', label: 'Schedule Setup Call' }
@@ -575,6 +575,7 @@ function getSuccessUrl(productId) {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { NOVIXEL_PRODUCTS, PRODUCT_CATEGORIES, getProduct, getProductsByCategory, formatPrice };
 }
+
 
 
 
