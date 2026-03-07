@@ -125,7 +125,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <p class="muted" style="margin-bottom: 20px;">Windows 10/11 • No account required</p>
                 
                 <div style="display: flex; flex-direction: column; gap: 12px;">
-                    <a class="btn primary" href="https://github.com/Novixel/atomic-diff-releases/releases/latest" target="_blank" style="justify-content: center;">
+                    <a class="btn primary" id="direct-download" href="#" onclick="getDirectDownload(event)" style="justify-content: center;">
+                        <i class="fas fa-download"></i> Direct Download (22 MB)
+                    </a>
+                    <a class="btn ghost" href="https://github.com/Novixel/atomic-diff-releases/releases/latest" target="_blank" style="justify-content: center;">
                         <i class="fab fa-github"></i> Download from GitHub
                     </a>
                     <a class="btn ghost" href="https://novixel.itch.io/atomic-diff" target="_blank" style="justify-content: center;">
@@ -135,6 +138,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </div>
     </div>
+
+    <script>
+    async function getDirectDownload(e) {
+        e.preventDefault();
+        const btn = document.getElementById('direct-download');
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing...';
+        try {
+            const resp = await fetch('https://novixel-downloads.officialnovixel.workers.dev/generate-token?product=atomic-diff');
+            const data = await resp.json();
+            if (data.downloadUrl) {
+                window.location.href = data.downloadUrl;
+                btn.innerHTML = '<i class="fas fa-check"></i> Download Started';
+            }
+        } catch (err) {
+            btn.innerHTML = '<i class="fas fa-download"></i> Direct Download (22 MB)';
+            window.open('https://github.com/Novixel/atomic-diff-releases/releases/latest', '_blank');
+        }
+    }
+    </script>
 
     <!-- FAQ -->
     <div class="card">
