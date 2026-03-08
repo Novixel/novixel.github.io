@@ -61,6 +61,50 @@ const NOVIXEL_PRODUCTS = {
         featured: true
     },
 
+    'locallarry': {
+        id: 'locallarry',
+        name: 'LocalLarry',
+        tagline: 'Private AI assistant running 100% on your computer',
+        description: 'No API keys, no subscriptions, no data leaving your machine. One-click install, voice enabled, works offline.',
+        category: 'ai',
+        accent: 'green',
+        icon: '🦙',
+        
+        pricing: {
+            price: 29,
+            currency: 'USD',
+            type: 'one-time',
+            badge: 'ONE LICENSE'
+        },
+        
+        stripeLink: 'https://buy.stripe.com/eVq9AS39M7Pgb0VawugUM0w',
+        
+        downloads: {
+            main: {
+                url: '#', // Handled by worker
+                label: 'Download LocalLarry (ZIP)'
+            }
+        },
+        
+        features: [
+            '100% local - no cloud',
+            'One-click installer',
+            'Voice input/output',
+            'Works offline',
+            'Auto hardware detection',
+            '8 neural voices'
+        ],
+        
+        stats: [
+            { value: '$0', label: 'Monthly Cost' },
+            { value: '100%', label: 'Private' },
+            { value: '∞', label: 'Offline Use' }
+        ],
+        
+        page: 'locallarry/',
+        featured: true
+    },
+
     'ai-starter-kit': {
         id: 'ai-starter-kit',
         name: 'AI Automation Starter Kit',
