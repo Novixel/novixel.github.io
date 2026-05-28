@@ -1187,3 +1187,414 @@ body.dark-mode .location {
 body.dark-mode .card {
     border-color: rgba(57, 255, 136, 0.08);
 }
+
+/* ===========================================
+   Novixel Labs Rebrand Layout
+   =========================================== */
+.panelStack {
+    display: grid;
+    gap: 18px;
+}
+
+.panelStack > *,
+.card,
+.heroCard,
+.miniCard,
+.serviceCard,
+.caseGrid > *,
+.contactLayout > * {
+    min-width: 0;
+}
+
+.caseStudy p,
+.contactLayout p {
+    overflow-wrap: break-word;
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .16em;
+}
+
+body.dark-mode .eyebrow {
+    color: var(--accent);
+}
+
+.heroIntro {
+    padding: 38px 32px;
+    background:
+        radial-gradient(circle at 86% 12%, rgba(0,255,102,.12), transparent 33%),
+        linear-gradient(180deg, rgba(0,0,0,.96), rgba(8,12,10,.96));
+}
+
+.heroTitle {
+    max-width: 760px;
+    margin: 0 0 14px;
+    font-size: clamp(2.1rem, 5vw, 3.4rem);
+    line-height: 1.08;
+    letter-spacing: -.04em;
+}
+
+body.dark-mode .heroTitle {
+    color: #f0fff6;
+}
+
+.lead {
+    max-width: 760px;
+    margin: 0 0 20px;
+    font-size: 1.08rem;
+    line-height: 1.7;
+}
+
+.sectionHeading {
+    margin-bottom: 18px;
+}
+
+.sectionHeading h2 {
+    margin-bottom: 8px;
+}
+
+.grid3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.serviceGridFour {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.proofRow {
+    margin: 0;
+    padding: 22px 14px;
+    border-radius: var(--radius);
+    background: rgba(0,255,102,.025);
+    border: 1px solid rgba(57,255,136,.1);
+}
+
+.proofRow .metricValue {
+    font-size: 1.45rem;
+    letter-spacing: .12em;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0 12px;
+    padding: 4px 9px;
+    border-radius: 999px;
+    border: 1px solid rgba(57,255,136,.2);
+    background: rgba(57,255,136,.08);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+}
+
+.status.live,
+.status.remote {
+    border-color: rgba(45,212,191,.32);
+    background: rgba(45,212,191,.1);
+    color: var(--accent-teal);
+}
+
+.status.available,
+.status.active {
+    border-color: rgba(57,255,136,.32);
+    color: var(--accent);
+}
+
+.status.premium {
+    border-color: rgba(251,191,36,.3);
+    background: rgba(251,191,36,.08);
+    color: var(--accent-amber);
+}
+
+.status.lab,
+.status.archive,
+.status.internal {
+    border-color: rgba(176,176,176,.22);
+    background: rgba(176,176,176,.06);
+    color: var(--muted-dark);
+}
+
+.projectPreview h3 {
+    font-size: 1.18rem;
+}
+
+.offerCard {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(250px, .9fr);
+    gap: 22px;
+    align-items: center;
+}
+
+.offerAction {
+    border: 1px solid rgba(57,255,136,.16);
+    border-radius: var(--radius);
+    padding: 18px;
+    background: rgba(57,255,136,.035);
+}
+
+.offerAction strong {
+    color: var(--accent);
+    display: block;
+    font-size: 1.15rem;
+}
+
+.tinyLabel {
+    margin: 0 0 6px;
+    color: var(--muted-dark);
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.engagementGrid .miniCard {
+    position: relative;
+    padding-top: 20px;
+}
+
+.engagementGrid .stepNumber {
+    margin-bottom: 12px;
+}
+
+.textLink {
+    display: inline-block;
+    margin-top: 12px;
+    font-weight: 600;
+}
+
+.caseStudy {
+    padding: 26px;
+}
+
+.caseHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.caseHeader h2 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.caseType {
+    margin: 8px 0 0;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: 12px;
+}
+
+.caseGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.caseGrid p {
+    margin-bottom: 0;
+}
+
+.proofLine {
+    margin: 22px 0 0;
+    padding-top: 16px;
+    border-top: 1px solid rgba(57,255,136,.12);
+}
+
+body.dark-mode .proofLine strong {
+    color: var(--accent);
+}
+
+.compact .btn {
+    margin-top: 8px;
+}
+
+.filters {
+    margin: 0;
+    padding: 8px 0 4px;
+}
+
+.filters .pill {
+    cursor: pointer;
+}
+
+.filters .pill.active {
+    border-color: rgba(57,255,136,.5);
+    background: rgba(57,255,136,.15);
+}
+
+.contactLayout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(265px, .8fr);
+    gap: 18px;
+    align-items: start;
+}
+
+.contactAside p i {
+    width: 20px;
+    color: var(--accent);
+}
+
+.intakeForm {
+    max-width: none;
+}
+
+.contactForm select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    color: var(--text);
+    font-size: 14px;
+}
+
+body.dark-mode .contactForm select {
+    border-color: rgba(255,255,255,.08);
+    background: rgba(0,0,0,.35);
+    color: var(--text-dark);
+}
+
+.footerLinks button {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+}
+
+.footerLinks button:hover {
+    color: var(--accent);
+}
+
+body.dark-mode .footerLinks button {
+    color: var(--muted-dark);
+}
+
+body.dark-mode .footerLinks button:hover {
+    color: var(--accent);
+}
+
+body.dark-mode .btn.primary {
+    border-color: rgba(57,255,136,.55);
+    background: linear-gradient(180deg, rgba(57,255,136,.22), rgba(0,0,0,.9));
+    color: var(--accent);
+    text-shadow: 0 0 10px rgba(57,255,136,.22);
+}
+
+body.dark-mode .btn.primary:hover {
+    border-color: rgba(57,255,136,.8);
+    box-shadow: 0 0 24px rgba(57,255,136,.16);
+}
+
+body.dark-mode .location {
+    border-color: rgba(57,255,136,.3);
+    color: var(--accent);
+    box-shadow: 0 0 8px rgba(57,255,136,.12);
+}
+
+@media (max-width: 860px) {
+    .grid3,
+    .caseGrid,
+    .serviceGridFour,
+    .offerCard,
+    .contactLayout {
+        grid-template-columns: 1fr;
+    }
+
+    .heroIntro {
+        padding: 28px 20px;
+    }
+
+    .caseHeader {
+        display: block;
+    }
+}
+
+@media (max-width: 500px) {
+    html,
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    main,
+    .panelStack,
+    .tab {
+        max-width: 100%;
+    }
+
+    .card,
+    .heroCard,
+    .proofRow {
+        width: calc(100vw - 28px);
+        max-width: calc(100vw - 28px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .tab {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        width: 100%;
+        max-width: 370px;
+        margin: 6px auto 18px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .tablinks {
+        width: 100%;
+        padding: 9px 14px;
+        font-size: 14px;
+    }
+
+    .heroTitle {
+        font-size: 1.9rem;
+        letter-spacing: -.03em;
+    }
+
+    .proofRow {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .proofRow .metricValue {
+        font-size: 1.3rem;
+    }
+
+    .ctaRow .btn {
+        min-width: 0;
+    }
+
+    .contactForm input,
+    .contactForm select,
+    .contactForm textarea {
+        min-width: 0;
+    }
+
+    .tabcontent p,
+    .tabcontent h2,
+    .tabcontent h3 {
+        overflow-wrap: anywhere;
+    }
+}

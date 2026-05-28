@@ -31,7 +31,7 @@
     <script>const PRODUCT_ID = 'YOUR_PRODUCT_ID';</script>
     
     <!-- Dynamic meta tags populated by JS -->
-    <title>Loading... | Novixel</title>
+    <title>Loading... | Novixel Labs</title>
     <meta name="description" content="">
     <link rel="canonical" href="">
 
@@ -58,8 +58,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
         <div class="header-inner">
             <a href="../index.html" class="logo">
-                <img src="../Novixel-icon-Trans1.png" alt="Novixel">
-                Novixel
+                <img src="../Novixel-icon-Trans1.png" alt="Novixel Labs">
+                Novixel Labs
             </a>
             <nav class="header-nav">
                 <a href="../products.html" class="back-link"><i class="fas fa-arrow-left"></i> All Products</a>
@@ -136,10 +136,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="footer-links">
             <a href="../index.html">Home</a>
             <a href="../products.html">Products</a>
-            <a href="../Novixel.html">Portfolio</a>
-            <a href="../aicom.html">AI Solutions</a>
+            <a href="/?tab=Projects">Projects</a>
+            <a href="/?tab=Services">Services</a>
         </div>
-        <p class="copy">&copy; 2026 Novixel. All rights reserved.</p>
+        <p class="copy">&copy; 2026 Novixel Labs. All rights reserved.</p>
     </div>
 </footer>
 
@@ -161,11 +161,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         document.body.classList.add(`accent-${product.accent}`);
 
         // Update meta tags
-        document.title = `${product.name} | Novixel`;
+        document.title = `${product.name} | Novixel Labs`;
         document.querySelector('meta[name="description"]').content = product.description;
         document.querySelector('link[rel="canonical"]').href = `https://novixel.ca/${product.page}`;
         document.querySelector('meta[property="og:url"]').content = `https://novixel.ca/${product.page}`;
-        document.querySelector('meta[property="og:title"]').content = `${product.name} | Novixel`;
+        document.querySelector('meta[property="og:title"]').content = `${product.name} | Novixel Labs`;
         document.querySelector('meta[property="og:description"]').content = product.description;
 
         // Hero section
@@ -178,7 +178,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         // Hero CTA
         const ctaBtn = document.getElementById('hero-cta-primary');
         ctaBtn.textContent = product.pricing.type === 'free' ? 
-            'Get Free' : `Get ${product.name.split(' ')[0]} — $${product.pricing.price}`;
+            'Get Free' : `Get ${product.name.split(' ')[0]} - $${product.pricing.price}`;
 
         // Features grid
         if (product.features && product.features.length > 0) {
@@ -235,7 +235,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const checkoutBtn = document.getElementById('checkout-btn');
         checkoutBtn.href = product.stripeLink || '#';
         checkoutBtn.textContent = product.pricing.type === 'free' ? 
-            'Get Free' : `Buy Now — $${product.pricing.price}`;
+            'Get Free' : `Buy Now - $${product.pricing.price}`;
 
         // Track checkout click
         checkoutBtn.addEventListener('click', () => {

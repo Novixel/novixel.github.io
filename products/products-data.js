@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Novixel Products Data
  * Central configuration for all products
  * 
@@ -19,7 +19,7 @@ const NOVIXEL_PRODUCTS = {
         description: '50-100x faster responses, 60-90% cheaper. Zero-token execution for routine requests.',
         category: 'ai',
         accent: 'cyan',
-        icon: 'âš¡',
+        icon: 'bolt',
         
         pricing: {
             price: 49,
@@ -64,11 +64,11 @@ const NOVIXEL_PRODUCTS = {
     'locallarry': {
         id: 'locallarry',
         name: 'LocalLarry',
-        tagline: 'Private AI assistant running 100% on your computer',
-        description: 'No API keys, no subscriptions, no data leaving your machine. One-click install, voice enabled, works offline.',
+        tagline: 'Local-first private AI assistant with offline operation',
+        description: 'A one-time-license local AI assistant with offline operation and selectable local or online voice modes.',
         category: 'ai',
         accent: 'green',
-        icon: '🦙',
+        icon: 'llama',
         
         pricing: {
             price: 29,
@@ -87,10 +87,10 @@ const NOVIXEL_PRODUCTS = {
         },
         
         features: [
-            '100% local - no cloud',
+            'Local AI model operation',
             'One-click installer',
             'Voice input/output',
-            'Works offline',
+            'Offline mode available',
             'Auto hardware detection',
             '8 neural voices'
         ],
@@ -98,7 +98,7 @@ const NOVIXEL_PRODUCTS = {
         stats: [
             { value: '$0', label: 'Monthly Cost' },
             { value: '100%', label: 'Private' },
-            { value: '∞', label: 'Offline Use' }
+            { value: '8', label: 'Offline Use' }
         ],
         
         page: 'locallarry/',
@@ -112,7 +112,7 @@ const NOVIXEL_PRODUCTS = {
         description: 'Templates, guides, workflows, and example projects to get you building in minutes.',
         category: 'ai',
         accent: 'cyan',
-        icon: 'ðŸš€',
+        icon: '🚀',
         
         pricing: {
             price: 0,
@@ -153,7 +153,7 @@ const NOVIXEL_PRODUCTS = {
         description: 'See exactly what changed, nothing more. Perfect for reviewing AI-generated code changes.',
         category: 'ai',
         accent: 'purple',
-        icon: 'âš›ï¸',
+        icon: 'atom',
         
         pricing: {
             price: 0,
@@ -182,7 +182,7 @@ const NOVIXEL_PRODUCTS = {
         description: 'Video lessons, code examples, and hands-on projects. Go from zero to deployed assistant.',
         category: 'courses',
         accent: 'blue',
-        icon: 'ðŸ¤–',
+        icon: '🤖',
         
         pricing: {
             price: 97,
@@ -222,7 +222,7 @@ const NOVIXEL_PRODUCTS = {
         description: 'Understand transformers, attention mechanisms, embeddings, and memory systems.',
         category: 'courses',
         accent: 'blue',
-        icon: 'ðŸŽ“',
+        icon: '🎓',
         
         pricing: {
             price: 29,
@@ -306,7 +306,7 @@ const NOVIXEL_PRODUCTS = {
         description: 'AI Fundamentals + Build Your First AI Assistant. Save $27.',
         category: 'courses',
         accent: 'blue',
-        icon: 'ðŸ“š',
+        icon: '📚',
         
         pricing: {
             price: 99,
@@ -347,7 +347,7 @@ const NOVIXEL_PRODUCTS = {
         description: 'SaaS, Agency, Mobile App, and Portfolio designs. Clean HTML/CSS, fully responsive.',
         category: 'templates',
         accent: 'pink',
-        icon: 'ðŸ“¦',
+        icon: '📦',
         
         pricing: {
             price: 49,
@@ -379,12 +379,12 @@ const NOVIXEL_PRODUCTS = {
 
     'pulse-template': {
         id: 'pulse-template',
-        name: 'Pulse â€” Mobile App Landing',
+        name: 'Pulse - Mobile App Landing',
         tagline: 'Modern mobile app landing page template',
         description: 'App store buttons, feature sections, testimonials, and pricing.',
         category: 'templates',
         accent: 'pink',
-        icon: 'ðŸ“±',
+        icon: '📱',
         
         pricing: {
             price: 29,
@@ -406,12 +406,12 @@ const NOVIXEL_PRODUCTS = {
 
     'forge-template': {
         id: 'forge-template',
-        name: 'Forge â€” Creative Agency',
+        name: 'Forge - Creative Agency',
         tagline: 'Bold creative agency template',
         description: 'Portfolio showcase, team section, services, and contact form.',
         category: 'templates',
         accent: 'pink',
-        icon: 'ðŸŽ¨',
+        icon: '🎨',
         
         pricing: {
             price: 29,
@@ -433,12 +433,12 @@ const NOVIXEL_PRODUCTS = {
 
     'starter-template': {
         id: 'starter-template',
-        name: 'Starter â€” SaaS Landing',
+        name: 'Starter - SaaS Landing',
         tagline: 'Clean SaaS landing page template',
         description: 'Hero, features, pricing table, testimonials, and FAQ.',
         category: 'templates',
         accent: 'pink',
-        icon: 'ðŸš€',
+        icon: '🚀',
         
         pricing: {
             price: 29,
@@ -464,11 +464,11 @@ const NOVIXEL_PRODUCTS = {
     'galactic-empire-01': {
         id: 'galactic-empire-01',
         name: 'Galactic Empire: The Rubble',
-        tagline: 'Short Story 01 â€” Three years stranded',
+        tagline: 'Short Story 01 - Three years stranded',
         description: 'Three years stranded on a planet that wants her dead. The beginning of an epic survival saga.',
         category: 'creative',
         accent: 'purple',
-        icon: 'ðŸŒŒ',
+        icon: '🌌',
         
         pricing: {
             price: 1,
@@ -488,11 +488,11 @@ const NOVIXEL_PRODUCTS = {
     'galactic-empire-02': {
         id: 'galactic-empire-02',
         name: 'Galactic Empire: Ore and Blood',
-        tagline: 'Short Story 02 â€” The mineral fights back',
+        tagline: 'Short Story 02 - The mineral fights back',
         description: 'Mining alien ore. Fighting beasts. The wreck begins to breathe.',
         category: 'creative',
         accent: 'purple',
-        icon: 'âš”ï¸',
+        icon: 'swords',
         
         pricing: {
             price: 2,
@@ -512,11 +512,11 @@ const NOVIXEL_PRODUCTS = {
     'galactic-empire-03': {
         id: 'galactic-empire-03',
         name: 'Galactic Empire: The Broken Sky',
-        tagline: 'Short Story 03 â€” The ship takes its first breath',
+        tagline: 'Short Story 03 - The ship takes its first breath',
         description: 'After three years of silence, hope returns. The ship comes alive.',
         category: 'creative',
         accent: 'purple',
-        icon: 'ðŸš€',
+        icon: '🚀',
         
         pricing: {
             price: 2,
@@ -536,11 +536,11 @@ const NOVIXEL_PRODUCTS = {
     'galactic-empire-04': {
         id: 'galactic-empire-04',
         name: 'Galactic Empire: Echoes of War',
-        tagline: 'Short Story 04 â€” Into the graveyard of ships',
-        description: 'She breaks free of the planetâ€”into a graveyard of ships bigger than cities.',
+        tagline: 'Short Story 04 - Into the graveyard of ships',
+        description: 'She breaks free of the planet - into a graveyard of ships bigger than cities.',
         category: 'creative',
         accent: 'purple',
-        icon: 'ðŸ’€',
+        icon: '💀',
         
         pricing: {
             price: 2,
@@ -560,11 +560,11 @@ const NOVIXEL_PRODUCTS = {
     'galactic-empire-05': {
         id: 'galactic-empire-05',
         name: 'Galactic Empire: The Pirate\'s Shadow',
-        tagline: 'Short Story 05 â€” The galaxy isn\'t empty',
+        tagline: 'Short Story 05 - The galaxy isn\'t empty',
         description: 'The galaxy isn\'t empty. It\'s full of predators. Time to become one.',
         category: 'creative',
         accent: 'purple',
-        icon: 'â˜ ï¸',
+        icon: 'pirate',
         
         pricing: {
             price: 3,
@@ -584,11 +584,11 @@ const NOVIXEL_PRODUCTS = {
     'galactic-empire-bundle': {
         id: 'galactic-empire-bundle',
         name: 'Galactic Empire: 5-Story Bundle',
-        tagline: 'Stories 01-05 â€” Save 50%',
+        tagline: 'Stories 01-05 - Save 50%',
         description: 'All 5 introductory stories. From crash landing to first pirate encounter.',
         category: 'creative',
         accent: 'purple',
-        icon: 'ðŸ“š',
+        icon: '📚',
         
         pricing: {
             price: 5,
@@ -618,11 +618,11 @@ const NOVIXEL_PRODUCTS = {
     'galactic-empire-book': {
         id: 'galactic-empire-book',
         name: 'Galactic Empire: Origins',
-        tagline: 'Complete Book â€” All 12 Chapters',
+        tagline: 'Complete Book - All 12 Chapters',
         description: 'The complete saga. 15,000+ words. From crash landing to pirate queen to the final battle.',
         category: 'creative',
         accent: 'purple',
-        icon: 'ðŸ“–',
+        icon: '📖',
         featured: true,
         
         pricing: {
@@ -666,7 +666,7 @@ const NOVIXEL_PRODUCTS = {
         description: 'AI-powered content curation, editing, and scheduling. Done-for-you setup.',
         category: 'enterprise',
         accent: 'amber',
-        icon: 'ðŸŽ¬',
+        icon: '🎬',
         
         pricing: {
             price: 2000,
@@ -778,8 +778,6 @@ function getSuccessUrl(productId) {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { NOVIXEL_PRODUCTS, PRODUCT_CATEGORIES, getProduct, getProductsByCategory, formatPrice };
 }
-
-
 
 
 

@@ -1,2 +1,4 @@
+# Local/private Command Center artifacts should stay out of the public site.
 command-center.html
 COMMAND_CENTER_SUMMARY.md
+archive/local-private/
