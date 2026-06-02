@@ -2,533 +2,1157 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Endless Jump Game | Novixel Labs</title>
-    <meta name="description" content="A small browser game experiment from Novixel Labs. Jump over obstacles and beat your high score.">
+    <title>Automation Runner | Novixel Labs</title>
+    <meta name="description" content="Automation Runner is a browser game experiment from Novixel Labs. Dodge manual work, collect integrations, and build smarter systems.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#00ff66">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=11">
+    <link rel="stylesheet" href="style.css?v=12">
     <link rel="icon" href="FavIcon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
+        .game-page {
+            --max: 1120px;
         }
-        
-        .container {
+
+        .runnerHero {
+            margin-bottom: 18px;
+        }
+
+        .runnerHero .heroTitle {
+            max-width: 860px;
+        }
+
+        .gameLayout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.55fr) minmax(280px, .8fr);
+            gap: 18px;
+            align-items: start;
+        }
+
+        .runnerStage {
+            display: grid;
+            gap: 16px;
+        }
+
+        .stageHead {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: start;
+        }
+
+        .stageHead h2 {
+            margin-bottom: 0;
+        }
+
+        .gameFrame {
+            position: relative;
+            overflow: hidden;
             width: 100%;
-            max-width: 650px;
-            margin: 0 auto;
+            aspect-ratio: 8 / 3;
+            min-height: 230px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(57,255,136,.16);
+            background: #040806;
+            box-shadow: inset 0 0 40px rgba(0,0,0,.7);
         }
-        
-        .game-container {
-            max-width: 650px;
-            margin: 40px auto;
-            text-align: center;
-            padding: 40px 20px;
-            background: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-        }
-        
-        .game-logo {
-            width: 60px;
-            height: 60px;
-            cursor: pointer;
-            margin-bottom: 10px;
-            transition: transform 0.3s ease;
-        }
-        
-        .game-logo:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
-        
-        .game-container h1 {
-            margin: 10px 0 20px 0;
-            font-size: 2.2em;
-            color: #009f33;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            font-weight: 700;
-        }
-        
-        body.dark-mode .game-container h1 {
-            color: #28b80e;
-            text-shadow: 2px 2px 8px rgba(40,184,14,0.3);
-        }
-        
-        canvas {
-            background: linear-gradient(180deg, #87CEEB 0%, #e8f5e9 100%);
+
+        #gameCanvas {
             display: block;
-            margin: 20px auto;
-            border-radius: 15px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-            border: 3px solid var(--border-color);
+            width: 100%;
+            height: 100%;
         }
-        
-        body.dark-mode canvas {
-            background: linear-gradient(180deg, #1a3a52 0%, #1a2e1a 100%);
+
+        .runnerOverlay {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            padding: 20px;
+            background: linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.68));
+            pointer-events: none;
+            transition: opacity .2s ease;
         }
-        
-        .game-instructions {
-            margin: 10px 0 25px 0;
-            color: var(--text-color);
-            font-size: 1.1em;
-            padding: 15px;
-            background: var(--code-bg);
-            border-radius: 10px;
-            border-left: 4px solid #009f33;
+
+        .runnerOverlay.hidden {
+            opacity: 0;
         }
-        
-        .game-instructions b {
-            color: #009f33;
+
+        .runnerOverlay strong {
+            color: var(--accent);
+            font-size: clamp(1.35rem, 4vw, 2.1rem);
+            letter-spacing: .02em;
+            text-shadow: 0 0 18px rgba(57,255,136,.3);
+        }
+
+        .runnerHud {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .hudItem {
+            min-width: 0;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--panel2);
+            text-align: left;
+        }
+
+        body.dark-mode .hudItem {
+            border-color: rgba(57,255,136,.12);
+            background: rgba(57,255,136,.045);
+        }
+
+        .hudLabel {
+            display: block;
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        body.dark-mode .hudLabel {
+            color: var(--muted-dark);
+        }
+
+        .hudValue {
+            display: block;
+            margin-top: 4px;
+            color: var(--text);
+            font-size: 1.35rem;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        body.dark-mode .hudValue {
+            color: var(--accent);
+        }
+
+        .runnerControls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .runnerControls .btn {
+            min-width: 128px;
+        }
+
+        .resultLine {
+            min-height: 28px;
+            margin: 0;
+            color: var(--text);
             font-weight: 700;
         }
-        
-        #scoreDisplay {
-            font-size: 1.4em;
-            margin-top: 15px;
-            font-weight: 600;
-            color: var(--text-color);
-            min-height: 30px;
+
+        body.dark-mode .resultLine {
+            color: var(--accent);
         }
-        
-        #restartBtn {
-            margin-top: 15px;
-            padding: 12px 30px;
-            font-size: 1.1em;
-            background: #009f33;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0,159,51,0.3);
+
+        .runnerSide {
+            gap: 14px;
         }
-        
-        #restartBtn:hover {
-            background: #28b80e;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,159,51,0.4);
+
+        .leaderboardList {
+            display: grid;
+            gap: 8px;
+            margin: 12px 0 0;
+            padding: 0;
+            list-style: none;
         }
-        
-        #restartBtn:active {
-            transform: translateY(0);
+
+        .leaderboardList li {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 12px;
+            align-items: center;
+            padding: 10px 0;
+            border-top: 1px solid rgba(57,255,136,.1);
+            color: var(--muted);
         }
-        
-        .game-stats {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-            padding: 15px;
-            background: var(--code-bg);
-            border-radius: 10px;
+
+        .leaderboardList li:first-child {
+            border-top: 0;
         }
-        
-        .stat-item {
+
+        .leaderboardList .empty {
+            display: block;
+            color: var(--muted);
+        }
+
+        .leaderboardList span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .leaderboardList strong {
+            color: var(--accent);
+        }
+
+        .leaderboardList small {
+            display: block;
+            margin-top: 2px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        body.dark-mode .leaderboardList li,
+        body.dark-mode .leaderboardList .empty,
+        body.dark-mode .leaderboardList small {
+            color: var(--muted-dark);
+        }
+
+        .automation-splash {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: grid;
+            place-items: center;
+            padding: 18px;
+            background: rgba(0,0,0,.88);
+        }
+
+        .automation-splash.hidden {
+            display: none;
+        }
+
+        .automation-card {
+            width: min(520px, 100%);
+            padding: 32px;
+            border: 1px solid rgba(57,255,136,.55);
+            border-radius: var(--radius);
+            background:
+                radial-gradient(circle at 86% 8%, rgba(45,212,191,.12), transparent 32%),
+                linear-gradient(145deg, #030603, #071407);
+            box-shadow: 0 0 45px rgba(0,255,102,.22);
             text-align: center;
         }
-        
-        .stat-label {
-            font-size: 0.9em;
-            color: var(--text-secondary);
-            margin-bottom: 5px;
+
+        .automation-eyebrow {
+            margin: 0 0 8px;
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .18em;
+            text-transform: uppercase;
         }
-        
-        .stat-value {
-            font-size: 1.3em;
-            font-weight: 700;
-            color: #009f33;
+
+        .automation-card h2 {
+            color: #fff;
+            margin: 0 0 12px;
         }
-        
-        /* Mobile Responsive Styles */
-        @media (max-width: 768px) {
-            .game-container {
-                margin: 20px 10px;
-                padding: 20px 15px;
+
+        .automation-card p {
+            color: #d6d6d6;
+        }
+
+        .automation-signal {
+            min-height: 20px;
+            color: var(--accent) !important;
+            font-size: .9rem;
+        }
+
+        .automation-card .btn {
+            margin-top: 8px;
+        }
+
+        @media (max-width: 900px) {
+            .gameLayout,
+            .runnerHud {
+                grid-template-columns: 1fr;
             }
-            
-            .game-container h1 {
-                font-size: 1.8em;
-            }
-            
-            canvas {
-                max-width: 100%;
-                height: auto;
-                border-radius: 10px;
-                border-width: 2px;
-            }
-            
-            .game-instructions {
-                font-size: 1em;
-                padding: 12px;
-            }
-            
-            #scoreDisplay {
-                font-size: 1.2em;
-            }
-            
-            #restartBtn {
-                padding: 10px 24px;
-                font-size: 1em;
-            }
-            
-            .game-stats {
-                padding: 12px;
-            }
-            
-            .stat-label {
-                font-size: 0.8em;
-            }
-            
-            .stat-value {
-                font-size: 1.1em;
+
+            .gameFrame {
+                min-height: 210px;
             }
         }
-        
-        @media (max-width: 480px) {
-            .game-container {
-                margin: 10px 5px;
-                padding: 15px 10px;
+
+        @media (max-width: 560px) {
+            .stageHead {
+                display: block;
             }
-            
-            .game-container h1 {
-                font-size: 1.5em;
+
+            .stageHead .status {
+                margin-top: 12px;
             }
-            
-            .game-logo {
-                width: 50px;
-                height: 50px;
+
+            .gameFrame {
+                width: calc(100vw - 28px);
+                min-height: 190px;
+                margin-left: auto;
+                margin-right: auto;
             }
-            
-            .game-instructions {
-                font-size: 0.9em;
-                padding: 10px;
+
+            .runnerControls .btn {
+                flex: 1 1 130px;
+                min-width: 0;
             }
         }
     </style>
 </head>
-<body>
-    <div class="container game-container">
-        <img src="Novixel-icon-Trans1.png" alt="Novixel Logo" class="game-logo" onclick="CoolThing()">
-        <h1>Endless Jump Game</h1>
-        <button class="fas fa-moon" onclick="toggleDarkMode(event)"></button>
+<body class="dark-mode game-page">
+    <div class="container">
+        <header class="header">
+            <button class="logoBtn" type="button" onclick="CoolThing()" aria-label="Toggle Novixel Labs logo">
+                <img class="mainlogo" src="Novixel-icon-Trans1.png" alt="Novixel Labs logo">
+            </button>
+            <div class="headline">
+                <h1>Novixel Labs</h1>
+                <p class="subhead">
+                    Automation Engineering &amp; AI Systems
+                    <span class="location">Interactive Lab</span>
+                </p>
+            </div>
+            <button class="iconBtn fas fa-sun" type="button" onclick="toggleDarkMode(event)" aria-label="Toggle color mode"></button>
+        </header>
+
         <hr class="separator">
-        <div class="game-instructions">
-            Press <b>SPACE</b> or <b>tap/click</b> to jump. Avoid the red obstacles and see how far you can go!
-        </div>
-        <canvas id="gameCanvas" width="600" height="200"></canvas>
-        <div id="scoreDisplay"></div>
-        <button onclick="restartGame()" id="restartBtn" style="display:none;">Play Again</button>
-        <div class="game-stats">
-            <div class="stat-item">
-                <div class="stat-label">Current Score</div>
-                <div class="stat-value" id="currentScore">0</div>
+
+        <main>
+            <section class="heroCard heroIntro runnerHero">
+                <p class="eyebrow">AUTOMATION RUNNER</p>
+                <h2 class="heroTitle">Dodge manual work. Collect integrations. Build smarter systems.</h2>
+                <p class="lead">
+                    A small browser lab where the score is workflow efficiency, obstacles are repetitive manual tasks, and every useful integration makes the system stronger.
+                </p>
+                <div class="pillRow" aria-label="Game themes">
+                    <span class="pill">Manual Task Obstacles</span>
+                    <span class="pill">API Tokens</span>
+                    <span class="pill">AI Boosts</span>
+                    <span class="pill">Dashboard Pickups</span>
+                    <span class="pill">Local Leaderboard</span>
+                </div>
+            </section>
+
+            <div class="gameLayout">
+                <section class="card runnerStage" aria-labelledby="runner-title">
+                    <div class="stageHead">
+                        <div>
+                            <p class="eyebrow">BROWSER GAME EXPERIMENT</p>
+                            <h2 id="runner-title">Automation Runner</h2>
+                        </div>
+                        <span class="status lab">GitHub Pages Safe</span>
+                    </div>
+
+                    <div class="gameFrame">
+                        <canvas id="gameCanvas" width="800" height="300" aria-label="Automation Runner game canvas"></canvas>
+                        <div id="runnerOverlay" class="runnerOverlay">
+                            <strong>Build the system.</strong>
+                        </div>
+                    </div>
+
+                    <div class="runnerHud" aria-label="Run stats">
+                        <div class="hudItem">
+                            <span class="hudLabel">Efficiency</span>
+                            <span class="hudValue" id="currentScore">0</span>
+                        </div>
+                        <div class="hudItem">
+                            <span class="hudLabel">Best</span>
+                            <span class="hudValue" id="highScore">0</span>
+                        </div>
+                        <div class="hudItem">
+                            <span class="hudLabel">Integrations</span>
+                            <span class="hudValue" id="integrationCount">0</span>
+                        </div>
+                        <div class="hudItem">
+                            <span class="hudLabel">Tasks</span>
+                            <span class="hudValue" id="taskCount">0</span>
+                        </div>
+                    </div>
+
+                    <div class="runnerControls">
+                        <button id="startBtn" class="btn primary" type="button"><i class="fas fa-play"></i>Start Run</button>
+                        <button id="jumpBtn" class="btn ghost" type="button"><i class="fas fa-arrow-up"></i>Jump</button>
+                        <button id="restartBtn" class="btn ghost" type="button" hidden><i class="fas fa-redo"></i>Run Again</button>
+                    </div>
+
+                    <p id="scoreDisplay" class="resultLine" role="status" aria-live="polite"></p>
+                </section>
+
+                <aside class="panelStack runnerSide">
+                    <section class="card">
+                        <p class="eyebrow">LOCAL LEADERBOARD</p>
+                        <h2>Your Progress</h2>
+                        <p>Runs save automatically in this browser when you lose, so you can quickly track your best attempts.</p>
+                        <ol id="leaderboardList" class="leaderboardList"></ol>
+                    </section>
+
+                    <section class="miniCard">
+                        <h3><i class="fas fa-cogs"></i> Lab Framing</h3>
+                        <p>Manual tasks are friction. APIs, AI, and dashboards are leverage. The fastest path is the one that turns repeated work into a dependable system.</p>
+                    </section>
+                </aside>
             </div>
-            <div class="stat-item">
-                <div class="stat-label">High Score</div>
-                <div class="stat-value" id="highScore">0</div>
+        </main>
+
+        <footer class="footer">
+            <hr class="separator">
+            <div class="footerLinks">
+                <a href="/">Home</a>
+                <a href="/?tab=Services">Services</a>
+                <a href="/?tab=Projects">Projects</a>
+                <a href="/?tab=Products">Products</a>
+                <a href="https://novalite.app" target="_blank" rel="noopener">NovaLite</a>
+                <a href="/?tab=Contact">Contact</a>
             </div>
+            <p class="tiny muted">&copy; 2026 Novixel Labs. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <div id="automationSplash" class="automation-splash hidden">
+        <div class="automation-card">
+            <p class="automation-eyebrow">Automation Detected</p>
+            <h2>You found the hidden systems layer.</h2>
+            <p>That is the point. Novixel Labs approves. You automated the automation game.</p>
+            <p class="automation-signal" data-automation-reason></p>
+            <button id="closeAutomationSplash" class="btn ghost" type="button">Continue</button>
         </div>
     </div>
-    
-    <!-- Footer -->
-    <div class="footer">
-        <hr class="separator">
-        
-        <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin: 20px 0;">
-            <a href="/" style="color: #6b7c8c; text-decoration: none; font-size: 14px;">Home</a>
-            <a href="/?tab=Services" style="color: #6b7c8c; text-decoration: none; font-size: 14px;">Services</a>
-            <a href="/?tab=Projects" style="color: #6b7c8c; text-decoration: none; font-size: 14px;">Projects</a>
-            <a href="/?tab=Products" style="color: #6b7c8c; text-decoration: none; font-size: 14px;">Products</a>
-            <a href="https://novalite.app" target="_blank" rel="noopener" style="color: #6b7c8c; text-decoration: none; font-size: 14px;">NovaLite</a>
-            <a href="/?tab=Contact" style="color: #6b7c8c; text-decoration: none; font-size: 14px;">Contact</a>
-        </div>
-        
-        <p style="font-size: 13px; color: #6b7c8c;">&copy; 2026 Novixel Labs. All rights reserved.</p>
-    </div>
-    
+
     <script src="script.js?v=3"></script>
     <script>
-    // Endless Jump Game Logic
-    const canvas = document.getElementById('gameCanvas');
-    const ctx = canvas.getContext('2d');
-    
-    // Responsive canvas sizing
-    function resizeCanvas() {
-        const container = document.querySelector('.game-container');
-        const maxWidth = Math.min(600, container.clientWidth - 40);
-        canvas.width = maxWidth;
-        canvas.height = Math.floor(maxWidth / 3); // Maintain 3:1 aspect ratio
-    }
-    
-    // Initial resize and resize on window change
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-    
-    // Game variables (adjusted dynamically based on canvas size)
-    let stick = { x: 50, y: 150, w: 20, h: 40, vy: 0, jumping: false };
-    let ground = 190;
-    let gravity = 0.08;
-    let jumpPower = -4.5;
-    let obstacles = [];
-    let frame = 0;
-    let score = 0;
-    let gameOver = false;
-    let INITIAL_SPEED = 1.2;
-    let speed = INITIAL_SPEED;
-    let highScore = parseInt(localStorage.getItem('jumpGameHighScore')) || 0;
-    document.getElementById('highScore').textContent = highScore;
+    const NVXLeaderboard = (() => {
+        const HISTORY_KEY = "nvx_automation_runner_history_v1";
+        const COUNT_KEY = "nvx_automation_runner_count_v1";
+        const NORMAL_KEY = "nvx_automation_runner_scores_v1";
+        const AUTO_KEY = "nvx_automation_runner_legends_v1";
 
-    function resetGame() {
-        // Update ground position based on canvas height
-        ground = canvas.height - 10;
-        stick = { x: 50, y: ground - 50, w: 20, h: 40, vy: 0, jumping: false };
-        obstacles = [];
-        frame = 0;
-        score = 0;
-        gameOver = false;
-        speed = INITIAL_SPEED;
-        document.getElementById('restartBtn').style.display = 'none';
-        document.getElementById('scoreDisplay').textContent = '';
-        document.getElementById('currentScore').textContent = '0';
-        loop();
-    }
-
-    function drawStick() {
-        // Draw the Novixel character with green theme
-        const centerX = stick.x + stick.w / 2;
-        
-        // Body (rounded rectangle in Novixel green)
-        ctx.fillStyle = '#009f33';
-        ctx.beginPath();
-        ctx.roundRect(stick.x, stick.y + 15, stick.w, stick.h - 15, 5);
-        ctx.fill();
-        
-        // Head (circle)
-        ctx.fillStyle = '#28b80e';
-        ctx.beginPath();
-        ctx.arc(centerX, stick.y + 10, 8, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Eyes (white with black pupils)
-        ctx.fillStyle = '#fff';
-        ctx.beginPath();
-        ctx.arc(centerX - 3, stick.y + 9, 2, 0, Math.PI * 2);
-        ctx.arc(centerX + 3, stick.y + 9, 2, 0, Math.PI * 2);
-        ctx.fill();
-        
-        ctx.fillStyle = '#000';
-        ctx.beginPath();
-        ctx.arc(centerX - 3, stick.y + 9, 1, 0, Math.PI * 2);
-        ctx.arc(centerX + 3, stick.y + 9, 1, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Smile
-        ctx.strokeStyle = '#000';
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.arc(centerX, stick.y + 11, 4, 0.2, Math.PI - 0.2);
-        ctx.stroke();
-        
-        // Legs (simple lines)
-        ctx.strokeStyle = '#005c30';
-        ctx.lineWidth = 3;
-        ctx.beginPath();
-        ctx.moveTo(stick.x + 5, stick.y + stick.h);
-        ctx.lineTo(stick.x + 5, stick.y + stick.h - 8);
-        ctx.moveTo(stick.x + 15, stick.y + stick.h);
-        ctx.lineTo(stick.x + 15, stick.y + stick.h - 8);
-        ctx.stroke();
-        
-        // Arms (when jumping)
-        if (stick.jumping) {
-            ctx.beginPath();
-            ctx.moveTo(stick.x + 2, stick.y + 20);
-            ctx.lineTo(stick.x - 2, stick.y + 15);
-            ctx.moveTo(stick.x + stick.w - 2, stick.y + 20);
-            ctx.lineTo(stick.x + stick.w + 2, stick.y + 15);
-            ctx.stroke();
-        } else {
-            ctx.beginPath();
-            ctx.moveTo(stick.x + 2, stick.y + 20);
-            ctx.lineTo(stick.x, stick.y + 25);
-            ctx.moveTo(stick.x + stick.w - 2, stick.y + 20);
-            ctx.lineTo(stick.x + stick.w, stick.y + 25);
-            ctx.stroke();
+        function load(key) {
+            try {
+                const board = JSON.parse(localStorage.getItem(key));
+                return Array.isArray(board) ? board : [];
+            } catch (error) {
+                return [];
+            }
         }
-    }
 
-    function drawObstacles() {
-        // Draw obstacles with varied colors and styles
-        for (let obs of obstacles) {
-            // Use different colors based on obstacle type
-            const colors = [
-                { top: '#c0392b', bottom: '#a02820' },  // Red
-                { top: '#e67e22', bottom: '#d35400' },  // Orange
-                { top: '#8e44ad', bottom: '#6c3483' }   // Purple
-            ];
-            const colorSet = colors[obs.colorIndex || 0];
-            
-            const gradient = ctx.createLinearGradient(obs.x, obs.y, obs.x, obs.y + obs.h);
-            gradient.addColorStop(0, colorSet.top);
-            gradient.addColorStop(1, colorSet.bottom);
-            ctx.fillStyle = gradient;
-            
-            // Rounded obstacles
-            ctx.beginPath();
-            ctx.roundRect(obs.x, obs.y, obs.w, obs.h, 5);
-            ctx.fill();
-            
-            // Add highlight effect
-            ctx.fillStyle = 'rgba(255,255,255,0.2)';
-            ctx.beginPath();
-            ctx.roundRect(obs.x + 2, obs.y + 2, obs.w - 4, obs.h * 0.3, 3);
-            ctx.fill();
-            
-            // Add outline
-            ctx.strokeStyle = 'rgba(0,0,0,0.3)';
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            ctx.roundRect(obs.x, obs.y, obs.w, obs.h, 5);
-            ctx.stroke();
+        function save(key, board) {
+            try {
+                localStorage.setItem(key, JSON.stringify(board.slice(0, 10)));
+            } catch (error) {
+                // Local storage can be unavailable in privacy-restricted browsers.
+            }
         }
-    }
 
-    function updateObstacles() {
-        // Create obstacles with varied spacing and sizes
-        if (frame % 220 === 0) {
-            let h = 25 + Math.random() * 40; // More height variation
-            let w = 15 + Math.random() * 15; // Width variation
-            let colorIndex = Math.floor(Math.random() * 3); // Random color
-            obstacles.push({ 
-                x: canvas.width, 
-                y: ground - h, 
-                w: w, 
-                h: h,
-                colorIndex: colorIndex
+        function nextRunName(boardLength) {
+            try {
+                const count = (parseInt(localStorage.getItem(COUNT_KEY), 10) || boardLength) + 1;
+                localStorage.setItem(COUNT_KEY, String(count));
+                return `Run ${count}`;
+            } catch (error) {
+                return `Run ${boardLength + 1}`;
+            }
+        }
+
+        function submit(score, automationSummary) {
+            const cleanScore = Math.max(0, Math.floor(score));
+            const board = load(HISTORY_KEY);
+            const entry = {
+                name: nextRunName(board.length),
+                score: cleanScore,
+                date: new Date().toISOString(),
+                automation: automationSummary
+            };
+            const key = automationSummary.detected ? AUTO_KEY : NORMAL_KEY;
+            const legacyBoard = load(key);
+
+            board.push(entry);
+            legacyBoard.push(entry);
+            board.sort((a, b) => b.score - a.score);
+            legacyBoard.sort((a, b) => b.score - a.score);
+            save(HISTORY_KEY, board);
+            save(key, legacyBoard);
+            render();
+        }
+
+        function board() {
+            const history = load(HISTORY_KEY);
+            if (history.length) return history;
+
+            return load(NORMAL_KEY)
+                .concat(load(AUTO_KEY))
+                .sort((a, b) => b.score - a.score)
+                .slice(0, 10);
+        }
+
+        function recentCount() {
+            return load(HISTORY_KEY).length;
+        }
+
+        function bestScore() {
+            return board().reduce((best, entry) => Math.max(best, Number(entry.score) || 0), 0);
+        }
+
+        function render() {
+            renderBoard("leaderboardList", board(), "No completed runs yet.");
+        }
+
+        function renderBoard(id, board, emptyText) {
+            const el = document.getElementById(id);
+            if (!el) return;
+
+            if (!board.length) {
+                el.innerHTML = `<li class="empty">${escapeHtml(emptyText)}</li>`;
+                return;
+            }
+
+            el.innerHTML = board.map((entry, index) => {
+                const runName = entry.name || `Run ${index + 1}`;
+                const when = formatDate(entry.date);
+                return `
+                    <li>
+                        <span>#${index + 1} ${escapeHtml(runName)}<small>${escapeHtml(when)}</small></span>
+                        <strong>${Math.floor(Number(entry.score) || 0)}</strong>
+                    </li>
+                `;
+            }).join("");
+        }
+
+        function formatDate(value) {
+            if (!value) return "Saved locally";
+
+            try {
+                return new Date(value).toLocaleString([], {
+                    month: "short",
+                    day: "numeric",
+                    hour: "numeric",
+                    minute: "2-digit"
+                });
+            } catch (error) {
+                return "Saved locally";
+            }
+        }
+
+        function escapeHtml(value) {
+            return String(value).replace(/[&<>"']/g, char => ({
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#039;"
+            }[char]));
+        }
+
+        return { submit, render, bestScore, recentCount };
+    })();
+
+    const NVXAutomationLayer = (() => {
+        const state = {
+            apiReads: 0,
+            apiJumps: 0,
+            syntheticInputs: 0,
+            perfectJumps: 0,
+            detected: false,
+            reason: null,
+            jumpHistory: []
+        };
+
+        let getSnapshot = () => ({});
+        let performJump = () => {};
+        let getScore = () => 0;
+
+        function install(config) {
+            getSnapshot = config.getSnapshot;
+            performJump = config.jump;
+            getScore = config.getScore;
+
+            const apiName = [78, 86, 88, 95, 76, 65, 66, 83]
+                .map(n => String.fromCharCode(n))
+                .join("");
+
+            Object.defineProperty(window, apiName, {
+                enumerable: false,
+                configurable: false,
+                value: Object.freeze({
+                    sense() {
+                        state.apiReads++;
+                        check("api-sense");
+                        return getSnapshot();
+                    },
+
+                    jump() {
+                        state.apiJumps++;
+                        check("api-jump");
+                        performJump();
+                        return true;
+                    },
+
+                    status() {
+                        return summary();
+                    }
+                })
             });
         }
-        for (let obs of obstacles) {
-            obs.x -= speed;
-        }
-        // Remove off-screen obstacles
-        obstacles = obstacles.filter(obs => obs.x + obs.w > 0);
-    }
 
-    function checkCollision() {
-        for (let obs of obstacles) {
-            if (
-                stick.x < obs.x + obs.w &&
-                stick.x + stick.w > obs.x &&
-                stick.y < obs.y + obs.h &&
-                stick.y + stick.h > obs.y
-            ) {
-                return true;
+        function trackInput(event) {
+            if (event && event.isTrusted === false) {
+                state.syntheticInputs++;
+                check("synthetic-input");
+            }
+
+            const snap = getSnapshot() || {};
+
+            state.jumpHistory.push({
+                time: performance.now(),
+                score: getScore(),
+                obstacleDistance: typeof snap.nextObstacleDistance === "number" ? snap.nextObstacleDistance : null
+            });
+
+            if (state.jumpHistory.length > 10) {
+                state.jumpHistory.shift();
+            }
+
+            detectPerfectTiming();
+            check("jump-pattern");
+        }
+
+        function detectPerfectTiming() {
+            const distances = state.jumpHistory
+                .map(jump => jump.obstacleDistance)
+                .filter(value => typeof value === "number");
+
+            if (distances.length < 5) return;
+
+            const avg = distances.reduce((a, b) => a + b, 0) / distances.length;
+            const variance = distances.reduce((a, b) => a + Math.abs(b - avg), 0) / distances.length;
+
+            if (variance < 3) {
+                state.perfectJumps++;
             }
         }
-        return false;
+
+        function check(reason) {
+            if (state.detected) return;
+
+            const score = getScore();
+            const triggered =
+                state.syntheticInputs >= 2 ||
+                state.apiJumps >= 2 ||
+                (state.apiReads >= 8 && score > 3) ||
+                state.perfectJumps >= 3;
+
+            if (triggered) {
+                state.detected = true;
+                state.reason = reason;
+                showSplash(reason);
+            }
+        }
+
+        function showSplash(reason) {
+            const splash = document.getElementById("automationSplash");
+            const reasonEl = document.querySelector("[data-automation-reason]");
+
+            if (reasonEl) {
+                reasonEl.textContent = `Signal detected: ${reason}`;
+            }
+
+            if (splash) {
+                splash.classList.remove("hidden");
+            }
+        }
+
+        function summary() {
+            return {
+                detected: state.detected,
+                reason: state.reason,
+                apiReads: state.apiReads,
+                apiJumps: state.apiJumps,
+                syntheticInputs: state.syntheticInputs,
+                perfectJumps: state.perfectJumps
+            };
+        }
+
+        return {
+            install,
+            trackInput,
+            summary
+        };
+    })();
+
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+    const startBtn = document.getElementById("startBtn");
+    const jumpBtn = document.getElementById("jumpBtn");
+    const restartBtn = document.getElementById("restartBtn");
+    const runnerOverlay = document.getElementById("runnerOverlay");
+    const scoreDisplay = document.getElementById("scoreDisplay");
+    const currentScoreEl = document.getElementById("currentScore");
+    const highScoreEl = document.getElementById("highScore");
+    const integrationCountEl = document.getElementById("integrationCount");
+    const taskCountEl = document.getElementById("taskCount");
+
+    const manualTasks = [
+        { label: "Admin", top: "#ef4444", bottom: "#991b1b" },
+        { label: "Copy", top: "#f97316", bottom: "#9a3412" },
+        { label: "Email", top: "#e11d48", bottom: "#881337" },
+        { label: "Sheets", top: "#a855f7", bottom: "#581c87" }
+    ];
+    const integrations = [
+        { label: "API", color: "#2dd4bf", value: 16 },
+        { label: "AI", color: "#00ff66", value: 18 },
+        { label: "Dash", color: "#fbbf24", value: 20 }
+    ];
+    const RUNNER_GRAVITY = .30;
+    const RUNNER_JUMP_POWER = -9.8;
+
+    let world = { width: 800, height: 300 };
+    let ground = 260;
+    let player = null;
+    let obstacles = [];
+    let pickups = [];
+    let frame = 0;
+    let score = 0;
+    let speed = 2.55;
+    let running = false;
+    let gameOver = false;
+    let lastFrameTime = 0;
+    let nextObstacleAt = 80;
+    let nextPickupAt = 150;
+    let integrationsCollected = 0;
+    let passedTasks = 0;
+    let animationId = null;
+
+    function resizeCanvas() {
+        const rect = canvas.getBoundingClientRect();
+        const width = Math.max(280, Math.round(rect.width || 800));
+        const height = Math.max(180, Math.round(rect.height || width * 0.375));
+        const ratio = Math.min(window.devicePixelRatio || 1, 2);
+
+        canvas.width = Math.round(width * ratio);
+        canvas.height = Math.round(height * ratio);
+        ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+        world = { width, height };
+        ground = world.height - 24;
+
+        if (player && !player.jumping) {
+            player.y = ground - player.h;
+        }
+
+        drawFrame();
     }
 
-    function loop() {
-        if (gameOver) return;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // Draw ground with Novixel green theme
-        const groundGradient = ctx.createLinearGradient(0, ground, 0, ground + 10);
-        groundGradient.addColorStop(0, '#005c30');
-        groundGradient.addColorStop(1, '#003d20');
-        ctx.fillStyle = groundGradient;
-        ctx.fillRect(0, ground, canvas.width, 10);
-        
-        drawStick();
-        drawObstacles();
-        
-        // Stick physics
-        stick.y += stick.vy;
-        stick.vy += gravity;
-        if (stick.y + stick.h >= ground) {
-            stick.y = ground - stick.h;
-            stick.vy = 0;
-            stick.jumping = false;
-        }
-        // Prevent floating point drift
-        if (Math.abs(stick.y + stick.h - ground) < 0.5) {
-            stick.y = ground - stick.h;
-            stick.vy = 0;
-            stick.jumping = false;
-        }
-        
-        updateObstacles();
-        
-        // Score
-        score++;
-        const displayScore = Math.floor(score / 5);
-        document.getElementById('currentScore').textContent = displayScore;
-        
-        // Draw score on canvas with Novixel styling
-        ctx.fillStyle = '#009f33';
-        ctx.font = 'bold 20px Arial';
-        ctx.shadowColor = 'rgba(0,0,0,0.2)';
-        ctx.shadowBlur = 4;
-        ctx.fillText('Score: ' + displayScore, 10, 30);
-        ctx.shadowBlur = 0;
-        
-        // Collision
-        if (checkCollision()) {
-            gameOver = true;
-            const finalScore = Math.floor(score / 5);
-            
-            // Update high score
-            if (finalScore > highScore) {
-                highScore = finalScore;
-                localStorage.setItem('jumpGameHighScore', highScore);
-                document.getElementById('highScore').textContent = highScore;
-                document.getElementById('scoreDisplay').textContent = '🎉 New High Score: ' + finalScore + '!';
-            } else {
-                document.getElementById('scoreDisplay').textContent = 'Game Over! Final Score: ' + finalScore;
-            }
-            
-            document.getElementById('restartBtn').style.display = 'inline-block';
+    function resetRun() {
+        cancelAnimationFrame(animationId);
+        ground = world.height - 24;
+        player = {
+            x: Math.max(58, world.width * .12),
+            y: ground - 44,
+            w: 28,
+            h: 44,
+            vy: 0,
+            jumping: false
+        };
+        obstacles = [];
+        pickups = [];
+        frame = 0;
+        score = 0;
+        speed = 2.55;
+        running = false;
+        gameOver = false;
+        lastFrameTime = 0;
+        nextObstacleAt = 74;
+        nextPickupAt = 132;
+        integrationsCollected = 0;
+        passedTasks = 0;
+        startBtn.hidden = false;
+        restartBtn.hidden = true;
+        runnerOverlay.classList.remove("hidden");
+        scoreDisplay.textContent = "";
+        updateHud();
+        drawFrame();
+    }
+
+    function startRun() {
+        if (running) return;
+
+        resetRun();
+        running = true;
+        gameOver = false;
+        startBtn.hidden = true;
+        restartBtn.hidden = true;
+        runnerOverlay.classList.add("hidden");
+        lastFrameTime = performance.now();
+        animationId = requestAnimationFrame(loop);
+    }
+
+    function loop(timestamp) {
+        if (!running) return;
+
+        const delta = Math.min(2, Math.max(.5, (timestamp - lastFrameTime) / 16.67 || 1));
+        lastFrameTime = timestamp;
+
+        update(delta);
+        drawFrame();
+
+        if (gameOver) {
+            finishRun();
             return;
         }
-        
-        // Increase speed over time (still slow increment)
-        if (frame % 1800 === 0 && speed < 2.5) speed += 0.08;
-        frame++;
-        requestAnimationFrame(loop);
+
+        animationId = requestAnimationFrame(loop);
+    }
+
+    function update(delta) {
+        frame += delta;
+        speed = Math.min(4.25, 2.55 + frame / 1250);
+        score += .12 * delta;
+
+        updatePlayer(delta);
+        spawnEntities();
+        updateEntities(delta);
+        updateHud();
+    }
+
+    function updatePlayer(delta) {
+        player.y += player.vy * delta;
+        player.vy += RUNNER_GRAVITY * delta;
+
+        if (player.y + player.h >= ground) {
+            player.y = ground - player.h;
+            player.vy = 0;
+            player.jumping = false;
+        }
+    }
+
+    function spawnEntities() {
+        if (frame >= nextObstacleAt) {
+            const template = manualTasks[Math.floor(Math.random() * manualTasks.length)];
+            const h = 34 + Math.random() * 28;
+            const w = 50 + Math.random() * 16;
+            obstacles.push({
+                x: world.width + 20,
+                y: ground - h,
+                w,
+                h,
+                passed: false,
+                label: template.label,
+                top: template.top,
+                bottom: template.bottom
+            });
+            nextObstacleAt = frame + 98 + Math.random() * 54 - Math.min(28, speed * 5);
+        }
+
+        if (frame >= nextPickupAt) {
+            const template = integrations[Math.floor(Math.random() * integrations.length)];
+            const y = Math.max(42, ground - 96 - Math.random() * 58);
+            pickups.push({
+                x: world.width + 26,
+                y,
+                w: 48,
+                h: 30,
+                label: template.label,
+                color: template.color,
+                value: template.value,
+                collected: false
+            });
+            nextPickupAt = frame + 146 + Math.random() * 88;
+        }
+    }
+
+    function updateEntities(delta) {
+        const playerBox = hitbox(player);
+
+        obstacles.forEach(obstacle => {
+            obstacle.x -= speed * delta;
+
+            if (!obstacle.passed && obstacle.x + obstacle.w < player.x) {
+                obstacle.passed = true;
+                passedTasks++;
+                score += 8;
+            }
+
+            if (boxesOverlap(playerBox, obstacle)) {
+                gameOver = true;
+            }
+        });
+
+        pickups.forEach(pickup => {
+            pickup.x -= speed * .92 * delta;
+
+            if (!pickup.collected && boxesOverlap(playerBox, pickup)) {
+                pickup.collected = true;
+                integrationsCollected++;
+                score += pickup.value;
+            }
+        });
+
+        obstacles = obstacles.filter(obstacle => obstacle.x + obstacle.w > -20);
+        pickups = pickups.filter(pickup => !pickup.collected && pickup.x + pickup.w > -20);
     }
 
     function jump() {
-        // Only allow jump if stick is on the ground
-        if (!stick.jumping && stick.y + stick.h >= ground - 0.5) {
-            stick.vy = jumpPower;
-            stick.jumping = true;
+        if (!running || gameOver) return;
+
+        if (!player.jumping && player.y + player.h >= ground - .5) {
+            player.vy = RUNNER_JUMP_POWER;
+            player.jumping = true;
         }
     }
 
-    // Controls
-    document.addEventListener('keydown', function(e) {
-        if (e.code === 'Space') {
-            e.preventDefault(); // Prevent page scroll
-            jump();
+    function handleJump(event) {
+        if (event && typeof event.preventDefault === "function") {
+            event.preventDefault();
+        }
+
+        if (!running) {
+            startRun();
+        }
+
+        if (gameOver) return;
+
+        NVXAutomationLayer.trackInput(event);
+        jump();
+    }
+
+    function handleJumpButton(event) {
+        handleJump(event);
+    }
+
+    function handleJumpButtonClick(event) {
+        if (event.detail === 0) {
+            handleJump(event);
+        }
+    }
+
+    function finishRun() {
+        running = false;
+        const finalScore = Math.floor(score);
+        const automationSummary = NVXAutomationLayer.summary();
+
+        restartBtn.hidden = false;
+        runnerOverlay.classList.remove("hidden");
+        scoreDisplay.textContent = `Run saved: ${finalScore} workflow efficiency`;
+        NVXLeaderboard.submit(finalScore, automationSummary);
+        updateHud();
+    }
+
+    function updateHud() {
+        const finalScore = Math.floor(score);
+        currentScoreEl.textContent = finalScore;
+        highScoreEl.textContent = Math.max(NVXLeaderboard.bestScore(), finalScore);
+        integrationCountEl.textContent = integrationsCollected;
+        taskCountEl.textContent = passedTasks;
+    }
+
+    function drawFrame() {
+        if (!ctx || !player) return;
+
+        drawBackground();
+        drawPickups();
+        drawObstacles();
+        drawPlayer();
+        drawCanvasHud();
+    }
+
+    function drawBackground() {
+        const sky = ctx.createLinearGradient(0, 0, 0, world.height);
+        sky.addColorStop(0, "#07120d");
+        sky.addColorStop(.65, "#0b1618");
+        sky.addColorStop(1, "#030504");
+        ctx.fillStyle = sky;
+        ctx.fillRect(0, 0, world.width, world.height);
+
+        ctx.strokeStyle = "rgba(45,212,191,.08)";
+        ctx.lineWidth = 1;
+        for (let x = 0; x < world.width; x += 42) {
+            ctx.beginPath();
+            ctx.moveTo(x - (frame % 42), 0);
+            ctx.lineTo(x - (frame % 42), ground);
+            ctx.stroke();
+        }
+
+        ctx.fillStyle = "rgba(57,255,136,.12)";
+        ctx.fillRect(0, ground, world.width, 4);
+        ctx.fillStyle = "#031107";
+        ctx.fillRect(0, ground + 4, world.width, world.height - ground);
+    }
+
+    function drawPlayer() {
+        const centerX = player.x + player.w / 2;
+
+        ctx.save();
+        ctx.shadowColor = "rgba(57,255,136,.45)";
+        ctx.shadowBlur = 14;
+        ctx.fillStyle = "#00ff66";
+        fillRoundRect(player.x, player.y + 16, player.w, player.h - 16, 8);
+        ctx.restore();
+
+        ctx.fillStyle = "#2dd4bf";
+        ctx.beginPath();
+        ctx.arc(centerX, player.y + 11, 10, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = "#07120d";
+        ctx.fillRect(centerX - 6, player.y + 8, 12, 3);
+
+        ctx.strokeStyle = "#00ff66";
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(player.x + 5, player.y + player.h);
+        ctx.lineTo(player.x + 4, player.y + player.h + (player.jumping ? -9 : -3));
+        ctx.moveTo(player.x + player.w - 5, player.y + player.h);
+        ctx.lineTo(player.x + player.w - 2, player.y + player.h + (player.jumping ? -10 : -4));
+        ctx.stroke();
+    }
+
+    function drawObstacles() {
+        obstacles.forEach(obstacle => {
+            const gradient = ctx.createLinearGradient(obstacle.x, obstacle.y, obstacle.x, obstacle.y + obstacle.h);
+            gradient.addColorStop(0, obstacle.top);
+            gradient.addColorStop(1, obstacle.bottom);
+
+            ctx.fillStyle = gradient;
+            fillRoundRect(obstacle.x, obstacle.y, obstacle.w, obstacle.h, 7);
+            ctx.strokeStyle = "rgba(0,0,0,.35)";
+            ctx.lineWidth = 2;
+            strokeRoundRect(obstacle.x, obstacle.y, obstacle.w, obstacle.h, 7);
+
+            ctx.fillStyle = "#fff";
+            ctx.font = "700 11px system-ui, sans-serif";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText(obstacle.label, obstacle.x + obstacle.w / 2, obstacle.y + obstacle.h / 2);
+        });
+    }
+
+    function drawPickups() {
+        pickups.forEach(pickup => {
+            ctx.save();
+            ctx.shadowColor = pickup.color;
+            ctx.shadowBlur = 16;
+            ctx.fillStyle = "rgba(0,0,0,.8)";
+            fillRoundRect(pickup.x, pickup.y, pickup.w, pickup.h, 999);
+            ctx.strokeStyle = pickup.color;
+            ctx.lineWidth = 2;
+            strokeRoundRect(pickup.x, pickup.y, pickup.w, pickup.h, 999);
+            ctx.fillStyle = pickup.color;
+            ctx.font = "800 12px system-ui, sans-serif";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText(pickup.label, pickup.x + pickup.w / 2, pickup.y + pickup.h / 2 + 1);
+            ctx.restore();
+        });
+    }
+
+    function drawCanvasHud() {
+        ctx.textAlign = "left";
+        ctx.textBaseline = "top";
+        ctx.fillStyle = "rgba(255,255,255,.78)";
+        ctx.font = "700 13px system-ui, sans-serif";
+        ctx.fillText(`EFFICIENCY ${Math.floor(score)}`, 16, 15);
+        ctx.fillStyle = "rgba(57,255,136,.78)";
+        ctx.fillText(`TASKS CLEARED ${passedTasks}`, 16, 34);
+    }
+
+    function pathRoundRect(x, y, w, h, radius) {
+        const r = Math.min(radius, w / 2, h / 2);
+        ctx.beginPath();
+
+        if (ctx.roundRect) {
+            ctx.roundRect(x, y, w, h, r);
+            return;
+        }
+
+        ctx.moveTo(x + r, y);
+        ctx.arcTo(x + w, y, x + w, y + h, r);
+        ctx.arcTo(x + w, y + h, x, y + h, r);
+        ctx.arcTo(x, y + h, x, y, r);
+        ctx.arcTo(x, y, x + w, y, r);
+    }
+
+    function fillRoundRect(x, y, w, h, radius) {
+        pathRoundRect(x, y, w, h, radius);
+        ctx.fill();
+    }
+
+    function strokeRoundRect(x, y, w, h, radius) {
+        pathRoundRect(x, y, w, h, radius);
+        ctx.stroke();
+    }
+
+    function hitbox(box) {
+        return {
+            x: box.x + 4,
+            y: box.y + 5,
+            w: box.w - 8,
+            h: box.h - 5
+        };
+    }
+
+    function boxesOverlap(a, b) {
+        return (
+            a.x < b.x + b.w &&
+            a.x + a.w > b.x &&
+            a.y < b.y + b.h &&
+            a.y + a.h > b.y
+        );
+    }
+
+    function getNextObstacleDistance() {
+        if (!obstacles.length || !player) return null;
+
+        const next = obstacles
+            .filter(obstacle => obstacle.x + obstacle.w > player.x)
+            .sort((a, b) => a.x - b.x)[0];
+
+        return next ? next.x - player.x : null;
+    }
+
+    function getNextPickupDistance() {
+        if (!pickups.length || !player) return null;
+
+        const next = pickups
+            .filter(pickup => pickup.x + pickup.w > player.x)
+            .sort((a, b) => a.x - b.x)[0];
+
+        return next ? next.x - player.x : null;
+    }
+
+    document.getElementById("closeAutomationSplash")?.addEventListener("click", () => {
+        document.getElementById("automationSplash")?.classList.add("hidden");
+    });
+
+    startBtn.addEventListener("click", startRun);
+    restartBtn.addEventListener("click", startRun);
+    jumpBtn.addEventListener("pointerdown", handleJumpButton);
+    jumpBtn.addEventListener("click", handleJumpButtonClick);
+    canvas.addEventListener("mousedown", handleJump);
+    canvas.addEventListener("touchstart", handleJump, { passive: false });
+    document.addEventListener("keydown", event => {
+        if (event.code === "Space" || event.code === "ArrowUp") {
+            handleJump(event);
         }
     });
-    canvas.addEventListener('mousedown', jump);
-    canvas.addEventListener('touchstart', function(e) { 
-        e.preventDefault(); 
-        jump(); 
-    });
-    document.getElementById('restartBtn').addEventListener('click', resetGame);
+    window.addEventListener("resize", resizeCanvas);
 
-    // Start game
-    resetGame();
-    window.restartGame = resetGame;
+    NVXLeaderboard.render();
+    NVXAutomationLayer.install({
+        getSnapshot: () => ({
+            score: Math.floor(score),
+            playerY: player ? player.y : null,
+            velocityY: player ? player.vy : null,
+            nextObstacleDistance: getNextObstacleDistance(),
+            nextPickupDistance: getNextPickupDistance(),
+            integrationsCollected,
+            speed,
+            running
+        }),
+        jump: () => {
+            if (!running && !gameOver) startRun();
+            jump();
+        },
+        getScore: () => Math.floor(score)
+    });
+    resizeCanvas();
+    resetRun();
+    window.restartGame = startRun;
     </script>
 </body>
 </html>
-
-
-
-
