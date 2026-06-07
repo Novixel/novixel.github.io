@@ -37,7 +37,7 @@ function toggleDarkMode() {
 }
 
 // ===========================================
-// Contact Form
+// Contact Form (Legacy mailto:)
 // ===========================================
 function fieldValue(form, name) {
     var field = form.querySelector('[name="' + name + '"]');
@@ -81,6 +81,72 @@ function initContactForms() {
         });
     });
 }
+
+// ===========================================
+// AJAX Contact Form (for Cloudflare Worker)
+// ===========================================
+function initAjaxContactForm() {
+    var form = document.getElementById('contactForm');
+    if (!form) return;
+
+    // Create a thank you message element and insert it after the form
+    var thankYouMessage = document.createElement('div');
+    thankYouMessage.className = 'card';
+    thankYouMessage.style.display = 'none';
+    thankYouMessage.innerHTML = '<h2><i class="fas fa-check-circle"></i> Thank You</h2><p>Thanks — I’ll review your workflow and reply shortly. You can also <a href="#/book-workflow-fit">book a workflow fit call here</a>.</p>';
+    form.parentNode.insertBefore(thankYouMessage, form.nextSibling);
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var submitButton = form.querySelector('button[type="submit"]');
+        var originalButtonText = submitButton.innerHTML;
+        submitButton.disabled = true;
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+        var formData = new FormData(form);
+        var formProps = Object.fromEntries(formData);
+        
+        // The cf-turnstile-response field is added automatically by the widget
+        if (!formProps['cf-turnstile-response']) {
+            alert('Error: The CAPTCHA challenge failed. Please refresh the page and try again.');
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonText;
+            return;
+        }
+
+        var payload = JSON.stringify(formProps);
+
+        fetch('/api/send-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: payload,
+        })
+        .then(function(response) {
+            if (response.ok) {
+                form.style.display = 'none';
+                // Hide the "aside" card as well for a cleaner success message
+                var aside = form.closest('.contactLayout').querySelector('.contactAside');
+                if(aside) aside.style.display = 'none';
+                
+                thankYouMessage.style.display = 'block';
+            } else {
+                // Try to parse a JSON error response from the worker
+                return response.json().then(function(errorData) {
+                    throw new Error(errorData.error || 'The server returned an error.');
+                });
+            }
+        })
+        .catch(function(error) {
+            alert('An error occurred: ' + error.message + '\nPlease try again later.');
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonText;
+        });
+    });
+}
+
 
 // ===========================================
 // Tab Navigation
@@ -180,5 +246,6 @@ function CoolThing() {
 document.addEventListener('DOMContentLoaded', function() {
     setInitialDarkMode();
     initContactForms();
+    initAjaxContactForm(); // <-- Added this line
     openInitialTab();
 });

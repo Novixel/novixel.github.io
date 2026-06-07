@@ -44,6 +44,10 @@ This is a static GitHub Pages site using:
 - `script.js` for theme handling, tabs, product filtering, and structured mail inquiries
 - Stripe-hosted payment links and the existing download-completion flow for products
 
+## Design Reference
+
+See `DESIGN.md` for the Novixel Labs color codes, theme tokens, typography, layout patterns, and component styling rules.
+
 ## Local Preview
 
 Open `index.html` directly in a browser, or serve the directory with a lightweight local static server.

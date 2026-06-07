@@ -59,6 +59,7 @@
         ]
     }
     </script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
 <body class="dark-mode">
@@ -432,34 +433,69 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                     <div class="contactLayout">
                         <div class="card">
-                            <h2>Request a Workflow Call</h2>
-                            <p class="muted">The initial call is free. It helps us understand the problem and see whether automation is worth pursuing. If there is a strong fit, the next step is a paid workflow audit before any build quote.</p>
-                            <form id="contactForm" class="contactForm intakeForm" action="mailto:novixel@hotmail.com" method="POST" enctype="text/plain">
+                            <div class="ctaRow button-trio" style="margin-bottom: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <a href="#/book-workflow-fit" class="btn primary">Book a Free Workflow Fit Call</a>
+                                <button class="btn ghost" type="button" onclick="document.getElementById('name').focus()">Message Novixel Labs</button>
+                                <a href="#/book-automation-audit" class="btn ghost">Request an Automation Audit</a>
+                            </div>
+
+                            <h2>Start the Conversation</h2>
+                            <p class="muted">Tell us about a workflow that's causing friction, or book a call directly. If there is a fit, the next step is a paid audit before any build quote.</p>
+                            
+                            <form id="contactForm" class="contactForm intakeForm">
                                 <label for="name">Name</label>
                                 <input type="text" id="name" name="name" autocomplete="name" required>
+                                
+                                <label for="company">Company</label>
+                                <input type="text" id="company" name="company" autocomplete="organization">
+
                                 <label for="email">Email</label>
                                 <input type="email" id="email" name="email" autocomplete="email" required>
-                                <label for="company">Business or project name</label>
-                                <input type="text" id="company" name="company" autocomplete="organization">
-                                <label for="project_type">What do you need help with?</label>
-                                <select id="project_type" name="project_type" required>
-                                    <option value="">Select one</option>
-                                    <option>Free workflow call</option>
-                                    <option>Paid workflow audit</option>
-                                    <option>AI system or assistant</option>
-                                    <option>SaaS or custom software</option>
-                                    <option>API integration or dashboard</option>
-                                    <option>Premium local technical support</option>
-                                    <option>Product question</option>
+                                
+                                <label for="phone">Phone <span class="optional">(Optional)</span></label>
+                                <input type="tel" id="phone" name="phone" autocomplete="tel">
+
+                                <label for="help_with">What do you need help with?</label>
+                                <select id="help_with" name="help_with" required>
+                                    <option value="" disabled selected>Select an option...</option>
+                                    <option value="automation-audit">Automation Audit</option>
+                                    <option value="ai-system">AI System or Assistant</option>
+                                    <option value="custom-software">SaaS or Custom Software</option>
+                                    <option value="api-integration">API Integration or Dashboard</option>
+                                    <option value="tech-support">Premium Local Technical Support</option>
+                                    <option value="product-question">Product Question</option>
+                                    <option value="other">Other</option>
                                 </select>
-                                <label for="workflow">What is repetitive, slow, or disconnected today?</label>
-                                <textarea id="workflow" name="workflow" rows="4" required></textarea>
-                                <label for="subject">Subject</label>
-                                <input type="text" id="subject" name="subject" value="Workflow inquiry" required>
-                                <label for="message">Anything else we should know?</label>
-                                <textarea id="message" name="message" rows="4"></textarea>
+
+                                <label for="workflow_improve">What kind of workflow are you trying to improve?</label>
+                                <textarea id="workflow_improve" name="workflow_improve" rows="4" placeholder="e.g., customer intake, project tracking, manual reporting..."></textarea>
+
+                                <label for="budget">Budget Range <span class="optional">(Optional)</span></label>
+                                <select id="budget" name="budget">
+                                    <option value="">Select a range...</option>
+                                    <option value="<5k">&lt; $5,000</option>
+                                    <option value="5k-10k">$5,000 - $10,000</option>
+                                    <option value="10k-25k">$10,000 - $25,000</option>
+                                    <option value="25k+">$25,000+</option>
+                                    <option value="tbd">To be determined</option>
+                                </select>
+
+                                <label for="contact_method">Preferred Contact Method</label>
+                                <select id="contact_method" name="contact_method">
+                                    <option value="email">Email</option>
+                                    <option value="phone">Phone Call</option>
+                                </select>
+
+                                <div class="consent-group" style="display: flex; align-items: flex-start; gap: 0.5rem; margin-top: 1rem;">
+                                    <input type="checkbox" id="consent" name="consent" required style="margin-top: 0.25em;">
+                                    <label for="consent" style="margin: 0;">I consent to being contacted by Novixel Labs about my inquiry. I understand this is for business communication, not a newsletter subscription.</label>
+                                </div>
+                                
+                                <!-- Cloudflare Turnstile Widget: Replace with your actual site key -->
+                                <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" style="margin: 1rem 0;"></div>
+
                                 <div class="ctaRow">
-                                    <input class="btn primary" type="submit" value="Send Inquiry">
+                                    <button class="btn primary" type="submit">Send Inquiry</button>
                                 </div>
                             </form>
                         </div>
@@ -467,7 +503,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <span class="status remote">Remote-first</span>
                             <h2>Novixel Labs</h2>
                             <p>Automation Engineering &amp; AI Systems</p>
-                            <p><i class="fas fa-envelope"></i> <a href="mailto:novixel@hotmail.com">novixel@hotmail.com</a></p>
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:contact@novixel.ca">contact@novixel.ca</a></p>
                             <p><i class="fas fa-map-marker-alt"></i> Based in Dawson Creek, BC<br>Serving remote clients</p>
                             <hr class="separator">
                             <h3>Good first messages include:</h3>
