@@ -3,6 +3,16 @@
 // ===========================================
 
 window.MAIL_SUBJECT_PREFIX = '[NOVIXEL LABS]';
+window.NOVIXEL_INTAKE_ENDPOINT = window.NOVIXEL_INTAKE_ENDPOINT || '';
+
+function isLocalHost() {
+    return window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+}
+
+function intakeEndpoint() {
+    if (window.NOVIXEL_INTAKE_ENDPOINT) return window.NOVIXEL_INTAKE_ENDPOINT;
+    return isLocalHost() ? 'http://127.0.0.1:8787/api/send-email' : '/api/send-email';
+}
 
 // ===========================================
 // Color Mode
@@ -89,11 +99,17 @@ function initAjaxContactForm() {
     var form = document.getElementById('contactForm');
     if (!form) return;
 
-    // Create a thank you message element and insert it after the form
+    var statusMessage = document.createElement('div');
+    statusMessage.className = 'formStatus';
+    statusMessage.setAttribute('role', 'status');
+    statusMessage.setAttribute('aria-live', 'polite');
+    statusMessage.style.display = 'none';
+    form.parentNode.insertBefore(statusMessage, form);
+
     var thankYouMessage = document.createElement('div');
     thankYouMessage.className = 'card';
     thankYouMessage.style.display = 'none';
-    thankYouMessage.innerHTML = '<h2><i class="fas fa-check-circle"></i> Thank You</h2><p>Thanks — I’ll review your workflow and reply shortly. You can also <a href="#/book-workflow-fit">book a workflow fit call here</a>.</p>';
+    thankYouMessage.innerHTML = '<h2><i class="fas fa-check-circle"></i> Thank You</h2><p>Thanks - I will review your workflow and reply shortly. You can also <a href="#/book-workflow-fit">book a workflow fit call here</a>.</p>';
     form.parentNode.insertBefore(thankYouMessage, form.nextSibling);
 
     form.addEventListener('submit', function(event) {
@@ -104,45 +120,81 @@ function initAjaxContactForm() {
         submitButton.disabled = true;
         submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
-        var formData = new FormData(form);
-        var formProps = Object.fromEntries(formData);
-        
-        // The cf-turnstile-response field is added automatically by the widget
-        if (!formProps['cf-turnstile-response']) {
-            alert('Error: The CAPTCHA challenge failed. Please refresh the page and try again.');
+        statusMessage.style.display = 'none';
+        statusMessage.textContent = '';
+        statusMessage.className = 'formStatus';
+
+        var turnstileWidget = form.querySelector('.cf-turnstile');
+        var siteKey = turnstileWidget ? (turnstileWidget.getAttribute('data-sitekey') || '').trim() : '';
+        if (!siteKey || siteKey === 'YOUR_PRODUCTION_SITE_KEY') {
+            statusMessage.textContent = 'Turnstile is not configured yet. Add the production Cloudflare site key before testing live submissions.';
+            statusMessage.className = 'formStatus error';
+            statusMessage.style.display = 'block';
             submitButton.disabled = false;
             submitButton.innerHTML = originalButtonText;
             return;
         }
 
+        var formData = new FormData(form);
+        var formProps = Object.fromEntries(formData);
+        
+        if (!formProps['cf-turnstile-response']) {
+            statusMessage.textContent = 'Please complete the security check and try again.';
+            statusMessage.className = 'formStatus error';
+            statusMessage.style.display = 'block';
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonText;
+            if (window.turnstile) {
+                window.turnstile.reset();
+            }
+            return;
+        }
+
         var payload = JSON.stringify(formProps);
 
-        fetch('/api/send-email', {
+        fetch(intakeEndpoint(), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Accept': 'application/json',
             },
             body: payload,
         })
         .then(function(response) {
             if (response.ok) {
                 form.style.display = 'none';
-                // Hide the "aside" card as well for a cleaner success message
                 var aside = form.closest('.contactLayout').querySelector('.contactAside');
                 if(aside) aside.style.display = 'none';
-                
                 thankYouMessage.style.display = 'block';
             } else {
-                // Try to parse a JSON error response from the worker
-                return response.json().then(function(errorData) {
-                    throw new Error(errorData.error || 'The server returned an error.');
+                return response.text().then(function(text) {
+                    var message = 'The server returned an error. Please try again.';
+                    var contentType = response.headers.get('content-type') || '';
+
+                    if (contentType.indexOf('application/json') !== -1) {
+                        try {
+                            var data = JSON.parse(text);
+                            message = data.error || message;
+                        } catch (error) {
+                            message = 'The server returned broken JSON. Please try again.';
+                        }
+                    } else if ((text || '').trim().charAt(0) === '<') {
+                        message = 'The intake route is returning a website page instead of the Worker response. Check the Cloudflare /api/send-email route.';
+                    }
+
+                    throw new Error(message);
                 });
             }
         })
         .catch(function(error) {
-            alert('An error occurred: ' + error.message + '\nPlease try again later.');
+            statusMessage.textContent = 'An error occurred: ' + error.message + ' Please try again later.';
+            statusMessage.className = 'formStatus error';
+            statusMessage.style.display = 'block';
             submitButton.disabled = false;
             submitButton.innerHTML = originalButtonText;
+            if (window.turnstile) {
+                window.turnstile.reset();
+            }
         });
     });
 }

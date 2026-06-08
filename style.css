@@ -1134,7 +1134,7 @@ body:not(.dark-mode) .featured-banner {
    Accent Color Enhancements (Polished Terminal)
    =========================================== */
 
-/* Service card — unified hover glow */
+/* Service card - unified hover glow */
 body.dark-mode .serviceCard {
     position: relative;
     overflow: hidden;
@@ -1212,7 +1212,7 @@ body.dark-mode .location {
     box-shadow: 0 0 8px rgba(0, 255, 255, 0.15);
 }
 
-/* --- Card borders — clean single-color --- */
+/* --- Card borders - clean single-color --- */
 body.dark-mode .card {
     border-color: rgba(57, 255, 136, 0.08);
 }
@@ -1538,6 +1538,34 @@ body.dark-mode .filters .pill.active {
     max-width: none;
 }
 
+.formStatus {
+    margin: 0 0 16px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 122, 53, .22);
+    background: rgba(0, 122, 53, .08);
+    color: var(--text);
+    text-align: left;
+}
+
+.formStatus.error {
+    border-color: rgba(180, 42, 60, .32);
+    background: rgba(180, 42, 60, .08);
+    color: #9f1f34;
+}
+
+body.dark-mode .formStatus {
+    border-color: rgba(57,255,136,.22);
+    background: rgba(57,255,136,.06);
+    color: #dfffee;
+}
+
+body.dark-mode .formStatus.error {
+    border-color: rgba(255,92,108,.42);
+    background: rgba(255,92,108,.08);
+    color: #ffdce1;
+}
+
 .contactForm select {
     width: 100%;
     padding: 12px 14px;
@@ -1563,11 +1591,22 @@ body.dark-mode .contactForm select {
     border-color: rgba(255,255,255,.08);
     background: rgba(0,0,0,.35);
     color: var(--text-dark);
+    color-scheme: dark;
 }
 
 body.dark-mode .contactForm select:focus {
     border-color: rgba(57,255,136,.55);
     box-shadow: 0 0 0 3px rgba(57,255,136,.08);
+}
+
+body.dark-mode .contactForm select option {
+    background: #080b0a;
+    color: #eafff0;
+}
+
+body.dark-mode .contactForm select option:checked {
+    background: #063f22;
+    color: #ffffff;
 }
 
 .footerLinks button {

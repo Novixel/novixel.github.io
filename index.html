@@ -32,7 +32,7 @@
 
     <meta name="theme-color" content="#00ff66">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=12">
+    <link rel="stylesheet" href="style.css?v=13">
     <link rel="icon" href="FavIcon.ico">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <title>Novixel Labs | Automation Engineering &amp; AI Systems</title>
@@ -490,9 +490,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                     <input type="checkbox" id="consent" name="consent" required style="margin-top: 0.25em;">
                                     <label for="consent" style="margin: 0;">I consent to being contacted by Novixel Labs about my inquiry. I understand this is for business communication, not a newsletter subscription.</label>
                                 </div>
-                                
-                                <!-- Cloudflare Turnstile Widget: Replace with your actual site key -->
-                                <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" style="margin: 1rem 0;"></div>
+                                <!-- Cloudflare Turnstile Widget:
+                                     IMPORTANT: Replace the placeholder data-sitekey with your actual production site key for novixel.ca.
+                                -->
+                                <div class="cf-turnstile" data-sitekey="0x4AAAAAADgZdi3E4kyhtT2Z" style="margin: 1rem 0;"></div>
 
                                 <div class="ctaRow">
                                     <button class="btn primary" type="submit">Send Inquiry</button>
@@ -503,7 +504,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <span class="status remote">Remote-first</span>
                             <h2>Novixel Labs</h2>
                             <p>Automation Engineering &amp; AI Systems</p>
-                            <p><i class="fas fa-envelope"></i> <a href="mailto:contact@novixel.ca">contact@novixel.ca</a></p>
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:Novixel@novixel.ca">Novixel@novixel.ca</a></p>
                             <p><i class="fas fa-map-marker-alt"></i> Based in Dawson Creek, BC<br>Serving remote clients</p>
                             <hr class="separator">
                             <h3>Good first messages include:</h3>
@@ -522,6 +523,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <footer class="footer">
             <hr class="separator">
             <div class="footerLinks">
+            <a href="https://novixel.ca/">Novixel.ca</a>
             <a href="/?tab=Services">Services</a>
             <a href="/?tab=Projects">Projects</a>
             <a href="/?tab=Products">Products</a>
@@ -532,6 +534,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </footer>
     </div>
 
-    <script src="script.js?v=3"></script>
+    <script src="script.js?v=4"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                var apiDocsLink = document.createElement('a');
+                apiDocsLink.href = 'http://localhost:8000/docs';
+                apiDocsLink.textContent = 'API Docs';
+                apiDocsLink.target = '_blank';
+                document.querySelector('.footerLinks').appendChild(apiDocsLink);
+            }
+        });
+    </script>
 </body>
 </html>
