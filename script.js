@@ -4,6 +4,7 @@
 
 window.MAIL_SUBJECT_PREFIX = '[NOVIXEL LABS]';
 window.NOVIXEL_INTAKE_ENDPOINT = window.NOVIXEL_INTAKE_ENDPOINT || '';
+window.NOVIXEL_APPOINTMENT_URL = 'https://calendar.app.google/7e4VhS88ChjqZPnR7';
 
 function isLocalHost() {
     return window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
@@ -109,7 +110,7 @@ function initAjaxContactForm() {
     var thankYouMessage = document.createElement('div');
     thankYouMessage.className = 'card';
     thankYouMessage.style.display = 'none';
-    thankYouMessage.innerHTML = '<h2><i class="fas fa-check-circle"></i> Thank You</h2><p>Thanks - I will review your workflow and reply shortly. You can also <a href="#/book-workflow-fit">book a workflow fit call here</a>.</p>';
+    thankYouMessage.innerHTML = '<h2><i class="fas fa-check-circle"></i> Thank You</h2><p>Thanks - I will review your workflow and reply shortly. You can also <a href="' + window.NOVIXEL_APPOINTMENT_URL + '" target="_blank" rel="noopener">book a free video or phone call here</a>.</p>';
     form.parentNode.insertBefore(thankYouMessage, form.nextSibling);
 
     form.addEventListener('submit', function(event) {
@@ -197,6 +198,40 @@ function initAjaxContactForm() {
             }
         });
     });
+}
+
+
+// ===========================================
+// Contact CTA Helpers
+// ===========================================
+function prepareContact(intent) {
+    openTab(null, 'Contact');
+
+    window.setTimeout(function() {
+        var form = document.getElementById('contactForm');
+        if (!form) return;
+
+        var helpWith = document.getElementById('help_with');
+        var contactMethod = document.getElementById('contact_method');
+        var workflow = document.getElementById('workflow_improve');
+        var name = document.getElementById('name');
+
+        if (intent === 'automation-audit' && helpWith) {
+            helpWith.value = 'automation-audit';
+        }
+
+        if (intent === 'automation-audit' && contactMethod) {
+            contactMethod.value = 'video-call';
+        }
+
+        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        if (intent === 'automation-audit' && workflow) {
+            workflow.focus();
+        } else if (name) {
+            name.focus();
+        }
+    }, 50);
 }
 
 

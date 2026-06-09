@@ -110,7 +110,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <span class="pill">Operational Dashboards</span>
                         </div>
                         <div class="ctaRow">
-                            <button class="btn primary" type="button" onclick="openTab(event, 'Contact')">Book a Free Workflow Call &rarr;</button>
+                            <a class="btn primary" href="https://calendar.app.google/7e4VhS88ChjqZPnR7" target="_blank" rel="noopener">Book a Free Video or Call &rarr;</a>
                             <button class="btn ghost" type="button" onclick="openTab(event, 'Projects')">View Real Systems</button>
                         </div>
                     </div>
@@ -189,7 +189,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <p class="tinyLabel">FIRST STEP</p>
                             <strong>Free workflow call</strong>
                             <p>A quick intro call to understand the problem and see whether automation is worth pursuing.</p>
-                            <button class="btn primary" type="button" onclick="openTab(event, 'Contact')">Start the Conversation</button>
+                            <button class="btn primary" type="button" onclick="prepareContact('automation-audit')">Start the Conversation</button>
                         </div>
                     </div>
                 </div>
@@ -434,13 +434,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="contactLayout">
                         <div class="card">
                             <div class="ctaRow button-trio" style="margin-bottom: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-                                <a href="#/book-workflow-fit" class="btn primary">Book a Free Workflow Fit Call</a>
-                                <button class="btn ghost" type="button" onclick="document.getElementById('name').focus()">Message Novixel Labs</button>
-                                <a href="#/book-automation-audit" class="btn ghost">Request an Automation Audit</a>
+                                <a href="https://calendar.app.google/7e4VhS88ChjqZPnR7" class="btn primary" target="_blank" rel="noopener">Book a Free Video or Call</a>
+                                <button class="btn ghost" type="button" onclick="prepareContact('message')">Message Novixel Labs</button>
+                                <button class="btn ghost" type="button" onclick="prepareContact('automation-audit')">Request an Automation Audit</button>
                             </div>
 
                             <h2>Start the Conversation</h2>
-                            <p class="muted">Tell us about a workflow that's causing friction, or book a call directly. If there is a fit, the next step is a paid audit before any build quote.</p>
+                            <p class="muted">Tell us about a workflow that's causing friction, or book a video or phone call directly. If there is a fit, the next step is a paid audit before any build quote.</p>
                             
                             <form id="contactForm" class="contactForm intakeForm">
                                 <label for="name">Name</label>
@@ -483,6 +483,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 <label for="contact_method">Preferred Contact Method</label>
                                 <select id="contact_method" name="contact_method">
                                     <option value="email">Email</option>
+                                    <option value="video-call">Video Call</option>
                                     <option value="phone">Phone Call</option>
                                 </select>
 
